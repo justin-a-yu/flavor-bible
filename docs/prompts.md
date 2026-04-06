@@ -89,7 +89,17 @@ Full stack: **React + React Flow + Tailwind CSS + static JSON.**
 
 **Lens ideation decisions:**
 
-- **Single click** on a bubble → detail card
+- **Single click** on a bubble → detail card (X button to close)
 - **Double click** on a bubble → promote it to a new full lens on the canvas
 - **Shared bubbles keep their strength color** (gold/orange/green) — spatial position between lenses is sufficient to communicate "shared". No purple override.
-- **Lens resize** → scroll wheel over a lens (scroll up = bigger, scroll down = smaller)
+- **Lens resize** → scroll wheel over a lens (scroll up = bigger, scroll down = smaller); no size cap
+- **Pan** → Space + drag; **Zoom** → Space + scroll (centered on cursor)
+- **R key** while hovering a lens → reshuffle visible pairings (new random seed)
+- **Bubble visibility** → three orbit rings by strength (inner=Essential, mid=Highly Recommended, outer=Recommended); ring capacity scales with lens radius so more bubbles appear as lens grows
+- **Non-shared bubbles avoid overlap zone** geometrically; excess that don't fit fade out
+- **Seeded randomization** → one seed per lens shuffles all pairings, stable-sorted by strength, top-N per tier shown; seed stored in URL hash
+- **URL hash persistence** → format `#@panX,panY,zoom;id:x,y,r,seed;id2:x,y,r,seed` — saved on drag-end, scroll-end, zoom-end, shuffle
+- **Strength tiers**: 1=Recommended (green, outermost), 2=Highly Recommended (orange), 3=Essential (gold), 4=Holy Grail (gold + radial glow behind bubble)
+- **Holy Grail visual**: same gold color as Essential, solid-ish fill, soft radial gradient glow radiating outward; legend shows "Essential / Holy Grail" with golden glow pill behind "Holy Grail"
+- **Adding a new ingredient** → existing lenses do not move; new lens spawns at canvas center
+- **GitHub repo**: https://github.com/justin-a-yu/flavor-bible
