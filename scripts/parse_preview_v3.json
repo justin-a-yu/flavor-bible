@@ -1,0 +1,2885 @@
+{
+  "ingredients": [
+    {
+      "id": "achiote-seeds",
+      "label": "Achiote Seeds",
+      "aliases": [],
+      "meta": {},
+      "pairings": [
+        {
+          "label": "beef",
+          "strength": 1
+        },
+        {
+          "label": "chicken",
+          "strength": 1
+        },
+        {
+          "label": "chiles",
+          "strength": 1
+        },
+        {
+          "label": "citrus",
+          "strength": 1,
+          "modifier": "e.g., sour orange"
+        },
+        {
+          "label": "fish",
+          "strength": 1
+        },
+        {
+          "label": "game birds",
+          "strength": 1,
+          "modifier": "e.g., duck, quail"
+        },
+        {
+          "label": "garlic",
+          "strength": 1
+        },
+        {
+          "label": "pork",
+          "strength": 2
+        },
+        {
+          "label": "shellfish",
+          "strength": 1,
+          "modifier": "e.g., lobster, shrimp"
+        },
+        {
+          "label": "shrimp",
+          "strength": 1
+        }
+      ],
+      "quotes": [],
+      "tips": [],
+      "affinities": [
+        "achiote + pork + sour orange"
+      ],
+      "cuisines": [
+        "mexican-cuisine"
+      ]
+    },
+    {
+      "id": "allspice",
+      "label": "Allspice",
+      "aliases": [],
+      "meta": {
+        "season": "autumn–winter",
+        "taste": "sweet",
+        "weight": "medium",
+        "volume": "loud"
+      },
+      "pairings": [
+        {
+          "label": "apples",
+          "strength": 1
+        },
+        {
+          "label": "baked goods",
+          "strength": 1
+        },
+        {
+          "label": "beans",
+          "strength": 1
+        },
+        {
+          "label": "carrots",
+          "strength": 1
+        },
+        {
+          "label": "chicken",
+          "strength": 2,
+          "modifier": "e.g., jamaican style"
+        },
+        {
+          "label": "chickpeas",
+          "strength": 1
+        },
+        {
+          "label": "chile peppers",
+          "strength": 1
+        },
+        {
+          "label": "cinnamon",
+          "strength": 1
+        },
+        {
+          "label": "cloves",
+          "strength": 1
+        },
+        {
+          "label": "cookies",
+          "strength": 1
+        },
+        {
+          "label": "coriander",
+          "strength": 1
+        },
+        {
+          "label": "currants",
+          "strength": 1,
+          "modifier": "esp. black"
+        },
+        {
+          "label": "curries and curry powder",
+          "strength": 2
+        },
+        {
+          "label": "eggplant",
+          "strength": 1
+        },
+        {
+          "label": "fish",
+          "strength": 1,
+          "modifier": "esp. grilled"
+        },
+        {
+          "label": "fruits, fruit compotes, and jams",
+          "strength": 2
+        },
+        {
+          "label": "game and game birds",
+          "strength": 1,
+          "modifier": "e.g., quail"
+        },
+        {
+          "label": "garlic",
+          "strength": 1
+        },
+        {
+          "label": "ginger",
+          "strength": 2
+        },
+        {
+          "label": "goat",
+          "strength": 1
+        },
+        {
+          "label": "grains",
+          "strength": 1
+        },
+        {
+          "label": "ham",
+          "strength": 1
+        },
+        {
+          "label": "herring, pickled",
+          "strength": 1
+        },
+        {
+          "label": "ketchup",
+          "strength": 1
+        },
+        {
+          "label": "lamb",
+          "strength": 1
+        },
+        {
+          "label": "mace",
+          "strength": 1
+        },
+        {
+          "label": "meats, red",
+          "strength": 2,
+          "modifier": "esp. braised, grilled, or roasted"
+        },
+        {
+          "label": "mushrooms",
+          "strength": 1
+        },
+        {
+          "label": "mustard",
+          "strength": 1
+        },
+        {
+          "label": "nutmeg",
+          "strength": 1
+        },
+        {
+          "label": "nuts",
+          "strength": 1
+        },
+        {
+          "label": "onions",
+          "strength": 1
+        },
+        {
+          "label": "pepper, black",
+          "strength": 1
+        },
+        {
+          "label": "pies",
+          "strength": 1
+        },
+        {
+          "label": "pineapple",
+          "strength": 1
+        },
+        {
+          "label": "pork",
+          "strength": 1
+        },
+        {
+          "label": "pumpkin",
+          "strength": 3
+        },
+        {
+          "label": "rabbit",
+          "strength": 1
+        },
+        {
+          "label": "rice",
+          "strength": 1
+        },
+        {
+          "label": "rosemary",
+          "strength": 1
+        },
+        {
+          "label": "salsas and sauces",
+          "strength": 1
+        },
+        {
+          "label": "sauerkraut",
+          "strength": 1
+        },
+        {
+          "label": "sausages",
+          "strength": 1
+        },
+        {
+          "label": "soups",
+          "strength": 1
+        },
+        {
+          "label": "spiced cakes",
+          "strength": 1
+        },
+        {
+          "label": "spinach",
+          "strength": 1
+        },
+        {
+          "label": "squash, winter",
+          "strength": 2
+        },
+        {
+          "label": "stews",
+          "strength": 1
+        },
+        {
+          "label": "stocks and broths, chicken",
+          "strength": 1
+        },
+        {
+          "label": "sweet potatoes",
+          "strength": 1
+        },
+        {
+          "label": "thyme",
+          "strength": 1
+        },
+        {
+          "label": "tomatoes",
+          "strength": 1
+        },
+        {
+          "label": "turnips",
+          "strength": 1
+        },
+        {
+          "label": "vegetables",
+          "strength": 1,
+          "modifier": "esp. root"
+        }
+      ],
+      "quotes": [
+        {
+          "text": "In Jamaica, allspice is their pepper. It’s fruitier than black peppercorns. I think it’s especially nice with braised and roasted meats.",
+          "attribution": "BRADFORD THOMPSON, Mary Elaine’s at The Phoenician (Scottsdale, Arizona)"
+        }
+      ],
+      "tips": [
+        "Add early in cooking."
+      ],
+      "affinities": [
+        "allspice + beef + onions",
+        "allspice + garlic + pork"
+      ],
+      "cuisines": [
+        "caribbean-cuisine",
+        "eastern-mediterranean-cuisine",
+        "english-cuisine",
+        "indian-cuisine",
+        "jamaican-cuisine",
+        "mexican-cuisine",
+        "middle-eastern-cuisine",
+        "north-american-cuisine",
+        "west-indies-cuisine"
+      ]
+    },
+    {
+      "id": "almonds",
+      "label": "Almonds",
+      "aliases": [],
+      "meta": {
+        "taste": "sweet",
+        "botanical relatives": "peaches",
+        "function": "warming",
+        "weight": "medium",
+        "volume": "quiet"
+      },
+      "pairings": [
+        {
+          "label": "amaretto",
+          "strength": 1
+        },
+        {
+          "label": "anise",
+          "strength": 1,
+          "modifier": "esp. green"
+        },
+        {
+          "label": "apples",
+          "strength": 1
+        },
+        {
+          "label": "apricots",
+          "strength": 2
+        },
+        {
+          "label": "beans",
+          "strength": 1
+        },
+        {
+          "label": "blackberries",
+          "strength": 1
+        },
+        {
+          "label": "brandy",
+          "strength": 1
+        },
+        {
+          "label": "butter, unsalted",
+          "strength": 3
+        },
+        {
+          "label": "butterscotch",
+          "strength": 1
+        },
+        {
+          "label": "caramel",
+          "strength": 2
+        },
+        {
+          "label": "cardamom",
+          "strength": 1
+        },
+        {
+          "label": "cayenne",
+          "strength": 1
+        },
+        {
+          "label": "cheese",
+          "strength": 1,
+          "modifier": "goat, manchego, ricotta"
+        },
+        {
+          "label": "cherries",
+          "strength": 1,
+          "modifier": "esp. sour"
+        },
+        {
+          "label": "chicken",
+          "strength": 1
+        },
+        {
+          "label": "chocolate",
+          "strength": 3,
+          "modifier": "dark, milk"
+        },
+        {
+          "label": "chocolate, white",
+          "strength": 1
+        },
+        {
+          "label": "cinnamon",
+          "strength": 1
+        },
+        {
+          "label": "coconut",
+          "strength": 2
+        },
+        {
+          "label": "coffee",
+          "strength": 2
+        },
+        {
+          "label": "cornmeal",
+          "strength": 1
+        },
+        {
+          "label": "corn syrup",
+          "strength": 1
+        },
+        {
+          "label": "crab",
+          "strength": 1
+        },
+        {
+          "label": "cranberries",
+          "strength": 1
+        },
+        {
+          "label": "cream",
+          "strength": 3
+        },
+        {
+          "label": "cream cheese",
+          "strength": 1
+        },
+        {
+          "label": "crème fraîche",
+          "strength": 1
+        },
+        {
+          "label": "crust",
+          "strength": 1,
+          "modifier": "pastry, pie"
+        },
+        {
+          "label": "currants",
+          "strength": 1
+        },
+        {
+          "label": "figs",
+          "strength": 2
+        },
+        {
+          "label": "fish",
+          "strength": 1
+        },
+        {
+          "label": "french pastries",
+          "strength": 1
+        },
+        {
+          "label": "fruits, most",
+          "strength": 1
+        },
+        {
+          "label": "garlic",
+          "strength": 1
+        },
+        {
+          "label": "grapes",
+          "strength": 1
+        },
+        {
+          "label": "greens, salad",
+          "strength": 1
+        },
+        {
+          "label": "hazelnuts",
+          "strength": 2
+        },
+        {
+          "label": "honey",
+          "strength": 3
+        },
+        {
+          "label": "ice cream",
+          "strength": 1
+        },
+        {
+          "label": "italian sauces",
+          "strength": 1
+        },
+        {
+          "label": "lamb",
+          "strength": 1
+        },
+        {
+          "label": "lavender",
+          "strength": 1
+        },
+        {
+          "label": "lemon",
+          "strength": 2,
+          "modifier": "juice, zest"
+        },
+        {
+          "label": "liqueurs, fruit",
+          "strength": 1,
+          "modifier": "including orange"
+        },
+        {
+          "label": "mascarpone",
+          "strength": 1
+        },
+        {
+          "label": "mexican beverages and mole sauces",
+          "strength": 1
+        },
+        {
+          "label": "milk, sweetened condensed",
+          "strength": 1
+        },
+        {
+          "label": "molasses",
+          "strength": 1
+        },
+        {
+          "label": "nectarines",
+          "strength": 1
+        },
+        {
+          "label": "oats",
+          "strength": 1
+        },
+        {
+          "label": "olive oil",
+          "strength": 2
+        },
+        {
+          "label": "olives",
+          "strength": 1
+        },
+        {
+          "label": "orange",
+          "strength": 2,
+          "modifier": "juice, zest"
+        },
+        {
+          "label": "paprika",
+          "strength": 1
+        },
+        {
+          "label": "passion fruit",
+          "strength": 1
+        },
+        {
+          "label": "peaches",
+          "strength": 1
+        },
+        {
+          "label": "pears",
+          "strength": 1
+        },
+        {
+          "label": "pecans",
+          "strength": 1
+        },
+        {
+          "label": "pepper, ground",
+          "strength": 1
+        },
+        {
+          "label": "pine nuts",
+          "strength": 1
+        },
+        {
+          "label": "plums",
+          "strength": 1
+        },
+        {
+          "label": "praline",
+          "strength": 1
+        },
+        {
+          "label": "prunes",
+          "strength": 1
+        },
+        {
+          "label": "quince",
+          "strength": 1
+        },
+        {
+          "label": "raisins",
+          "strength": 1,
+          "modifier": "esp. white"
+        },
+        {
+          "label": "raspberries",
+          "strength": 1
+        },
+        {
+          "label": "rhubarb",
+          "strength": 1
+        },
+        {
+          "label": "rice",
+          "strength": 1
+        },
+        {
+          "label": "rosemary",
+          "strength": 1
+        },
+        {
+          "label": "rum",
+          "strength": 1
+        },
+        {
+          "label": "salt",
+          "strength": 2,
+          "modifier": "kosher, sea"
+        },
+        {
+          "label": "shellfish",
+          "strength": 1
+        },
+        {
+          "label": "sherry",
+          "strength": 1
+        },
+        {
+          "label": "strawberries",
+          "strength": 1
+        },
+        {
+          "label": "sugar",
+          "strength": 2,
+          "modifier": "brown, white"
+        },
+        {
+          "label": "tea",
+          "strength": 1
+        },
+        {
+          "label": "vanilla",
+          "strength": 3
+        },
+        {
+          "label": "walnuts",
+          "strength": 1
+        }
+      ],
+      "quotes": [
+        {
+          "text": "Almonds are fairly versatile in that their flavor is not very specific. When they are manufactured, then they have a distinct flavor: think of Frangelico, almond oil, or marzipan in dessert. In these cases, the almond has a very distinct flavor.",
+          "attribution": "MARCEL DESAULNIERS, THE TRELLIS (WILLIAMSBURG, VIRGINIA)"
+        },
+        {
+          "text": "If you have some beautiful almonds , there are so many things you can do. You can grind them and make a frangipane and put it in puff pastry. You can put them into biscotti, a cake, or almond ice cream.",
+          "attribution": "EMILY LUCHETTI, Farallon (San Francisco)"
+        }
+      ],
+      "tips": [],
+      "affinities": [
+        "almonds + chocolate + coconut",
+        "almonds + coffee + orange",
+        "almonds + green anise + figs",
+        "almonds + honey + orange zest + raisins"
+      ],
+      "cuisines": [
+        "greek-cuisine",
+        "indian-cuisine",
+        "mediterranean-cuisine",
+        "moroccan-cuisine",
+        "spanish-cuisine",
+        "turkish-cuisine",
+        "afghan-cuisine"
+      ]
+    },
+    {
+      "id": "amaretto",
+      "label": "AMARETTO (sweet almond liqueur)",
+      "aliases": [],
+      "meta": {},
+      "pairings": [
+        {
+          "label": "almonds",
+          "strength": 1
+        },
+        {
+          "label": "apricots",
+          "strength": 1
+        },
+        {
+          "label": "butter",
+          "strength": 1
+        },
+        {
+          "label": "cherries",
+          "strength": 1
+        },
+        {
+          "label": "chocolate",
+          "strength": 1
+        },
+        {
+          "label": "coffee",
+          "strength": 1
+        },
+        {
+          "label": "cream",
+          "strength": 1
+        },
+        {
+          "label": "hazelnuts",
+          "strength": 1
+        },
+        {
+          "label": "peaches",
+          "strength": 1
+        },
+        {
+          "label": "pork",
+          "strength": 1
+        },
+        {
+          "label": "sugar",
+          "strength": 1
+        }
+      ],
+      "quotes": [],
+      "tips": [],
+      "affinities": [],
+      "cuisines": [
+        "italian-cuisine"
+      ]
+    },
+    {
+      "id": "anchovies",
+      "label": "Anchovies",
+      "aliases": [],
+      "meta": {
+        "taste": "salty",
+        "weight": "light",
+        "volume": "loud"
+      },
+      "pairings": [
+        {
+          "label": "almonds",
+          "strength": 2
+        },
+        {
+          "label": "basil",
+          "strength": 1
+        },
+        {
+          "label": "beans, green",
+          "strength": 1
+        },
+        {
+          "label": "bell peppers",
+          "strength": 1,
+          "modifier": "esp. roasted"
+        },
+        {
+          "label": "capers",
+          "strength": 2
+        },
+        {
+          "label": "carrots",
+          "strength": 1
+        },
+        {
+          "label": "cauliflower",
+          "strength": 1
+        },
+        {
+          "label": "celery",
+          "strength": 1
+        },
+        {
+          "label": "cheese",
+          "strength": 2,
+          "modifier": "manchego, mozzarella, parmesan"
+        },
+        {
+          "label": "chives",
+          "strength": 1
+        },
+        {
+          "label": "eggs, hard-boiled",
+          "strength": 2
+        },
+        {
+          "label": "fennel",
+          "strength": 1
+        },
+        {
+          "label": "garlic",
+          "strength": 3
+        },
+        {
+          "label": "lemon, juice",
+          "strength": 2
+        },
+        {
+          "label": "lobster",
+          "strength": 1
+        },
+        {
+          "label": "mayonnaise",
+          "strength": 2
+        },
+        {
+          "label": "mustard",
+          "strength": 1,
+          "modifier": "e.g., dijon"
+        },
+        {
+          "label": "nectarines",
+          "strength": 1
+        },
+        {
+          "label": "olive oil",
+          "strength": 3
+        },
+        {
+          "label": "olives",
+          "strength": 2,
+          "modifier": "e.g., black, green, niçoise"
+        },
+        {
+          "label": "onions",
+          "strength": 1
+        },
+        {
+          "label": "orange, zest",
+          "strength": 1
+        },
+        {
+          "label": "parsley, flat-leaf",
+          "strength": 2
+        },
+        {
+          "label": "pasta",
+          "strength": 2
+        },
+        {
+          "label": "pepper",
+          "strength": 2,
+          "modifier": "black, white"
+        },
+        {
+          "label": "peppers, piquillo",
+          "strength": 1
+        },
+        {
+          "label": "pizza",
+          "strength": 1
+        },
+        {
+          "label": "potatoes",
+          "strength": 1
+        },
+        {
+          "label": "puttanesca sauce",
+          "strength": 1,
+          "modifier": "key ingredient"
+        },
+        {
+          "label": "red pepper flakes",
+          "strength": 1
+        },
+        {
+          "label": "romaine lettuce",
+          "strength": 1
+        },
+        {
+          "label": "rosemary",
+          "strength": 1
+        },
+        {
+          "label": "salads",
+          "strength": 1,
+          "modifier": "esp. caesar (key ingredient)"
+        },
+        {
+          "label": "salmon",
+          "strength": 1
+        },
+        {
+          "label": "salt",
+          "strength": 2,
+          "modifier": "kosher, sea"
+        },
+        {
+          "label": "shallots",
+          "strength": 1
+        },
+        {
+          "label": "sherry, px",
+          "strength": 1
+        },
+        {
+          "label": "tapenade",
+          "strength": 1,
+          "modifier": "key ingredient"
+        },
+        {
+          "label": "thyme",
+          "strength": 1
+        },
+        {
+          "label": "tomatoes",
+          "strength": 1
+        },
+        {
+          "label": "tuna",
+          "strength": 1
+        },
+        {
+          "label": "vinegar",
+          "strength": 2,
+          "modifier": "champagne, red wine, sherry"
+        }
+      ],
+      "quotes": [
+        {
+          "text": "No country in the world has anchovies like Spain. They are sophisticated, and the ones from the north of Spain are best because they are bigger. Spanish anchovies are not salty, either. Once you eat one, your life changes forever! I pay a lot for my anchovies — up to seventy-five cents per fillet — and will have to charge $9 for a plate. My customers will say that is too much to pay, and I agree — but if you don’t pay, you don’t taste. Lately, I have been combining anchovies with nectarines, which I love. I will make a vinaigrette with Pedro Ximénez [i.e., PX sherry], sherry vinegar, and olive oil and it is the perfect dressing — and unique.",
+          "attribution": "JOSÉ ANDRÉS, CAFÉ ATLÁNTICO (WASHINGTON, DC)"
+        }
+      ],
+      "tips": [],
+      "affinities": [
+        "anchovies + lemon + olive oil + rosemary"
+      ],
+      "cuisines": [
+        "mediterranean-cuisine"
+      ]
+    },
+    {
+      "id": "angelica",
+      "label": "Angelica",
+      "aliases": [],
+      "meta": {
+        "taste": "bitter, sweet",
+        "volume": "loud"
+      },
+      "pairings": [
+        {
+          "label": "nutmeg",
+          "strength": 1
+        },
+        {
+          "label": "oranges",
+          "strength": 2
+        },
+        {
+          "label": "pepper, black",
+          "strength": 1
+        },
+        {
+          "label": "plums",
+          "strength": 2
+        },
+        {
+          "label": "rhubarb",
+          "strength": 4
+        },
+        {
+          "label": "salads",
+          "strength": 1
+        },
+        {
+          "label": "shellfish",
+          "strength": 1
+        },
+        {
+          "label": "strawberries",
+          "strength": 2
+        }
+      ],
+      "quotes": [
+        {
+          "text": "Use to balance high-acid fruit, to reduce the need for sweeteners. almonds anise apricots candy cream and ice cream custards desserts fish fruits ginger: fresh, candied hazelnuts juniper berries lavender lemon balm liqueurs mushrooms Angelica pairs well with fresh or candied ginger. And angelica with rhubarb really intensifies the flavor of the rhubarb.",
+          "attribution": "JERRY TRAUNFELD, The Herbfarm (Woodinville, Washington)"
+        }
+      ],
+      "tips": [
+        "Add late in cooking; use in baking."
+      ],
+      "affinities": [
+        "angelica + cream + rhubarb"
+      ],
+      "cuisines": []
+    },
+    {
+      "id": "anise",
+      "label": "ANISE (See also Anise, Star, and Fennel)",
+      "aliases": [
+        "anise-star",
+        "fennel"
+      ],
+      "meta": {
+        "function": "warming",
+        "weight": "light–medium",
+        "volume": "moderate–loud"
+      },
+      "pairings": [
+        {
+          "label": "allspice",
+          "strength": 1
+        },
+        {
+          "label": "almonds",
+          "strength": 1
+        },
+        {
+          "label": "apples",
+          "strength": 1
+        },
+        {
+          "label": "baked goods",
+          "strength": 1,
+          "modifier": "esp. cakes, cookies"
+        },
+        {
+          "label": "beets",
+          "strength": 1
+        },
+        {
+          "label": "breads",
+          "strength": 2,
+          "modifier": "esp. rye"
+        },
+        {
+          "label": "cabbage",
+          "strength": 1
+        },
+        {
+          "label": "cakes",
+          "strength": 2
+        },
+        {
+          "label": "cardamom",
+          "strength": 1
+        },
+        {
+          "label": "carrots",
+          "strength": 1
+        },
+        {
+          "label": "cauliflower",
+          "strength": 1
+        },
+        {
+          "label": "cheese",
+          "strength": 1,
+          "modifier": "esp. goat and ricotta"
+        },
+        {
+          "label": "chestnuts",
+          "strength": 1
+        },
+        {
+          "label": "cinnamon",
+          "strength": 1
+        },
+        {
+          "label": "cloves",
+          "strength": 1
+        },
+        {
+          "label": "coffee",
+          "strength": 1
+        },
+        {
+          "label": "cookies",
+          "strength": 2
+        },
+        {
+          "label": "crab",
+          "strength": 1
+        },
+        {
+          "label": "cream",
+          "strength": 1
+        },
+        {
+          "label": "cumin",
+          "strength": 1
+        },
+        {
+          "label": "dates",
+          "strength": 1
+        },
+        {
+          "label": "desserts",
+          "strength": 1
+        },
+        {
+          "label": "duck",
+          "strength": 1
+        },
+        {
+          "label": "fennel seeds",
+          "strength": 1
+        },
+        {
+          "label": "figs",
+          "strength": 1
+        },
+        {
+          "label": "fish",
+          "strength": 3
+        },
+        {
+          "label": "fruit",
+          "strength": 1
+        },
+        {
+          "label": "garlic",
+          "strength": 1
+        },
+        {
+          "label": "ginger",
+          "strength": 1
+        },
+        {
+          "label": "hazelnuts",
+          "strength": 1
+        },
+        {
+          "label": "lemon",
+          "strength": 1
+        },
+        {
+          "label": "lentils",
+          "strength": 1
+        },
+        {
+          "label": "mayonnaise",
+          "strength": 1
+        },
+        {
+          "label": "melon",
+          "strength": 1
+        },
+        {
+          "label": "mole sauce",
+          "strength": 1
+        },
+        {
+          "label": "mussels",
+          "strength": 1
+        },
+        {
+          "label": "nutmeg",
+          "strength": 1
+        },
+        {
+          "label": "nuts",
+          "strength": 1
+        },
+        {
+          "label": "orange",
+          "strength": 1
+        },
+        {
+          "label": "parsnips",
+          "strength": 1
+        },
+        {
+          "label": "peaches",
+          "strength": 1
+        },
+        {
+          "label": "pears",
+          "strength": 1
+        },
+        {
+          "label": "pepper",
+          "strength": 1
+        },
+        {
+          "label": "pickles",
+          "strength": 1
+        },
+        {
+          "label": "pineapple",
+          "strength": 1
+        },
+        {
+          "label": "plums",
+          "strength": 1
+        },
+        {
+          "label": "pork",
+          "strength": 1
+        },
+        {
+          "label": "prunes",
+          "strength": 1
+        },
+        {
+          "label": "pumpkin",
+          "strength": 1
+        },
+        {
+          "label": "quince",
+          "strength": 1
+        },
+        {
+          "label": "raisins",
+          "strength": 1
+        },
+        {
+          "label": "rhubarb",
+          "strength": 1
+        },
+        {
+          "label": "salumi",
+          "strength": 1
+        },
+        {
+          "label": "italian sausage.",
+          "strength": 1
+        },
+        {
+          "label": "sauerkraut",
+          "strength": 1
+        },
+        {
+          "label": "shellfish",
+          "strength": 1
+        },
+        {
+          "label": "soups",
+          "strength": 1,
+          "modifier": "esp. fish"
+        },
+        {
+          "label": "star anise",
+          "strength": 1
+        },
+        {
+          "label": "stews",
+          "strength": 3,
+          "modifier": "esp. fish"
+        },
+        {
+          "label": "strawberries",
+          "strength": 1
+        },
+        {
+          "label": "sugar",
+          "strength": 1
+        },
+        {
+          "label": "sweet potatoes",
+          "strength": 1
+        },
+        {
+          "label": "tea",
+          "strength": 1
+        },
+        {
+          "label": "vanilla",
+          "strength": 1
+        },
+        {
+          "label": "vegetables, root",
+          "strength": 1
+        },
+        {
+          "label": "walnuts",
+          "strength": 1
+        }
+      ],
+      "quotes": [],
+      "tips": [
+        "Add early in cooking."
+      ],
+      "affinities": [],
+      "cuisines": [
+        "chinese-cuisine",
+        "mediterranean-cuisine",
+        "middle-eastern-cuisine",
+        "moroccan-cuisine",
+        "portuguese-cuisine",
+        "provencal-cuisine-french",
+        "scandinavian-cuisine",
+        "vietnamese-cuisine"
+      ]
+    },
+    {
+      "id": "anise-hyssop",
+      "label": "Anise Hyssop",
+      "aliases": [],
+      "meta": {
+        "season": "late spring–summer",
+        "taste": "sweet",
+        "weight": "light–medium",
+        "volume": "quiet–moderate"
+      },
+      "pairings": [
+        {
+          "label": "apricots",
+          "strength": 1
+        },
+        {
+          "label": "basil",
+          "strength": 1
+        },
+        {
+          "label": "beans, green",
+          "strength": 1
+        },
+        {
+          "label": "beets",
+          "strength": 1
+        },
+        {
+          "label": "berries",
+          "strength": 2,
+          "modifier": "esp. blueberries"
+        },
+        {
+          "label": "beverages",
+          "strength": 2
+        },
+        {
+          "label": "carrots",
+          "strength": 2
+        },
+        {
+          "label": "cherries",
+          "strength": 1
+        },
+        {
+          "label": "chervil",
+          "strength": 1
+        },
+        {
+          "label": "chicken",
+          "strength": 1
+        },
+        {
+          "label": "cream and ice cream",
+          "strength": 1
+        },
+        {
+          "label": "currants",
+          "strength": 1
+        },
+        {
+          "label": "custards",
+          "strength": 1
+        },
+        {
+          "label": "desserts",
+          "strength": 1
+        },
+        {
+          "label": "fennel bulb",
+          "strength": 1
+        },
+        {
+          "label": "fish",
+          "strength": 1
+        },
+        {
+          "label": "fruits",
+          "strength": 3,
+          "modifier": "esp. summer"
+        },
+        {
+          "label": "honey",
+          "strength": 2
+        },
+        {
+          "label": "lavender",
+          "strength": 1
+        },
+        {
+          "label": "lemon",
+          "strength": 1
+        },
+        {
+          "label": "lychees",
+          "strength": 1
+        },
+        {
+          "label": "marjoram",
+          "strength": 1
+        },
+        {
+          "label": "melons",
+          "strength": 2
+        },
+        {
+          "label": "mint",
+          "strength": 1
+        },
+        {
+          "label": "nectarines",
+          "strength": 1
+        },
+        {
+          "label": "oranges",
+          "strength": 1
+        },
+        {
+          "label": "parsley",
+          "strength": 1
+        },
+        {
+          "label": "parsnips",
+          "strength": 1
+        },
+        {
+          "label": "peaches",
+          "strength": 2
+        },
+        {
+          "label": "pears",
+          "strength": 1
+        },
+        {
+          "label": "plums",
+          "strength": 1
+        },
+        {
+          "label": "pork",
+          "strength": 1
+        },
+        {
+          "label": "raspberries",
+          "strength": 2
+        },
+        {
+          "label": "rice",
+          "strength": 1
+        },
+        {
+          "label": "salads",
+          "strength": 2,
+          "modifier": "fruit, green"
+        },
+        {
+          "label": "shellfish",
+          "strength": 1,
+          "modifier": "e.g., shrimp"
+        },
+        {
+          "label": "shrimp",
+          "strength": 1
+        },
+        {
+          "label": "spinach",
+          "strength": 1
+        },
+        {
+          "label": "squash, winter",
+          "strength": 1
+        },
+        {
+          "label": "stone fruits",
+          "strength": 1,
+          "modifier": "e.g., peaches"
+        },
+        {
+          "label": "sweet potatoes",
+          "strength": 1
+        },
+        {
+          "label": "tarragon",
+          "strength": 1
+        },
+        {
+          "label": "teas",
+          "strength": 2
+        },
+        {
+          "label": "tomatoes",
+          "strength": 1
+        },
+        {
+          "label": "vegetables, root",
+          "strength": 1
+        },
+        {
+          "label": "watermelon",
+          "strength": 1
+        },
+        {
+          "label": "zucchini",
+          "strength": 1
+        }
+      ],
+      "quotes": [],
+      "tips": [],
+      "affinities": [],
+      "cuisines": []
+    },
+    {
+      "id": "anise-star",
+      "label": "Anise, Star",
+      "aliases": [],
+      "meta": {
+        "taste": "sweet, bitter",
+        "weight": "medium",
+        "volume": "moderate–loud"
+      },
+      "pairings": [
+        {
+          "label": "allspice",
+          "strength": 1
+        },
+        {
+          "label": "baked goods",
+          "strength": 1,
+          "modifier": "e.g., breads, pastries"
+        },
+        {
+          "label": "beef",
+          "strength": 1
+        },
+        {
+          "label": "beverages",
+          "strength": 1
+        },
+        {
+          "label": "cardamom",
+          "strength": 1
+        },
+        {
+          "label": "chestnuts",
+          "strength": 1
+        },
+        {
+          "label": "chicken",
+          "strength": 1
+        },
+        {
+          "label": "chile peppers",
+          "strength": 1
+        },
+        {
+          "label": "chili powder",
+          "strength": 1
+        },
+        {
+          "label": "chocolate",
+          "strength": 2,
+          "modifier": "esp. milk"
+        },
+        {
+          "label": "cinnamon",
+          "strength": 2
+        },
+        {
+          "label": "citrus zest",
+          "strength": 1
+        },
+        {
+          "label": "cloves",
+          "strength": 1
+        },
+        {
+          "label": "coriander",
+          "strength": 1
+        },
+        {
+          "label": "cumin",
+          "strength": 1
+        },
+        {
+          "label": "curry powder (ingredient)",
+          "strength": 1
+        },
+        {
+          "label": "duck",
+          "strength": 2
+        },
+        {
+          "label": "eggs",
+          "strength": 1
+        },
+        {
+          "label": "fennel seeds",
+          "strength": 1
+        },
+        {
+          "label": "figs",
+          "strength": 1
+        },
+        {
+          "label": "fish",
+          "strength": 2
+        },
+        {
+          "label": "five-spice powder",
+          "strength": 3
+        },
+        {
+          "label": "fruits",
+          "strength": 1,
+          "modifier": "esp. tropical"
+        },
+        {
+          "label": "garlic",
+          "strength": 1
+        },
+        {
+          "label": "ginger",
+          "strength": 2
+        },
+        {
+          "label": "kumquats",
+          "strength": 1
+        },
+        {
+          "label": "leeks",
+          "strength": 1
+        },
+        {
+          "label": "lemongrass",
+          "strength": 1
+        },
+        {
+          "label": "lime, zest",
+          "strength": 1
+        },
+        {
+          "label": "liqueurs",
+          "strength": 1
+        },
+        {
+          "label": "mace",
+          "strength": 1
+        },
+        {
+          "label": "mangoes",
+          "strength": 1
+        },
+        {
+          "label": "maple syrup",
+          "strength": 1
+        },
+        {
+          "label": "meats",
+          "strength": 1,
+          "modifier": "esp. fatty"
+        },
+        {
+          "label": "nutmeg",
+          "strength": 1
+        },
+        {
+          "label": "orange, zest",
+          "strength": 1
+        },
+        {
+          "label": "oxtails",
+          "strength": 1
+        },
+        {
+          "label": "pears",
+          "strength": 2,
+          "modifier": "esp. poached"
+        },
+        {
+          "label": "pepper",
+          "strength": 1,
+          "modifier": "black, szechuan"
+        },
+        {
+          "label": "pineapple",
+          "strength": 1
+        },
+        {
+          "label": "plums",
+          "strength": 1,
+          "modifier": "esp. poached"
+        },
+        {
+          "label": "pork",
+          "strength": 2
+        },
+        {
+          "label": "poultry",
+          "strength": 1
+        },
+        {
+          "label": "pumpkin",
+          "strength": 1
+        },
+        {
+          "label": "raspberries",
+          "strength": 1
+        },
+        {
+          "label": "root vegetables",
+          "strength": 1
+        },
+        {
+          "label": "salmon",
+          "strength": 1
+        },
+        {
+          "label": "sauces",
+          "strength": 1
+        },
+        {
+          "label": "scallions",
+          "strength": 1
+        },
+        {
+          "label": "scallops",
+          "strength": 1
+        },
+        {
+          "label": "shellfish",
+          "strength": 1
+        },
+        {
+          "label": "shrimp",
+          "strength": 1
+        },
+        {
+          "label": "soups",
+          "strength": 2
+        },
+        {
+          "label": "soy sauce",
+          "strength": 1
+        },
+        {
+          "label": "stews",
+          "strength": 1
+        },
+        {
+          "label": "stocks",
+          "strength": 2,
+          "modifier": "beef, chicken"
+        },
+        {
+          "label": "sweet potatoes",
+          "strength": 1
+        },
+        {
+          "label": "tamarind",
+          "strength": 1
+        },
+        {
+          "label": "teas",
+          "strength": 1
+        },
+        {
+          "label": "tuna",
+          "strength": 1
+        },
+        {
+          "label": "turmeric",
+          "strength": 1
+        },
+        {
+          "label": "vanilla",
+          "strength": 1
+        },
+        {
+          "label": "vegetables",
+          "strength": 1,
+          "modifier": "esp. root"
+        },
+        {
+          "label": "wine, rice",
+          "strength": 1
+        }
+      ],
+      "quotes": [
+        {
+          "text": "As a kid, I hated black jelly beans. But I have grown to like all the various forms of anise, and star anise is one of my favorites. My favorite application is when it is infused with milk chocolate. It then has an almost malty-caramely quality to it. It adds that little something that people can’t quite identify. I also love pears with anise, which works well with roasted or poached pears.",
+          "attribution": "MICHAEL LAISKONIS, LE BERNARDIN (NEW YORK CITY)"
+        },
+        {
+          "text": "I love using star anise in dishes from meats to desserts. I love how it can be kind of meaty in a stew, or kind of sweet, adding bright, warm notes to a pumpkin dessert.",
+          "attribution": "TONY LIU, August (New York City)"
+        }
+      ],
+      "tips": [
+        "Add at the beginning of the cooking process. Use in stir-fries."
+      ],
+      "affinities": [
+        "star anise + cream + maple",
+        "star anise + milk + milk chocolate + orange zest + sugar",
+        "star anise + pork + soy sauce + sugar"
+      ],
+      "cuisines": [
+        "chinese-cuisine",
+        "indian-cuisine",
+        "malaysian-cuisine",
+        "vietnamese-cuisine"
+      ]
+    },
+    {
+      "id": "apples",
+      "label": "Apples",
+      "aliases": [],
+      "meta": {
+        "season": "autumn",
+        "taste": "sweet, astringent",
+        "function": "cooling",
+        "weight": "medium",
+        "volume": "quiet–moderate",
+        "techniques": "bake, caramelize, deep-fry (e.g., as fritters), grill, poach, raw, sauté, stew"
+      },
+      "pairings": [
+        {
+          "label": "allspice",
+          "strength": 1
+        },
+        {
+          "label": "almonds",
+          "strength": 1
+        },
+        {
+          "label": "apple cider or juice",
+          "strength": 2
+        },
+        {
+          "label": "applejack",
+          "strength": 2
+        },
+        {
+          "label": "apricots",
+          "strength": 2,
+          "modifier": "dried, jam, puree"
+        },
+        {
+          "label": "armagnac",
+          "strength": 1
+        },
+        {
+          "label": "bacon",
+          "strength": 1
+        },
+        {
+          "label": "bay leaf",
+          "strength": 1
+        },
+        {
+          "label": "beef",
+          "strength": 1
+        },
+        {
+          "label": "blackberries",
+          "strength": 1
+        },
+        {
+          "label": "bourbon",
+          "strength": 1
+        },
+        {
+          "label": "brandy",
+          "strength": 2,
+          "modifier": "esp. apple"
+        },
+        {
+          "label": "brioche",
+          "strength": 1
+        },
+        {
+          "label": "butter, unsalted",
+          "strength": 3
+        },
+        {
+          "label": "butterscotch",
+          "strength": 1
+        },
+        {
+          "label": "cabbage, red",
+          "strength": 1
+        },
+        {
+          "label": "calvados",
+          "strength": 3
+        },
+        {
+          "label": "caramel",
+          "strength": 3
+        },
+        {
+          "label": "cardamom",
+          "strength": 1
+        },
+        {
+          "label": "celery",
+          "strength": 1
+        },
+        {
+          "label": "celery root",
+          "strength": 1
+        },
+        {
+          "label": "cheese",
+          "strength": 2,
+          "modifier": "camembert, cheddar, goat, gruyère"
+        },
+        {
+          "label": "cherries",
+          "strength": 1,
+          "modifier": "dried, fresh"
+        },
+        {
+          "label": "chestnuts",
+          "strength": 1
+        },
+        {
+          "label": "chicken",
+          "strength": 1
+        },
+        {
+          "label": "chives",
+          "strength": 1
+        },
+        {
+          "label": "cider",
+          "strength": 1
+        },
+        {
+          "label": "cinnamon",
+          "strength": 4
+        },
+        {
+          "label": "cloves",
+          "strength": 2
+        },
+        {
+          "label": "cognac",
+          "strength": 2
+        },
+        {
+          "label": "cointreau",
+          "strength": 1
+        },
+        {
+          "label": "coriander",
+          "strength": 1
+        },
+        {
+          "label": "cranberries",
+          "strength": 1
+        },
+        {
+          "label": "cream and ice cream",
+          "strength": 3
+        },
+        {
+          "label": "crème anglaise (sauce)",
+          "strength": 1
+        },
+        {
+          "label": "crème fraîche",
+          "strength": 1
+        },
+        {
+          "label": "crust",
+          "strength": 1,
+          "modifier": "pastry, pie"
+        },
+        {
+          "label": "cumin",
+          "strength": 1
+        },
+        {
+          "label": "currants",
+          "strength": 1,
+          "modifier": "esp. black, and currant jelly"
+        },
+        {
+          "label": "curry powder",
+          "strength": 1
+        },
+        {
+          "label": "custards",
+          "strength": 2
+        },
+        {
+          "label": "dates",
+          "strength": 1
+        },
+        {
+          "label": "duck",
+          "strength": 1
+        },
+        {
+          "label": "eggplant",
+          "strength": 1
+        },
+        {
+          "label": "fennel",
+          "strength": 1
+        },
+        {
+          "label": "frisée",
+          "strength": 1
+        },
+        {
+          "label": "ginger",
+          "strength": 2
+        },
+        {
+          "label": "goose",
+          "strength": 1
+        },
+        {
+          "label": "hazelnuts",
+          "strength": 1
+        },
+        {
+          "label": "honey",
+          "strength": 2,
+          "modifier": "esp. chestnut, wildflower"
+        },
+        {
+          "label": "horseradish",
+          "strength": 1
+        },
+        {
+          "label": "ice cream",
+          "strength": 1
+        },
+        {
+          "label": "kirsch",
+          "strength": 2
+        },
+        {
+          "label": "lavender",
+          "strength": 1
+        },
+        {
+          "label": "lemon",
+          "strength": 3,
+          "modifier": "juice, zest"
+        },
+        {
+          "label": "lemon thyme",
+          "strength": 1
+        },
+        {
+          "label": "lychees",
+          "strength": 1
+        },
+        {
+          "label": "madeira",
+          "strength": 2
+        },
+        {
+          "label": "maple syrup",
+          "strength": 1
+        },
+        {
+          "label": "mayonnaise",
+          "strength": 1
+        },
+        {
+          "label": "meringue",
+          "strength": 1
+        },
+        {
+          "label": "molasses",
+          "strength": 1
+        },
+        {
+          "label": "mustard",
+          "strength": 1
+        },
+        {
+          "label": "nutmeg",
+          "strength": 2
+        },
+        {
+          "label": "nuts",
+          "strength": 1
+        },
+        {
+          "label": "oatmeal and oats",
+          "strength": 1
+        },
+        {
+          "label": "oil",
+          "strength": 1,
+          "modifier": "canola, hazelnut, walnut"
+        },
+        {
+          "label": "olive oil",
+          "strength": 1
+        },
+        {
+          "label": "onions",
+          "strength": 1,
+          "modifier": "esp. green, red"
+        },
+        {
+          "label": "orange",
+          "strength": 1,
+          "modifier": "juice, zest"
+        },
+        {
+          "label": "parsley",
+          "strength": 1
+        },
+        {
+          "label": "peanuts and peanut butter",
+          "strength": 1
+        },
+        {
+          "label": "pears",
+          "strength": 1
+        },
+        {
+          "label": "pecans",
+          "strength": 2
+        },
+        {
+          "label": "pepper, black",
+          "strength": 1
+        },
+        {
+          "label": "pies",
+          "strength": 1
+        },
+        {
+          "label": "pineapple",
+          "strength": 1
+        },
+        {
+          "label": "pine nuts",
+          "strength": 2
+        },
+        {
+          "label": "pistachios",
+          "strength": 1
+        },
+        {
+          "label": "plums",
+          "strength": 1
+        },
+        {
+          "label": "pomegranates",
+          "strength": 1
+        },
+        {
+          "label": "pork",
+          "strength": 2
+        },
+        {
+          "label": "poultry",
+          "strength": 1
+        },
+        {
+          "label": "prunes",
+          "strength": 1
+        },
+        {
+          "label": "puff pastry",
+          "strength": 1
+        },
+        {
+          "label": "pumpkin",
+          "strength": 2
+        },
+        {
+          "label": "quince",
+          "strength": 1
+        },
+        {
+          "label": "raisins",
+          "strength": 2,
+          "modifier": "esp. seedless, white"
+        },
+        {
+          "label": "rhubarb",
+          "strength": 1
+        },
+        {
+          "label": "rice and rice pudding",
+          "strength": 1
+        },
+        {
+          "label": "rosemary",
+          "strength": 1
+        },
+        {
+          "label": "rum",
+          "strength": 3,
+          "modifier": "dark, light"
+        },
+        {
+          "label": "salads",
+          "strength": 1,
+          "modifier": "fruit, green"
+        },
+        {
+          "label": "salt, kosher",
+          "strength": 1
+        },
+        {
+          "label": "sauerkraut",
+          "strength": 1
+        },
+        {
+          "label": "sherry",
+          "strength": 2
+        },
+        {
+          "label": "soups",
+          "strength": 1
+        },
+        {
+          "label": "sour cream",
+          "strength": 1
+        },
+        {
+          "label": "star anise",
+          "strength": 1
+        },
+        {
+          "label": "sugar",
+          "strength": 3,
+          "modifier": "brown, white"
+        },
+        {
+          "label": "sweet potatoes",
+          "strength": 2
+        },
+        {
+          "label": "tarragon",
+          "strength": 1
+        },
+        {
+          "label": "tarts",
+          "strength": 1
+        },
+        {
+          "label": "thyme",
+          "strength": 1
+        },
+        {
+          "label": "vanilla",
+          "strength": 2
+        },
+        {
+          "label": "verjus",
+          "strength": 1
+        },
+        {
+          "label": "vermouth",
+          "strength": 2
+        },
+        {
+          "label": "vinegar",
+          "strength": 1,
+          "modifier": "apple cider, raspberry"
+        },
+        {
+          "label": "walnuts",
+          "strength": 3
+        },
+        {
+          "label": "wine",
+          "strength": 1,
+          "modifier": "red, dry white"
+        },
+        {
+          "label": "yogurt",
+          "strength": 1
+        }
+      ],
+      "quotes": [
+        {
+          "text": "The combination of apple and celery works. A tart green apple sorbet is not going to knock your socks off, because you are programmed to know it. When you add the flavor of celery, you get something new. I also love the flavors of apple and fennel together, especially in sorbet.",
+          "attribution": "MICHAEL LAISKONIS, LE BERNARDIN (NEW YORK CITY)"
+        },
+        {
+          "text": "I make an apple confit of thinly sliced apples with cinnamon caramel powder layered between the apples and baked slowly. When the dish is served, next to the apples is a small pile of dates poached in syrup with vanilla. The other flavors on the plate are lemon confit, quince, raw apple with apple cider gelée, and ras el hanout (a Moroccan spice blend). For this dish you need a contrast for the sweetness, so the role of the lemon confit is to cleanse and refresh. If the confit was not there, you would have a bite of the sweet date and be done. The date and lemon is like a salad. The line drawing this together is the quince and dates that come from the Middle East and that was the line to ras el hanout .",
+          "attribution": "MICHAEL LAISKONIS, LE BERNARDIN (NEW YORK CITY)"
+        },
+        {
+          "text": "If you cook apples on top of the stove, some varieties will have a lot of juice while others will have none at all. Fuji, Gala, and Golden Delicious apples tend to be juicy, while Granny Smith apples are often drier. With different types of apples, you often don’t know exactly what they will do. So if I’m going to serve apples with gingerbread, I will sauté them in a little sugar and see what happens. If they are letting out a bunch of juice, I won’t add much sugar. If they are dry, I’ll add some apple juice or Calvados.",
+          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
+        },
+        {
+          "text": "When I make an apple pie, I won’t use any fewer than three different kinds of apples for their different textures and sweetnesses, which ensures that every single bite is interesting. I’ll use Galas or Golden Delicious apples for their sweetness in the middle of the pie, and soft Jonathans or McIntoshes on top for their ability to melt into the others, and Braeburns or Granny Smiths on the bottom for their ability to stay firm. . . . I can’t imagine an apple pie without cinnamon, a splash of lemon juice, and a pinch of salt.",
+          "attribution": "SHARON HAGE, YORK STREET (DALLAS)"
+        },
+        {
+          "text": "Apples and caramel are a wonderful combination and depending on what nut you add it will take the combination in very different directions. If you add pecans, it would make the combination a heavier winter dessert, versus adding almonds, which would keep it lighter. Both work; you just need to decide how heavy you want the dish.",
+          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
+        },
+        {
+          "text": "Apple and shiso work well together. I especially like them together in a sorbet. I will use a Granny Smith apple that has a nice tartness combined with a little sugar, lemon, and then the shiso. The shiso has a cumin and cinnamon flavor that is a natural with apple.",
+          "attribution": "JERRY TRAUNFELD, THE HERBFARM (WOODINVILLE, WASHINGTON)"
+        },
+        {
+          "text": "If you stay in the boundaries of what people think a dessert should be it gets very hard to do something new. We explain that they already eat carrot cake. We think parsnip will work instead of carrot and that kabocha squash will work instead of pumpkin in a pie. When people see eggplant in a dessert they automatically think it will not work. You have to hide the unusual element and play up what people know already. The boundaries are limitless when you think of all the crossovers between sweet and savory. Duck à l’orange is a fruit and meat combined, so why not use bacon in a dessert? A pancake with maple syrup and bacon on the plate is really sweet and savory. So people already eat these combinations unconsciously. For our apple-eggplant dessert, we start with a choux dough piecrust. Then we layer an almond cream-like custard. Then we alternate apple and eggplant slices side by side. We use baby eggplant because it has a spongy texture and sucks up moisture from the cream that can otherwise make the crust soggy and absorb the juice and flavor from the apples that would normally just evaporate. So when you eat the eggplant and apples, the eggplant tastes like apples.",
+          "attribution": "DOMINIQUE AND CINDY DUBY, WILD SWEETS (VANCOUVER)"
+        },
+        {
+          "text": "I have always been very fond of chef Frédy Girardet [who earned three Michelin stars at his restaurant in Switzerland before retiring in 1996]. When I was young, I cooked almost every recipe from his book and visited his restaurant. One of his most interesting desserts was an apple dessert made of apples in the shape of little balls. The dessert broke away from cooking apples whole in the traditional way, which alone inspired me. He cooked them over a very high heat for two minutes and put them into a red wine reduction that had cinnamon, orange peel, and sugar. This was put onto a sheet tray that needed to be shaken for an hour so the apples would not dry out. The apples would absorb these flavors like a sponge and would then be served with vanilla ice cream. In that spirit, we transformed this dessert. We transformed the wine by “espherication” so that it creates a bubble of liquid that explodes in your mouth. We cut apples with a melon baller, then vacuum- packed the apples with the wine but cooked it in such a way that the apples stayed hard and absorbed the wine flavor.",
+          "attribution": "JOSÉ ANDRÉS, CAFÉ ATLÁNTICO (WASHINGTON, DC)"
+        },
+        {
+          "text": "We serve a dish of smoked oysters with apples. We smoke the oysters over applewood, and so it seemed logical to add apple to the dish. We serve it with a puree of apple with juniper that just plays beautifully off the oyster.",
+          "attribution": "KATSUYA FUKUSHIMA, MINIBAR (wASHINGTON, DC)"
+        }
+      ],
+      "tips": [],
+      "affinities": [
+        "apples + almonds + caramel",
+        "apples + almonds + Armagnac + crème fraîche + raisins",
+        "apples + apricots + pine nuts + rosemary",
+        "apples + brown sugar + cream + walnuts",
+        "apples + Calvados + cranberries + maple syrup",
+        "apples + caramel + cinnamon",
+        "apples + caramel + cinnamon + dates + lemon confit + quince + ras el hanout + vanilla",
+        "apples + caramel + peanuts",
+        "apples + caramel + pecans",
+        "apples + caramel + pistachios + vanilla",
+        "apples + celery + walnuts",
+        "apples + cinnamon + cranberries",
+        "apples + cinnamon + dark chocolate + yams",
+        "apples + cream + ginger",
+        "apples + ginger + hazelnuts",
+        "apples + ginger + lemon + quince + sugar",
+        "apples + honey + lemon thyme",
+        "apples + raisins + rum",
+        "apples + red cabbage + cinnamon"
+      ],
+      "cuisines": [
+        "french-cuisine"
+      ]
+    },
+    {
+      "id": "apricots",
+      "label": "Apricots — In General",
+      "aliases": [],
+      "meta": {
+        "season": "summer",
+        "taste": "sweet",
+        "weight": "medium",
+        "volume": "moderate",
+        "techniques": "bake, grill, poach, raw, stew"
+      },
+      "pairings": [
+        {
+          "label": "allspice",
+          "strength": 1
+        },
+        {
+          "label": "almonds",
+          "strength": 3
+        },
+        {
+          "label": "amaretto",
+          "strength": 1
+        },
+        {
+          "label": "anise",
+          "strength": 1
+        },
+        {
+          "label": "apples",
+          "strength": 2
+        },
+        {
+          "label": "apricot brandy",
+          "strength": 1
+        },
+        {
+          "label": "bananas",
+          "strength": 1
+        },
+        {
+          "label": "blackberries",
+          "strength": 1
+        },
+        {
+          "label": "blueberries",
+          "strength": 1
+        },
+        {
+          "label": "brandy",
+          "strength": 1
+        },
+        {
+          "label": "butter, unsalted",
+          "strength": 1
+        },
+        {
+          "label": "caramel",
+          "strength": 1
+        },
+        {
+          "label": "cardamom",
+          "strength": 2
+        },
+        {
+          "label": "cayenne",
+          "strength": 1
+        },
+        {
+          "label": "cheese",
+          "strength": 1,
+          "modifier": "e.g., brie, reblochon, ricotta"
+        },
+        {
+          "label": "cheesecake",
+          "strength": 1
+        },
+        {
+          "label": "cherries",
+          "strength": 2
+        },
+        {
+          "label": "chicken",
+          "strength": 1
+        },
+        {
+          "label": "chocolate, white",
+          "strength": 1
+        },
+        {
+          "label": "cinnamon",
+          "strength": 2
+        },
+        {
+          "label": "coconut",
+          "strength": 1
+        },
+        {
+          "label": "coffee and espresso",
+          "strength": 1
+        },
+        {
+          "label": "cognac",
+          "strength": 1
+        },
+        {
+          "label": "coriander",
+          "strength": 1
+        },
+        {
+          "label": "cranberries",
+          "strength": 2
+        },
+        {
+          "label": "cream and ice cream",
+          "strength": 3
+        },
+        {
+          "label": "crème anglaise",
+          "strength": 1
+        },
+        {
+          "label": "custards",
+          "strength": 2,
+          "modifier": "e.g., crème brûlée"
+        },
+        {
+          "label": "duck",
+          "strength": 1
+        },
+        {
+          "label": "foie gras",
+          "strength": 1
+        },
+        {
+          "label": "game",
+          "strength": 1
+        },
+        {
+          "label": "garlic",
+          "strength": 1
+        },
+        {
+          "label": "ginger",
+          "strength": 2
+        },
+        {
+          "label": "hazelnuts",
+          "strength": 1
+        },
+        {
+          "label": "honey",
+          "strength": 1
+        },
+        {
+          "label": "ice cream",
+          "strength": 1,
+          "modifier": "esp. vanilla"
+        },
+        {
+          "label": "kirsch",
+          "strength": 2
+        },
+        {
+          "label": "lamb",
+          "strength": 1
+        },
+        {
+          "label": "lemon",
+          "strength": 2,
+          "modifier": "juice, zest"
+        },
+        {
+          "label": "lemon verbena",
+          "strength": 1
+        },
+        {
+          "label": "liqueurs",
+          "strength": 1,
+          "modifier": "apricot, nut"
+        },
+        {
+          "label": "maple syrup",
+          "strength": 1
+        },
+        {
+          "label": "mascarpone",
+          "strength": 1
+        },
+        {
+          "label": "meringue",
+          "strength": 1
+        },
+        {
+          "label": "middle eastern stews",
+          "strength": 1
+        },
+        {
+          "label": "mint (garnish)",
+          "strength": 1
+        },
+        {
+          "label": "nectarines",
+          "strength": 1
+        },
+        {
+          "label": "nutmeg",
+          "strength": 1
+        },
+        {
+          "label": "nuts",
+          "strength": 1
+        },
+        {
+          "label": "oats and oatmeal",
+          "strength": 1
+        },
+        {
+          "label": "onions",
+          "strength": 1,
+          "modifier": "esp. yellow"
+        },
+        {
+          "label": "orange",
+          "strength": 2,
+          "modifier": "juice, zest"
+        },
+        {
+          "label": "orange liqueur",
+          "strength": 1
+        },
+        {
+          "label": "peaches",
+          "strength": 1
+        },
+        {
+          "label": "pepper, black",
+          "strength": 2
+        },
+        {
+          "label": "pineapple",
+          "strength": 1
+        },
+        {
+          "label": "pine nuts",
+          "strength": 1
+        },
+        {
+          "label": "pistachios",
+          "strength": 2
+        },
+        {
+          "label": "plums",
+          "strength": 1
+        },
+        {
+          "label": "pork",
+          "strength": 1
+        },
+        {
+          "label": "poultry",
+          "strength": 1
+        },
+        {
+          "label": "praline",
+          "strength": 1
+        },
+        {
+          "label": "prunes",
+          "strength": 1
+        },
+        {
+          "label": "raisins",
+          "strength": 1
+        },
+        {
+          "label": "raspberries",
+          "strength": 1
+        },
+        {
+          "label": "rice pudding",
+          "strength": 1
+        },
+        {
+          "label": "rosemary",
+          "strength": 1
+        },
+        {
+          "label": "rum",
+          "strength": 1
+        },
+        {
+          "label": "saffron",
+          "strength": 1
+        },
+        {
+          "label": "salads",
+          "strength": 1,
+          "modifier": "esp. fruit, green"
+        },
+        {
+          "label": "sauternes",
+          "strength": 1
+        },
+        {
+          "label": "sour cream",
+          "strength": 1
+        },
+        {
+          "label": "strawberries",
+          "strength": 1
+        },
+        {
+          "label": "sugar",
+          "strength": 2,
+          "modifier": "brown, white"
+        },
+        {
+          "label": "tea",
+          "strength": 1,
+          "modifier": "apple, apricot, earl grey"
+        },
+        {
+          "label": "vanilla",
+          "strength": 4
+        },
+        {
+          "label": "vinegar, red wine",
+          "strength": 1
+        },
+        {
+          "label": "walnuts",
+          "strength": 1
+        },
+        {
+          "label": "wine",
+          "strength": 1,
+          "modifier": "sweet, white"
+        },
+        {
+          "label": "yogurt",
+          "strength": 1
+        }
+      ],
+      "quotes": [
+        {
+          "text": "Apricots are much better cooked than raw. It is rare that you find a fruit that reaches its full potential as cooked rather than raw, but an apricot is one. A so-so apricot poached will turn into heaven. They are great with either chamomile or lavender.",
+          "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
+        }
+      ],
+      "tips": [],
+      "affinities": [
+        "apricots + almonds + cream + sugar",
+        "apricots + almonds + meringue + Moscato d’Asti",
+        "apricots + apples + pine nuts + rosemary",
+        "apricots + cranberries + white chocolate",
+        "apricots + oranges + sugar + vanilla + walnuts"
+      ],
+      "cuisines": [
+        "mediterranean-cuisine",
+        "moroccan-cuisine"
+      ]
+    }
+  ],
+  "cuisines": {
+    "mexican-cuisine": [],
+    "afghan-cuisine": [
+      "almonds",
+      "barley",
+      "breads",
+      "cardamom",
+      "chile pepper",
+      "cinnamon",
+      "cloves",
+      "coriander",
+      "cucumber",
+      "cumin",
+      "dill",
+      "fennel",
+      "fruits",
+      "ginger",
+      "grapes",
+      "kebabs",
+      "lamb",
+      "mint",
+      "mushrooms",
+      "nuts",
+      "pasta",
+      "rice, basmati",
+      "sesame",
+      "tomatoes and tomato sauce",
+      "turmeric",
+      "yogurt"
+    ],
+    "african-cuisine": [
+      "bananas",
+      "beans",
+      "bell peppers",
+      "braised dishes",
+      "carrots",
+      "chicken",
+      "chickpeas",
+      "chile peppers",
+      "cinnamon",
+      "cloves",
+      "coconuts",
+      "corn",
+      "couscous",
+      "cucumbers",
+      "cumin",
+      "eggplant",
+      "fenugreek",
+      "fish",
+      "fruits",
+      "garlic",
+      "ginger",
+      "goat",
+      "greens",
+      "lamb",
+      "mangoes",
+      "melons",
+      "mint",
+      "okra",
+      "onions",
+      "papayas",
+      "parsley",
+      "peanuts",
+      "peas",
+      "plantains",
+      "pumpkin",
+      "rice",
+      "soups",
+      "stewed dishes",
+      "stews",
+      "sweet potatoes",
+      "tomatoes",
+      "turmeric",
+      "watermelon",
+      "wheat",
+      "yams"
+    ],
+    "ethiopian-cuisine": [
+      "bananas",
+      "bell peppers",
+      "braised dishes",
+      "chicken",
+      "chile peppers",
+      "coconuts",
+      "corn",
+      "fish",
+      "fruits",
+      "garlic",
+      "goat",
+      "greens",
+      "mangoes",
+      "melons",
+      "okra",
+      "onions",
+      "papayas",
+      "peanuts",
+      "peas",
+      "plantains",
+      "soups",
+      "stews",
+      "sweet potatoes",
+      "tomatoes",
+      "watermelon",
+      "yams"
+    ],
+    "moroccan-cuisine": [
+      "bananas",
+      "bell peppers",
+      "braised dishes",
+      "chicken",
+      "chickpeas",
+      "chile peppers",
+      "coconuts",
+      "corn",
+      "couscous",
+      "cucumbers",
+      "cumin",
+      "eggplant",
+      "fish",
+      "fruits",
+      "garlic",
+      "goat",
+      "greens",
+      "lamb",
+      "mangoes",
+      "melons",
+      "mint",
+      "okra",
+      "onions",
+      "papayas",
+      "parsley",
+      "peanuts",
+      "peas",
+      "plantains",
+      "rice",
+      "soups",
+      "stewed dishes",
+      "stews",
+      "sweet potatoes",
+      "tomatoes",
+      "watermelon",
+      "wheat",
+      "yams"
+    ],
+    "caribbean-cuisine": [],
+    "eastern-mediterranean-cuisine": [],
+    "english-cuisine": [],
+    "indian-cuisine": [],
+    "jamaican-cuisine": [],
+    "middle-eastern-cuisine": [],
+    "north-american-cuisine": [],
+    "west-indies-cuisine": [],
+    "greek-cuisine": [],
+    "mediterranean-cuisine": [],
+    "spanish-cuisine": [],
+    "turkish-cuisine": [],
+    "italian-cuisine": [],
+    "chinese-cuisine": [],
+    "portuguese-cuisine": [],
+    "provencal-cuisine-french": [],
+    "scandinavian-cuisine": [],
+    "vietnamese-cuisine": [],
+    "malaysian-cuisine": [],
+    "french-cuisine": []
+  },
+  "meta": {
+    "source": "The Flavor Bible, Karen Page & Andrew Dornenburg, 2008",
+    "pages": "40–65",
+    "total": 11,
+    "cuisines": 25
+  }
+}

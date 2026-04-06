@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import fitz; print\\(''pymupdf ok, version'', fitz.__version__\\)\")",
+      "Bash(python3 \"/Users/juyu/Documents/flavor bible/scripts/inspect_pages.py\")",
+      "Bash(python3 \"/Users/juyu/Documents/flavor bible/scripts/parse_full.py\" --validate)",
+      "Bash(python scripts/parse_full.py --validate)",
+      "Bash(python3 scripts/parse_full.py --validate)",
+      "Bash(python3 -c \":*)",
+      "Bash(python3 scripts/parse_full.py full)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

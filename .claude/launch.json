@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "lens",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": ["/Users/juyu/Documents/flavor bible/mockup/serve.py"],
+      "port": 8765
+    }
+  ]
+}

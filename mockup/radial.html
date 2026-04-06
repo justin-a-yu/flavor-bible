@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Flavor Bible — Radial Rings</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fdf9f3;
+      color: #2c2010;
+      font-family: 'Georgia', serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 28px;
+      background: #fff;
+      border-bottom: 1px solid #ede4d4;
+      flex-shrink: 0;
+      z-index: 20;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b8863a;
+      font-weight: normal;
+      white-space: nowrap;
+    }
+    .logo span { color: #2c2010; }
+
+    /* search bar */
+    .search-wrap {
+      flex: 1;
+      max-width: 520px;
+      position: relative;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #faf5ec;
+      border: 1.5px solid #e0d4bc;
+      border-radius: 8px;
+      padding: 7px 12px;
+      width: 100%;
+      flex-wrap: wrap;
+      min-height: 38px;
+      cursor: text;
+    }
+
+    .search-bar input {
+      border: none;
+      background: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #2c2010;
+      min-width: 140px;
+      flex: 1;
+    }
+    .search-bar input::placeholder { color: #c0aa88; }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 20px;
+      padding: 3px 10px 3px 8px;
+      font-size: 0.73rem;
+      white-space: nowrap;
+      border: 1.5px solid;
+    }
+    .pill-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .pill-x { cursor: pointer; font-size: 10px; opacity: 0.6; margin-left: 2px; }
+    .pill-x:hover { opacity: 1; }
+
+    /* dropdown */
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0; right: 0;
+      background: #fff;
+      border: 1px solid #e0d4bc;
+      border-radius: 8px;
+      box-shadow: 0 8px 28px rgba(80,50,10,0.1);
+      z-index: 100;
+      overflow: hidden;
+      display: none;
+    }
+    .dropdown.open { display: block; }
+    .dd-item {
+      padding: 10px 16px;
+      font-size: 0.83rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #f5ede0;
+      transition: background 0.1s;
+    }
+    .dd-item:last-child { border-bottom: none; }
+    .dd-item:hover { background: #faf5ec; }
+    .dd-sub { font-size: 0.69rem; color: #b8a080; }
+
+    /* legend */
+    .legend {
+      display: flex;
+      gap: 18px;
+      font-size: 0.68rem;
+      color: #a89070;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .leg { display: flex; align-items: center; gap: 6px; }
+    .leg-ring {
+      width: 22px; height: 10px;
+      border-radius: 2px;
+      border: 1.5px solid;
+    }
+
+    /* canvas */
+    .viz-area {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* SVG node styles */
+    .center-circle { cursor: default; }
+    .ring-guide { fill: none; stroke-dasharray: 5 4; }
+    .flavor-node { cursor: pointer; transition: none; }
+    .flavor-node:hover .node-circle { filter: brightness(1.1); }
+    .shared-arc { pointer-events: none; }
+    .ring-label {
+      font-size: 9px;
+      fill: #c8b898;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      pointer-events: none;
+      font-family: Georgia, serif;
+    }
+
+    /* detail card */
+    .detail {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #e0d4bc;
+      border-radius: 10px;
+      box-shadow: 0 10px 36px rgba(80,50,10,0.12);
+      padding: 18px 20px;
+      width: 250px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.18s, transform 0.18s;
+      z-index: 50;
+    }
+    .detail.show { opacity: 1; transform: translateY(0); }
+    .d-name { font-size: 1.05rem; color: #2c2010; margin-bottom: 2px; }
+    .d-strength { font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+    .d-shared-tag {
+      display: inline-block;
+      font-size: 0.67rem;
+      background: #ede8f8;
+      color: #6a52a8;
+      border-radius: 10px;
+      padding: 2px 9px;
+      margin-bottom: 10px;
+      letter-spacing: 0.07em;
+    }
+    .d-note { font-size: 0.78rem; color: #6a5a3a; line-height: 1.6; font-style: italic; margin-bottom: 10px; }
+    .d-also-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #a89070; margin-bottom: 6px; }
+    .d-also { display: flex; flex-wrap: wrap; gap: 5px; }
+    .d-chip { font-size: 0.7rem; background: #faf5ec; border-radius: 10px; padding: 2px 8px; color: #8a7050; }
+
+    /* empty state */
+    .empty-hint {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #c8b090;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      pointer-events: none;
+    }
+    .empty-hint .big { font-size: 1.5rem; margin-bottom: 8px; opacity: 0.5; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Flavor <span>Bible</span> Explorer</div>
+
+  <div class="search-wrap">
+    <div class="search-bar" id="searchBar" onclick="document.getElementById('searchInput').focus()">
+      <div id="pills"></div>
+      <input id="searchInput" type="text" placeholder="Add an ingredient…" autocomplete="off"/>
+    </div>
+    <div class="dropdown" id="dropdown"></div>
+  </div>
+
+  <div class="legend">
+    <div class="leg">
+      <div class="leg-ring" style="border-color:#c8922a; background:#fdf4e3;"></div>
+      <span>Essential</span>
+    </div>
+    <div class="leg">
+      <div class="leg-ring" style="border-color:#c06030; background:#fdf0ea;"></div>
+      <span>Highly recommended</span>
+    </div>
+    <div class="leg">
+      <div class="leg-ring" style="border-color:#4a8c5c; background:#edf5f0;"></div>
+      <span>Recommended</span>
+    </div>
+    <div class="leg">
+      <div class="leg-ring" style="border-color:#7a5ab8; background:#f0ecfa;"></div>
+      <span>Shared</span>
+    </div>
+  </div>
+</header>
+
+<div class="viz-area" id="vizArea">
+  <svg id="viz"></svg>
+
+  <div class="empty-hint" id="emptyHint">
+    <div class="big">⬆</div>
+    Search for an ingredient above to begin
+  </div>
+
+  <div class="detail" id="detail">
+    <div class="d-name" id="dName"></div>
+    <div class="d-strength" id="dStrength"></div>
+    <div id="dSharedTag" class="d-shared-tag" style="display:none"></div>
+    <div class="d-note" id="dNote"></div>
+    <div class="d-also-label">Also pairs with</div>
+    <div class="d-also" id="dAlso"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════
+// DATA
+// ═══════════════════════════════════
+const DATA = {
+  pasta: {
+    label: 'Pasta',
+    pairings: [
+      { id:'tomato',      label:'Tomato',       strength:3, note:'The eternal pairing. Tomato sauce with pasta is one of the great combinations in world cooking.', also:['basil','garlic','olive oil'] },
+      { id:'basil',       label:'Basil',         strength:3, note:'Fresh basil tossed through hot pasta with olive oil is perfection. Add at the last second.', also:['tomato','garlic','parmesan'] },
+      { id:'garlic',      label:'Garlic',        strength:3, note:'Aglio e olio — garlic and oil — is proof that simple is best. The foundation of pasta cookery.', also:['olive oil','parsley','chili'] },
+      { id:'parmesan',    label:'Parmesan',      strength:3, note:'Aged Parmesan adds salt, umami, and fat. Grate it finely over hot pasta so it melts in.', also:['butter','cream','black pepper'] },
+      { id:'olive oil',   label:'Olive Oil',     strength:2, note:'Good olive oil finishes a pasta dish with fruitiness and body. Never skip it.', also:['garlic','basil','lemon'] },
+      { id:'black pepper',label:'Black Pepper',  strength:2, note:'In cacio e pepe, black pepper is not a garnish — it is the flavour. Toast it in the pan first.', also:['parmesan','butter'] },
+      { id:'butter',      label:'Butter',        strength:2, note:'Emulsified into pasta water, butter creates a silky sauce that clings to every strand.', also:['parmesan','sage','cream'] },
+      { id:'cream',       label:'Cream',         strength:2, note:'For carbonara-style richness. Use sparingly — pasta should be coated, not swimming.', also:['parmesan','butter','mushroom'] },
+      { id:'lemon',       label:'Lemon',         strength:1, note:'Zest and juice brighten a rich pasta dish. Particularly good with seafood pastas.', also:['olive oil','parsley','capers'] },
+      { id:'anchovy',     label:'Anchovy',       strength:1, note:'Dissolves into olive oil and garlic to create a deeply savoury base for pasta sauces.', also:['garlic','tomato','capers'] },
+      { id:'capers',      label:'Capers',        strength:1, note:'Briny and sharp — essential in puttanesca and other robust southern Italian sauces.', also:['anchovy','tomato','olive oil'] },
+      { id:'mushroom',    label:'Mushroom',      strength:1, note:'Earthy depth that works especially well with cream-based or butter-based pasta sauces.', also:['cream','butter','thyme'] },
+    ]
+  },
+  cheddar: {
+    label: 'Cheddar',
+    pairings: [
+      { id:'mustard',     label:'Mustard',       strength:3, note:'Dry mustard powder in a cheese sauce blooms to create sharpness that amplifies cheddar\'s tang.', also:['beer','onion','bread'] },
+      { id:'onion',       label:'Onion',         strength:3, note:'Caramelised onions with sharp cheddar is one of the great combinations — Welsh rarebit, ploughman\'s.', also:['mustard','bread','thyme'] },
+      { id:'apple',       label:'Apple',         strength:3, note:'The sweetness and acidity of apple cuts through cheddar\'s richness beautifully.', also:['walnut','honey','bread'] },
+      { id:'bread',       label:'Bread',         strength:2, note:'The carrier. Good sourdough or rye with aged cheddar needs nothing else.', also:['butter','mustard','onion'] },
+      { id:'beer',        label:'Beer',          strength:2, note:'Ale and cheddar share malt and bitterness notes. The basis of Welsh rarebit and beer cheese sauces.', also:['mustard','onion','bread'] },
+      { id:'walnut',      label:'Walnut',        strength:2, note:'Bitter, earthy walnuts balance cheddar\'s sharpness. Excellent on a cheese board or in a salad.', also:['apple','honey','celery'] },
+      { id:'honey',       label:'Honey',         strength:2, note:'A drizzle of honey over sharp cheddar — sweet against salt and tang — is a revelation.', also:['apple','walnut','thyme'] },
+      { id:'thyme',       label:'Thyme',         strength:1, note:'Fresh thyme in a cheddar sauce or gratin adds herbal complexity that lifts the richness.', also:['onion','butter','cream'] },
+      { id:'black pepper',label:'Black Pepper',  strength:1, note:'Freshly cracked black pepper cuts through the fat of cheddar and adds gentle heat.', also:['mustard','butter'] },
+      { id:'butter',      label:'Butter',        strength:1, note:'Cheddar and butter together — on toast, in pastry — create a rich, unified flavour.', also:['bread','onion','thyme'] },
+      { id:'garlic',      label:'Garlic',        strength:1, note:'Roasted garlic stirred through a cheddar sauce adds sweetness and depth.', also:['butter','cream','onion'] },
+      { id:'cream',       label:'Cream',         strength:1, note:'The base of a proper cheddar sauce. Bring to a simmer and melt the cheese in slowly off the heat.', also:['mustard','butter','thyme'] },
+    ]
+  },
+  lamb: {
+    label: 'Lamb',
+    pairings: [
+      { id:'rosemary',    label:'Rosemary',      strength:3, note:'The classic pairing. Rosemary with lamb is timeless — skewer sprigs through the meat before roasting.', also:['garlic','lemon','olive oil'] },
+      { id:'garlic',      label:'Garlic',        strength:3, note:'Inseparable from lamb. Roasted whole cloves mellow beautifully against the richness.', also:['rosemary','thyme','lemon'] },
+      { id:'mint',        label:'Mint',          strength:3, note:'Essential in British tradition. Fresh mint sauce cuts through the fattiness.', also:['yogurt','cumin','lemon'] },
+      { id:'thyme',       label:'Thyme',         strength:2, note:'Works beautifully in braises and slow-roasted preparations with red wine.', also:['rosemary','garlic','red wine'] },
+      { id:'lemon',       label:'Lemon',         strength:2, note:'Brightness and acidity that lifts lamb\'s heaviness. Zest rubbed into the fat is particularly effective.', also:['garlic','oregano','olive oil'] },
+      { id:'cumin',       label:'Cumin',         strength:2, note:'Earthy warmth that echoes lamb\'s mineral notes. Central to North African and Middle Eastern preparations.', also:['yogurt','mint','eggplant'] },
+      { id:'oregano',     label:'Oregano',       strength:2, note:'Key in Greek and Mediterranean lamb dishes. Dried oregano rubbed into the meat before grilling is classic.', also:['lemon','garlic','tomato'] },
+      { id:'eggplant',    label:'Eggplant',      strength:1, note:'Both are rich and substantial. Excellent together in moussaka or slow-braised stews.', also:['tomato','cumin','garlic'] },
+      { id:'yogurt',      label:'Yogurt',        strength:1, note:'Acts as both a marinade and a sauce. The acidity tenderises the meat; the fat carries spices.', also:['mint','cumin','garlic'] },
+      { id:'anchovy',     label:'Anchovy',       strength:1, note:'Surprising but effective. Anchovies melt into the fat and add umami depth rather than fishiness.', also:['garlic','rosemary','capers'] },
+      { id:'red wine',    label:'Red Wine',      strength:1, note:'The base of any good lamb braise. Cabernet Sauvignon or Syrah are ideal matches.', also:['thyme','garlic','rosemary'] },
+    ]
+  },
+  lemon: {
+    label: 'Lemon',
+    pairings: [
+      { id:'garlic',      label:'Garlic',        strength:3, note:'A foundational pairing across Mediterranean cooking — together they form the base of countless sauces.', also:['olive oil','parsley','thyme'] },
+      { id:'butter',      label:'Butter',        strength:3, note:'Lemon-butter is one of the great sauces. The acid cuts through butter\'s richness perfectly.', also:['capers','tarragon','parsley'] },
+      { id:'thyme',       label:'Thyme',         strength:3, note:'Herbal, floral thyme amplifies lemon\'s brightness. Excellent together on roast chicken or fish.', also:['garlic','olive oil'] },
+      { id:'olive oil',   label:'Olive Oil',     strength:2, note:'The basis of vinaigrette. Lemon juice and good olive oil together need almost nothing else.', also:['garlic','thyme','parsley'] },
+      { id:'capers',      label:'Capers',        strength:2, note:'Briny and sharp — capers and lemon are natural allies that cut through rich proteins.', also:['butter','parsley','anchovy'] },
+      { id:'honey',       label:'Honey',         strength:2, note:'Sweet-sour balance. Lemon and honey is a classic in both cooking and drinks.', also:['ginger','thyme'] },
+      { id:'parsley',     label:'Parsley',       strength:2, note:'Lemon zest and fresh parsley is a classic gremolata. Brightens everything from pasta to roasted meats.', also:['garlic','capers','olive oil'] },
+      { id:'cream',       label:'Cream',         strength:1, note:'Lemon cream sauces balance richness with brightness. Add lemon off the heat to avoid curdling.', also:['tarragon','butter','garlic'] },
+      { id:'ginger',      label:'Ginger',        strength:1, note:'Warm spice that pairs with lemon\'s acidity in Asian-influenced dishes and teas.', also:['honey','garlic'] },
+      { id:'anchovy',     label:'Anchovy',       strength:1, note:'Anchovy and lemon together cut through the richness of any dish — a classic finish for pasta.', also:['capers','butter','olive oil'] },
+    ]
+  },
+  tomato: {
+    label: 'Tomato',
+    pairings: [
+      { id:'basil',       label:'Basil',         strength:3, note:'The definitive pairing. Fresh basil with ripe tomato is one of the great combinations in all of cooking.', also:['mozzarella','olive oil','garlic'] },
+      { id:'garlic',      label:'Garlic',        strength:3, note:'Central to virtually every cooked tomato preparation. Slow-cooked with tomatoes it becomes sweet and mellow.', also:['olive oil','basil','anchovy'] },
+      { id:'olive oil',   label:'Olive Oil',     strength:3, note:'Tomatoes and olive oil have a chemical affinity — olive oil helps release lycopene from the tomato.', also:['garlic','basil','balsamic'] },
+      { id:'oregano',     label:'Oregano',       strength:2, note:'Dried oregano with cooked tomato is the backbone of Italian-American pizza sauce.', also:['garlic','olive oil','anchovy'] },
+      { id:'anchovy',     label:'Anchovy',       strength:2, note:'Anchovies dissolve into tomato sauce creating remarkable umami depth. The secret behind many great ragus.', also:['garlic','capers','olive oil'] },
+      { id:'mozzarella',  label:'Mozzarella',    strength:2, note:'The caprese is perfect because of contrast — cool milky cheese against sweet acidic tomato.', also:['basil','olive oil','balsamic'] },
+      { id:'balsamic',    label:'Balsamic',      strength:2, note:'Aged balsamic on ripe tomatoes adds sweet, complex acidity that amplifies the tomato\'s character.', also:['mozzarella','basil','olive oil'] },
+      { id:'capers',      label:'Capers',        strength:1, note:'Briny sharpness plays against tomato\'s acidity in puttanesca and Provençal sauces.', also:['anchovy','olive oil','garlic'] },
+      { id:'lemon',       label:'Lemon',         strength:1, note:'A squeeze of lemon brightens cooked tomato sauce with more freshness than vinegar.', also:['olive oil','parsley','capers'] },
+      { id:'eggplant',    label:'Eggplant',      strength:1, note:'Together they form the basis of parmigiana, caponata, and ratatouille.', also:['garlic','olive oil','basil'] },
+    ]
+  },
+  chocolate: {
+    label: 'Chocolate',
+    pairings: [
+      { id:'vanilla',     label:'Vanilla',       strength:3, note:'Vanilla rounds out chocolate\'s bitterness and adds warmth. Nearly inseparable in most chocolate desserts.', also:['cream','caramel','salt'] },
+      { id:'coffee',      label:'Coffee',        strength:3, note:'Coffee deepens and intensifies chocolate\'s own flavour without making it taste like coffee.', also:['vanilla','salt','cream'] },
+      { id:'salt',        label:'Salt',          strength:3, note:'Salt suppresses bitterness and amplifies sweetness. Flaked salt on dark chocolate is one of the great simple combinations.', also:['caramel','vanilla','coffee'] },
+      { id:'raspberry',   label:'Raspberry',     strength:2, note:'The brightness of raspberry cuts through chocolate\'s richness beautifully.', also:['cream','vanilla','mint'] },
+      { id:'orange',      label:'Orange',        strength:2, note:'Citrus acidity and floral notes lift chocolate. Zest is more powerful than juice.', also:['chili','vanilla','cream'] },
+      { id:'cream',       label:'Cream',         strength:2, note:'The base of ganache. Chocolate and cream together are greater than the sum of their parts.', also:['vanilla','coffee','caramel'] },
+      { id:'chili',       label:'Chili',         strength:2, note:'Ancient combination — the Aztecs used chocolate and chili together. Heat blooms slowly.', also:['orange','salt','coffee'] },
+      { id:'hazelnut',    label:'Hazelnut',      strength:1, note:'Toasted hazelnuts share chocolate\'s nutty, roasted quality. The basis of gianduja.', also:['vanilla','coffee','caramel'] },
+      { id:'caramel',     label:'Caramel',       strength:1, note:'Caramel\'s bitter sweetness mirrors dark chocolate. Together they create layered, complex depth.', also:['salt','vanilla','cream'] },
+      { id:'mint',        label:'Mint',          strength:1, note:'Cool menthol contrast to chocolate\'s warmth. Works best as a finish rather than a dominant flavour.', also:['cream','raspberry','vanilla'] },
+    ]
+  }
+};
+
+const SUGGESTIONS = [
+  { id:'pasta',     label:'Pasta',     sub:'Grains & Starches' },
+  { id:'cheddar',   label:'Cheddar',   sub:'Cheeses' },
+  { id:'lamb',      label:'Lamb',      sub:'Meats' },
+  { id:'lemon',     label:'Lemon',     sub:'Citrus' },
+  { id:'tomato',    label:'Tomato',    sub:'Vegetables' },
+  { id:'chocolate', label:'Chocolate', sub:'Confectionery' },
+];
+
+// ═══════════════════════════════════
+// CONSTANTS
+// ═══════════════════════════════════
+const ING_COLORS = ['#c8922a','#c06040','#4a8c5c','#7a5ab8','#c06080'];
+
+const STRENGTH_COLOR = { 3:'#c8922a', 2:'#c06030', 1:'#4a8c5c' };
+const STRENGTH_FILL  = { 3:'#fdf4e3', 2:'#fdf0ea', 1:'#edf5f0' };
+const STRENGTH_LABEL = { 3:'Essential', 2:'Highly Recommended', 1:'Recommended' };
+const SHARED_COLOR   = '#7a5ab8';
+const SHARED_FILL    = '#f0ecfa';
+
+// Ring radii per mode
+const R_SINGLE = [110, 162, 214];
+const R_MULTI  = [82,  122, 160];
+const NODE_R   = { 3: 19, 2: 15, 1: 11 };
+
+// ═══════════════════════════════════
+// STATE
+// ═══════════════════════════════════
+let ingredients = []; // { id, label, color }
+let selectedNode = null;
+
+// ═══════════════════════════════════
+// LAYOUT HELPERS
+// ═══════════════════════════════════
+function getCenters() {
+  const W = document.getElementById('vizArea').clientWidth;
+  const H = document.getElementById('vizArea').clientHeight;
+  const n = ingredients.length;
+  if (n === 0) return [];
+  if (n === 1) return [{ x: W / 2, y: H / 2 }];
+
+  // Lay out horizontally, evenly spaced
+  const margin = W * 0.1;
+  const step = (W - margin * 2) / (n - 1 + (n === 1 ? 0 : 0));
+  return ingredients.map((_, i) => ({
+    x: n === 1 ? W / 2 : margin + i * (W - margin * 2) / (n - 1),
+    y: H / 2
+  }));
+}
+
+function getRings() {
+  return ingredients.length === 1 ? R_SINGLE : R_MULTI;
+}
+
+// ═══════════════════════════════════
+// SHARED FLAVOR DETECTION
+// ═══════════════════════════════════
+function getSharedIds() {
+  if (ingredients.length < 2) return new Set();
+  const sets = ingredients.map(ing => new Set(DATA[ing.id].pairings.map(p => p.id)));
+  let shared = sets[0];
+  for (let i = 1; i < sets.length; i++) {
+    shared = new Set([...shared].filter(x => sets[i].has(x)));
+  }
+  return shared;
+}
+
+// ═══════════════════════════════════
+// NODE POSITIONS
+// ═══════════════════════════════════
+function getNodePositions(ingIndex, center, rings) {
+  const ingId = ingredients[ingIndex].id;
+  const pairings = DATA[ingId].pairings;
+  const byStrength = { 3: [], 2: [], 1: [] };
+  pairings.forEach(p => byStrength[p.strength].push(p));
+
+  const positions = [];
+  [3, 2, 1].forEach((s, ri) => {
+    const ring = rings[ri];
+    const group = byStrength[s];
+    group.forEach((p, i) => {
+      // Start angle offset per ring so labels don't crowd
+      const startAngle = -Math.PI / 2 + (ri * Math.PI / 6);
+      const angle = startAngle + (i / group.length) * Math.PI * 2;
+      positions.push({
+        pairing: p,
+        strength: s,
+        angle,
+        x: center.x + Math.cos(angle) * ring,
+        y: center.y + Math.sin(angle) * ring,
+        ring,
+        ingIndex,
+        ingId,
+      });
+    });
+  });
+  return positions;
+}
+
+// ═══════════════════════════════════
+// SVG HELPERS
+// ═══════════════════════════════════
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs = {}) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  return e;
+}
+function txt(tag, attrs, text) {
+  const e = el(tag, attrs);
+  e.textContent = text;
+  return e;
+}
+
+// ═══════════════════════════════════
+// RENDER
+// ═══════════════════════════════════
+function render() {
+  const svg = document.getElementById('viz');
+  svg.innerHTML = '';
+
+  const emptyHint = document.getElementById('emptyHint');
+  emptyHint.style.display = ingredients.length === 0 ? 'block' : 'none';
+  if (ingredients.length === 0) return;
+
+  const centers = getCenters();
+  const rings = getRings();
+  const sharedIds = getSharedIds();
+  const multi = ingredients.length > 1;
+
+  // Defs for subtle drop shadow
+  const defs = el('defs');
+  const filt = el('filter', { id:'shadow', x:'-20%', y:'-20%', width:'140%', height:'140%' });
+  const blur = el('feDropShadow', { dx:'0', dy:'2', stdDeviation:'3', 'flood-color':'rgba(80,40,0,0.08)' });
+  filt.appendChild(blur);
+  defs.appendChild(filt);
+  svg.appendChild(defs);
+
+  // ── Per-ingredient groups ──
+  const allNodePositions = ingredients.map((ing, i) => getNodePositions(i, centers[i], rings));
+
+  // ── Shared arcs (draw first, behind everything) ──
+  if (multi && sharedIds.size > 0) {
+    const arcGroup = el('g', { class:'shared-arcs' });
+
+    sharedIds.forEach(fid => {
+      // Find this flavor's position in each ingredient's ring
+      const pts = allNodePositions.map(positions => positions.find(p => p.pairing.id === fid)).filter(Boolean);
+      if (pts.length < 2) return;
+
+      for (let i = 0; i < pts.length - 1; i++) {
+        const a = pts[i], b = pts[i + 1];
+        // Curve control point: midpoint, pulled inward vertically
+        const mx = (a.x + b.x) / 2;
+        const my = (a.y + b.y) / 2 - 40;
+        const path = el('path', {
+          d: `M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`,
+          fill: 'none',
+          stroke: SHARED_COLOR,
+          'stroke-width': '1.2',
+          'stroke-opacity': '0.3',
+          'stroke-dasharray': '4 4',
+        });
+        arcGroup.appendChild(path);
+      }
+    });
+    svg.appendChild(arcGroup);
+  }
+
+  // ── Per-ingredient rendering ──
+  allNodePositions.forEach((positions, i) => {
+    const ing = ingredients[i];
+    const center = centers[i];
+    const group = el('g', { class:'ingredient-group' });
+
+    // Ring guides
+    const ringNames = ['Essential', 'Highly Rec.', 'Recommended'];
+    const ringColors = ['#c8922a', '#c06030', '#4a8c5c'];
+    rings.forEach((r, ri) => {
+      const guide = el('circle', {
+        cx: center.x, cy: center.y, r,
+        fill: 'none',
+        stroke: ringColors[ri],
+        'stroke-width': '1',
+        'stroke-opacity': '0.18',
+        'stroke-dasharray': '5 4',
+      });
+      group.appendChild(guide);
+
+      // Ring label (right side)
+      if (i === ingredients.length - 1) {
+        const labelAngle = 0; // 3 o'clock position
+        const lx = center.x + r + (multi ? 4 : 6);
+        const ly = center.y + 4;
+        const label = txt('text', {
+          x: lx, y: ly,
+          class: 'ring-label',
+          'text-anchor': 'start',
+        }, ringNames[ri]);
+        group.appendChild(label);
+      }
+    });
+
+    // Center node
+    const cr = multi ? 26 : 32;
+    const cCircle = el('circle', {
+      cx: center.x, cy: center.y, r: cr,
+      fill: '#fff',
+      stroke: ing.color,
+      'stroke-width': '2',
+      filter: 'url(#shadow)',
+    });
+    const cLabel = txt('text', {
+      x: center.x, y: center.y + 1,
+      'text-anchor': 'middle',
+      'dominant-baseline': 'middle',
+      fill: ing.color,
+      'font-size': multi ? '11' : '13',
+      'font-family': 'Georgia, serif',
+      'font-weight': 'bold',
+    }, ing.label);
+    group.appendChild(cCircle);
+    group.appendChild(cLabel);
+
+    // Flavor nodes
+    positions.forEach(pos => {
+      const isShared = sharedIds.has(pos.pairing.id);
+      const isSelected = selectedNode && selectedNode.id === pos.pairing.id && selectedNode.ingIndex === pos.ingIndex;
+      const col = isShared ? SHARED_COLOR : STRENGTH_COLOR[pos.strength];
+      const fill = isShared ? SHARED_FILL : STRENGTH_FILL[pos.strength];
+      const r = NODE_R[pos.strength];
+
+      const nodeGroup = el('g', { class:'flavor-node', style:'cursor:pointer' });
+
+      // Circle
+      const circle = el('circle', {
+        cx: pos.x, cy: pos.y, r,
+        fill: isSelected ? col : fill,
+        stroke: col,
+        'stroke-width': isSelected ? '2' : '1.5',
+        filter: 'url(#shadow)',
+      });
+      nodeGroup.appendChild(circle);
+
+      // Label — positioned radially outward from center
+      const labelR = r + 10;
+      const lx = pos.x + Math.cos(pos.angle) * labelR;
+      const ly = pos.y + Math.sin(pos.angle) * labelR;
+      const anchor = Math.cos(pos.angle) > 0.2 ? 'start' : Math.cos(pos.angle) < -0.2 ? 'end' : 'middle';
+
+      // Line from circle to label
+      const line = el('line', {
+        x1: pos.x + Math.cos(pos.angle) * r,
+        y1: pos.y + Math.sin(pos.angle) * r,
+        x2: lx - Math.cos(pos.angle) * 4,
+        y2: ly - Math.sin(pos.angle) * 4,
+        stroke: col,
+        'stroke-width': '0.8',
+        'stroke-opacity': '0.4',
+      });
+      nodeGroup.appendChild(line);
+
+      const label = txt('text', {
+        x: lx, y: ly,
+        'text-anchor': anchor,
+        'dominant-baseline': 'middle',
+        fill: isSelected ? col : '#4a3820',
+        'font-size': '10',
+        'font-family': 'Georgia, serif',
+        'font-weight': isSelected || isShared ? 'bold' : 'normal',
+      }, pos.pairing.label);
+      nodeGroup.appendChild(label);
+
+      // Click
+      nodeGroup.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectedNode = isSelected ? null : { id: pos.pairing.id, ingIndex: pos.ingIndex };
+        if (!isSelected) showDetail(pos, isShared, e.clientX, e.clientY);
+        else hideDetail();
+        render();
+      });
+
+      group.appendChild(nodeGroup);
+    });
+
+    svg.appendChild(group);
+  });
+
+  // Click canvas to deselect
+  svg.addEventListener('click', () => { selectedNode = null; hideDetail(); render(); }, { once: true });
+}
+
+// ═══════════════════════════════════
+// DETAIL CARD
+// ═══════════════════════════════════
+function showDetail(pos, isShared, cx, cy) {
+  const p = pos.pairing;
+  const col = isShared ? SHARED_COLOR : STRENGTH_COLOR[p.strength];
+
+  document.getElementById('dName').textContent = p.label;
+  document.getElementById('dStrength').textContent = STRENGTH_LABEL[p.strength];
+  document.getElementById('dStrength').style.color = col;
+
+  const sharedTag = document.getElementById('dSharedTag');
+  if (isShared && ingredients.length > 1) {
+    sharedTag.textContent = `Shared by ${ingredients.map(i => i.label).join(' & ')}`;
+    sharedTag.style.display = 'inline-block';
+  } else {
+    sharedTag.style.display = 'none';
+  }
+
+  document.getElementById('dNote').textContent = `"${p.note}"`;
+  document.getElementById('dAlso').innerHTML = p.also.map(a => `<span class="d-chip">${a}</span>`).join('');
+
+  const card = document.getElementById('detail');
+  const area = document.getElementById('vizArea');
+  const W = area.clientWidth, H = area.clientHeight;
+  const rect = area.getBoundingClientRect();
+  let lx = cx - rect.left + 16;
+  let ly = cy - rect.top - 20;
+  if (lx + 260 > W) lx = cx - rect.left - 270;
+  if (ly + 220 > H) ly = cy - rect.top - 220;
+  card.style.left = lx + 'px';
+  card.style.top = ly + 'px';
+  card.classList.add('show');
+}
+
+function hideDetail() {
+  document.getElementById('detail').classList.remove('show');
+}
+
+// ═══════════════════════════════════
+// INGREDIENT MANAGEMENT
+// ═══════════════════════════════════
+function addIngredient(id) {
+  if (ingredients.find(i => i.id === id)) return;
+  if (!DATA[id]) return;
+  if (ingredients.length >= 3) return; // max 3 for readability
+  const color = ING_COLORS[ingredients.length];
+  ingredients.push({ id, label: DATA[id].label, color });
+  selectedNode = null;
+  hideDetail();
+  renderPills();
+  render();
+}
+
+function removeIngredient(id) {
+  ingredients = ingredients.filter(i => i.id !== id);
+  selectedNode = null;
+  hideDetail();
+  renderPills();
+  render();
+}
+
+function renderPills() {
+  document.getElementById('pills').innerHTML = ingredients.map(i => `
+    <span class="pill" style="color:${i.color}; border-color:${i.color}; background:${i.color}18">
+      <span class="pill-dot" style="background:${i.color}"></span>
+      ${i.label}
+      <span class="pill-x" onclick="event.stopPropagation(); removeIngredient('${i.id}')">✕</span>
+    </span>
+  `).join('');
+}
+
+// ═══════════════════════════════════
+// SEARCH
+// ═══════════════════════════════════
+const searchInput = document.getElementById('searchInput');
+const dropdown = document.getElementById('dropdown');
+
+searchInput.addEventListener('input', () => {
+  const val = searchInput.value.toLowerCase().trim();
+  const matches = SUGGESTIONS.filter(s =>
+    s.label.toLowerCase().includes(val) && !ingredients.find(i => i.id === s.id)
+  );
+  if (val.length > 0 && matches.length > 0) {
+    dropdown.innerHTML = matches.map(m => `
+      <div class="dd-item" onclick="pick('${m.id}')">
+        <span>${m.label}</span>
+        <span class="dd-sub">${m.sub}</span>
+      </div>
+    `).join('');
+    dropdown.classList.add('open');
+  } else {
+    dropdown.classList.remove('open');
+  }
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-wrap')) dropdown.classList.remove('open');
+});
+
+function pick(id) {
+  addIngredient(id);
+  searchInput.value = '';
+  dropdown.classList.remove('open');
+}
+
+// ═══════════════════════════════════
+// RESIZE
+// ═══════════════════════════════════
+window.addEventListener('resize', () => render());
+
+// ═══════════════════════════════════
+// INIT
+// ═══════════════════════════════════
+render();
+</script>
+</body>
+</html>

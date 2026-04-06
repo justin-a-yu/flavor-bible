@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Flavor Bible — Lens View</title>
+  <script src="flavors_data.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #faf7f2;
+      color: #2c2416;
+      font-family: 'Georgia', serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      background: #fff;
+      border-bottom: 1px solid #e8e0d0;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b8863a;
+      font-weight: normal;
+    }
+    .logo span { color: #2c2416; }
+
+    /* ── Search bar ── */
+    .search-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f5f0e8;
+      border: 1px solid #e0d6c4;
+      border-radius: 8px;
+      padding: 8px 14px;
+      min-width: 340px;
+    }
+
+    .search-area input {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: #2c2416;
+      width: 180px;
+    }
+
+    .search-area input::placeholder { color: #b0a488; }
+
+    .ingredient-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: #fff;
+      border: 1px solid #d4c9b0;
+      border-radius: 20px;
+      padding: 3px 10px 3px 12px;
+      font-size: 0.75rem;
+      color: #5a4a2e;
+      cursor: default;
+    }
+
+    .pill-color {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .pill-remove {
+      cursor: pointer;
+      color: #b0a488;
+      font-size: 10px;
+      line-height: 1;
+      padding: 0 1px;
+    }
+    .pill-remove:hover { color: #8b4513; }
+
+    /* legend */
+    .legend {
+      display: flex;
+      gap: 16px;
+      font-size: 0.68rem;
+      color: #a09070;
+      letter-spacing: 0.07em;
+    }
+    .leg { display: flex; align-items: center; gap: 6px; }
+    .leg-dot { width: 9px; height: 9px; border-radius: 50%; }
+
+    /* ── Canvas ── */
+    .canvas-area {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    canvas { position: absolute; top: 0; left: 0; }
+
+    /* ── Hint ── */
+    .hint-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 10px 24px;
+      background: #fff;
+      border-top: 1px solid #e8e0d0;
+      font-size: 0.72rem;
+      color: #b0a488;
+      letter-spacing: 0.08em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ── Dropdown ── */
+    .dropdown {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #e0d6c4;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      z-index: 100;
+      min-width: 220px;
+      max-height: 320px;
+      overflow-y: auto;
+      display: none;
+    }
+    .dropdown.open { display: block; }
+
+    .dropdown-item {
+      padding: 10px 14px;
+      font-size: 0.84rem;
+      color: #2c2416;
+      cursor: pointer;
+      border-bottom: 1px solid #f0ebe0;
+      transition: background 0.12s;
+    }
+    .dropdown-item:last-child { border-bottom: none; }
+    .dropdown-item:hover { background: #faf5ea; }
+
+    /* ── Detail card ── */
+    .detail-card {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #e0d6c4;
+      border-radius: 10px;
+      box-shadow: 0 10px 32px rgba(0,0,0,0.1);
+      padding: 16px 18px;
+      min-width: 220px;
+      max-width: 280px;
+      z-index: 50;
+      display: none;
+      pointer-events: auto;
+    }
+
+    .detail-card.visible { display: block; }
+
+    .detail-name {
+      font-size: 1rem;
+      color: #2c2416;
+      margin-bottom: 2px;
+    }
+
+    .detail-strength {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .detail-modifier {
+      font-size: 0.75rem;
+      color: #8a7450;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .detail-note {
+      font-size: 0.76rem;
+      color: #6a5a3a;
+      line-height: 1.55;
+      font-style: italic;
+      margin-bottom: 10px;
+      max-height: 80px;
+      overflow: hidden;
+    }
+
+    .detail-shared {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b0a488;
+      margin-bottom: 5px;
+    }
+
+    .detail-also {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .detail-also-chip {
+      padding: 2px 8px;
+      background: #f5f0e8;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      color: #8a7450;
+    }
+
+    .detail-meta {
+      font-size: 0.68rem;
+      color: #b0a488;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Flavor <span>Bible</span> Explorer</div>
+
+  <div class="search-area" id="searchArea">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <circle cx="6" cy="6" r="4.5" stroke="#b0a488" stroke-width="1.3"/>
+      <line x1="9.5" y1="9.5" x2="13" y2="13" stroke="#b0a488" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+    <div class="ingredient-pills" id="pills"></div>
+    <input type="text" id="searchInput" placeholder="Add an ingredient…" autocomplete="off"/>
+  </div>
+
+  <div class="legend">
+    <div class="leg"><div class="leg-dot" style="background:#d4a840;"></div>Essential / Holy Grail</div>
+    <div class="leg"><div class="leg-dot" style="background:#e07840;"></div>Highly Recommended</div>
+    <div class="leg"><div class="leg-dot" style="background:#5a9e6a;"></div>Recommended</div>
+  </div>
+</header>
+
+<div class="canvas-area" id="canvasArea">
+  <canvas id="mainCanvas"></canvas>
+
+  <div class="dropdown" id="dropdown"></div>
+  <div class="detail-card" id="detailCard">
+    <div style="position:absolute;top:10px;right:12px;cursor:pointer;font-size:11px;color:#b0a488;line-height:1;" onclick="hideDetail()">✕</div>
+    <div class="detail-name"     id="dcName"></div>
+    <div class="detail-strength" id="dcStrength"></div>
+    <div class="detail-modifier" id="dcModifier"></div>
+    <div class="detail-note"     id="dcNote"></div>
+    <div class="detail-shared"   id="dcSharedLabel"></div>
+    <div class="detail-also"     id="dcAlso"></div>
+    <div class="detail-meta"     id="dcMeta"></div>
+  </div>
+</div>
+
+<div class="hint-bar">
+  <span>Drag lenses together — shared flavors migrate to the overlap</span>
+  <span>Click bubble for notes &nbsp;·&nbsp; Double-click to open as new lens &nbsp;·&nbsp; Scroll over lens to resize</span>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// DATA  (loaded from flavors_data.js)
+// ═══════════════════════════════════════════
+const DATA = FLAVORS.ingredients;
+
+// ═══════════════════════════════════════════
+// LENS COLORS (per ingredient)
+// ═══════════════════════════════════════════
+const LENS_COLORS = ['#d4a840','#c0603a','#4a8c5c','#7a5ab8','#c06080','#4a7ab8'];
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let lenses  = [];
+let bubbles = [];
+let dragging    = null;
+let dragOffX    = 0, dragOffY = 0;
+let didDrag     = false;
+let hoveredBubble = null;
+let animFrame   = null;
+
+// ═══════════════════════════════════════════
+// CANVAS SETUP
+// ═══════════════════════════════════════════
+const canvasArea = document.getElementById('canvasArea');
+const canvas     = document.getElementById('mainCanvas');
+const ctx        = canvas.getContext('2d');
+
+function resize() {
+  canvas.width  = canvasArea.clientWidth;
+  canvas.height = canvasArea.clientHeight;
+  repositionLenses();
+  rebuildBubbles();
+  draw();
+}
+
+window.addEventListener('resize', resize);
+
+// ═══════════════════════════════════════════
+// LENS MANAGEMENT
+// ═══════════════════════════════════════════
+function lensRadius() {
+  // Single lens: generous. Multi-lens: shrink so two fit side-by-side with room to overlap.
+  const n = Math.max(1, lenses.length);
+  const hFrac = n === 1 ? 0.38 : n === 2 ? 0.26 : 0.22;
+  return Math.min(canvas.height * hFrac, canvas.width * 0.22);
+}
+
+function repositionLenses() {
+  const W = canvas.width, H = canvas.height;
+  const n = lenses.length;
+  if (n === 0) return;
+  const r = lensRadius();
+  if (n === 1) {
+    lenses[0].x = W / 2;
+    lenses[0].y = H / 2;
+    lenses[0].r = r;
+  } else {
+    // Start from 0° (right) so two lenses spread left/right, never top/bottom
+    const spread = Math.min(W / 2 - r - 24, r * 1.15);
+    const cx = W / 2, cy = H / 2;
+    lenses.forEach((l, i) => {
+      const angle = (i / n) * Math.PI * 2;
+      l.x = cx + Math.cos(angle) * spread;
+      l.y = cy + Math.sin(angle) * spread;
+      l.r = r;
+    });
+  }
+}
+
+function addIngredient(id, spawnX, spawnY) {
+  if (lenses.find(l => l.id === id)) return;
+  if (!DATA[id]) return;
+  const color = LENS_COLORS[lenses.length % LENS_COLORS.length];
+  const r     = lensRadius();
+  const x = spawnX !== undefined ? spawnX : 0;
+  const y = spawnY !== undefined ? spawnY : 0;
+  lenses.push({ id, label: DATA[id].label, color, x, y, r, pairings: DATA[id].pairings });
+  if (spawnX === undefined) repositionLenses();
+  rebuildBubbles();
+  renderPills();
+  draw();
+}
+
+function removeIngredient(id) {
+  lenses = lenses.filter(l => l.id !== id);
+  repositionLenses();
+  rebuildBubbles();
+  renderPills();
+  draw();
+}
+
+// ═══════════════════════════════════════════
+// BUBBLE LAYOUT
+// ═══════════════════════════════════════════
+function lensesOverlapping(l1, l2) {
+  return Math.hypot(l1.x - l2.x, l1.y - l2.y) < (l1.r + l2.r) * 0.85;
+}
+
+function sharedBubbleVisible(b) {
+  if (!b.isShared || lenses.length < 2) return false;
+  const owning = lenses.filter(l => b.lensIds.includes(l.id));
+  for (let i = 0; i < owning.length; i++)
+    for (let j = i + 1; j < owning.length; j++)
+      if (!lensesOverlapping(owning[i], owning[j])) return false;
+  return true;
+}
+
+// Orbit ring fraction by strength
+function orbitFraction(strength) {
+  return strength >= 3 ? 0.40 : 0.66;
+}
+
+// How many bubbles fit on a ring given lens radius, ring fraction, and bubble radius
+function ringCapacity(lensR, ringFrac, bubbleR) {
+  return Math.max(1, Math.floor(2 * Math.PI * lensR * ringFrac / (2 * bubbleR + 8)));
+}
+
+function rebuildBubbles() {
+  const existing = {};
+  bubbles.forEach(b => { existing[b.uid] = { x: b.x, y: b.y, vx: b.vx, vy: b.vy, scale: b.scale }; });
+
+  bubbles = [];
+  if (lenses.length === 0) return;
+
+  // Build flavorMap from ALL pairings — needed so shared detection works across all strengths.
+  // Process each lens strength-sorted so the highest-strength version of each pairing wins.
+  const flavorMap = {};
+  lenses.forEach(lens => {
+    const sorted = lens.pairings.slice().sort((a, b) => b.strength - a.strength);
+    sorted.forEach(p => {
+      const key = p.label.toLowerCase();
+      if (!flavorMap[key]) {
+        flavorMap[key] = { pairing: p, lensIds: [lens.id] };
+      } else if (!flavorMap[key].lensIds.includes(lens.id)) {
+        flavorMap[key].lensIds.push(lens.id);
+        if (p.strength > flavorMap[key].pairing.strength)
+          flavorMap[key].pairing = p;
+      }
+    });
+  });
+
+  // Decide which bubbles to display.
+  // Capacity is based on ring circumference at current lens.r — more bubbles as lens grows.
+  //   shared (2+ lenses): always show — appear at the intersection when lenses overlap
+  //   non-shared strength 3+: up to inner ring capacity
+  //   non-shared strength 2: up to outer ring capacity
+  //   non-shared strength 1: hidden — only surfaces when it becomes shared
+  const s3Counts = {}, s2Counts = {};
+  const toDisplay = Object.values(flavorMap).filter(({ pairing, lensIds }) => {
+    if (lensIds.length > 1) return true;
+    const lid      = lensIds[0];
+    const lensR    = lenses.find(l => l.id === lid)?.r || 120;
+    if (pairing.strength >= 3) {
+      s3Counts[lid] = (s3Counts[lid] || 0) + 1;
+      return s3Counts[lid] <= ringCapacity(lensR, 0.40, 22);
+    }
+    if (pairing.strength === 2) {
+      s2Counts[lid] = (s2Counts[lid] || 0) + 1;
+      return s2Counts[lid] <= ringCapacity(lensR, 0.66, 17);
+    }
+    return false;
+  });
+
+  // Count per (lensId, ring) for evenly-spaced angle layout
+  const ringTotals = {};
+  toDisplay.forEach(({ pairing, lensIds }) => {
+    const rKey = lensIds[0] + ':' + orbitFraction(pairing.strength);
+    ringTotals[rKey] = (ringTotals[rKey] || 0) + 1;
+  });
+
+  const ringCounters = {};
+  toDisplay.forEach(({ pairing, lensIds }) => {
+    const isShared  = lensIds.length > 1;
+    const ownerLens = lenses.find(l => l.id === lensIds[0]);
+    const baseR     = strengthBubbleR(pairing.strength);
+    const lensId    = lensIds[0];
+    const uid       = lensId + ':' + pairing.label;
+    const ring      = orbitFraction(pairing.strength);
+    const rKey      = lensId + ':' + ring;
+
+    if (!ringCounters[rKey]) ringCounters[rKey] = 0;
+    const idx   = ringCounters[rKey]++;
+    const total = ringTotals[rKey] || 1;
+    const orbitAngle = (idx / total) * Math.PI * 2 - Math.PI / 2;
+    const orbitDist  = (ownerLens?.r || 120) * ring;
+
+    const prev = existing[uid];
+    const lens = ownerLens;
+
+    bubbles.push({
+      uid, id: pairing.id, label: pairing.label, pairing,
+      lensIds, isShared,
+      ownerColor: ownerLens ? ownerLens.color : '#888',
+      r: baseR, orbitAngle, orbitDist,
+      ringIdx: idx,      // bubble's position index within its ring
+      x: prev ? prev.x : (lens ? lens.x + Math.cos(orbitAngle) * orbitDist : 0),
+      y: prev ? prev.y : (lens ? lens.y + Math.sin(orbitAngle) * orbitDist : 0),
+      vx: prev ? prev.vx : 0,
+      vy: prev ? prev.vy : 0,
+      scale: prev ? prev.scale : (isShared ? 0 : 1),
+    });
+  });
+}
+
+function strengthBubbleR(s) {
+  return s >= 3 ? 22 : s === 2 ? 17 : 13;
+}
+
+// ═══════════════════════════════════════════
+// PHYSICS SIMULATION
+// ═══════════════════════════════════════════
+function tickPhysics() {
+  const damping = 0.82;
+
+  bubbles.forEach(b => {
+    const lens = lenses.find(l => l.id === b.lensIds[0]);
+    if (!lens) return;
+
+    const isVisible = !b.isShared || sharedBubbleVisible(b);
+
+    // For non-shared bubbles: compute exact blocked arc on this bubble's orbit ring
+    // using law of cosines, then determine if this bubble fits in the remaining safe arc.
+    let blockHalf   = 0;
+    let dangerAngle = 0;
+    let fitsInSafeArc = true;
+
+    if (!b.isShared && isVisible) {
+      const overlapping = lenses.filter(o => o !== lens && lensesOverlapping(lens, o));
+      if (overlapping.length > 0) {
+        let dX = 0, dY = 0;
+        overlapping.forEach(o => {
+          const dx = o.x - lens.x, dy = o.y - lens.y;
+          const d  = Math.hypot(dx, dy) || 1;
+          dX += dx / d; dY += dy / d;
+          // Half-angle on this orbit ring that is geometrically inside lens o
+          const cosA = (b.orbitDist * b.orbitDist + d * d - o.r * o.r) / (2 * b.orbitDist * d);
+          const ba   = cosA >= 1 ? 0 : cosA <= -1 ? Math.PI : Math.acos(cosA);
+          if (ba > blockHalf) blockHalf = ba;
+        });
+        dangerAngle = Math.atan2(dY, dX);
+
+        // How many bubbles of this size actually fit in the safe arc?
+        const safeArcLen = Math.max(0, 2 * Math.PI - 2 * blockHalf) * b.orbitDist;
+        const safeFit    = Math.floor(safeArcLen / (2 * b.r + 8));
+        fitsInSafeArc    = b.ringIdx < safeFit;
+      }
+    }
+
+    const targetScale = (isVisible && fitsInSafeArc) ? 1 : 0;
+    b.scale += (targetScale - b.scale) * 0.12;
+    if (b.scale < 0.01) return;
+
+    let tx, ty;
+
+    if (b.isShared && sharedBubbleVisible(b)) {
+      const owning = lenses.filter(l => b.lensIds.includes(l.id));
+      tx = owning.reduce((s, l) => s + l.x, 0) / owning.length;
+      ty = owning.reduce((s, l) => s + l.y, 0) / owning.length;
+    } else if (blockHalf > 0) {
+      // Remap orbit target into the safe arc so bubbles never land in overlap zone
+      const safeStart  = dangerAngle + blockHalf;
+      const safeArc    = 2 * Math.PI - 2 * blockHalf;
+      const normPos    = (((b.orbitAngle + Math.PI / 2) / (2 * Math.PI)) % 1 + 1) % 1;
+      const targetAngle = safeStart + normPos * safeArc;
+      tx = lens.x + Math.cos(targetAngle) * b.orbitDist;
+      ty = lens.y + Math.sin(targetAngle) * b.orbitDist;
+    } else {
+      tx = lens.x + Math.cos(b.orbitAngle) * b.orbitDist;
+      ty = lens.y + Math.sin(b.orbitAngle) * b.orbitDist;
+    }
+
+    b.vx += (tx - b.x) * 0.018;
+    b.vy += (ty - b.y) * 0.018;
+
+    if (!b.isShared) {
+      const cdx = b.x - lens.x, cdy = b.y - lens.y;
+      const cd  = Math.hypot(cdx, cdy) || 1;
+      const maxD = lens.r - b.r - 6;
+      if (cd > maxD) {
+        b.vx -= (cdx / cd) * (cd - maxD) * 0.18;
+        b.vy -= (cdy / cd) * (cd - maxD) * 0.18;
+      }
+    }
+
+    bubbles.forEach(other => {
+      if (other === b || other.scale < 0.01) return;
+      const rdx = b.x - other.x, rdy = b.y - other.y;
+      const rd  = Math.hypot(rdx, rdy) || 1;
+      const minD = b.r + other.r + 5;
+      if (rd < minD) {
+        const force = (minD - rd) / minD * 0.5;
+        b.vx += (rdx / rd) * force * 3.5;
+        b.vy += (rdy / rd) * force * 3.5;
+      }
+    });
+
+    b.vx *= damping;
+    b.vy *= damping;
+    b.x  += b.vx;
+    b.y  += b.vy;
+  });
+}
+
+// ═══════════════════════════════════════════
+// DRAW
+// ═══════════════════════════════════════════
+function strengthColor(s) {
+  return s >= 3 ? '#d4a840' : s === 2 ? '#e07840' : '#5a9e6a';
+}
+
+function hexAlpha(hex, alpha) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function wrapText(text, maxW) {
+  const words = text.split(' ');
+  if (words.length === 1) return [text];
+  if (text.length * 6 < maxW) return [text];
+  const mid = Math.ceil(words.length / 2);
+  return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+}
+
+function draw() {
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  if (lenses.length === 0) {
+    ctx.fillStyle = '#c8b89a';
+    ctx.font = '15px Georgia';
+    ctx.textAlign = 'center';
+    ctx.fillText('Type an ingredient above to begin', W/2, H/2 - 10);
+    ctx.font = '12px Georgia';
+    ctx.fillStyle = '#d8c8a8';
+    ctx.fillText('Try: garlic, lemon, chocolate, lamb, ginger…', W/2, H/2 + 14);
+    return;
+  }
+
+  // ── Lenses ──
+  lenses.forEach(lens => {
+    const grad = ctx.createRadialGradient(lens.x, lens.y, 0, lens.x, lens.y, lens.r);
+    grad.addColorStop(0,   hexAlpha(lens.color, 0.06));
+    grad.addColorStop(0.7, hexAlpha(lens.color, 0.03));
+    grad.addColorStop(1,   hexAlpha(lens.color, 0.01));
+    ctx.beginPath();
+    ctx.arc(lens.x, lens.y, lens.r, 0, Math.PI*2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(lens.x, lens.y, lens.r, 0, Math.PI*2);
+    ctx.strokeStyle = hexAlpha(lens.color, 0.3);
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([6, 4]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = lens.color;
+    ctx.font = 'bold 13px Georgia';
+    ctx.textAlign = 'center';
+    ctx.fillText(lens.label, lens.x, lens.y - lens.r - 10);
+
+    if (hoveredLens === lens) {
+      ctx.fillStyle = hexAlpha(lens.color, 0.5);
+      ctx.font = '9px Georgia';
+      ctx.fillText('scroll to resize', lens.x, lens.y - lens.r - 22);
+    }
+
+    ctx.beginPath();
+    ctx.arc(lens.x, lens.y, 4, 0, Math.PI*2);
+    ctx.fillStyle = hexAlpha(lens.color, 0.35);
+    ctx.fill();
+  });
+
+  // ── Bubbles ──
+  bubbles.forEach(b => {
+    if (b.scale < 0.01) return;
+
+    const isHovered = hoveredBubble && hoveredBubble.uid === b.uid;
+    const col = strengthColor(b.pairing.strength);
+    const r   = (isHovered ? b.r + 3 : b.r) * b.scale;
+
+    ctx.save();
+    ctx.globalAlpha = b.scale;
+
+    ctx.shadowColor = hexAlpha(col, 0.2);
+    ctx.shadowBlur  = isHovered ? 12 : 4;
+
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, r, 0, Math.PI*2);
+    ctx.fillStyle = isHovered ? hexAlpha(col, 0.22) : hexAlpha(col, 0.1);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, r, 0, Math.PI*2);
+    ctx.strokeStyle = hexAlpha(col, isHovered ? 0.95 : 0.55);
+    ctx.lineWidth = isHovered ? 2 : 1.5;
+    ctx.stroke();
+
+    ctx.shadowColor = 'transparent';
+    ctx.shadowBlur  = 0;
+
+    ctx.fillStyle = isHovered ? col : '#4a3a20';
+    ctx.font = `${r > 20 ? 11 : 9}px Georgia`;
+    ctx.textAlign = 'center';
+    const lines = wrapText(b.label, r * 1.7);
+    lines.forEach((line, i) => {
+      ctx.fillText(line, b.x, b.y + (i - (lines.length - 1) / 2) * 12 + 1);
+    });
+
+    if (isHovered && b.id && DATA[b.id]) {
+      ctx.font = '8px Georgia';
+      ctx.fillStyle = hexAlpha(col, 0.6);
+      ctx.fillText('dbl-click to expand', b.x, b.y + r + 11);
+    }
+
+    ctx.restore();
+  });
+}
+
+// ═══════════════════════════════════════════
+// ANIMATION LOOP
+// ═══════════════════════════════════════════
+function loop() {
+  tickPhysics();
+  draw();
+  animFrame = requestAnimationFrame(loop);
+}
+
+// ═══════════════════════════════════════════
+// INTERACTION
+// ═══════════════════════════════════════════
+let hoveredLens = null;
+
+function canvasXY(e) {
+  const rect = canvas.getBoundingClientRect();
+  return { ox: e.clientX - rect.left, oy: e.clientY - rect.top };
+}
+
+function bubbleAt(ox, oy) {
+  for (const b of bubbles) {
+    if (b.scale > 0.4 && Math.hypot(ox - b.x, oy - b.y) < b.r + 5) return b;
+  }
+  return null;
+}
+
+function lensAt(ox, oy) {
+  for (let i = lenses.length - 1; i >= 0; i--) {
+    if (Math.hypot(ox - lenses[i].x, oy - lenses[i].y) < lenses[i].r) return lenses[i];
+  }
+  return null;
+}
+
+canvas.addEventListener('mousedown', e => {
+  const {ox, oy} = canvasXY(e);
+  didDrag = false;
+  const lens = lensAt(ox, oy);
+  if (lens) {
+    dragging = lens;
+    dragOffX = ox - lens.x;
+    dragOffY = oy - lens.y;
+  }
+});
+
+canvas.addEventListener('mousemove', e => {
+  const {ox, oy} = canvasXY(e);
+
+  if (dragging) {
+    dragging.x = ox - dragOffX;
+    dragging.y = oy - dragOffY;
+    didDrag = true;
+    return;
+  }
+
+  const b = bubbleAt(ox, oy);
+  if (b !== hoveredBubble) {
+    hoveredBubble = b;
+    canvas.style.cursor = b ? 'pointer' : 'default';
+  }
+
+  const l = lensAt(ox, oy);
+  hoveredLens = l || null;
+});
+
+canvas.addEventListener('mouseup', e => {
+  const wasDragging = dragging && didDrag;
+  dragging = null;
+  if (wasDragging) return;
+
+  const {ox, oy} = canvasXY(e);
+  const b = bubbleAt(ox, oy);
+  if (b) showDetail(b, ox, oy);
+  else hideDetail();
+});
+
+canvas.addEventListener('dblclick', e => {
+  const {ox, oy} = canvasXY(e);
+  const b = bubbleAt(ox, oy);
+  if (!b || !b.id || !DATA[b.id]) return;
+  if (lenses.find(l => l.id === b.id)) return;
+  hideDetail();
+  addIngredient(b.id, b.x, b.y);
+});
+
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const {ox, oy} = canvasXY(e);
+  const lens = lensAt(ox, oy);
+  if (!lens) return;
+  const delta = e.deltaY > 0 ? -10 : 10;
+  lens.r = Math.max(80, Math.min(320, lens.r + delta));
+  rebuildBubbles();
+}, { passive: false });
+
+canvas.addEventListener('mouseleave', () => {
+  dragging = null;
+  hoveredLens = null;
+  hoveredBubble = null;
+});
+
+// ═══════════════════════════════════════════
+// DETAIL CARD
+// ═══════════════════════════════════════════
+const STRENGTH_LABEL = ['','Recommended','Highly Recommended','Essential','Holy Grail'];
+
+function showDetail(bubble, x, y) {
+  const p   = bubble.pairing;
+  const col = strengthColor(p.strength);
+
+  document.getElementById('dcName').textContent     = p.label;
+  document.getElementById('dcStrength').textContent = STRENGTH_LABEL[p.strength] || '';
+  document.getElementById('dcStrength').style.color = col;
+
+  // Modifier
+  const modEl = document.getElementById('dcModifier');
+  if (p.modifier) {
+    modEl.textContent   = p.modifier;
+    modEl.style.display = 'block';
+  } else {
+    modEl.style.display = 'none';
+  }
+
+  // Quote or tip from the bubble's ingredient entry
+  const noteEl = document.getElementById('dcNote');
+  const ing    = p.id ? DATA[p.id] : null;
+  if (ing && ing.quotes.length) {
+    const q = ing.quotes[0];
+    const truncated = q.text.length > 140 ? q.text.slice(0, 140) + '…' : q.text;
+    noteEl.textContent   = `"${truncated}"`;
+    noteEl.style.display = 'block';
+  } else if (ing && ing.tips.length) {
+    noteEl.textContent   = ing.tips[0];
+    noteEl.style.display = 'block';
+  } else {
+    noteEl.style.display = 'none';
+  }
+
+  // Shared label
+  const sharedEl = document.getElementById('dcSharedLabel');
+  if (bubble.lensIds.length > 1) {
+    sharedEl.textContent   = `Shared by ${bubble.lensIds.map(id => DATA[id]?.label).join(' & ')}`;
+    sharedEl.style.display = 'block';
+  } else {
+    sharedEl.style.display = 'none';
+  }
+
+  // Also: top 5 pairings from bubble ingredient, if it exists in DATA
+  const canPromote = ing && !lenses.find(l => l.id === p.id);
+  const topPairings = ing
+    ? ing.pairings.slice(0, 5).map(a =>
+        `<span class="detail-also-chip">${a.label}</span>`).join('')
+    : '';
+  document.getElementById('dcAlso').innerHTML = topPairings +
+    (canPromote
+      ? `<div style="margin-top:8px;font-size:0.68rem;color:#b0a488;letter-spacing:0.07em">Double-click to open as lens</div>`
+      : '');
+
+  // Meta (taste, weight, volume, season)
+  const metaEl = document.getElementById('dcMeta');
+  if (ing && ing.meta && Object.keys(ing.meta).length) {
+    const parts = [];
+    if (ing.meta.taste)  parts.push(`Taste: ${ing.meta.taste}`);
+    if (ing.meta.weight) parts.push(`Weight: ${ing.meta.weight}`);
+    if (ing.meta.volume) parts.push(`Volume: ${ing.meta.volume}`);
+    if (ing.meta.season) parts.push(`Season: ${ing.meta.season}`);
+    metaEl.innerHTML    = parts.join('<br>');
+    metaEl.style.display = parts.length ? 'block' : 'none';
+  } else {
+    metaEl.style.display = 'none';
+  }
+
+  const W = canvas.width, H = canvas.height;
+  const card = document.getElementById('detailCard');
+  let cx = x + 20, cy = y - 20;
+  if (cx + 290 > W) cx = x - 295;
+  if (cy + 260 > H - 40) cy = y - 260;
+  card.style.left = cx + 'px';
+  card.style.top  = cy + 'px';
+  card.classList.add('visible');
+}
+
+function hideDetail() {
+  document.getElementById('detailCard').classList.remove('visible');
+}
+
+// ═══════════════════════════════════════════
+// SEARCH + PILLS
+// ═══════════════════════════════════════════
+const searchInput = document.getElementById('searchInput');
+const dropdown    = document.getElementById('dropdown');
+
+searchInput.addEventListener('input', () => {
+  const val = searchInput.value.toLowerCase().trim();
+  if (val.length < 2) { dropdown.classList.remove('open'); return; }
+
+  const matches = FLAVORS.index
+    .filter(s => s.label.toLowerCase().includes(val) && !lenses.find(l => l.id === s.id))
+    .slice(0, 10);
+
+  if (matches.length) {
+    dropdown.innerHTML = matches.map(m =>
+      `<div class="dropdown-item" onclick="pickIngredient('${m.id}')">${m.label}</div>`
+    ).join('');
+    const rect = document.getElementById('searchArea').getBoundingClientRect();
+    dropdown.style.top  = (rect.bottom + 4) + 'px';
+    dropdown.style.left = rect.left + 'px';
+    dropdown.classList.add('open');
+  } else {
+    dropdown.classList.remove('open');
+  }
+});
+
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Escape') dropdown.classList.remove('open');
+  if (e.key === 'Enter') {
+    const first = dropdown.querySelector('.dropdown-item');
+    if (first) first.click();
+  }
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('#searchArea') && !e.target.closest('#dropdown'))
+    dropdown.classList.remove('open');
+});
+
+function pickIngredient(id) {
+  addIngredient(id);
+  searchInput.value = '';
+  dropdown.classList.remove('open');
+}
+
+function renderPills() {
+  document.getElementById('pills').innerHTML = lenses.map(l => `
+    <div class="pill">
+      <div class="pill-color" style="background:${l.color}"></div>
+      ${l.label}
+      <span class="pill-remove" onclick="removeIngredient('${l.id}')">✕</span>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+resize();
+addIngredient('garlic');
+loop();
+</script>
+</body>
+</html>
