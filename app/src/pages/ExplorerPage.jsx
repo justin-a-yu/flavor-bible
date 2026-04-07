@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import LensCanvas from '../components/LensCanvas';
+import BoardView from '../components/BoardView';
 import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 
@@ -66,6 +67,36 @@ function SearchBar() {
           ))}
         </div>
       )}
+    </div>
+  );
+}
+
+// ── View toggle ────────────────────────────────────────────────────────────────
+
+function ViewToggle() {
+  const activeView  = useExplorerStore(s => s.activeView);
+  const setActiveView = useExplorerStore(s => s.setActiveView);
+
+  const btn = (view, label) => (
+    <button
+      onClick={() => setActiveView(view)}
+      className="view-toggle-group"
+      style={{
+        padding: '5px 14px', fontSize: '0.72rem', letterSpacing: '0.08em',
+        textTransform: 'uppercase', cursor: 'pointer', border: 'none',
+        fontFamily: 'Georgia, serif',
+        background: activeView === view ? '#2c2416' : 'transparent',
+        color:      activeView === view ? '#faf7f2' : '#8a7450',
+        borderRadius: view === 'lens' ? '6px 0 0 6px' : '0 6px 6px 0',
+        transition: 'background 0.15s, color 0.15s',
+      }}
+    >{label}</button>
+  );
+
+  return (
+    <div style={{ display: 'flex', border: '1px solid #d4c9b0', borderRadius: 7, overflow: 'hidden', flexShrink: 0 }}>
+      {btn('lens',  'Lens')}
+      {btn('board', 'Board')}
     </div>
   );
 }
@@ -178,6 +209,7 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
 // ── Page ───────────────────────────────────────────────────────────────────────
 
 export default function ExplorerPage() {
+  const activeView = useExplorerStore(s => s.activeView);
   const [detail, setDetail] = useState(null); // { bubble, clientX, clientY }
 
   // Restore state from URL hash on initial load
@@ -205,6 +237,7 @@ export default function ExplorerPage() {
         </div>
         <SearchBar />
         <LensPills />
+        <ViewToggle />
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
@@ -224,28 +257,34 @@ export default function ExplorerPage() {
         </div>
       </header>
 
-      {/* Canvas area */}
-      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-        <LensCanvas onBubbleClick={handleBubbleClick} />
-        {detail && (
-          <DetailCard
-            bubble={detail.bubble}
-            clientX={detail.clientX}
-            clientY={detail.clientY}
-            onClose={() => setDetail(null)}
-          />
-        )}
-      </div>
+      {/* Main view */}
+      {activeView === 'board' ? (
+        <BoardView />
+      ) : (
+        <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+          <LensCanvas onBubbleClick={handleBubbleClick} />
+          {detail && (
+            <DetailCard
+              bubble={detail.bubble}
+              clientX={detail.clientX}
+              clientY={detail.clientY}
+              onClose={() => setDetail(null)}
+            />
+          )}
+        </div>
+      )}
 
-      {/* Hint bar */}
-      <div style={{
-        padding: '10px 24px', background: '#fff', borderTop: '1px solid #e8e0d0',
-        fontSize: '0.72rem', color: '#b0a488', letterSpacing: '0.08em',
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0,
-      }}>
-        <span>Drag lenses together — shared flavors migrate to the overlap</span>
-        <span>Click bubble for notes · Double-click to open as lens · Scroll to resize · R to shuffle · Space+drag to pan · Space+scroll to zoom</span>
-      </div>
+      {/* Hint bar — lens view only */}
+      {activeView === 'lens' && (
+        <div className="hint-bar" style={{
+          padding: '10px 24px', background: '#fff', borderTop: '1px solid #e8e0d0',
+          fontSize: '0.72rem', color: '#b0a488', letterSpacing: '0.08em',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0,
+        }}>
+          <span>Drag lenses together — shared flavors migrate to the overlap</span>
+          <span>Click bubble for notes · Double-click to open as lens · Scroll to resize · R to shuffle · Space+drag to pan · Space+scroll to zoom</span>
+        </div>
+      )}
     </div>
   );
 }

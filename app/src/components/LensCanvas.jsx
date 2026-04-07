@@ -621,7 +621,10 @@ export default function LensCanvas({ onBubbleClick }) {
         return;
       }
       const { ox, oy } = canvasXY(e);
+      const { sx, sy } = screenXY(e);
       st.didDrag = false;
+      st.mouseDownSX = sx;
+      st.mouseDownSY = sy;
       const lens = lensAt(ox, oy);
       if (lens) {
         st.dragging = lens;
@@ -646,6 +649,9 @@ export default function LensCanvas({ onBubbleClick }) {
       const { ox, oy } = canvasXY(e);
 
       if (st.dragging) {
+        const { sx, sy } = screenXY(e);
+        const moved = Math.hypot(sx - st.mouseDownSX, sy - st.mouseDownSY);
+        if (!st.didDrag && moved < 4) return;
         // Move lens directly — update the store lens position
         useExplorerStore.getState().updateLens(st.dragging.id, {
           x: ox - st.dragOffX,

@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Lens mockup actively in development — Phase 4 underway**
+> Status: **Board view complete — Phase 3 done. Phase 5 (filter panel) next.**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -8,9 +8,9 @@
 - **Data depth:** Connection strength (primary) + contextual notes on click (secondary)
 - **Visual encoding:** Orbit rings by strength tier; bubble size by strength; shared bubbles identified spatially not by color
 - **Platform:** Desktop-first web app
-- **Stack:** Vanilla JS canvas (mockup phase); React + React Flow + Tailwind CSS + static JSON (production target)
+- **Stack:** React + Vite + Zustand + Canvas (LensCanvas) + static JSON
 - **Views:** Lens view (primary exploration) + Board view (printable reference); seamless toggle between them
-- **Deployment:** GitHub repo at https://github.com/justin-a-yu/flavor-bible; local dev server on port 8765
+- **Deployment:** GitHub repo at https://github.com/justin-a-yu/flavor-bible; local dev server on port 5173
 
 ## Data Model
 Each ingredient entry in the JSON:
@@ -19,7 +19,7 @@ Each ingredient entry in the JSON:
   "id": "garlic",
   "label": "Garlic",
   "meta": { "taste": "...", "weight": "...", "volume": "...", "season": "..." },
-  "pairings": [{ "label": "olive oil", "strength": 3 }],
+  "pairings": [{ "id": "olive-oil", "label": "olive oil", "strength": 3, "modifier": "..." }],
   "quotes": [{ "text": "...", "attribution": "Chef Name, Restaurant" }],
   "tips": ["Add early in cooking."],
   "affinities": ["garlic + lemon + olive oil"],
@@ -54,42 +54,58 @@ Each ingredient entry in the JSON:
 - [ ] Parse flavor affinities per ingredient
 - [ ] Detect cuisine headers → tag ingredient pairings with cuisine flags
 - [ ] Validate data completeness and spot-check accuracy (26 empty entries known, arugula slug issue)
+- [ ] Expand `QUOTE_INDICATORS` verb list (iterative — re-check after each parse run)
 - [ ] Export final cleaned flavors.json
 
 ---
 
-## Phase 3 — Lens Mockup (canvas prototype)
-- [x] Physics simulation with orbit rings (three concentric rings by strength)
-- [x] Dynamic bubble count based on lens size (ring capacity formula)
-- [x] Geometric block angle calculation — non-shared bubbles avoid overlap zone
-- [x] Safe arc remapping — excess bubbles fade out cleanly
-- [x] Shared bubble detection — migrate to midpoint when lenses overlap
-- [x] Holy Grail visual treatment (radial glow + solid fill)
-- [x] Detail card (click bubble → notes, modifier, quote, meta)
-- [x] Seeded randomization (mulberry32 RNG, one seed per lens)
+## Phase 3 — React App (Lens + Board views)
+- [x] Set up React + Vite project scaffold
+- [x] Zustand store (`useExplorerStore`) with lenses, activeView, viewport
+- [x] `flavors_data.js` data layer (static JSON, FLAVORS.index + FLAVORS.ingredients)
+- [x] `SearchBar` with autocomplete dropdown
+- [x] `LensPills` — removable active-ingredient chips in header
+- [x] `ViewToggle` — Lens / Board segmented control
+- [x] `LensCanvas` — canvas physics simulation with orbit rings, shared bubble migration
+- [x] `DetailCard` — floating pairing detail card in lens view
+- [x] `BoardView` — structured document view: ingredient profiles, shared pairings, affinities, remaining flavors
+- [x] `IngredientProfileSection` — per-lens profile cards (meta in header, tips → quotes)
+- [x] `SharedBySection` — intersection groups (all-N, then strict pairs); chips grouped by strength tier; all-caps raw labels
+- [x] `AffinitiesSection` — flavor affinity strings with tappable non-active chips
+- [x] `IngredientCard` — per-lens remaining flavors as strength-tiered chips
+- [x] `PairingDetailDrawer` — slide-in drawer on pairing click; "Add as ingredient" / "Open full profile"
+- [x] `PrintExportButton` — triggers `window.print()` with print stylesheet
 - [x] URL hash persistence (camera + lens positions + seeds)
-- [x] Pan (Space + drag) and Zoom (Space + scroll, cursor-centered)
-- [x] R key to reshuffle hovered lens
-- [x] Lens size cap removed
-- [x] New ingredient spawn doesn't move existing lenses
-- [ ] Fix detail card position under pan/zoom transform
-- [ ] Pan: decide on reset view shortcut
-- [ ] Board view (board.html — multi-ingredient tile/grid, printable)
+- [x] Pan (Space + drag), Zoom (Space + scroll, cursor-centered), R to reshuffle
+
+### Known issues / deferred
+- [ ] Pan: no reset-view shortcut yet
+- [ ] `IngredientProfilePage` (`/ingredient/:id`) — linked from drawers but not yet built
+- [ ] "Open full profile" links in `PairingDetailDrawer` will 404 until above is built
 
 ---
 
-## Phase 4 — Production Engineering
-- [ ] Set up React project scaffold
-- [ ] Port canvas simulation to React + React Flow (or keep canvas, wrap in React)
-- [ ] Implement data layer / graph store
-- [ ] Implement search and filtering
-- [ ] Implement contextual notes reveal
-- [ ] Performance optimization for large graph
+## Phase 4 — Filters & Search
+- [ ] `FilterPanel` — collapsible side panel
+- [ ] `CuisineFilter` — multi-select (depends on Phase 2 cuisine parsing)
+- [ ] `SeasonFilter` — Spring / Summer / Autumn / Winter toggles
+- [ ] `TasteFilter` — sweet / sour / bitter / umami / salty toggles
+- [ ] `VisibilityFilter` — All / Shared only / Individual only
+- [ ] Wire filters through `LensCanvas` and `BoardView` rendering
+
+---
+
+## Phase 5 — `IngredientProfilePage`
+- [ ] Route `/ingredient/:id` → full-page ingredient profile
+- [ ] Render all data: label, meta, full pairing list, all quotes, all tips, all affinities
+- [ ] Clean printable layout
+- [ ] Graceful not-found state
+
+---
+
+## Phase 6 — Polish & Launch
 - [ ] Responsive / mobile considerations
-
----
-
-## Phase 5 — Launch
+- [ ] Performance optimization for large graph
 - [ ] Testing and QA
 - [ ] Deployment (Vercel/Netlify)
 - [ ] User feedback loop
