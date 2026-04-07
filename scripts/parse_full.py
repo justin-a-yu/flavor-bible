@@ -63,9 +63,25 @@ SKIP_EXACT = {"flavor affinities", "flavor affinity"}
 
 # Section headers that are not actual flavor ingredients
 NON_INGREDIENT_SLUGS = {
-    "appetizers", "dishes", "beverages", "foods", "general",
+    "appetizers", "beverages", "foods", "general",
     "ingredients", "recipes", "techniques", "seasons", "menu",
+    # Abstract section headings that appear at header size in the book
+    "aroma", "balance", "freshness", "desserts", "cuisines",
+    "bitter-dishes", "chicken-as-a-two",
+    # Short sidebar titles not caught by is_sidebar_title word-count filter
+    "pairing-pastas-with-sauces",
+    # Dish examples used as section headers (not ingredients)
+    "chicken-cacciatore",
+    # Generic category headers (no pairing content, just tips/meta)
+    "salads", "meats", "spices", "vegetarian-dishes",
+    # Technique/process sidebars
+    "sous-vide-cooking",
 }
+
+# These headers appear as sidebars *within* an ingredient entry (e.g. "Dishes"
+# lists chef examples using that ingredient). They should NOT reset
+# current_ingredient — pairings that follow still belong to the same entry.
+MID_ENTRY_SIDEBARS = {"dishes"}
 
 # Generic descriptor words that make a "See also" alias meaningless
 _ALIAS_STOP_WORDS = {"specific", "various", "other", "all", "different", "similar", "related"}
@@ -149,8 +165,10 @@ def canonical_label(raw):
       'Anise Hyssop'                              → 'anise-hyssop'
     """
     text = raw.strip()
-    # Strip em-dash qualifiers: "— In General", "— Fresh", "— Dried", etc.
-    text = re.sub(r'\s*[—–-]{1,2}\s*.+$', '', text).strip()
+    # Strip em-dash / en-dash qualifiers: "— In General", "— Fresh", etc.
+    # Note: do NOT include ASCII hyphen here — compound names like
+    # "FIVE-SPICE POWDER" and "SOUS-VIDE COOKING" use in-word hyphens.
+    text = re.sub(r'\s*[—–]{1,2}\s*.+$', '', text).strip()
     # Strip all parentheticals
     text = re.sub(r'\([^)]*\)', '', text).strip()
     return slugify(text)
@@ -254,6 +272,66 @@ def split_modifier(label):
         return base, modifier
 
     return label, None
+
+
+# ── Block pre-processing: join consecutive header lines ───────────────────────
+#
+# Sidebar titles in the book (e.g. "Holly Smith of Café Juanita in Seattle on
+# Five Flavors that / Will Take You to Northern Italy") span multiple lines but
+# share the same PDF block. Without joining, each line becomes a separate junk
+# ingredient entry. We merge consecutive header-sized lines within a block into
+# a single logical line before running the state machine.
+
+def _is_header_span(line):
+    spans = [s for s in line["spans"] if s["text"].strip()]
+    if not spans:
+        return False
+    dominant = max(spans, key=lambda s: (s["size"], int("Bold" in s["font"])))
+    return HEADER_FONT in dominant["font"] and dominant["size"] >= HEADER_SIZE
+
+
+def preprocess_block_lines(block):
+    """Return block lines with consecutive header-sized lines merged."""
+    lines = block["lines"]
+    out = []
+    i = 0
+    while i < len(lines):
+        if _is_header_span(lines[i]):
+            j = i + 1
+            while j < len(lines) and _is_header_span(lines[j]):
+                j += 1
+            if j > i + 1:
+                # Merge lines[i:j]: concatenate all spans with a space between lines
+                merged_spans = list(lines[i]["spans"])
+                for k in range(i + 1, j):
+                    merged_spans.append({
+                        "text": " ", "font": HEADER_FONT,
+                        "size": HEADER_SIZE, "flags": 0,
+                    })
+                    merged_spans.extend(lines[k]["spans"])
+                out.append({"spans": merged_spans, "bbox": lines[i]["bbox"]})
+                i = j
+                continue
+        out.append(lines[i])
+        i += 1
+    return out
+
+
+def is_sidebar_title(text):
+    """
+    True if a header-sized line looks like a chapter sidebar or section title
+    rather than an ingredient name. Real ingredient names are short (≤4 content
+    words after stripping parentheticals and em-dash qualifiers); sidebar titles
+    are longer prose phrases (e.g. "On Selecting the Right Oil").
+    Em-dashes are normalized to spaces before counting so that entries like
+    "CHILE PEPPERS — IN GENERAL" (content: CHILE PEPPERS) are not over-counted.
+    """
+    base = re.sub(r'\([^)]*\)', '', text).strip()
+    # Normalise em-dash / en-dash to space so "SALT — IN GENERAL" → "SALT IN GENERAL"
+    base = re.sub(r'[—–]', ' ', base)
+    # Split on whitespace and commas; count only non-empty word-like tokens
+    words = [w for w in re.split(r'[\s,]+', base) if w]
+    return len(words) >= 5
 
 
 # ── Span / line classification ─────────────────────────────────────────────────
@@ -391,7 +469,7 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
             if block["type"] != 0:
                 continue
 
-            for line in block["lines"]:
+            for line in preprocess_block_lines(block):
                 result = classify_line(line["spans"])
                 if result is None:
                     continue
@@ -431,9 +509,18 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                             found_first = True
                         else:
                             continue
+                    # Mid-entry sidebars (e.g. "Dishes") appear inside an
+                    # ingredient's section — skip without resetting context.
+                    if canonical_label(clean) in MID_ENTRY_SIDEBARS:
+                        continue
                     if canonical_label(clean) in NON_INGREDIENT_SLUGS:
                         current_ingredient = None
                         current_cuisines   = []
+                        continue
+                    # Sidebar titles (chef essays, section intros) share the
+                    # same header font but are too long to be ingredient names.
+                    if is_sidebar_title(clean):
+                        current_ingredient = None
                         continue
                     if clean.count('(') > clean.count(')'):
                         pending_header = ("header", clean)
