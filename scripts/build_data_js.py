@@ -1,6 +1,6 @@
 """
 build_data_js.py
-Converts data/flavors.json → mockup/flavors_data.js
+Converts data/flavors.json → app/src/data/flavors_data.js
 
 Output sets window.FLAVORS with:
   ingredients  — { [id]: entry }  (full data per ingredient)
@@ -14,7 +14,7 @@ import json, unicodedata, re
 from pathlib import Path
 
 SRC  = Path(__file__).parent.parent / "data" / "flavors.json"
-DEST = Path(__file__).parent.parent / "mockup" / "flavors_data.js"
+DEST = Path(__file__).parent.parent / "app" / "src" / "data" / "flavors_data.js"
 
 
 def slugify(text):
@@ -79,7 +79,7 @@ def build():
     payload = json.dumps({"ingredients": out_ings, "index": index},
                          ensure_ascii=False, separators=(",", ":"))
 
-    DEST.write_text(f"window.FLAVORS={payload};", encoding="utf-8")
+    DEST.write_text(f"export const FLAVORS={payload};", encoding="utf-8")
     print(f"✓  Written {DEST}")
     print(f"   {len(out_ings)} ingredients, {len(index)} index entries")
     size_kb = DEST.stat().st_size / 1024

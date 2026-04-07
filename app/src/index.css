@@ -1,0 +1,24 @@
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Design tokens ── */
+:root {
+  --bg:         #faf7f2;
+  --bg-card:    #ffffff;
+  --text:       #2c2416;
+  --text-muted: #a09070;
+  --border:     #e8e0d0;
+  --gold:       #d4a840;
+  --orange:     #e07840;
+  --green:      #5a9e6a;
+  --font:       'Georgia', serif;
+}
+
+/* ── Base ── */
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}

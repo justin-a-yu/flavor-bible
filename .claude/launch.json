@@ -6,6 +6,13 @@
       "runtimeExecutable": "/opt/homebrew/bin/python3",
       "runtimeArgs": ["/Users/juyu/Documents/flavor bible/mockup/serve.py"],
       "port": 8765
+    },
+    {
+      "name": "app",
+      "runtimeExecutable": "/opt/homebrew/Cellar/node/25.9.0_1/bin/node",
+      "runtimeArgs": ["/Users/juyu/Documents/flavor bible/app/node_modules/.bin/vite", "--port", "5173"],
+      "cwd": "/Users/juyu/Documents/flavor bible/app",
+      "port": 5173
     }
   ]
 }
