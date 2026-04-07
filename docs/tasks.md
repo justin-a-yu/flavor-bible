@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Board view complete — Phase 3 done. Phase 5 (filter panel) next.**
+> Status: **Phases 3 & 5 complete. Phase 4 (filters) or Phase 2 (data) next.**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -80,8 +80,6 @@ Each ingredient entry in the JSON:
 
 ### Known issues / deferred
 - [ ] Pan: no reset-view shortcut yet
-- [ ] `IngredientProfilePage` (`/ingredient/:id`) — linked from drawers but not yet built
-- [ ] "Open full profile" links in `PairingDetailDrawer` will 404 until above is built
 
 ---
 
@@ -96,10 +94,11 @@ Each ingredient entry in the JSON:
 ---
 
 ## Phase 5 — `IngredientProfilePage`
-- [ ] Route `/ingredient/:id` → full-page ingredient profile
-- [ ] Render all data: label, meta, full pairing list, all quotes, all tips, all affinities
-- [ ] Clean printable layout
-- [ ] Graceful not-found state
+- [x] Route `/ingredient/:id` → full-page ingredient profile
+- [x] Render all data: label, meta, full pairing list (strength-tiered chips), all quotes, all tips, all affinities
+- [x] Pairing chips link to `/ingredient/:id` for further exploration
+- [x] Clean printable layout
+- [x] Graceful not-found state
 
 ---
 
