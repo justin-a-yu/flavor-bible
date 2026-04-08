@@ -97,7 +97,7 @@ QUOTE_INDICATORS = re.compile(
     r"love|like|think|believ|use|prefer|find|make|add|cook|taste|serv|work|get|go|"
     r"need|want|feel|know|try|put|com|tak|give|bring|keep|let|set|run|build|start|"
     r"becom|remain|stay|seem|appear|call|suggest|recommend|avoid|notic|"
-    r"enjoy|appreciat|discover|learn|realiz|rememb|eat|ate|eaten|"
+    r"enjoy|appreciat|discover|learn|realiz|rememb|eat|ate|eaten|benefit|"
     r"transform|absorb|pack|broke|break|stay|lead|leads|led|my\b|"
     r"toast|evaporat|increas|improv|creat|develop|produc|result|allow|"
     # flavor / pairing verbs
@@ -217,7 +217,7 @@ def looks_like_quote(text):
     True if the line looks like a prose sentence rather than an ingredient pairing.
     Heuristics: has a verb, is longer than 40 chars, and doesn't look like a noun phrase.
     """
-    if len(text) < 50:
+    if len(text) < 40:
         return False
     if is_affinity_line(text):
         return False

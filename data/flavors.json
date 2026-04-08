@@ -289,11 +289,6 @@
           "strength": 1
         },
         {
-          "label": "meats, red",
-          "strength": 2,
-          "modifier": "esp. braised, grilled, or roasted"
-        },
-        {
           "label": "mushrooms",
           "strength": 1
         },
@@ -728,7 +723,7 @@
       ],
       "quotes": [
         {
-          "text": "In Jamaica, allspice is their pepper. It’s fruitier than black peppercorns. I think it’s especially nice with braised and roasted meats.",
+          "text": "MEATS, red, esp. braised, grilled, or roasted In Jamaica, allspice is their pepper. It’s fruitier than black peppercorns. I think it’s especially nice with braised and roasted meats.",
           "attribution": "BRADFORD THOMPSON, Mary Elaine’s at The Phoenician (Scottsdale, Arizona)"
         },
         {
@@ -2005,32 +2000,6 @@
           "strength": 1
         },
         {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "camembert, cheddar, goat, gruyère"
-        },
-        {
-          "label": "cherries",
-          "strength": 1,
-          "modifier": "dried, fresh"
-        },
-        {
-          "label": "chestnuts",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 1
-        },
-        {
-          "label": "chives",
-          "strength": 1
-        },
-        {
-          "label": "cider",
-          "strength": 1
-        },
-        {
           "label": "cinnamon",
           "strength": 4
         },
@@ -3000,40 +2969,6 @@
         {
           "label": "celery",
           "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "emmental, goat, gruyère, parmesan"
-        },
-        {
-          "label": "chervil",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 1
-        },
-        {
-          "label": "chives",
-          "strength": 1
-        },
-        {
-          "label": "coriander",
-          "strength": 1
-        },
-        {
-          "label": "cream",
-          "strength": 1
-        },
-        {
-          "label": "crème fraîche",
-          "strength": 1
-        },
-        {
-          "label": "eggs",
-          "strength": 1,
-          "modifier": "yolk, hard-boiled"
         },
         {
           "label": "garlic",
@@ -4889,47 +4824,6 @@
           "strength": 2
         },
         {
-          "label": "baked goods",
-          "strength": 1,
-          "modifier": "e.g., muffins, quick breads"
-        },
-        {
-          "label": "banana liqueur",
-          "strength": 1
-        },
-        {
-          "label": "blackberries",
-          "strength": 1
-        },
-        {
-          "label": "blueberries",
-          "strength": 2
-        },
-        {
-          "label": "brandy",
-          "strength": 1
-        },
-        {
-          "label": "breakfast",
-          "strength": 1
-        },
-        {
-          "label": "butter, unsalted",
-          "strength": 2
-        },
-        {
-          "label": "buttermilk",
-          "strength": 1
-        },
-        {
-          "label": "butterscotch",
-          "strength": 1
-        },
-        {
-          "label": "cakes",
-          "strength": 1
-        },
-        {
           "label": "calvados",
           "strength": 2
         },
@@ -5343,14 +5237,6 @@
         "volume": "mild–moderate"
       },
       "pairings": [
-        {
-          "label": "use to add a note of freshness to a dish.",
-          "strength": 1
-        },
-        {
-          "label": "apricots",
-          "strength": 1
-        },
         {
           "label": "beans",
           "strength": 1,
@@ -7293,15 +7179,6 @@
           "strength": 1
         },
         {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, olive, peanut, safflower, vegetable"
-        },
-        {
-          "label": "olive oil",
-          "strength": 1
-        },
-        {
           "label": "onions",
           "strength": 2,
           "modifier": "red, white, yellow"
@@ -8065,68 +7942,6 @@
         },
         {
           "label": "cayenne",
-          "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "asiago, blue, feta, goat, parmesan"
-        },
-        {
-          "label": "chervil",
-          "strength": 1
-        },
-        {
-          "label": "chickpeas",
-          "strength": 1
-        },
-        {
-          "label": "chile peppers",
-          "strength": 1
-        },
-        {
-          "label": "chives",
-          "strength": 1
-        },
-        {
-          "label": "cilantro",
-          "strength": 1
-        },
-        {
-          "label": "coconut",
-          "strength": 1
-        },
-        {
-          "label": "corn",
-          "strength": 1
-        },
-        {
-          "label": "cream",
-          "strength": 1
-        },
-        {
-          "label": "crème fraîche",
-          "strength": 1
-        },
-        {
-          "label": "cumin",
-          "strength": 2
-        },
-        {
-          "label": "curry leaves",
-          "strength": 1
-        },
-        {
-          "label": "dill",
-          "strength": 2
-        },
-        {
-          "label": "eggs",
-          "strength": 2,
-          "modifier": "esp. hard-boiled"
-        },
-        {
-          "label": "fennel",
           "strength": 1
         },
         {
@@ -10375,104 +10190,6 @@
         {
           "label": "mustard, dijon",
           "strength": 2
-        },
-        {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, grapeseed, sesame, vegetable"
-        },
-        {
-          "label": "olive oil",
-          "strength": 1
-        },
-        {
-          "label": "onions",
-          "strength": 1,
-          "modifier": "red, white"
-        },
-        {
-          "label": "parsley, flat-leaf",
-          "strength": 2
-        },
-        {
-          "label": "pepper",
-          "strength": 2,
-          "modifier": "black, green, pink, szechuan, white"
-        },
-        {
-          "label": "port",
-          "strength": 1
-        },
-        {
-          "label": "potatoes, french fries",
-          "strength": 2
-        },
-        {
-          "label": "red pepper flakes",
-          "strength": 1
-        },
-        {
-          "label": "rice",
-          "strength": 1
-        },
-        {
-          "label": "rosemary",
-          "strength": 1
-        },
-        {
-          "label": "salt, kosher",
-          "strength": 1
-        },
-        {
-          "label": "scallions",
-          "strength": 1
-        },
-        {
-          "label": "shallots",
-          "strength": 2
-        },
-        {
-          "label": "sherry, dry",
-          "strength": 1
-        },
-        {
-          "label": "soy sauce",
-          "strength": 1
-        },
-        {
-          "label": "stocks",
-          "strength": 1,
-          "modifier": "beef, veal"
-        },
-        {
-          "label": "sugar (pinch)",
-          "strength": 1
-        },
-        {
-          "label": "tamarind",
-          "strength": 1
-        },
-        {
-          "label": "tarragon",
-          "strength": 1
-        },
-        {
-          "label": "thyme",
-          "strength": 1
-        },
-        {
-          "label": "vinegar",
-          "strength": 2,
-          "modifier": "balsamic, champagne, chinese black, cider, red wine, rice wine, sherry, white wine"
-        },
-        {
-          "label": "watercress",
-          "strength": 1
-        },
-        {
-          "label": "wine, dry red",
-          "strength": 2,
-          "modifier": "e.g., beaujolais, chianti"
         },
         {
           "label": "bacon",
@@ -13108,77 +12825,6 @@
         {
           "label": "beans",
           "strength": 1
-        },
-        {
-          "label": "beef",
-          "strength": 1,
-          "modifier": "brisket, shanks, short ribs, shoulder"
-        },
-        {
-          "label": "cabbage",
-          "strength": 1
-        },
-        {
-          "label": "carrots",
-          "strength": 1
-        },
-        {
-          "label": "celery",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 1,
-          "modifier": "legs, thighs, wings"
-        },
-        {
-          "label": "chili",
-          "strength": 1
-        },
-        {
-          "label": "cod",
-          "strength": 1
-        },
-        {
-          "label": "corned beef and cabbage",
-          "strength": 1
-        },
-        {
-          "label": "duck, legs",
-          "strength": 1
-        },
-        {
-          "label": "endive",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "ham hocks",
-          "strength": 1
-        },
-        {
-          "label": "lamb",
-          "strength": 1,
-          "modifier": "shanks, shoulder"
-        },
-        {
-          "label": "monkfish",
-          "strength": 1
-        },
-        {
-          "label": "octopus",
-          "strength": 1
-        },
-        {
-          "label": "onions",
-          "strength": 1
-        },
-        {
-          "label": "oxtails",
-          "strength": 1
         }
       ],
       "quotes": [],
@@ -14404,11 +14050,6 @@
           "strength": 1
         },
         {
-          "label": "cheese",
-          "strength": 1,
-          "modifier": "blue, goat, gorgonzola, ricotta salata"
-        },
-        {
           "label": "chestnuts",
           "strength": 2
         },
@@ -15353,129 +14994,6 @@
         },
         {
           "label": "apricots",
-          "strength": 1
-        },
-        {
-          "label": "baked goods",
-          "strength": 1,
-          "modifier": "e.g., breads, cakes, cookies"
-        },
-        {
-          "label": "bananas",
-          "strength": 1
-        },
-        {
-          "label": "beef",
-          "strength": 1
-        },
-        {
-          "label": "beverages",
-          "strength": 1,
-          "modifier": "esp. hot"
-        },
-        {
-          "label": "caraway",
-          "strength": 1
-        },
-        {
-          "label": "carrots",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 2,
-          "modifier": "esp. stewed"
-        },
-        {
-          "label": "chickpeas",
-          "strength": 1
-        },
-        {
-          "label": "chile peppers",
-          "strength": 1
-        },
-        {
-          "label": "chocolate",
-          "strength": 1
-        },
-        {
-          "label": "cinnamon",
-          "strength": 2
-        },
-        {
-          "label": "citrus",
-          "strength": 1
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "coffee",
-          "strength": 2
-        },
-        {
-          "label": "coriander",
-          "strength": 2
-        },
-        {
-          "label": "cream and ice cream",
-          "strength": 1
-        },
-        {
-          "label": "crème anglaise",
-          "strength": 1
-        },
-        {
-          "label": "cumin",
-          "strength": 1
-        },
-        {
-          "label": "curries",
-          "strength": 2
-        },
-        {
-          "label": "custards",
-          "strength": 1
-        },
-        {
-          "label": "dates",
-          "strength": 2
-        },
-        {
-          "label": "desserts",
-          "strength": 2,
-          "modifier": "esp. indian"
-        },
-        {
-          "label": "duck",
-          "strength": 1,
-          "modifier": "esp. roasted"
-        },
-        {
-          "label": "fish",
-          "strength": 1,
-          "modifier": "e.g., salmon"
-        },
-        {
-          "label": "garam masala, indian",
-          "strength": 1,
-          "modifier": "key ingredient"
-        },
-        {
-          "label": "ginger",
-          "strength": 2
-        },
-        {
-          "label": "gingerbread",
-          "strength": 1
-        },
-        {
-          "label": "grapefruit",
-          "strength": 1
-        },
-        {
-          "label": "honey",
           "strength": 1
         },
         {
@@ -18983,14 +18501,6 @@
           "strength": 2
         },
         {
-          "label": "i will pair thyme with goat cheese and cherries.",
-          "strength": 2
-        },
-        {
-          "label": "i like strawberries with my loire valley chèvres.",
-          "strength": 2
-        },
-        {
           "label": "lemon, juice",
           "strength": 2
         },
@@ -19168,8 +18678,16 @@
           "attribution": "MAX McCALMAN, ARTISANAL CHEESE CENTER (NEW YORK CITY)"
         },
         {
+          "text": "I will pair thyme with goat cheese and cherries.",
+          "attribution": "MICHAEL LAISKONIS, LE BERNARDIN (NEW YORK CITY)"
+        },
+        {
           "text": "If you are going to make a dessert with cheese, you want it to be a softer cheese. I make a goat cheese cake with berries and for that I use a milder goat cheese. Goat cheese and lemon work really well together, because the acidity of the lemon juice cuts the fat of the goat cheese.",
           "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
+        },
+        {
+          "text": "I like strawberries with my Loire Valley chèvres.",
+          "attribution": "MAX McCALMAN, ARTISANAL CHEESE CENTER (NEW YORK CITY)"
         },
         {
           "text": "Some enjoy the combination of chocolate and cheese. If the idea intrigues you, I recommend trying a good dark chocolate with an aged Alpine cheese [a style native to the French and Swiss Alps, of which Gruyère is one of the most famous], such as Hoch Ybrig, Appenzeller, or Prattigauer.",
@@ -19306,44 +18824,7 @@
       "label": "Cheese, Gouda",
       "aliases": [],
       "meta": {},
-      "pairings": [
-        {
-          "label": "apples",
-          "strength": 2,
-          "modifier": "esp. with aged and/or smoked cheese"
-        },
-        {
-          "label": "apricots",
-          "strength": 1
-        },
-        {
-          "label": "cherries",
-          "strength": 1,
-          "modifier": "esp. with young cheese"
-        },
-        {
-          "label": "melon",
-          "strength": 1
-        },
-        {
-          "label": "mushrooms",
-          "strength": 1
-        },
-        {
-          "label": "peaches",
-          "strength": 1,
-          "modifier": "esp. with young cheese"
-        },
-        {
-          "label": "pears",
-          "strength": 1,
-          "modifier": "esp. with aged or smoked cheese"
-        },
-        {
-          "label": "spinach",
-          "strength": 1
-        }
-      ],
+      "pairings": [],
       "quotes": [],
       "tips": [],
       "affinities": [],
@@ -21068,81 +20549,6 @@
         {
           "label": "poultry",
           "strength": 1
-        },
-        {
-          "label": "salads",
-          "strength": 2,
-          "modifier": "esp. potato, and salad dressings"
-        },
-        {
-          "label": "sauces",
-          "strength": 1,
-          "modifier": "esp. creamy"
-        },
-        {
-          "label": "scallops",
-          "strength": 1
-        },
-        {
-          "label": "shallots",
-          "strength": 1
-        },
-        {
-          "label": "shellfish",
-          "strength": 2
-        },
-        {
-          "label": "sole",
-          "strength": 1
-        },
-        {
-          "label": "soups",
-          "strength": 2,
-          "modifier": "esp. creamy"
-        },
-        {
-          "label": "spinach",
-          "strength": 1
-        },
-        {
-          "label": "squash",
-          "strength": 1
-        },
-        {
-          "label": "tarragon",
-          "strength": 2
-        },
-        {
-          "label": "thyme",
-          "strength": 1
-        },
-        {
-          "label": "tomatoes and tomato sauces",
-          "strength": 2
-        },
-        {
-          "label": "veal",
-          "strength": 1
-        },
-        {
-          "label": "vegetables",
-          "strength": 1
-        },
-        {
-          "label": "venison",
-          "strength": 1
-        },
-        {
-          "label": "vinaigrettes",
-          "strength": 1
-        },
-        {
-          "label": "vinegar",
-          "strength": 1
-        },
-        {
-          "label": "watercress",
-          "strength": 1
         }
       ],
       "quotes": [
@@ -22193,32 +21599,6 @@
           "strength": 1
         },
         {
-          "label": "cumin",
-          "strength": 2,
-          "modifier": "esp. toasted (e.g., indian cuisine, etc.)"
-        },
-        {
-          "label": "curry leaves",
-          "strength": 1
-        },
-        {
-          "label": "curry powder",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "fennel seeds",
-          "strength": 1
-        },
-        {
-          "label": "garam masala",
-          "strength": 1,
-          "modifier": "e.g., indian cuisine"
-        },
-        {
           "label": "garlic",
           "strength": 3
         },
@@ -22575,11 +21955,6 @@
         {
           "label": "cayenne",
           "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 1,
-          "modifier": "fontina, goat, mozzarella, parmesan"
         },
         {
           "label": "chocolate",
@@ -25137,52 +24512,6 @@
           "modifier": "cider, fruit, juice"
         },
         {
-          "label": "baked goods",
-          "strength": 1,
-          "modifier": "e.g., breads, cakes, pastries, pies"
-        },
-        {
-          "label": "bay leaf",
-          "strength": 1
-        },
-        {
-          "label": "beef",
-          "strength": 1
-        },
-        {
-          "label": "beets",
-          "strength": 1
-        },
-        {
-          "label": "beverages",
-          "strength": 1
-        },
-        {
-          "label": "biryani",
-          "strength": 1
-        },
-        {
-          "label": "cabbage",
-          "strength": 1,
-          "modifier": "esp. red"
-        },
-        {
-          "label": "cardamom",
-          "strength": 1
-        },
-        {
-          "label": "carrots",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 1
-        },
-        {
-          "label": "chile peppers",
-          "strength": 1
-        },
-        {
           "label": "chocolate",
           "strength": 2
         },
@@ -26827,173 +26156,6 @@
       },
       "pairings": [
         {
-          "label": "toast coriander seeds to release their flavor.",
-          "strength": 1
-        },
-        {
-          "label": "allspice",
-          "strength": 1
-        },
-        {
-          "label": "anise",
-          "strength": 1
-        },
-        {
-          "label": "apples",
-          "strength": 1
-        },
-        {
-          "label": "baked goods",
-          "strength": 1,
-          "modifier": "e.g., cakes, cookies, pies"
-        },
-        {
-          "label": "basil",
-          "strength": 1
-        },
-        {
-          "label": "beans",
-          "strength": 1
-        },
-        {
-          "label": "beef",
-          "strength": 1
-        },
-        {
-          "label": "cardamom",
-          "strength": 1
-        },
-        {
-          "label": "carrots",
-          "strength": 1
-        },
-        {
-          "label": "cayenne",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 2
-        },
-        {
-          "label": "chickpeas",
-          "strength": 1
-        },
-        {
-          "label": "chile peppers",
-          "strength": 2,
-          "modifier": "e.g., fresh green"
-        },
-        {
-          "label": "chili",
-          "strength": 1
-        },
-        {
-          "label": "chutneys",
-          "strength": 1
-        },
-        {
-          "label": "cilantro",
-          "strength": 1
-        },
-        {
-          "label": "cinnamon",
-          "strength": 1
-        },
-        {
-          "label": "citrus and citrus zest",
-          "strength": 2
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "coconut and coconut milk",
-          "strength": 1
-        },
-        {
-          "label": "corn",
-          "strength": 1
-        },
-        {
-          "label": "crab",
-          "strength": 2,
-          "modifier": "esp. boiled"
-        },
-        {
-          "label": "cumin",
-          "strength": 2
-        },
-        {
-          "label": "curries",
-          "strength": 2,
-          "modifier": "e.g., indian cuisine"
-        },
-        {
-          "label": "curry powder",
-          "strength": 1
-        },
-        {
-          "label": "desserts",
-          "strength": 1
-        },
-        {
-          "label": "eggs",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "fennel seeds",
-          "strength": 1
-        },
-        {
-          "label": "fish",
-          "strength": 2
-        },
-        {
-          "label": "fruits",
-          "strength": 1,
-          "modifier": "esp. autumn and dried"
-        },
-        {
-          "label": "garam masala",
-          "strength": 1,
-          "modifier": "key ingredient"
-        },
-        {
-          "label": "garlic",
-          "strength": 2
-        },
-        {
-          "label": "ginger",
-          "strength": 1
-        },
-        {
-          "label": "gingerbread",
-          "strength": 1
-        },
-        {
-          "label": "grapefruit",
-          "strength": 1
-        },
-        {
-          "label": "ham",
-          "strength": 1
-        },
-        {
-          "label": "harissa",
-          "strength": 1,
-          "modifier": "key ingredient"
-        },
-        {
-          "label": "hot dogs",
-          "strength": 1
-        },
-        {
           "label": "lamb",
           "strength": 1
         },
@@ -28098,34 +27260,6 @@
         {
           "label": "nutmeg",
           "strength": 1
-        },
-        {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, grapeseed, peanut, sesame, vegetable"
-        },
-        {
-          "label": "olive oil",
-          "strength": 2
-        },
-        {
-          "label": "old bay seasoning",
-          "strength": 2
-        },
-        {
-          "label": "onions",
-          "strength": 2,
-          "modifier": "green, red, spring, sweet, white"
-        },
-        {
-          "label": "orange",
-          "strength": 1,
-          "modifier": "juice, zest"
-        },
-        {
-          "label": "paprika",
-          "strength": 1,
-          "modifier": "esp. sweet"
         },
         {
           "label": "parsley, flat-leaf",
@@ -29658,11 +28792,6 @@
         {
           "label": "mace",
           "strength": 1
-        },
-        {
-          "label": "meats",
-          "strength": 1,
-          "modifier": "esp. stronger-flavored, and esp. grilled"
         },
         {
           "label": "mint, dried",
@@ -31265,11 +30394,6 @@
           "strength": 1
         },
         {
-          "label": "currants, black or red",
-          "strength": 1,
-          "modifier": "fruit, preserves"
-        },
-        {
           "label": "garlic",
           "strength": 3
         },
@@ -31371,20 +30495,6 @@
         {
           "label": "nuts, macadamia",
           "strength": 1
-        },
-        {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, grapeseed, peanut, sesame, vegetable"
-        },
-        {
-          "label": "olive oil",
-          "strength": 2
-        },
-        {
-          "label": "olives",
-          "strength": 1,
-          "modifier": "esp. green"
         },
         {
           "label": "onions",
@@ -33074,134 +32184,6 @@
         {
           "label": "rosemary",
           "strength": 1
-        },
-        {
-          "label": "salads",
-          "strength": 2,
-          "modifier": "e.g., green or tuna) and salad dressings"
-        },
-        {
-          "label": "salmon",
-          "strength": 1
-        },
-        {
-          "label": "salt",
-          "strength": 2,
-          "modifier": "kosher, sea"
-        },
-        {
-          "label": "sambuca",
-          "strength": 1
-        },
-        {
-          "label": "sauces",
-          "strength": 1
-        },
-        {
-          "label": "scallions",
-          "strength": 1
-        },
-        {
-          "label": "shallots",
-          "strength": 1
-        },
-        {
-          "label": "shellfish",
-          "strength": 2
-        },
-        {
-          "label": "shrimp",
-          "strength": 1
-        },
-        {
-          "label": "soups",
-          "strength": 2,
-          "modifier": "esp. vegetable"
-        },
-        {
-          "label": "spinach",
-          "strength": 1
-        },
-        {
-          "label": "star anise",
-          "strength": 1
-        },
-        {
-          "label": "stews",
-          "strength": 1,
-          "modifier": "esp. fish"
-        },
-        {
-          "label": "stocks",
-          "strength": 2,
-          "modifier": "chicken, veal, vegetable"
-        },
-        {
-          "label": "stuffing",
-          "strength": 1
-        },
-        {
-          "label": "sugar (pinch)",
-          "strength": 1
-        },
-        {
-          "label": "swordfish",
-          "strength": 1
-        },
-        {
-          "label": "tarragon",
-          "strength": 1
-        },
-        {
-          "label": "thyme",
-          "strength": 2
-        },
-        {
-          "label": "tomatoes and tomato sauce",
-          "strength": 2
-        },
-        {
-          "label": "tuna",
-          "strength": 1
-        },
-        {
-          "label": "veal",
-          "strength": 1
-        },
-        {
-          "label": "vegetables",
-          "strength": 1,
-          "modifier": "esp. summer"
-        },
-        {
-          "label": "vermouth",
-          "strength": 1
-        },
-        {
-          "label": "vinaigrettes",
-          "strength": 1
-        },
-        {
-          "label": "vinegar",
-          "strength": 1,
-          "modifier": "champagne, cider, raspberry"
-        },
-        {
-          "label": "walnuts",
-          "strength": 1
-        },
-        {
-          "label": "watercress",
-          "strength": 1
-        },
-        {
-          "label": "wine",
-          "strength": 1,
-          "modifier": "dry white, vermouth"
-        },
-        {
-          "label": "zucchini",
-          "strength": 1
         }
       ],
       "quotes": [
@@ -33268,76 +32250,6 @@
         },
         {
           "label": "fennel seeds",
-          "strength": 1
-        },
-        {
-          "label": "fish",
-          "strength": 1,
-          "modifier": "esp. flakier white, poached or steamed"
-        },
-        {
-          "label": "garlic",
-          "strength": 1
-        },
-        {
-          "label": "lamb",
-          "strength": 1
-        },
-        {
-          "label": "lemon",
-          "strength": 1
-        },
-        {
-          "label": "nuts",
-          "strength": 1,
-          "modifier": "esp. almonds, pistachios"
-        },
-        {
-          "label": "pasta",
-          "strength": 1
-        },
-        {
-          "label": "pork",
-          "strength": 1
-        },
-        {
-          "label": "potatoes",
-          "strength": 1
-        },
-        {
-          "label": "poultry",
-          "strength": 1
-        },
-        {
-          "label": "rabbit",
-          "strength": 1
-        },
-        {
-          "label": "rice or risotto",
-          "strength": 1
-        },
-        {
-          "label": "salads",
-          "strength": 1
-        },
-        {
-          "label": "salmon",
-          "strength": 1
-        },
-        {
-          "label": "sea trout",
-          "strength": 1
-        },
-        {
-          "label": "shellfish",
-          "strength": 1
-        },
-        {
-          "label": "vegetables",
-          "strength": 1
-        },
-        {
-          "label": "yogurt",
           "strength": 1
         }
       ],
@@ -33996,60 +32908,6 @@
         },
         {
           "label": "caramel",
-          "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "goat, manchego, parmesan, ricotta"
-        },
-        {
-          "label": "cherries, dried",
-          "strength": 1
-        },
-        {
-          "label": "chestnuts",
-          "strength": 1
-        },
-        {
-          "label": "chocolate",
-          "strength": 1,
-          "modifier": "esp. dark, white"
-        },
-        {
-          "label": "cinnamon",
-          "strength": 2
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "coconut",
-          "strength": 1
-        },
-        {
-          "label": "coffee",
-          "strength": 1
-        },
-        {
-          "label": "cognac",
-          "strength": 1
-        },
-        {
-          "label": "cream",
-          "strength": 1
-        },
-        {
-          "label": "dates",
-          "strength": 2
-        },
-        {
-          "label": "game",
-          "strength": 1
-        },
-        {
-          "label": "ginger",
           "strength": 1
         },
         {
@@ -35364,79 +34222,6 @@
         {
           "label": "mustard, dijon",
           "strength": 1
-        },
-        {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, grapeseed, hazelnut, walnut"
-        },
-        {
-          "label": "olive oil",
-          "strength": 2
-        },
-        {
-          "label": "olives",
-          "strength": 1
-        },
-        {
-          "label": "onions, red",
-          "strength": 1
-        },
-        {
-          "label": "orange, juice",
-          "strength": 2
-        },
-        {
-          "label": "parsley, flat-leaf",
-          "strength": 1
-        },
-        {
-          "label": "pepper",
-          "strength": 2,
-          "modifier": "black, white"
-        },
-        {
-          "label": "salads",
-          "strength": 1,
-          "modifier": "esp. warm"
-        },
-        {
-          "label": "salt",
-          "strength": 2,
-          "modifier": "kosher, sea"
-        },
-        {
-          "label": "scallops",
-          "strength": 1
-        },
-        {
-          "label": "seafood",
-          "strength": 1
-        },
-        {
-          "label": "shallots",
-          "strength": 1
-        },
-        {
-          "label": "tangerines and tangerine juice",
-          "strength": 1
-        },
-        {
-          "label": "tarragon",
-          "strength": 1
-        },
-        {
-          "label": "tomatoes",
-          "strength": 1
-        },
-        {
-          "label": "vinaigrette",
-          "strength": 1
-        },
-        {
-          "label": "vinegar",
-          "strength": 2,
-          "modifier": "sherry, white wine"
         },
         {
           "label": "walnuts (accent)",
@@ -36955,59 +35740,6 @@
       },
       "pairings": [
         {
-          "label": "baked goods",
-          "strength": 2,
-          "modifier": "e.g., breads, cakes, cookies"
-        },
-        {
-          "label": "bananas",
-          "strength": 1
-        },
-        {
-          "label": "beverages",
-          "strength": 1
-        },
-        {
-          "label": "cardamom",
-          "strength": 1
-        },
-        {
-          "label": "carrots",
-          "strength": 2
-        },
-        {
-          "label": "chicken",
-          "strength": 1
-        },
-        {
-          "label": "chocolate",
-          "strength": 1
-        },
-        {
-          "label": "chutneys",
-          "strength": 1
-        },
-        {
-          "label": "cinnamon",
-          "strength": 1
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "couscous",
-          "strength": 1
-        },
-        {
-          "label": "cream and ice cream",
-          "strength": 1
-        },
-        {
-          "label": "desserts",
-          "strength": 2
-        },
-        {
           "label": "fruits",
           "strength": 2
         },
@@ -37112,7 +35844,7 @@
       ],
       "quotes": [
         {
-          "text": "Ginger and honey is one of my favorite flavor combinations.",
+          "text": "baked goods (e.g., breads, cakes, cookies) bananas beverages cardamom carrots chicken chocolate chutneys cinnamon cloves couscous cream and ice cream desserts Ginger and honey is one of my favorite flavor combinations.",
           "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
         },
         {
@@ -37390,16 +36122,16 @@
         {
           "label": "yogurt",
           "strength": 1
-        },
-        {
-          "label": "i love tarragon with grapefruit. it is a classic.",
-          "strength": 2
         }
       ],
       "quotes": [
         {
           "text": "We serve a dish of grapefruit, crab salad, and mint. Grapefruit is sweet and a little bitter, which makes it fun to play with. I like mint in the dish because it refreshes and wakes your palate up. When you get a little taste of mint it brings up the other flavors of the dish.",
           "attribution": "GABRIEL KREUTHER, THE MODERN (NEW YORK CITY)"
+        },
+        {
+          "text": "I love tarragon with grapefruit. It is a classic.",
+          "attribution": "MICHAEL LAISKONIS, LE BERNARDIN (NEW YORK CITY)"
         },
         {
           "text": "I have served a grapefruit and seaweed crab salad with miso dressing. I also like grapefruit with asparagus.",
@@ -37446,168 +36178,6 @@
         },
         {
           "label": "cayenne",
-          "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "esp. blue, cow’s milk, goat’s milk"
-        },
-        {
-          "label": "chicken",
-          "strength": 1
-        },
-        {
-          "label": "chocolate, white",
-          "strength": 1
-        },
-        {
-          "label": "cognac",
-          "strength": 1
-        },
-        {
-          "label": "cream",
-          "strength": 1
-        },
-        {
-          "label": "cumin",
-          "strength": 1
-        },
-        {
-          "label": "curry",
-          "strength": 1
-        },
-        {
-          "label": "curry leaf",
-          "strength": 1
-        },
-        {
-          "label": "duck",
-          "strength": 1
-        },
-        {
-          "label": "endive",
-          "strength": 1
-        },
-        {
-          "label": "fennel seeds",
-          "strength": 1
-        },
-        {
-          "label": "fish",
-          "strength": 1
-        },
-        {
-          "label": "game",
-          "strength": 1,
-          "modifier": "esp. roasted"
-        },
-        {
-          "label": "garlic",
-          "strength": 1
-        },
-        {
-          "label": "hazelnuts",
-          "strength": 1
-        },
-        {
-          "label": "honey",
-          "strength": 1
-        },
-        {
-          "label": "lemon",
-          "strength": 2
-        },
-        {
-          "label": "mint",
-          "strength": 1
-        },
-        {
-          "label": "mustard seeds",
-          "strength": 1
-        },
-        {
-          "label": "olive oil",
-          "strength": 1
-        },
-        {
-          "label": "paprika",
-          "strength": 1
-        },
-        {
-          "label": "pears",
-          "strength": 1
-        },
-        {
-          "label": "pecans",
-          "strength": 1
-        },
-        {
-          "label": "pistachios",
-          "strength": 1
-        },
-        {
-          "label": "pork",
-          "strength": 1,
-          "modifier": "esp. roasted"
-        },
-        {
-          "label": "poultry",
-          "strength": 1,
-          "modifier": "esp. roasted"
-        },
-        {
-          "label": "raspberries",
-          "strength": 1
-        },
-        {
-          "label": "rice",
-          "strength": 1
-        },
-        {
-          "label": "rosemary",
-          "strength": 1
-        },
-        {
-          "label": "rum",
-          "strength": 1
-        },
-        {
-          "label": "salads",
-          "strength": 1,
-          "modifier": "esp. chicken, fruit, tuna, waldorf"
-        },
-        {
-          "label": "salt",
-          "strength": 2
-        },
-        {
-          "label": "sour cream",
-          "strength": 1
-        },
-        {
-          "label": "strawberries",
-          "strength": 1
-        },
-        {
-          "label": "sugar",
-          "strength": 2
-        },
-        {
-          "label": "vinegar, sherry",
-          "strength": 1
-        },
-        {
-          "label": "walnuts",
-          "strength": 2
-        },
-        {
-          "label": "wine",
-          "strength": 1,
-          "modifier": "red, white"
-        },
-        {
-          "label": "yogurt",
           "strength": 1
         }
       ],
@@ -39464,19 +38034,6 @@
           "strength": 1
         },
         {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "feta, goat, gruyère, ricotta, taleggio"
-        },
-        {
-          "label": "cherries",
-          "strength": 1
-        },
-        {
-          "label": "chestnuts",
-          "strength": 1
-        },
-        {
           "label": "chocolate",
           "strength": 2,
           "modifier": "esp. dark or white"
@@ -40135,13 +38692,7 @@
       "meta": {
         "taste": "sweet-bitter"
       },
-      "pairings": [
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "esp. goat, ricotta, triple crème"
-        }
-      ],
+      "pairings": [],
       "quotes": [],
       "tips": [],
       "affinities": [],
@@ -42707,31 +41258,6 @@
           "strength": 1
         },
         {
-          "label": "baked goods",
-          "strength": 2,
-          "modifier": "cakes, cookies, scones, shortbread"
-        },
-        {
-          "label": "berries",
-          "strength": 1
-        },
-        {
-          "label": "blackberries",
-          "strength": 1
-        },
-        {
-          "label": "blueberries",
-          "strength": 1
-        },
-        {
-          "label": "cheese, ricotta",
-          "strength": 1
-        },
-        {
-          "label": "cherries",
-          "strength": 2
-        },
-        {
           "label": "chicken",
           "strength": 3
         },
@@ -43009,56 +41535,6 @@
         {
           "label": "celery",
           "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "cheddar, goat, gruyère, parmesan"
-        },
-        {
-          "label": "chervil",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 2
-        },
-        {
-          "label": "chile peppers",
-          "strength": 1
-        },
-        {
-          "label": "chives",
-          "strength": 2
-        },
-        {
-          "label": "coriander",
-          "strength": 1
-        },
-        {
-          "label": "cream",
-          "strength": 2
-        },
-        {
-          "label": "crème fraîche",
-          "strength": 1
-        },
-        {
-          "label": "dill",
-          "strength": 1
-        },
-        {
-          "label": "eggs",
-          "strength": 2,
-          "modifier": "including hard-boiled) and egg dishes"
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "fish",
-          "strength": 2
         },
         {
           "label": "garlic",
@@ -46129,15 +44605,6 @@
           "strength": 1
         },
         {
-          "label": "bell peppers",
-          "strength": 1,
-          "modifier": "esp. red, yellow, and/or roasted"
-        },
-        {
-          "label": "brandy",
-          "strength": 1
-        },
-        {
           "label": "butter, unsalted",
           "strength": 2
         },
@@ -46792,75 +45259,6 @@
           "strength": 1
         },
         {
-          "label": "fish",
-          "strength": 2,
-          "modifier": "e.g., halibut, skate, smoked, tuna"
-        },
-        {
-          "label": "garlic",
-          "strength": 1
-        },
-        {
-          "label": "greens",
-          "strength": 1
-        },
-        {
-          "label": "ham",
-          "strength": 1
-        },
-        {
-          "label": "juniper berries",
-          "strength": 1
-        },
-        {
-          "label": "lamb",
-          "strength": 1
-        },
-        {
-          "label": "marjoram",
-          "strength": 1
-        },
-        {
-          "label": "mint",
-          "strength": 1
-        },
-        {
-          "label": "mushrooms",
-          "strength": 1
-        },
-        {
-          "label": "mussels",
-          "strength": 1
-        },
-        {
-          "label": "mustard",
-          "strength": 1
-        },
-        {
-          "label": "nettles, stinging",
-          "strength": 1
-        },
-        {
-          "label": "onions",
-          "strength": 1
-        },
-        {
-          "label": "oregano",
-          "strength": 1
-        },
-        {
-          "label": "parsley",
-          "strength": 1
-        },
-        {
-          "label": "pork",
-          "strength": 2
-        },
-        {
-          "label": "potatoes",
-          "strength": 2
-        },
-        {
           "label": "rabbit",
           "strength": 1
         },
@@ -46925,7 +45323,7 @@
       ],
       "quotes": [
         {
-          "text": "Stinging nettles and lovage is a wonderful combination. Stinging nettles are peppery with a green flavor and lovage is celery-like. It’s funny: I find nettles without lovage are kind of flat tasting. I will use this combination in a ravioli filling or with local Dungeness crab as a sauce for a soufflé.",
+          "text": "fish, e.g., halibut, skate, smoked, tuna garlic greens ham juniper berries lamb marjoram mint mushrooms mussels mustard nettles, stinging onions oregano parsley pork potatoes Stinging nettles and lovage is a wonderful combination. Stinging nettles are peppery with a green flavor and lovage is celery-like. It’s funny: I find nettles without lovage are kind of flat tasting. I will use this combination in a ravioli filling or with local Dungeness crab as a sauce for a soufflé.",
           "attribution": "JERRY TRAUNFELD, THE HERBFARM (WOODINVILLE, WASHINGTON)"
         }
       ],
@@ -47844,31 +46242,6 @@
         {
           "label": "mustard seeds",
           "strength": 1
-        },
-        {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, corn, peanut, sesame, vegetable"
-        },
-        {
-          "label": "olive oil",
-          "strength": 2
-        },
-        {
-          "label": "onions",
-          "strength": 2
-        },
-        {
-          "label": "orange, juice",
-          "strength": 1
-        },
-        {
-          "label": "pancetta",
-          "strength": 1
-        },
-        {
-          "label": "parsley, flat-leaf",
-          "strength": 2
         },
         {
           "label": "pepper",
@@ -49469,23 +47842,6 @@
           "label": "curaçao",
           "strength": 1,
           "modifier": "esp. in cocktails"
-        },
-        {
-          "label": "cured meats",
-          "strength": 1,
-          "modifier": "e.g., prosciutto, sopressata"
-        },
-        {
-          "label": "curry",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "ginger",
-          "strength": 2
         },
         {
           "label": "grand marnier",
@@ -51266,52 +49622,6 @@
           "strength": 1
         },
         {
-          "label": "cheese",
-          "strength": 1,
-          "modifier": "comté, emmental, gruyère, parmesan, swiss"
-        },
-        {
-          "label": "chervil",
-          "strength": 1
-        },
-        {
-          "label": "chestnuts",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 1
-        },
-        {
-          "label": "chile peppers",
-          "strength": 1,
-          "modifier": "dried red, fresh green"
-        },
-        {
-          "label": "chives",
-          "strength": 2
-        },
-        {
-          "label": "cilantro",
-          "strength": 1
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "cognac",
-          "strength": 1
-        },
-        {
-          "label": "coriander",
-          "strength": 1
-        },
-        {
-          "label": "crab",
-          "strength": 1
-        },
-        {
           "label": "cream",
           "strength": 3
         },
@@ -51415,11 +49725,6 @@
         {
           "label": "nutmeg",
           "strength": 1
-        },
-        {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, grapeseed, peanut, vegetable"
         },
         {
           "label": "olive oil",
@@ -51866,11 +50171,6 @@
         {
           "label": "vinegar, rice wine",
           "strength": 1
-        },
-        {
-          "label": "techniques/tips",
-          "strength": 2,
-          "modifier": "always serve cooked: boil, stew"
         },
         {
           "label": "asparagus",
@@ -52753,109 +51053,6 @@
       },
       "pairings": [
         {
-          "label": "use cucumbers to cut the taste of mustard.",
-          "strength": 1
-        },
-        {
-          "label": "apples",
-          "strength": 1,
-          "modifier": "fruit, juice"
-        },
-        {
-          "label": "avocados",
-          "strength": 1
-        },
-        {
-          "label": "bay leaf",
-          "strength": 1
-        },
-        {
-          "label": "beef",
-          "strength": 2,
-          "modifier": "esp. corned, grilled, or roasted"
-        },
-        {
-          "label": "beets",
-          "strength": 1
-        },
-        {
-          "label": "cabbage",
-          "strength": 2
-        },
-        {
-          "label": "capers",
-          "strength": 1
-        },
-        {
-          "label": "cheeses",
-          "strength": 1,
-          "modifier": "e.g., blue, cheddar, gruyère, and other hard) and cheese dishes (e.g., macaroni and cheese, soufflé"
-        },
-        {
-          "label": "chicken",
-          "strength": 2
-        },
-        {
-          "label": "chile peppers",
-          "strength": 1
-        },
-        {
-          "label": "cold cuts",
-          "strength": 1
-        },
-        {
-          "label": "coriander",
-          "strength": 1
-        },
-        {
-          "label": "crab",
-          "strength": 1
-        },
-        {
-          "label": "cream and sour cream",
-          "strength": 2
-        },
-        {
-          "label": "cucumbers",
-          "strength": 2
-        },
-        {
-          "label": "cumin",
-          "strength": 2
-        },
-        {
-          "label": "cured meats",
-          "strength": 2
-        },
-        {
-          "label": "curries",
-          "strength": 1
-        },
-        {
-          "label": "curry leaves",
-          "strength": 1
-        },
-        {
-          "label": "dill",
-          "strength": 1
-        },
-        {
-          "label": "egg dishes",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "fenugreek",
-          "strength": 1
-        },
-        {
-          "label": "fish",
-          "strength": 2
-        },
-        {
           "label": "fruits",
           "strength": 2
         },
@@ -53333,45 +51530,6 @@
         {
           "label": "apples",
           "strength": 2
-        },
-        {
-          "label": "baked dishes",
-          "strength": 1,
-          "modifier": "e.g., biscuits, cakes, pies"
-        },
-        {
-          "label": "beef",
-          "strength": 1,
-          "modifier": "braised, raw"
-        },
-        {
-          "label": "berries",
-          "strength": 1
-        },
-        {
-          "label": "beverages",
-          "strength": 1,
-          "modifier": "e.g., chocolate, eggnog"
-        },
-        {
-          "label": "broccoli",
-          "strength": 1
-        },
-        {
-          "label": "butter",
-          "strength": 1
-        },
-        {
-          "label": "cabbage",
-          "strength": 1
-        },
-        {
-          "label": "cakes",
-          "strength": 1
-        },
-        {
-          "label": "cardamom",
-          "strength": 1
         },
         {
           "label": "carrots",
@@ -56926,15 +55084,6 @@
           "strength": 2
         },
         {
-          "label": "fish",
-          "strength": 2,
-          "modifier": "esp. oilier, and esp. baked or grilled"
-        },
-        {
-          "label": "garlic",
-          "strength": 2
-        },
-        {
           "label": "greens, bitter",
           "strength": 1
         },
@@ -58292,121 +56441,6 @@
       },
       "pairings": [
         {
-          "label": "compatible with virtually all other herbs.",
-          "strength": 1
-        },
-        {
-          "label": "avocados",
-          "strength": 1
-        },
-        {
-          "label": "basil",
-          "strength": 2
-        },
-        {
-          "label": "bay leaf",
-          "strength": 1
-        },
-        {
-          "label": "beans",
-          "strength": 1,
-          "modifier": "esp. dried"
-        },
-        {
-          "label": "beef",
-          "strength": 1
-        },
-        {
-          "label": "bouquet garni",
-          "strength": 1,
-          "modifier": "ingredient, along with bay leaf, marjoram, thyme"
-        },
-        {
-          "label": "braised dishes",
-          "strength": 1
-        },
-        {
-          "label": "bulgur wheat",
-          "strength": 1
-        },
-        {
-          "label": "butter",
-          "strength": 1
-        },
-        {
-          "label": "capers",
-          "strength": 1
-        },
-        {
-          "label": "carrots",
-          "strength": 2
-        },
-        {
-          "label": "cauliflower",
-          "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 1,
-          "modifier": "esp. parmesan, ricotta"
-        },
-        {
-          "label": "chervil",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 2
-        },
-        {
-          "label": "chile peppers",
-          "strength": 1
-        },
-        {
-          "label": "chives",
-          "strength": 1
-        },
-        {
-          "label": "cinnamon",
-          "strength": 1
-        },
-        {
-          "label": "clams",
-          "strength": 2
-        },
-        {
-          "label": "cream",
-          "strength": 1
-        },
-        {
-          "label": "cream cheese",
-          "strength": 1
-        },
-        {
-          "label": "crème fraîche",
-          "strength": 1
-        },
-        {
-          "label": "dill",
-          "strength": 1
-        },
-        {
-          "label": "eggs and egg dishes",
-          "strength": 2
-        },
-        {
-          "label": "eggplant",
-          "strength": 2
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "fines herbes (ingredient)",
-          "strength": 1
-        },
-        {
           "label": "fish",
           "strength": 3
         },
@@ -59231,50 +57265,6 @@
           "label": "cream",
           "strength": 2,
           "modifier": "esp. with fettuccine, festonate, gnocchi, or pappardelle"
-        },
-        {
-          "label": "cured meats",
-          "strength": 2,
-          "modifier": "bacon, ham, pancetta, prosciutto"
-        },
-        {
-          "label": "duck confit",
-          "strength": 1
-        },
-        {
-          "label": "eggplant",
-          "strength": 1
-        },
-        {
-          "label": "eggs",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "figs",
-          "strength": 1
-        },
-        {
-          "label": "fish",
-          "strength": 1,
-          "modifier": "e.g., cod, salmon, swordfish, tuna"
-        },
-        {
-          "label": "game",
-          "strength": 1,
-          "modifier": "esp. with fettuccine or pappardelle"
-        },
-        {
-          "label": "garlic",
-          "strength": 2
-        },
-        {
-          "label": "greens",
-          "strength": 1,
-          "modifier": "e.g., arugula, radicchio, stridoli"
         },
         {
           "label": "lamb",
@@ -60282,11 +58272,6 @@
           "strength": 3
         },
         {
-          "label": "meats",
-          "strength": 1,
-          "modifier": "esp. fatty, grilled, and/or roasted"
-        },
-        {
           "label": "mint (garnish)",
           "strength": 2
         },
@@ -60918,44 +58903,6 @@
           "strength": 1
         },
         {
-          "label": "baked goods",
-          "strength": 1,
-          "modifier": "e.g., breads, cookies, pies"
-        },
-        {
-          "label": "bananas",
-          "strength": 2
-        },
-        {
-          "label": "blackberries",
-          "strength": 1
-        },
-        {
-          "label": "blueberries",
-          "strength": 1
-        },
-        {
-          "label": "bourbon",
-          "strength": 2
-        },
-        {
-          "label": "brandy",
-          "strength": 1
-        },
-        {
-          "label": "breakfast",
-          "strength": 1,
-          "modifier": "e.g., pancakes, waffles"
-        },
-        {
-          "label": "butter, unsalted",
-          "strength": 2
-        },
-        {
-          "label": "butterscotch",
-          "strength": 1
-        },
-        {
           "label": "caramel",
           "strength": 3
         },
@@ -61414,130 +59361,7 @@
         "weight": "light–medium",
         "volume": "moderate"
       },
-      "pairings": [
-        {
-          "label": "the flavor is less sharp than black pepper.",
-          "strength": 1
-        },
-        {
-          "label": "avocados",
-          "strength": 1
-        },
-        {
-          "label": "bay leaf",
-          "strength": 1
-        },
-        {
-          "label": "beef",
-          "strength": 1
-        },
-        {
-          "label": "brandy",
-          "strength": 1
-        },
-        {
-          "label": "butter",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 2
-        },
-        {
-          "label": "cream",
-          "strength": 1
-        },
-        {
-          "label": "curries",
-          "strength": 1
-        },
-        {
-          "label": "duck",
-          "strength": 1
-        },
-        {
-          "label": "game",
-          "strength": 1
-        },
-        {
-          "label": "garlic",
-          "strength": 2
-        },
-        {
-          "label": "ham",
-          "strength": 1
-        },
-        {
-          "label": "meats",
-          "strength": 2,
-          "modifier": "esp. grilled and/or red"
-        },
-        {
-          "label": "mustard",
-          "strength": 1
-        },
-        {
-          "label": "parsley",
-          "strength": 1
-        },
-        {
-          "label": "pâtés",
-          "strength": 2
-        },
-        {
-          "label": "pork",
-          "strength": 1
-        },
-        {
-          "label": "sage",
-          "strength": 1
-        },
-        {
-          "label": "salads and salad dressings",
-          "strength": 1
-        },
-        {
-          "label": "salmon",
-          "strength": 1
-        },
-        {
-          "label": "sauces",
-          "strength": 2,
-          "modifier": "creamy, white"
-        },
-        {
-          "label": "seafood",
-          "strength": 2
-        },
-        {
-          "label": "shrimp",
-          "strength": 1
-        },
-        {
-          "label": "stock, veal",
-          "strength": 1
-        },
-        {
-          "label": "turkey",
-          "strength": 1
-        },
-        {
-          "label": "veal",
-          "strength": 1
-        },
-        {
-          "label": "vegetables",
-          "strength": 1
-        },
-        {
-          "label": "venison",
-          "strength": 1
-        },
-        {
-          "label": "wine, white",
-          "strength": 1
-        }
-      ],
+      "pairings": [],
       "quotes": [],
       "tips": [
         "Add at the end of the cooking process."
@@ -62561,10 +60385,6 @@
           "strength": 1
         },
         {
-          "label": "pineapple benefits from a touch of vanilla.",
-          "strength": 2
-        },
-        {
           "label": "chile peppers",
           "strength": 2,
           "modifier": "fresh, dried, red, green (e.g., jalapeño)"
@@ -62830,6 +60650,10 @@
         {
           "text": "I like the combination of rosemary with pineapple.",
           "attribution": "MICHAEL LAISKONIS, LE BERNARDIN (NEW YORK CITY)"
+        },
+        {
+          "text": "Pineapple benefits from a touch of vanilla.",
+          "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
         },
         {
           "text": "You have to be careful with pine nuts because they are so strong that they will dominate a dessert. If I use even a small amount in an apple dessert, it turns it into a pine nut dessert.",
@@ -63168,36 +60992,6 @@
         },
         {
           "label": "cauliflower",
-          "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "goat, parmesan, ricotta, taleggio"
-        },
-        {
-          "label": "cherries",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 2
-        },
-        {
-          "label": "chocolate",
-          "strength": 2,
-          "modifier": "dark, white"
-        },
-        {
-          "label": "coconut",
-          "strength": 1
-        },
-        {
-          "label": "cranberries",
-          "strength": 1
-        },
-        {
-          "label": "cream and ice cream",
           "strength": 1
         },
         {
@@ -64490,7 +62284,6 @@
       ],
       "cuisines": [
         "middle-eastern-cuisine",
-        "spanish-cuisine",
         "georgian-cuisine",
         "iranian-cuisine"
       ]
@@ -70899,10 +68692,6 @@
           "strength": 2
         },
         {
-          "label": "rosemary works well with citrus and honey.",
-          "strength": 2
-        },
-        {
           "label": "shellfish",
           "strength": 1
         },
@@ -71009,6 +68798,10 @@
         {
           "text": "Rosemary can be strong with seafood unless it is a full-flavored seafood. We will skewer mussels with rosemary and panfry them because they work with the piney flavor of the mussels.",
           "attribution": "JERRY TRAUNFELD, THE HERBFARM (WOODINVILLE, WASHINGTON)"
+        },
+        {
+          "text": "Rosemary works well with citrus and honey.",
+          "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
         },
         {
           "text": "The Martinique rums tend to be drier, while Haitian rums tend to be spicier. I use more spices with rum in general, and herbs with spirits such as gin.",
@@ -73430,93 +71223,11 @@
         {
           "label": "ham",
           "strength": 1
-        },
-        {
-          "label": "ingredients with added salt",
-          "strength": 1,
-          "modifier": "e.g., chips, nuts"
-        },
-        {
-          "label": "kelp",
-          "strength": 1
-        },
-        {
-          "label": "lemons, preserved",
-          "strength": 1
-        },
-        {
-          "label": "lox",
-          "strength": 1
-        },
-        {
-          "label": "nuts, salted",
-          "strength": 1
-        },
-        {
-          "label": "olives",
-          "strength": 1
-        },
-        {
-          "label": "oysters",
-          "strength": 1
-        },
-        {
-          "label": "oyster sauce",
-          "strength": 1
-        },
-        {
-          "label": "pancetta",
-          "strength": 1
-        },
-        {
-          "label": "pickles (salty-sour)",
-          "strength": 1
-        },
-        {
-          "label": "prosciutto",
-          "strength": 1
-        },
-        {
-          "label": "salmon, smoked",
-          "strength": 1
-        },
-        {
-          "label": "salt",
-          "strength": 2
-        },
-        {
-          "label": "salt cod",
-          "strength": 1
-        },
-        {
-          "label": "salt pork",
-          "strength": 1
-        },
-        {
-          "label": "sardines",
-          "strength": 1
-        },
-        {
-          "label": "sausages, salty",
-          "strength": 1,
-          "modifier": "e.g., chorizo"
-        },
-        {
-          "label": "sea urchin",
-          "strength": 1
-        },
-        {
-          "label": "sea vegetables",
-          "strength": 1
-        },
-        {
-          "label": "seaweed",
-          "strength": 1
         }
       ],
       "quotes": [
         {
-          "text": "If you have a piece of Ibérico or Serrano ham in your refrigerator, you’ll eventually end up with this little end of dried-out salt-cured meat. While some might just throw it away, we know there’s a lot of flavor left — so we grind it up in a coffee grinder and use it as meat-flavored salt. We call this “ham salt,” and will use this on a salad to emphasize the aroma and flavor of pork. . . . In Spain we have mojama , which is tuna loin cured like ham. We’ll grind it up in a coffee grinder and it becomes tuna salt. When I sear tuna, I will sprinkle this on and emphasize the tuna with its own tuna flavor. It is simple and dramatic. I even showed this technique to the owner of the best tuna restaurant in the world — called El Campero in Barbate, Spain — where he serves tuna a hundred ways. He loved it!",
+          "text": "ingredients with added salt (e.g., chips, nuts) kelp lemons, preserved lox nuts, salted olives oysters oyster sauce pancetta pickles (salty-sour) prosciutto salmon, smoked salt salt cod salt pork sardines sausages, salty (e.g., chorizo) sea urchin sea vegetables seaweed If you have a piece of Ibérico or Serrano ham in your refrigerator, you’ll eventually end up with this little end of dried-out salt-cured meat. While some might just throw it away, we know there’s a lot of flavor left — so we grind it up in a coffee grinder and use it as meat-flavored salt. We call this “ham salt,” and will use this on a salad to emphasize the aroma and flavor of pork. . . . In Spain we have mojama , which is tuna loin cured like ham. We’ll grind it up in a coffee grinder and it becomes tuna salt. When I sear tuna, I will sprinkle this on and emphasize the tuna with its own tuna flavor. It is simple and dramatic. I even showed this technique to the owner of the best tuna restaurant in the world — called El Campero in Barbate, Spain — where he serves tuna a hundred ways. He loved it!",
           "attribution": "JOSÉ ANDRÉS, CAFÉ ATLÁNTICO (WASHINGTON, DC)"
         },
         {
@@ -74976,19 +72687,6 @@
           "strength": 2
         },
         {
-          "label": "bacon and other cured meats",
-          "strength": 2,
-          "modifier": "e.g., serrano ham"
-        },
-        {
-          "label": "basil",
-          "strength": 2
-        },
-        {
-          "label": "bay leaf",
-          "strength": 1
-        },
-        {
           "label": "brussels sprouts",
           "strength": 1
         },
@@ -75234,34 +72932,6 @@
         },
         {
           "label": "mustard, dijon",
-          "strength": 1
-        },
-        {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, corn, grapeseed, peanut, vegetable"
-        },
-        {
-          "label": "oil",
-          "strength": 1,
-          "modifier": "almond, hazelnut"
-        },
-        {
-          "label": "olive oil",
-          "strength": 1
-        },
-        {
-          "label": "onions",
-          "strength": 2,
-          "modifier": "esp. red, white, yellow"
-        },
-        {
-          "label": "orange",
-          "strength": 1,
-          "modifier": "juice, zest"
-        },
-        {
-          "label": "pancetta",
           "strength": 1
         },
         {
@@ -75882,59 +73552,6 @@
           "strength": 1
         },
         {
-          "label": "salads (green, pasta) and salad dressings",
-          "strength": 2
-        },
-        {
-          "label": "scallions",
-          "strength": 1
-        },
-        {
-          "label": "scallops",
-          "strength": 1
-        },
-        {
-          "label": "sesame oil",
-          "strength": 1
-        },
-        {
-          "label": "shellfish",
-          "strength": 1
-        },
-        {
-          "label": "shrimp",
-          "strength": 1
-        },
-        {
-          "label": "soy sauce",
-          "strength": 1
-        },
-        {
-          "label": "spinach",
-          "strength": 2
-        },
-        {
-          "label": "stir-fried dishes",
-          "strength": 1
-        },
-        {
-          "label": "sugar",
-          "strength": 1
-        },
-        {
-          "label": "sumac",
-          "strength": 1
-        },
-        {
-          "label": "tahini paste",
-          "strength": 2,
-          "modifier": "key ingredient"
-        },
-        {
-          "label": "thyme",
-          "strength": 1
-        },
-        {
           "label": "vanilla",
           "strength": 1
         },
@@ -76271,7 +73888,6 @@
       "cuisines": [
         "greek-cuisine",
         "mediterranean-cuisine",
-        "spanish-cuisine",
         "portuguese-cuisine",
         "vietnamese-cuisine",
         "australian-cuisine",
@@ -76818,28 +74434,6 @@
           "strength": 1
         },
         {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, corn, grapeseed, peanut, vegetable"
-        },
-        {
-          "label": "oil",
-          "strength": 1,
-          "modifier": "peanut, sesame (for drizzling)"
-        },
-        {
-          "label": "old bay seasoning",
-          "strength": 2
-        },
-        {
-          "label": "olive oil",
-          "strength": 2
-        },
-        {
-          "label": "olives, black",
-          "strength": 1
-        },
-        {
           "label": "onions",
           "strength": 2,
           "modifier": "esp. red, spanish, white"
@@ -77376,48 +74970,7 @@
       "meta": {
         "season": "autumn–winter"
       },
-      "pairings": [
-        {
-          "label": "for the opposite of slow-cooked, see freshness.",
-          "strength": 2
-        },
-        {
-          "label": "cumin",
-          "strength": 1
-        },
-        {
-          "label": "garlic",
-          "strength": 1
-        },
-        {
-          "label": "ginger",
-          "strength": 1
-        },
-        {
-          "label": "horseradish",
-          "strength": 1
-        },
-        {
-          "label": "onions",
-          "strength": 1
-        },
-        {
-          "label": "oregano",
-          "strength": 1
-        },
-        {
-          "label": "rosemary",
-          "strength": 1
-        },
-        {
-          "label": "shallots",
-          "strength": 1
-        },
-        {
-          "label": "thyme",
-          "strength": 1
-        }
-      ],
+      "pairings": [],
       "quotes": [],
       "tips": [
         "These herbs and flavorings taste better with longer cooking."
@@ -78953,40 +76506,6 @@
           "strength": 3
         },
         {
-          "label": "oil",
-          "strength": 2,
-          "modifier": "canola, peanut, sesame, vegetable, walnut"
-        },
-        {
-          "label": "olive oil",
-          "strength": 2
-        },
-        {
-          "label": "onions",
-          "strength": 2,
-          "modifier": "esp. sweet"
-        },
-        {
-          "label": "pancetta",
-          "strength": 1
-        },
-        {
-          "label": "paprika, sweet",
-          "strength": 1
-        },
-        {
-          "label": "parsley",
-          "strength": 1
-        },
-        {
-          "label": "pasta",
-          "strength": 1
-        },
-        {
-          "label": "pecans",
-          "strength": 1
-        },
-        {
           "label": "pepper",
           "strength": 2,
           "modifier": "black, white"
@@ -79303,11 +76822,6 @@
         {
           "label": "sandwiches",
           "strength": 1
-        },
-        {
-          "label": "stir-fried dishes",
-          "strength": 1,
-          "modifier": "esp. heartier sprouts"
         }
       ],
       "quotes": [],
@@ -79983,136 +77497,6 @@
         {
           "label": "butter",
           "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "goat, gruyère, mozzarella, parmesan"
-        },
-        {
-          "label": "chile peppers",
-          "strength": 2,
-          "modifier": "dried red, fresh green"
-        },
-        {
-          "label": "chives",
-          "strength": 2
-        },
-        {
-          "label": "cinnamon",
-          "strength": 1
-        },
-        {
-          "label": "coconut",
-          "strength": 1
-        },
-        {
-          "label": "coriander",
-          "strength": 1
-        },
-        {
-          "label": "corn",
-          "strength": 1
-        },
-        {
-          "label": "cream",
-          "strength": 1
-        },
-        {
-          "label": "cumin",
-          "strength": 1
-        },
-        {
-          "label": "curry leaves",
-          "strength": 1
-        },
-        {
-          "label": "dill",
-          "strength": 1
-        },
-        {
-          "label": "eggplant",
-          "strength": 1
-        },
-        {
-          "label": "garlic",
-          "strength": 2
-        },
-        {
-          "label": "lemon, juice",
-          "strength": 1
-        },
-        {
-          "label": "marjoram",
-          "strength": 2
-        },
-        {
-          "label": "mint",
-          "strength": 1
-        },
-        {
-          "label": "mustard seeds, black",
-          "strength": 1
-        },
-        {
-          "label": "olive oil",
-          "strength": 2
-        },
-        {
-          "label": "onions",
-          "strength": 2
-        },
-        {
-          "label": "oregano",
-          "strength": 2
-        },
-        {
-          "label": "parsley, flat-leaf",
-          "strength": 2
-        },
-        {
-          "label": "pecans",
-          "strength": 1
-        },
-        {
-          "label": "pepper, black",
-          "strength": 1
-        },
-        {
-          "label": "rosemary",
-          "strength": 1
-        },
-        {
-          "label": "sage",
-          "strength": 2
-        },
-        {
-          "label": "salt",
-          "strength": 1
-        },
-        {
-          "label": "sausage, italian",
-          "strength": 1
-        },
-        {
-          "label": "thyme",
-          "strength": 2
-        },
-        {
-          "label": "tomatoes",
-          "strength": 1
-        },
-        {
-          "label": "turmeric",
-          "strength": 1
-        },
-        {
-          "label": "walnuts",
-          "strength": 1
-        },
-        {
-          "label": "yogurt",
-          "strength": 1
         }
       ],
       "quotes": [],
@@ -80535,11 +77919,6 @@
           "label": "melon",
           "strength": 1,
           "modifier": "esp. cantaloupe, watermelon"
-        },
-        {
-          "label": "oil",
-          "strength": 1,
-          "modifier": "grapeseed, peanut (for frying), walnut"
         },
         {
           "label": "olive oil",
@@ -80999,123 +78378,6 @@
         {
           "label": "walnuts",
           "strength": 1
-        },
-        {
-          "label": "wine",
-          "strength": 1,
-          "modifier": "red or rosé (e.g., beaujolais, cabernet sauvignon), sweet white (e.g., moscato d’asti, muscat, riesling, sauternes, vin santo)"
-        },
-        {
-          "label": "yogurt",
-          "strength": 1
-        },
-        {
-          "label": "zabaglione",
-          "strength": 1
-        },
-        {
-          "label": "salt",
-          "strength": 1
-        },
-        {
-          "label": "grand marnier",
-          "strength": 1
-        },
-        {
-          "label": "apples",
-          "strength": 1
-        },
-        {
-          "label": "bread crumbs",
-          "strength": 1
-        },
-        {
-          "label": "butter, unsalted",
-          "strength": 1
-        },
-        {
-          "label": "celery",
-          "strength": 1
-        },
-        {
-          "label": "chestnuts",
-          "strength": 1
-        },
-        {
-          "label": "chicken fat",
-          "strength": 1
-        },
-        {
-          "label": "chicken livers",
-          "strength": 1
-        },
-        {
-          "label": "corn bread",
-          "strength": 1
-        },
-        {
-          "label": "garlic",
-          "strength": 1
-        },
-        {
-          "label": "mushrooms",
-          "strength": 1,
-          "modifier": "e.g., shiitakes"
-        },
-        {
-          "label": "olive oil",
-          "strength": 1
-        },
-        {
-          "label": "onions",
-          "strength": 1
-        },
-        {
-          "label": "parsley, flat-leaf",
-          "strength": 1
-        },
-        {
-          "label": "pecans",
-          "strength": 1
-        },
-        {
-          "label": "pepper",
-          "strength": 1,
-          "modifier": "black, white"
-        },
-        {
-          "label": "prosciutto",
-          "strength": 1
-        },
-        {
-          "label": "rosemary",
-          "strength": 1
-        },
-        {
-          "label": "sage",
-          "strength": 1
-        },
-        {
-          "label": "salt, kosher",
-          "strength": 1
-        },
-        {
-          "label": "sausage",
-          "strength": 1,
-          "modifier": "esp. chicken, pork"
-        },
-        {
-          "label": "stocks",
-          "strength": 1,
-          "modifier": "chicken, turkey"
-        },
-        {
-          "label": "thyme",
-          "strength": 1
-        },
-        {
-          "label": "walnuts",
-          "strength": 1
         }
       ],
       "quotes": [],
@@ -81141,12 +78403,7 @@
         "taste": "sweet",
         "function": "cooling"
       },
-      "pairings": [
-        {
-          "label": "syrup, as the combination is too intense.",
-          "strength": 1
-        }
-      ],
+      "pairings": [],
       "quotes": [],
       "tips": [
         "Balance sweetness with acid (e.g., vinegar) and salt. Avoid dark brown sugar with maple"
@@ -81686,28 +78943,6 @@
           "strength": 1
         },
         {
-          "label": "pickled dishes",
-          "strength": 1,
-          "modifier": "e.g., fish, meat, vegetables"
-        },
-        {
-          "label": "potatoes",
-          "strength": 1
-        },
-        {
-          "label": "shellfish",
-          "strength": 1
-        },
-        {
-          "label": "soups",
-          "strength": 1,
-          "modifier": "esp. fruit"
-        },
-        {
-          "label": "sugar",
-          "strength": 1
-        },
-        {
           "label": "garlic",
           "strength": 1
         },
@@ -81942,187 +79177,6 @@
         "function": "cooling; sweetness satiates the appetite"
       },
       "pairings": [
-        {
-          "label": "round out flavors, while acidity sharpens them.",
-          "strength": 1
-        },
-        {
-          "label": "apple",
-          "strength": 1,
-          "modifier": "cider, fruit, juice"
-        },
-        {
-          "label": "apricots",
-          "strength": 1
-        },
-        {
-          "label": "bananas",
-          "strength": 1
-        },
-        {
-          "label": "barley",
-          "strength": 1
-        },
-        {
-          "label": "basil, sweet",
-          "strength": 1
-        },
-        {
-          "label": "beans",
-          "strength": 1
-        },
-        {
-          "label": "beets",
-          "strength": 1
-        },
-        {
-          "label": "bell peppers",
-          "strength": 1,
-          "modifier": "red, yellow"
-        },
-        {
-          "label": "brandies, fruit",
-          "strength": 1,
-          "modifier": "e.g., calvados"
-        },
-        {
-          "label": "butter",
-          "strength": 1
-        },
-        {
-          "label": "caramel",
-          "strength": 1
-        },
-        {
-          "label": "carrots",
-          "strength": 1
-        },
-        {
-          "label": "cherries, sweet",
-          "strength": 1
-        },
-        {
-          "label": "chestnuts",
-          "strength": 1
-        },
-        {
-          "label": "chocolate",
-          "strength": 1,
-          "modifier": "dark, milk, white"
-        },
-        {
-          "label": "clementines",
-          "strength": 1
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "cocoa, sweetened",
-          "strength": 1
-        },
-        {
-          "label": "coconut and coconut milk",
-          "strength": 1
-        },
-        {
-          "label": "corn",
-          "strength": 1
-        },
-        {
-          "label": "corn syrup",
-          "strength": 1
-        },
-        {
-          "label": "crab",
-          "strength": 1
-        },
-        {
-          "label": "cream",
-          "strength": 1
-        },
-        {
-          "label": "currants",
-          "strength": 1
-        },
-        {
-          "label": "daikon",
-          "strength": 1
-        },
-        {
-          "label": "dates",
-          "strength": 1
-        },
-        {
-          "label": "figs",
-          "strength": 1
-        },
-        {
-          "label": "fruits",
-          "strength": 1,
-          "modifier": "dried, ripe"
-        },
-        {
-          "label": "fruit juices",
-          "strength": 1
-        },
-        {
-          "label": "garlic, roasted",
-          "strength": 1
-        },
-        {
-          "label": "ginger, candied",
-          "strength": 1
-        },
-        {
-          "label": "grapes",
-          "strength": 1
-        },
-        {
-          "label": "guava",
-          "strength": 1
-        },
-        {
-          "label": "hoisin sauce",
-          "strength": 1
-        },
-        {
-          "label": "honey",
-          "strength": 2
-        },
-        {
-          "label": "jicama",
-          "strength": 1
-        },
-        {
-          "label": "ketchup",
-          "strength": 1
-        },
-        {
-          "label": "lentils",
-          "strength": 1
-        },
-        {
-          "label": "licorice",
-          "strength": 1
-        },
-        {
-          "label": "liqueurs, sweet",
-          "strength": 1
-        },
-        {
-          "label": "lobster",
-          "strength": 1
-        },
-        {
-          "label": "lotus root",
-          "strength": 1
-        },
-        {
-          "label": "lychee nuts",
-          "strength": 1
-        },
         {
           "label": "madeira",
           "strength": 1
@@ -83649,36 +80703,6 @@
         },
         {
           "label": "rice",
-          "strength": 1
-        },
-        {
-          "label": "salads",
-          "strength": 1,
-          "modifier": "e.g., fruit, green) and salad dressings"
-        },
-        {
-          "label": "salmon",
-          "strength": 1
-        },
-        {
-          "label": "salsify",
-          "strength": 1
-        },
-        {
-          "label": "sauces",
-          "strength": 2,
-          "modifier": "e.g., béarnaise (key ingredient), creamy, hollandaise, tartar"
-        },
-        {
-          "label": "savory",
-          "strength": 1
-        },
-        {
-          "label": "scallops",
-          "strength": 1
-        },
-        {
-          "label": "shallots",
           "strength": 1
         },
         {
@@ -87141,7 +84165,6 @@
       ],
       "cuisines": [
         "mexican-cuisine",
-        "spanish-cuisine",
         "portuguese-cuisine"
       ]
     },
@@ -88388,55 +85411,6 @@
       },
       "pairings": [
         {
-          "label": "verjus is often more wine friendly than vinegar.",
-          "strength": 1
-        },
-        {
-          "label": "apples",
-          "strength": 1
-        },
-        {
-          "label": "apricots",
-          "strength": 1
-        },
-        {
-          "label": "asparagus",
-          "strength": 1
-        },
-        {
-          "label": "berries",
-          "strength": 1
-        },
-        {
-          "label": "cheese, goat",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 1
-        },
-        {
-          "label": "cranberries",
-          "strength": 1
-        },
-        {
-          "label": "cucumbers",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "fish",
-          "strength": 2,
-          "modifier": "e.g., halibut, salmon, tuna"
-        },
-        {
-          "label": "foie gras",
-          "strength": 1
-        },
-        {
           "label": "fruit",
           "strength": 3
         },
@@ -88668,23 +85642,6 @@
         },
         {
           "label": "vinaigrette",
-          "strength": 1
-        },
-        {
-          "label": "vinegar",
-          "strength": 1,
-          "modifier": "red wine, sherry (blending vinegars)"
-        },
-        {
-          "label": "walnut oil",
-          "strength": 1
-        },
-        {
-          "label": "watercress",
-          "strength": 1
-        },
-        {
-          "label": "white truffle oil",
           "strength": 1
         }
       ],
@@ -91905,23 +88862,6 @@
           "strength": 1
         },
         {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "goat, mozzarella, parmesan, ricotta"
-        },
-        {
-          "label": "corn",
-          "strength": 1
-        },
-        {
-          "label": "eggs",
-          "strength": 1
-        },
-        {
-          "label": "flour",
-          "strength": 1
-        },
-        {
           "label": "lobster",
           "strength": 1
         },
@@ -92435,27 +89375,12 @@
       "oregano",
       "paprika, sweet",
       "parsley",
-      "peppers",
-      "pine nuts",
-      "pomegranates",
-      "pork",
-      "rice",
-      "roasts",
       "rosemary",
-      "saffron",
       "sage",
       "savory",
-      "shellfish",
-      "sherry",
-      "soups",
-      "stews",
       "thyme",
       "tomatoes",
-      "vanilla",
-      "vegetables",
-      "vinegar",
-      "vinegar, sherry",
-      "walnuts"
+      "vinegar"
     ],
     "turkish-cuisine": [
       "beef",
