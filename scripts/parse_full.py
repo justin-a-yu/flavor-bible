@@ -78,10 +78,14 @@ NON_INGREDIENT_SLUGS = {
     "sous-vide-cooking",
 }
 
-# These headers appear as sidebars *within* an ingredient entry (e.g. "Dishes"
-# lists chef examples using that ingredient). They should NOT reset
-# current_ingredient — pairings that follow still belong to the same entry.
-MID_ENTRY_SIDEBARS = {"dishes"}
+# These headers appear as sidebars *within* an ingredient entry and should NOT
+# reset current_ingredient — pairings that follow still belong to the same entry.
+#
+# DISH_SIDEBARS  — content is parsed as {text, attribution} dish entries
+# NOTE_SIDEBARS  — content is collected as long-form notes (too long for tips)
+DISH_SIDEBARS = {"dishes"}
+NOTE_SIDEBARS = {"pairing-pastas-with-sauces"}
+MID_ENTRY_SIDEBARS = DISH_SIDEBARS | NOTE_SIDEBARS
 
 # Generic descriptor words that make a "See also" alias meaningless
 _ALIAS_STOP_WORDS = {"specific", "various", "other", "all", "different", "similar", "related"}
@@ -406,6 +410,12 @@ def classify_line(line_spans):
 
         return ("pairing", strength, full_text)
 
+    # ── Medium sans: sidebar content (dish items, sidebar notes/prose) ────────
+    # LiberationSans at pairing size but below header size — used for dish names,
+    # dish attributions inside "Dishes" sidebars, and sidebar prose intros.
+    if "LiberationSans" in font and PAIRING_SIZE <= size < HEADER_SIZE:
+        return ("sans_content", 0, full_text)
+
     return None
 
 
@@ -427,6 +437,14 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
     # Quote buffering
     prose_buffer   = []          # lines buffered waiting to see if attribution follows
 
+    # Dish sidebar state
+    in_dishes_section  = False   # True while inside a "Dishes" sidebar
+    pending_dish_name  = None    # dish name awaiting its attribution line
+
+    # Note sidebar state (long-form sidebar prose, e.g. "Pairing Pastas with Sauces")
+    in_note_section    = False
+    note_buffer        = []      # accumulates lines until sidebar ends
+
     def get_or_create(label):
         slug = canonical_label(label)
         if slug not in ingredients:
@@ -440,6 +458,8 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                 "pairings":   [],
                 "quotes":     [],
                 "tips":       [],
+                "notes":      [],
+                "dishes":     [],
                 "affinities": [],
                 "cuisines":   [],
             }
@@ -504,14 +524,34 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                 if role == "header":
                     discard_prose_buffer()
                     pending_pairing = None
+                    # Close any open sidebar sections before moving on
+                    in_dishes_section = False
+                    if pending_dish_name and current_ingredient in ingredients:
+                        ingredients[current_ingredient]["dishes"].append(
+                            {"text": pending_dish_name, "attribution": ""}
+                        )
+                    pending_dish_name = None
+                    if in_note_section and note_buffer and current_ingredient in ingredients:
+                        ingredients[current_ingredient]["notes"].append(
+                            "\n".join(note_buffer)
+                        )
+                    in_note_section = False
+                    note_buffer = []
+
                     if not found_first:
                         if slugify(clean) == "achiote-seeds":
                             found_first = True
                         else:
                             continue
-                    # Mid-entry sidebars (e.g. "Dishes") appear inside an
-                    # ingredient's section — skip without resetting context.
+                    # Mid-entry sidebars appear inside an ingredient's section —
+                    # activate the appropriate collection mode, don't reset context.
                     if canonical_label(clean) in MID_ENTRY_SIDEBARS:
+                        slug = canonical_label(clean)
+                        if slug in DISH_SIDEBARS:
+                            in_dishes_section = True
+                        elif slug in NOTE_SIDEBARS:
+                            in_note_section = True
+                            note_buffer = []
                         continue
                     if canonical_label(clean) in NON_INGREDIENT_SLUGS:
                         current_ingredient = None
@@ -545,6 +585,28 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                 elif role == "skip":
                     continue
 
+                # ── Sans-font sidebar content (dish items / notes) ─────────
+                elif role == "sans_content":
+                    if not current_ingredient or current_ingredient not in ingredients:
+                        continue
+                    if in_dishes_section:
+                        # Lines starting with "—" are dish attributions
+                        if clean.startswith("—") or clean.startswith("–"):
+                            attr = re.sub(r'^[—–]\s*', '', clean).strip()
+                            if pending_dish_name:
+                                ingredients[current_ingredient]["dishes"].append(
+                                    {"text": pending_dish_name, "attribution": attr}
+                                )
+                                pending_dish_name = None
+                        else:
+                            # Dish name — may be multi-line, concatenate
+                            if pending_dish_name:
+                                pending_dish_name += " " + clean
+                            else:
+                                pending_dish_name = clean
+                    elif in_note_section:
+                        note_buffer.append(clean)
+
                 # ── Attribution line — flush prose buffer as quote ─────────
                 elif role == "attribution":
                     flush_prose_as_quote(clean)
@@ -562,6 +624,38 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
 
                 # ── Pairing / meta / prose lines ───────────────────────────
                 elif role == "pairing":
+
+                    # Exit the dishes section — serif pairings resume
+                    if in_dishes_section:
+                        in_dishes_section = False
+                        if pending_dish_name and current_ingredient in ingredients:
+                            ingredients[current_ingredient]["dishes"].append(
+                                {"text": pending_dish_name, "attribution": ""}
+                            )
+                        pending_dish_name = None
+
+                    # Note section: route bullet/prose lines into note_buffer;
+                    # a short clean line signals we're back to normal pairings.
+                    if in_note_section and current_ingredient and current_ingredient in ingredients:
+                        stripped = clean.lstrip("•").strip()
+                        # Sentence-continuation words never start an ingredient name
+                        _cont_words = ("the ", "a ", "an ", "or ", "and ", "but ",
+                                       "so ", "when ", "if ", "then ", "in ", "with ",
+                                       "from ", "to ", "that ", "which ", "as ", "at ",
+                                       "into ", "for ", "of ")
+                        is_continuation = any(clean.lower().startswith(w) for w in _cont_words)
+                        if clean.startswith("•") or looks_like_quote(clean) \
+                                or len(clean) > 60 or is_continuation:
+                            note_buffer.append(stripped if clean.startswith("•") else clean)
+                            continue
+                        else:
+                            # Short content-word line — back to normal pairings
+                            in_note_section = False
+                            if note_buffer:
+                                ingredients[current_ingredient]["notes"].append(
+                                    "\n".join(note_buffer)
+                                )
+                            note_buffer = []
 
                     # Skip structural section labels
                     if clean_lower in SKIP_EXACT:

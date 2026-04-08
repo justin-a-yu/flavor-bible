@@ -158,6 +158,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "achiote + pork + sour orange",
         "almonds + cardamom + sugar",
@@ -738,6 +740,8 @@
       "tips": [
         "Add early in cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "allspice + beef + onions",
         "allspice + garlic + pork",
@@ -821,6 +825,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -1022,6 +1028,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "anchovies + lemon + olive oil + rosemary"
       ],
@@ -1082,6 +1090,8 @@
       "tips": [
         "Add late in cooking; use in baking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "angelica + cream + rhubarb"
       ],
@@ -1374,6 +1384,8 @@
       "tips": [
         "Add early in cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine",
@@ -1596,6 +1608,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -1888,6 +1902,8 @@
       "tips": [
         "Add at the beginning of the cooking process. Use in stir-fries."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "star anise + cream + maple",
         "star anise + milk + milk chocolate + orange zest + sugar",
@@ -2388,6 +2404,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "apples + almonds + caramel",
         "apples + almonds + Armagnac + crème fraîche + raisins",
@@ -2768,6 +2786,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "apricots + almonds + cream + sugar",
         "apricots + almonds + meringue + Moscato d’Asti",
@@ -2891,6 +2911,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "dried apricots + dried cherries + ginger + orange + pistachios"
       ],
@@ -3203,6 +3225,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Fettuccine with House-Made Pancetta, Artichokes, Lemon, and Hot Chiles",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Spring Artichoke Fritto with Yogurt, Mint, and Lemon Aioli",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        }
+      ],
       "affinities": [
         "artichokes + butter + garlic + lemon + parsley",
         "artichokes + cream + Parmesan cheese + thyme",
@@ -3399,6 +3432,25 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Jerusalem Artichoke Soup, Sweet Garlic Flan, “Sockeye” Salmon Tartare, Poached Quail Egg, and Crisp Sunchokes",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Arugula Risotto with Roquefort and Pignoli Nuts",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        },
+        {
+          "text": "Arugula Salad with Cucumber, Mt. Vikos Feta, Mint, Coriander Vinaigrette, and Niçoise Olives",
+          "attribution": "Judy Rodgers, Zuni Café (San Francisco)"
+        },
+        {
+          "text": "Sautéed Arugula with Paneer Cheese and Roasted Cashews",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        }
+      ],
       "affinities": [
         "Jerusalem artichoke + goat cheese + hazelnuts",
         "Jerusalem artichoke + lemon + morels"
@@ -3852,6 +3904,45 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Ricotta Gnocchi with Asparagus, Morels, and Pine Nuts",
+          "attribution": "Dan Barber, Blue Hill at Stone Barns (Pocantico Hills, New York)"
+        },
+        {
+          "text": "Asparagus and Ricotta “Mezzalune” with Spring Onion Butter",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Salad of Sacramento Delta Green Asparagus, Spring Garlic, Marinated Sweet Peppers, with Young Arugula and Yellow Pepper Gastrique",
+          "attribution": "Thomas Keller, The French Laundry (Yountville, California)"
+        },
+        {
+          "text": "Warm Salad of Sacramento Delta Green Asparagus, Melted Cipollini Onion Rings, Soft- Boiled Hen Egg, and Country Bread Croutons",
+          "attribution": "Thomas Keller, The French Laundry (Yountville, California)"
+        },
+        {
+          "text": "Green Asparagus Soup with Gyromitre Mushrooms and Soft-Poached Farm Egg",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        },
+        {
+          "text": "Warm Salad of Grilled Asparagus and Prawns with a Sherry Vinaigrette",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Vegetarian Sushi: Asparagus and Roasted Bell Pepper Roll",
+          "attribution": "Kaz Okochi, Kaz Sushi Bistro (Washington, DC)"
+        },
+        {
+          "text": "Asparagus and Morel Mushroom Salad: Pancetta, Fiddlehead Ferns, Vermont Shepherd Cheese, and a Mushroom Reduction",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Terrine of Green and White Asparagus, Roasted Beet Root Salad, Asparagus Juices",
+          "attribution": "Rick Tramonto, Tru (Chicago)"
+        }
+      ],
       "affinities": [
         "arugula + balsamic vinegar + lemon + olive oil + Parmesan cheese",
         "arugula + Cabrales cheese + endive + grapes",
@@ -3999,6 +4090,8 @@
       "tips": [
         "Covered to deprive it of sunlight while growing, white asparagus is lighter in flavor and"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -4598,6 +4691,17 @@
       "tips": [
         "Use to add richness to a dish."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Avocado and Grapefruit with Poppy Seed Dressing",
+          "attribution": "Ann Cashion, Cashion’s Eat Place (Washington, DC)"
+        },
+        {
+          "text": "Creamy Avocado Pudding with Pink Grapefruit Reduction and Candied Zest",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        }
+      ],
       "affinities": [
         "avocado + bacon + scallions + tomatoes",
         "avocado + basil + red onions + tomatoes + balsamic vinegar",
@@ -4777,6 +4881,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Braised Bacon with Spring Vegetables and White Horseradish Broth",
+          "attribution": "Dan Barber, Blue Hill at Stone Barns (Pocantico Hills, New York)"
+        },
+        {
+          "text": "Smoked Bacon and Egg Ice Cream with Pain Perdu, Tea Jelly",
+          "attribution": "Heston Blumenthal, The Fat Duck (England)"
+        },
+        {
+          "text": "Berkshire Pork Chop with Scarlet Turnips, Roasted Rhubarb, and Smoked Bacon with Cherry-Almond Salsa Seca",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        }
+      ],
       "affinities": [
         "bacon + arugula + egg + pork belly",
         "bacon + chanterelle mushrooms + chicken + potatoes",
@@ -5106,6 +5225,53 @@
       "tips": [
         "Sugar enhances the flavor of bananas."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Chocolate-Banana Flan, Exotic Fruit Jelly, Spiced Fritters, Faux Foie Gras Emulsion, and Cumin Gel",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Sticky Toffee Pudding with Bananas, Medjool Dates, Oatmeal Ice Cream, Root Beer Reduction",
+          "attribution": "Gale Gand, pastry chef, Tru (Chicago)"
+        },
+        {
+          "text": "Banana-Coconut Split with Vanilla Ice Cream, Candied Coconut, Dulce de Leche, Fudge Sauce",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Caramelized Banana Tart with Coconut Ice Cream",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Banana Tempura with Black Raspberry Ice Cream",
+          "attribution": "Kaz Okochi, Kaz Sushi Bistro (Washington, DC)"
+        },
+        {
+          "text": "Macadamia Nut Tart with Banana-Rum Ice Cream",
+          "attribution": "Hiro Sone and Lissa Doumani, Terra (St. Helena, California)"
+        },
+        {
+          "text": "Banana-Toffee Tart",
+          "attribution": "Sandy D’Amato, Sanford (Milwaukee)"
+        },
+        {
+          "text": "Banana Tempura with Mango Ice Cream",
+          "attribution": "Sushi-Ko (Washington, DC)"
+        },
+        {
+          "text": "Banana Crème Brûlée, Citrus-Pistachio Biscuit, Beurre Noisette Ice Cream, Peanut Caramel",
+          "attribution": "Michael Laiskonis, pastry chef, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Caramelized Banana, Smoked Chocolate Ice Cream, Stout",
+          "attribution": "Sam Mason, wd-50 (New York City)"
+        },
+        {
+          "text": "Dover Sole with “Mostly Traditional Flavors” and Sliced Banana",
+          "attribution": "Grant Achatz, Alinea (Chicago)"
+        }
+      ],
       "affinities": [
         "banana + blackberries + cream",
         "banana + brown butter + caramel + citrus + peanuts",
@@ -5220,6 +5386,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -5550,6 +5718,8 @@
       "tips": [
         "Add just before serving."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "basil + coconut + curry",
         "basil + garlic + olive oil + salt",
@@ -5641,6 +5811,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "Thai basil + beef + pumpkin seed oil",
         "Thai basil + coconut milk + ginger"
@@ -5769,6 +5941,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -6012,6 +6186,29 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Paupiette of Black Sea Bass in a Crisp Potato Shell, with Tender Leeks and Syrah Sauce",
+          "attribution": "Daniel Boulud, Daniel (New York City)"
+        },
+        {
+          "text": "Sesame-Crusted Chilean Sea Bass with Baby Shrimp, Clams, and Artichokes",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Black Bass with Porcini Mushrooms, Braised Parsnips, and Chestnuts",
+          "attribution": "David Pasternak, Esca (New York City)"
+        },
+        {
+          "text": "Grilled Pacific Sea Bass for Two with Marinated Blood Orange and Lime — David Pasternak, Esca (New York City) Crisp Black Sea Bass with Olive-Caper Emulsion",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Spice-Crusted Black Sea Bass in Sweet and Sour Jus",
+          "attribution": "Jean-Georges Vongerichten, Jean Georges (New York City)"
+        }
+      ],
       "affinities": [
         "black bass + chutney + papaya",
         "black bass + new potatoes + shrimp"
@@ -6363,6 +6560,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Wild Carolina Coast Striped Bass “Riviera” with a Salad of Shaved Fennel, Arugula, and Babaganoush, Cured Tomatoes, Spanish Olives, and Yellow Pepper Broth",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Roasted Local Wild Striped Bass with Hubbard Squash, Caramelized Apple, and Wild Mushrooms",
+          "attribution": "David Pasternak, Esca (New York City)"
+        },
+        {
+          "text": "Poached Atlantic Striped Bass, Pasilla Chili, Cocoa, Duck Consommé",
+          "attribution": "Rick Tramonto, Tru (Chicago)"
+        }
+      ],
       "affinities": [
         "sea bass + artichokes + basil + chives + green beans + lemon + new potatoes",
         "sea bass + bacon + corn + fava beans",
@@ -6669,6 +6881,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "striped bass + bacon + sauerkraut",
         "striped bass + bok choy + fish sauce",
@@ -6975,6 +7189,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "french-cuisine",
@@ -7053,6 +7269,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mexican-cuisine",
@@ -7301,6 +7519,21 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Black Bean Soup Flavored with Grilled Wild Ramps, Avocado Leaf, and Cilantro, Studded with Sweet Roasted Chayote and Corn, Topped with Green Chile Salsa and Crispy Tortilla Strips",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        },
+        {
+          "text": "Black Bean Tamales Filled with Homemade Goat Cheese in “Guisado” of Wild and Woodland Mushrooms, Organic Roasted Tomatoes, Green Chile, and Mint; Watercress Salad",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        },
+        {
+          "text": "Black Beans Fried with Garlic, Onion, and Epazote, Topped with Mexican Fresh Cheese",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        }
+      ],
       "affinities": [
         "black beans + cumin + green bell peppers + oregano",
         "black beans + lemon + sherry"
@@ -7421,6 +7654,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Cannellini Bean Soup with Smoked Trout Croquette and Pumpkin Seed Oil",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -7695,6 +7935,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "fava beans + basil + spring onions",
         "fava beans + garlic + olive oil + rosemary",
@@ -7878,6 +8120,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "flageolet beans + garlic + thyme"
       ],
@@ -8134,6 +8378,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pasta with Basil Pesto, Green Beans, and Potatoes",
+          "attribution": "Lidia Bastianich, Felidia (New York City)"
+        }
+      ],
       "affinities": [
         "green beans + anchovies + garlic + Parmesan cheese + walnuts",
         "green beans + mustard + prosciutto + vinaigrette + walnuts"
@@ -8285,6 +8536,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "indian-cuisine",
@@ -8457,6 +8710,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "central-american-cuisine",
@@ -8577,6 +8832,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -8686,6 +8943,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "pinto beans + bacon + poblano chiles + tomatoes"
       ],
@@ -8757,6 +9016,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mexican-cuisine",
@@ -8998,6 +9259,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "A Latin Cassoulet of White Beans, Sausages, Smoked Bacon, and Kale Braised Slowly in the Wood-Burning Oven, with Spicy Sauce and Rice",
+          "attribution": "Maricel Presilla, Cucharamama (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Soup: White Bean Puree with Rosemary Oil",
+          "attribution": "Judy Rodgers, Zuni Café (San Francisco)"
+        }
+      ],
       "affinities": [
         "white beans + olive oil + pecorino cheese",
         "white beans + olive oil + rosemary + balsamic vinegar",
@@ -10599,6 +10871,85 @@
       "tips": [
         "Clove adds richness to beef."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "“Brasato al Barolo” Braised Beef with Porcini Mushrooms",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Mochomos: Crispy, Crunchy Shredded Montana Natural Beef with Crispy White Onion Strings, Guacamole, Spicy Chile Salsa, and Warm Tortillas for Making Soft Tacos",
+          "attribution": "Rick Bayless, Topolobampo (Chicago)"
+        },
+        {
+          "text": "Balsamic-Caramel Beef Cubes with Sticky Rice and Toasted Coconut",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Chateaubriand, Wild Mushrooms, Porcini-Flavored Diced Yukon Gold Potatoes, Syrah Sauce",
+          "attribution": "Michel Richard, Citronelle (Washington, DC)"
+        },
+        {
+          "text": "Ground Beef with Cream and Fenugreek on Yucca",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        },
+        {
+          "text": "Kobe Beef, Sautéed Foie Gras, Shaved Black Truffle, Madeira Sauce on an Onion Bun",
+          "attribution": "Hubert Keller, Burger Bar (Las Vegas)"
+        },
+        {
+          "text": "Kobe Beef Carpaccio, Shaved Parmesan, Arugula, and Horseradish Sauce",
+          "attribution": "Frank Stitt, Highlands Bar and Grill (Birmingham, Alabama)"
+        },
+        {
+          "text": "Cream of Sweet Onion, Braised Beef Oxtail, Aged Parmesan Tuile",
+          "attribution": "Jean Joho, Everest (Chicago)"
+        },
+        {
+          "text": "Seared Rib Eye, Caramelized Yukon Gold Potatoes, and Chanterelles",
+          "attribution": "Daniel Boulud, Daniel (New York City)"
+        },
+        {
+          "text": "Strip Loin Poached in Butter and Roasted with Sea Salt, Short Ribs Stuffed in Cremini Mushrooms with Potato Boulangère, Spinach Puree, and Foie Gras Hollandaise",
+          "attribution": "Jeffrey Buben, Vidalia (Washington, DC)"
+        },
+        {
+          "text": "Dry-Aged New York Steak with Slow-Cooked Broccoli, Garlic, and Lemon, Fingerling Potatoes, Niçoise Olive Jus",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        },
+        {
+          "text": "Skirt Steak Marinated in Seville Oranges and Lime Juice",
+          "attribution": "Maricel Presilla, Zafra (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Strawberry Mountain New York Strip, Grilled Lettuce, Olive Oil–Poached Tomato, and Lemon Cream",
+          "attribution": "Cory Schreiber, Wildwood (Portland, Oregon)"
+        },
+        {
+          "text": "Cast Iron–Seared Porcini-Crusted New York Sirloin Steak, Roasted Garlic Mash Potatoes, Black Trumpet Ragout, Braised Kale, Rum au Poivre",
+          "attribution": "Allen Susser, Chef Allen’s (Aventura, Florida)"
+        },
+        {
+          "text": "Grilled Filet Mignon, Crisp Potatoes, Spinach, and Roasted Garlic Custard",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Tournedos of Beef Tenderloin Worthy of a Splurge: Twin Filets of Beef Tenderloin Set on Brioche Toast, Slathered with Foie Gras Butter, and Served with Truffle Sauce, Port- Braised Cipollini Onions, Fingerling Potatoes, Spring Mushrooms, and Leek Puree",
+          "attribution": "Janos Wilder, Janos (Tucson)"
+        },
+        {
+          "text": "Flank Steak with Marinated Mushrooms, Artichokes, Tomatoes, Summer Squash, Whipple Farm Greens, Yellow Taxi Tomato Vinaigrette, and Basil-Garlic Aioli",
+          "attribution": "Jeffrey Buben, Vidalia (Washington, DC)"
+        },
+        {
+          "text": "Green Peppercorn Marinated Flank Steak with Balsamic Roasted Onions, Tomatoes, and Thai Barbecue Sauce",
+          "attribution": "Charlie Trotter, Trotter’s to Go (Chicago)"
+        },
+        {
+          "text": "Hanger Steak Pizzaiola with Local Peppers, Salsa Verde, Natural Juices",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        }
+      ],
       "affinities": [
         "beef + beer + onions",
         "beef + garlic + ginger",
@@ -10696,6 +11047,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "austrian-cuisine",
@@ -11014,6 +11367,49 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Roasted Beet Tartare with Chianti Vinegar and Ricotta Salata",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Roasted Beet Salad: Cabrales Blue Cheese, Endive, and Walnuts",
+          "attribution": "Daniel Boulud/Bertrand Chemel, Café Boulud (New York City)"
+        },
+        {
+          "text": "Roasted Beet Salad with Hazelnut, Gorgonzola, Barolo Vinegar",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        },
+        {
+          "text": "Squab Borscht with Root Vegetable Pierogi",
+          "attribution": "Sandy D’Amato, Sanford (Milwaukee)"
+        },
+        {
+          "text": "Roasted Beet Salad with a Warm Farm Egg, Caciocavallo Cheese, and Pickled Spring Onions",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        },
+        {
+          "text": "Roasted Beet Salad with Shaved Fennel and Chèvre",
+          "attribution": "Leslie Mackie, Macrina Bakery & Café (Seattle)"
+        },
+        {
+          "text": "Salad of Organic Beets and Gala Apples, “Beauty Heart” Radishes and Upland Cress, Cracked Hazelnuts, Great Hill Blue Cheese, and Quince “Must” Syrup",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Tartare of Yellow Beets with Sturgeon Caviar, and Dashi",
+          "attribution": "Kaz Okochi, Kaz Sushi Bistro (Washington, DC)"
+        },
+        {
+          "text": "Beets, Frisée, Cambazola, Candied Walnuts, Orange Sauce",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Beet, Apple, and Goat Cheese Tartlet with a Hazelnut-Champagne Dressing",
+          "attribution": "Thierry Rautureau, Rover’s (Seattle)"
+        }
+      ],
       "affinities": [
         "beets + chives + orange + tarragon",
         "beets + citrus + goat cheese + olive oil + shallots",
@@ -11371,6 +11767,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Berry Crème Fraîche Poppy Seed Cake",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Fresh Fruit: Black Garnet Cherries, Strawberries, Pistachios, Marshall Farms Honey, Straus Organic Whole Milk Yogurt",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Red Berry–White Chocolate Trifles",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        }
+      ],
       "affinities": [
         "bell peppers + basil + currants + garlic + pine nuts + sherry vinegar",
         "bell peppers + garlic + olive oil + onion + thyme + zucchini"
@@ -11480,6 +11891,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "canadian-cuisine"
@@ -11654,6 +12067,8 @@
       "tips": [
         "Bitterness relieves thirst."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -11877,6 +12292,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Blackberry-Almond Tart with Pineapple Carpaccio, Asian Pear, Ginger-Lime Caramel, and Beurre Noisette Ice Cream",
+          "attribution": "Michael Laiskonis, pastry chef, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Candied Ginger Shortbread Stacks with Peach-Blackberry Compote",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Blackberry Sorbet–Filled Peaches",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        }
+      ],
       "affinities": [
         "blackberries + crème de cassis + sugar",
         "blackberries + ginger + peaches",
@@ -12007,6 +12437,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "black-eyed peas + collard greens + ham hocks",
         "black-eyed peas + rice + savory"
@@ -12293,6 +12725,21 @@
       "tips": [
         "Can substitute huckleberries."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Risotto Fritters with Gingered Blueberries",
+          "attribution": "Jimmy Bradley, The Red Cat (New York City)"
+        },
+        {
+          "text": "Warm Blueberry Crostata with Crème Fraîche and Cinnamon",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Blueberry-Apple-Lavender Faux Gelato and Anise Tuile",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        }
+      ],
       "affinities": [
         "blueberries + cinnamon + cream + sugar",
         "blueberries + cream + lemon zest + mascarpone + sugar",
@@ -12373,6 +12820,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -12567,6 +13016,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -12615,6 +13066,8 @@
       "tips": [
         "Use large flakes to make fish stock and small flakes to season dishes."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "japanese-cuisine"
@@ -12643,6 +13096,8 @@
       "tips": [
         "Bundle of herbs is removed after cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "bay leaf + parsley + thyme"
       ],
@@ -12750,6 +13205,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "bourbon + grapefruit + honey",
         "bourbon + lemon + peaches",
@@ -12807,6 +13264,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -12831,6 +13290,8 @@
       "tips": [
         "Check here for ideas of meats or vegetables to add to a braised dish."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "african-cuisine",
@@ -12880,6 +13341,8 @@
       "tips": [
         "Brining meats (i.e., in salt water) before cooking increases their moistness, juiciness, and"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -12961,6 +13424,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "broccoli + anchovies + capers + red pepper flakes + garlic + olives",
         "broccoli + anchovies + lemon",
@@ -13036,6 +13501,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -13182,6 +13649,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Orecchiette with Rapini and Sweet Sausage",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Broccoli Rabe with Garlic and Oregano",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        }
+      ],
       "affinities": [
         "broccoli rabe + anchovies + red pepper flakes + garlic + olive oil",
         "broccoli rabe + garlic + oregano",
@@ -13264,6 +13742,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "Brussels sprouts + bacon + garlic + cider vinegar",
         "Brussels sprouts + bacon + onions",
@@ -13396,6 +13876,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Brussels Sprouts, Cranberry Polenta, and Braised Fennel with a Moroccan Olive Relish",
+          "attribution": "Thierry Rautureau, Rover’s (Seattle)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "middle-eastern-cuisine"
@@ -13445,6 +13932,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "brown butter + balsamic vinegar + fish",
         "brown butter + banana + nuts"
@@ -13572,6 +14061,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -13621,6 +14112,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Butterscotch-Praline Ice Cream Parfait",
+          "attribution": "Rebecca Charles, Pearl Oyster Bar (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -13869,6 +14367,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine",
@@ -14014,6 +14514,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine"
@@ -14177,6 +14679,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pommery Grain Mustard Ice Cream, Red Cabbage Gazpacho",
+          "attribution": "Heston Blumenthal, The Fat Duck (England)"
+        },
+        {
+          "text": "Sautéed Strawberries in Black Pepper–Cabernet Sauvignon Sauce with Vanilla Bean Ice Cream and Sacristan Cookie",
+          "attribution": "Lissa Doumani and Hiro Sone, Terra (St. Helena, California)"
+        }
+      ],
       "affinities": [
         "red cabbage + apples + cider vinegar",
         "red cabbage + bacon + blue cheese + walnuts",
@@ -14291,6 +14804,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -14343,6 +14858,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -14397,6 +14914,8 @@
       "tips": [
         "Generally an after-dinner drink."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "french-cuisine"
@@ -14491,6 +15010,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Cantaloupe “Sashimi,” Raspberry Gel, and Star Anise Dust",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -14659,6 +15185,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "capers + lemon + marjoram"
       ],
@@ -14800,6 +15328,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -14961,6 +15491,8 @@
       "tips": [
         "Add late in the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "austrian-cuisine",
@@ -15116,6 +15648,8 @@
       "tips": [
         "Add early when cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisine",
@@ -15512,6 +16046,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Carrot Cake with Peach-Ginger Cream and Saskatoon Berry Compote",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Carrot Cake with Vanilla Chantilly, Pecan Praline",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Roasted Carrots and Minted Pea Puree, and Moscato Vinegar",
+          "attribution": "Cory Schreiber, Wildwood (Portland, Oregon)"
+        }
+      ],
       "affinities": [
         "carrots + celery + onions (aka mirepoix)",
         "carrots + cilantro + lime",
@@ -15688,6 +16237,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "indian-cuisine"
@@ -15834,6 +16385,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "southern-cuisine-american"
@@ -16125,6 +16678,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Variation of Cauliflower with Raisins, Grenobloise Butter, and Fried Pantelleria Capers",
+          "attribution": "Daniel Boulud, Daniel (New York City)"
+        },
+        {
+          "text": "Cauliflower Panna Cotta Topped with American Paddlefish Caviar and Cockle Emulsion",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        },
+        {
+          "text": "Cauliflower Rice Pilaf with Raita",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        }
+      ],
       "affinities": [
         "cauliflower + anchovies + red pepper flakes + garlic + olive oil",
         "cauliflower + bread crumbs + brown butter + parsley",
@@ -16225,6 +16793,25 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Yellowtail Tuna with Spinach Puree, Potato Salad, and Osetra Caviar and Vodka Sauce",
+          "attribution": "David Bouley, Danube (New York City)"
+        },
+        {
+          "text": "Scrambled Egg with Lime Crème Fraîche and Sturgeon Caviar",
+          "attribution": "Thierry Rautureau, Rover’s (Seattle)"
+        },
+        {
+          "text": "Royal Ostera Caviar Served with Warm Crepes, Toast, and Crème Fraîche",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Caviar-Pasta: Osetra on a Nest of Tagliolini, Quail Egg, and Bacon Carbonara Sauce",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "french-cuisine",
@@ -16368,6 +16955,8 @@
       "tips": [
         "Cayenne tastes hotter the more it cooks."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cayenne + coriander + cumin + garlic"
       ],
@@ -16517,6 +17106,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "celery + carrots + onions (aka mirepoix)",
         "celery + tarragon + vinegar"
@@ -16805,6 +17396,13 @@
       "tips": [
         "Always peel before using."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Celery Root Soup with Spiced Pumpernickel Bread, Confit Shallot, and Parsley Emulsion",
+          "attribution": "Charlie Trotter, Charlie Trotter’s (Chicago)"
+        }
+      ],
       "affinities": [
         "celery root + cream + potatoes + vinegar",
         "celery root + lemon + mayonnaise + mustard"
@@ -16834,6 +17432,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -16984,6 +17584,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "cajun-creole-cuisines",
@@ -17040,6 +17642,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisine"
@@ -17097,6 +17701,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -17291,6 +17897,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "chard + bell peppers + pecorino cheese + eggplant",
         "chard + red pepper flakes + lemon juice"
@@ -17351,6 +17959,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -17413,6 +18023,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "english-cuisine",
@@ -17475,6 +18087,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -17493,6 +18107,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -17612,6 +18228,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -17703,6 +18321,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Baked Blue Cheesecake Mousse with Rhubarb Compote and Celery Confit",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Bruschetta with Burrata Cheese, Caponata, and Fava Bean Puree",
+          "attribution": "Hiro Sone, Terra (St. Helena, California)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "french-cuisine"
@@ -17758,6 +18387,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -17801,6 +18432,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -17867,6 +18500,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18004,6 +18639,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18048,6 +18685,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18077,6 +18716,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18102,6 +18743,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18126,6 +18769,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18142,6 +18787,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18272,6 +18919,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "feta cheese + chicken + mint",
         "feta cheese + roasted red bell peppers + mint",
@@ -18336,6 +18985,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18356,6 +19007,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18372,6 +19025,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18699,6 +19354,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Almond-Infused Goat’s Milk Cheesecake",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Mediterranean “Greek Salad” of Mt. Vikos Feta, Kalamata Olives, Plum Tomatoes, Cucumbers, Torn Mint and Oregano, Warm Feta Cheese “Turnover”",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        }
+      ],
       "affinities": [
         "goat cheese + almonds + honey + pears",
         "goat cheese + cherries + thyme",
@@ -18812,6 +19478,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "Gorgonzola + mint + walnuts"
       ],
@@ -18827,6 +19495,8 @@
       "pairings": [],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18910,6 +19580,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "swiss-cuisine"
@@ -18932,6 +19604,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18972,6 +19646,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -18988,6 +19664,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19063,6 +19741,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "manchego cheese + almonds + quince paste"
       ],
@@ -19091,6 +19771,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19198,6 +19880,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Mozzarella di Bufala, Eggplant Agrodolce, Artichoke con Pesto",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        }
+      ],
       "affinities": [
         "mozzarella cheese + basil + olive oil + tomatoes",
         "mozzarella cheese + olives + prosciutto"
@@ -19239,6 +19928,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19337,6 +20028,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -19420,6 +20113,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19436,6 +20131,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19469,6 +20166,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Parmesan Broth with Prosciutto and Peas, Scallion Parmesan Flan",
+          "attribution": "Sanford D’Amato, Sanford (Milwaukee)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -19495,6 +20199,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19728,6 +20434,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "ricotta + bread + honey + Prosecco"
       ],
@@ -19801,6 +20509,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "Roquefort cheese + figs + pears"
       ],
@@ -19851,6 +20561,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19884,6 +20596,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19908,6 +20622,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19964,6 +20680,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -19984,6 +20702,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -20005,6 +20725,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -20029,6 +20751,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -20391,6 +21115,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Cherry-Almond Blancmange over Frangipane and Crème Fraîche Soup",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Warm Black Garnet Cherry–Rhubarb Pie with Almond Butter Crunch Ice Cream",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Black Garnet Cherries, Strawberries, Pistachios, Marshall Farms Honey, Straus Organic Whole Milk Yogurt",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        }
+      ],
       "affinities": [
         "cherries + almonds + cream + kirsch + vanilla",
         "cherries + chocolate + walnuts",
@@ -20567,6 +21306,17 @@
       ],
       "tips": [
         "Always use chervil fresh, not cooked."
+      ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Chestnut Spice Cake with Mascarpone Cream",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Chestnut Sugar Tart, Crème Fraîche",
+          "attribution": "Johnny Iuzzini, pastry chef, Jean Georges (New York City)"
+        }
       ],
       "affinities": [
         "chervil + chives + fish + parsley",
@@ -20869,6 +21619,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "chestnuts + apples + cream",
         "chestnuts + bacon + fennel",
@@ -21490,6 +22242,57 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Taquitos de Pollo: Crispy Taquitos Filled with Chicken and Poblanos, with Homemade Sour Cream, Salsa Verde, Añejo Cheese, and Guacamole",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        },
+        {
+          "text": "Chicken Braised in Black Pepper Gravy with Summer Root Vegetables, Hen o’ Woods Mushrooms, and Rosemary Cream Biscuits",
+          "attribution": "Jeffrey Buben, Vidalia (Washington, DC)"
+        },
+        {
+          "text": "Hoffman Ranch Breast of Chicken with Chanterelles and Thyme Jus",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        },
+        {
+          "text": "Chicken Tagine with Olives, Preserved Lemons, and Green Peas",
+          "attribution": "Lahsen Ksiyer, Casaville (New York City)"
+        },
+        {
+          "text": "Half a Chicken Cut in Pieces and Braised in a Tequila–White Vinegar Sauce with Green Olives, Golden Raisins, and Almonds",
+          "attribution": "Zarela Martinez, Zarela (New York City)"
+        },
+        {
+          "text": "“Southern Fried” Chicken Salad, Roasted Sweet Corn, Candied Pecans, Shaved Red Onions, and Buttermilk Ranch Dressing",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Balsamic-Caramel Chicken with Broccoli and Walnuts",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Roast Chicken Breast with Wild Mushrooms, Creamy Polenta, and White Truffle Oil",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Boneless Chicken Breast in Peruvian Adobo Roasted in Our Wood-Burning Oven, Pumpkin and Mango Sauce, Ripe Plantain, and Eggplant Puree",
+          "attribution": "Maricel Presilla, Cucharamama (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Apricot Curry Chicken Salad with Fennel, Cilantro, and Dried Fruit",
+          "attribution": "Charlie Trotter, Trotter’s to Go (Chicago)"
+        },
+        {
+          "text": "Lemon-Ghee Marinated and Grilled Specialty Chicken Breast with Roasted Garlic and Cashews",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        },
+        {
+          "text": "Roasted Chicken with Green Olive, Coriander, and Ginger Sauce",
+          "attribution": "Jean-Georges Vongerichten, Jojo (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "mexican-cuisine",
@@ -21792,6 +22595,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Preserved Lemon Hummus; Roasted Red Pepper and Walnut Puree",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        }
+      ],
       "affinities": [
         "chickpeas + cayenne + garlic + lemon juice + olive oil + salt + tahini",
         "chickpeas + cilantro + cumin",
@@ -21916,6 +22726,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Chicory Salad with Fall Root Vegetables, Shaved Pear, and Rapeseed-Mustard Vinaigrette",
+          "attribution": "Daniel Boulud, Daniel (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -22160,6 +22977,8 @@
       "tips": [
         "Add at the end of the cooking process. The spiciness of chile peppers suggests “false heat.”"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "chile peppers + cilantro + lime"
       ],
@@ -22214,6 +23033,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -22251,6 +23072,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -22368,6 +23191,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "central-american-cuisine",
@@ -22420,6 +23245,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -22461,6 +23288,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -22514,6 +23343,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -22538,6 +23369,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -22562,6 +23395,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "french-basque-cuisine",
@@ -22621,6 +23456,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -22693,6 +23530,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -22725,6 +23564,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisine",
@@ -22757,6 +23598,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mexican-cuisine"
@@ -22940,6 +23783,8 @@
       "tips": [
         "Always use fresh, not cooked. Use in stir-fries."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine",
@@ -23111,6 +23956,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "white chocolate + basil + strawberries",
         "white chocolate + cream + lemon + orange",
@@ -23233,6 +24080,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "chorizo + clam broth + herbs + monkfish"
       ],
@@ -23278,6 +24127,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -23555,6 +24406,13 @@
       ],
       "tips": [
         "Always use fresh, not cooked — or, if you must, add at the very last minute."
+      ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pan-roasted Monkfish with Confit Peppers and Fiery “Patatas Bravas” with Chorizo- Albarino Emulsion",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        }
       ],
       "affinities": [
         "cilantro + chile peppers + coconut milk",
@@ -23983,6 +24841,8 @@
       "tips": [
         "Add early in cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cinnamon + almonds + raisins",
         "cinnamon + cardamom + cloves + coriander + black pepper (garam masala)",
@@ -24051,6 +24911,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Lemongrass Sorbet, Dehydrated Grapefruit, Crispy Tangerine, Lime Curd",
+          "attribution": "Johnny Iuzzini, pastry chef, Jean Georges (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "greek-cuisine",
@@ -24468,6 +25335,25 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Linguine with Clams, Pancetta, and Hot Chiles",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Clam Chowder with Smoked Bacon",
+          "attribution": "Rebecca Charles, Pearl Oyster Bar (New York City)"
+        },
+        {
+          "text": "New New England Clam Chowder Served with Cream of Bacon, Onion Jam, and Chive Oil",
+          "attribution": "Katsuya Fukushima, Café Atlántico / minibar (Washington, DC)"
+        },
+        {
+          "text": "Braised Manila Clams, Italian Sausage, and White Beans",
+          "attribution": "Rick Tramonto, Tru (Chicago)"
+        }
+      ],
       "affinities": [
         "clams + aioli + capers + tarragon",
         "clams + bacon + lemon + scallions",
@@ -24704,6 +25590,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cloves + cardamom + cinnamon + tea",
         "cloves + cinnamon + ginger + nutmeg",
@@ -25077,6 +25965,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Ice Wine–Lychee Gelée with Coconut Milk Sabayon and Pumpkin Seed Croquant",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Coconut Crème Brûlée with Lychee Sorbet and Sesame Tuile",
+          "attribution": "Brad Farmerie, Public (New York City)"
+        },
+        {
+          "text": "Lemongrass and Coconut Panna Cotta",
+          "attribution": "Nora Pouillon, Asia Nora (Washington, DC)"
+        }
+      ],
       "affinities": [
         "coconut + apricot + ginger + green tea + lemongrass + rice + vanilla",
         "coconut + honey + lime",
@@ -25415,6 +26318,37 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Ceviche Fronterizo: Lime-Marinated Alaskan True Cod with Vine-Ripe Tomatoes, Olives, Cilantro, and Green Chile, Served on Crispy Tostaditas",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        },
+        {
+          "text": "Alaskan True Cod and Fresh-Shucked Oysters in Tamazula-Sparked Homemade Cocktail Sauce with Lime, Avocado, White Onion, and Cilantro",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        },
+        {
+          "text": "Chatham Bay Codfish: Chanterelle Mushrooms, Sweet Peas, and Tarragon Sauce",
+          "attribution": "David Bouley, Upstairs (New York City)"
+        },
+        {
+          "text": "Atlantic Cod “au Naturel” with Littleneck Clams; Roasted Artichokes, Swiss Chard, and Lemon Marmalade",
+          "attribution": "Daniel Boulud, Daniel (New York City)"
+        },
+        {
+          "text": "Roast Cod on Edamame Risotto with Salt and Pepper Sepia and Carrot-Yuzu Sauce",
+          "attribution": "Brad Farmerie, Public (New York City)"
+        },
+        {
+          "text": "Brioche-Crusted Cod with Baby Artichokes, Oven-Dried Tomatoes, Garlic Mashed Potatoes, and Artichoke Puree",
+          "attribution": "Bob Kinkead, Kinkead’s (Washington, DC)"
+        },
+        {
+          "text": "Cod Baked in a Salt Crust Stuffed with Baby Artichokes, Romesco, Red Wine, Olive, and Preserved Tomato Stew",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        }
+      ],
       "affinities": [
         "cod + capers + chives + lentils + potatoes",
         "cod + cepes (mushrooms) + garlic + lemon + potatoes"
@@ -25484,6 +26418,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -25658,6 +26594,21 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Black Cod with Miso Sauce",
+          "attribution": "Nobu Matsuhisa, Nobu (New York City)"
+        },
+        {
+          "text": "Broiled Sake-Marinated Alaskan Black Cod and Shrimp Dumplings in Shiso Broth",
+          "attribution": "Hiro Sone, Terra (St. Helena, California)"
+        },
+        {
+          "text": "Warm Salad of Poached Salt Cod, Porcini Mushrooms, and Yukon Golds",
+          "attribution": ""
+        }
+      ],
       "affinities": [
         "salt cod + bay leaf + thyme + white wine vinegar"
       ],
@@ -25907,6 +26858,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "coffee + bourbon + cream",
         "coffee + caramel + chocolate",
@@ -25993,6 +26946,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Espresso Cupcakes Filled with Milk Chocolate Ganache and White Chocolate Frosting",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Bourbon Ice Cream on Coffee-Flavored Tapioca in a Martini Glass",
+          "attribution": "Kaz Okochi, Kaz Sushi Bistro (Washington, DC)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -26054,6 +27018,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -26139,6 +27105,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cucumbers + mint + yogurt"
       ],
@@ -26314,6 +27282,8 @@
       "tips": [
         "Add near the end of cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "coriander + cardamom + cinnamon + clove",
         "coriander + cayenne + cumin + garlic",
@@ -26727,6 +27697,25 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Homemade Corn and Leek Ravioli with Maine Lobster and Silver Queen Local Corn",
+          "attribution": "Lidia Bastianich, Felidia (New York City)"
+        },
+        {
+          "text": "Baby Corn on the Cob, Brown Butter Powder, Cilantro Emulsion",
+          "attribution": "Brad Farmerie, Public (New York City)"
+        },
+        {
+          "text": "Arepas de Choclo: Corn Cakes Topped with Crème Fraîche and Salmon Roe",
+          "attribution": "Maricel Presilla, Zafra (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Red Bliss Potato and Corn Pizza, Parsley Pesto, and Smoked Cow’s Milk Cheese",
+          "attribution": "Cory Schreiber, Wildwood (Portland, Oregon)"
+        }
+      ],
       "affinities": [
         "corn + bell pepper + jalapeño chile + cilantro + tarragon",
         "corn + butter + salt",
@@ -26825,6 +27814,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -26966,6 +27957,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "african-north-cuisine",
@@ -27007,6 +28000,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -27411,6 +28406,53 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Jumbo Lump Crab Salad with Asparagus, Mustard Seed Dressing",
+          "attribution": "Daniel Boulud/Olivier Muller, DB Bistro (New York City)"
+        },
+        {
+          "text": "Crab Salad with White Asparagus, Ginger, Lime, Pistachio Oil",
+          "attribution": "Daniel Boulud/Bertrand Chemel, Café Boulud (New York City)"
+        },
+        {
+          "text": "Marinated Jumbo Lump Crabmeat with Horseradish, Coriander, Tomato, Seaweed Salad, and Ginger Vinaigrette",
+          "attribution": "Jeffrey Buben, Vidalia (Washington, DC)"
+        },
+        {
+          "text": "Red and Yellow Tomato Gazpacho with Avocado Puree and Lump Crabmeat, with Microgreen Salad",
+          "attribution": "Bob Iacovone, Cuvée (New Orleans)"
+        },
+        {
+          "text": "A Mélange of Jumbo Lump Crab, Mango, and Avocado in a Tropical Fruit Coulis",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Signature Sushi: Blue Crab with Celery and Red Bell Pepper",
+          "attribution": "Kaz Okoshi, Kaz Sushi Bistro (Washington, DC)"
+        },
+        {
+          "text": "Potato Gnocchi with Oregon Dungeness Crab and Preserved Lemon",
+          "attribution": "Vitaly Paley, Paley’s Place (Portland, Oregon)"
+        },
+        {
+          "text": "Spicy Crab and Peanut Soup with Okra",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Crab Cake with Saffron-Sherry Aioli",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Dungeness Crab and Potato Cakes, Green Beans, Cucumbers, Almonds, and Shaved Fennel",
+          "attribution": "Cory Schreiber, Wildwood (Portland, Oregon)"
+        },
+        {
+          "text": "Michael Dean’s Squash Blossom, Crabmeat, and Squash with Green Tomato Relish",
+          "attribution": "Frank Stitt, Highlands Bar and Grill (Birmingham, Alabama)"
+        }
+      ],
       "affinities": [
         "crab + aioli + cilantro + jalapeño chile",
         "crab + almonds + avocado",
@@ -27712,6 +28754,29 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Black and White Fettuccini with Oven-Dried Tomatoes, Almond Pesto, Calamari, and Crisp Soft-Shell Crab",
+          "attribution": "Lidia Bastianich, Felidia (New York City)"
+        },
+        {
+          "text": "Crispy Thai-Style Soft-Shell Crab with Green Papaya Salad and Lime Dipping Sauce",
+          "attribution": "Bob Kinkead, Kinkead’s (Washington, DC)"
+        },
+        {
+          "text": "Pecan-Crusted Soft-Shell Crab Tempura with Italian Mustard Fruit",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Soft-Shell Crab: Sweet Corn, Potatoes, Leeks, Spring Onions, Caper–White Wine Emulsion",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Chesapeake Bay Soft-Shell Crabs with Young Ginger and Chinese Chive Coulis",
+          "attribution": "David Waltuck, Chanterelle (New York City)"
+        }
+      ],
       "affinities": [
         "soft-shell crab + arugula + tartar sauce",
         "soft-shell crab + asparagus + capers + garlic + lemon + potatoes",
@@ -27918,6 +28983,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -28126,6 +29193,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Crayfish, Beet, Leek, and Bacon Salad with Mustard Vinaigrette",
+          "attribution": "Daniel Boulud, at the 2003 James Beard Awards gala reception"
+        }
+      ],
       "affinities": [
         "crayfish + asparagus + morel mushrooms",
         "crayfish + carrot juice + orange juice"
@@ -28280,6 +29354,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cream cheese + crème fraîche + orange + sugar + vanilla",
         "cream cheese + maple syrup + mascarpone"
@@ -28331,6 +29407,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "french-cuisine"
@@ -28644,6 +29722,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cucumber + chervil + salt + vinegar",
         "cucumber + chile peppers + mint + yogurt",
@@ -28940,6 +30020,8 @@
       "tips": [
         "Add early in the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cumin + cayenne + coriander + garlic",
         "cumin + chickpeas + yogurt",
@@ -29104,6 +30186,8 @@
       "tips": [
         "Add later in cooking, or to finish a dish."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisines",
@@ -29325,6 +30409,8 @@
       "tips": [
         "Add early in cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "indian-cuisine",
@@ -29493,6 +30579,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "spanish-cuisine",
@@ -29684,6 +30772,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "japanese-cuisine"
@@ -29904,6 +30994,25 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Chocolate and Date Pudding Cake",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Baked-to-Order Date Pudding with a Caramelized Rum Sauce and a Dollop of Freshly Whipped Cream",
+          "attribution": "Toshi Sakihara, Etats-Unis (New York City)"
+        },
+        {
+          "text": "Medjool Dates Stuffed with Chorizo, Wrapped in Bacon",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Medjool Dates with Maple Mascarpone, Pistachios, and Orange Blossom Water",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "middle-eastern-cuisine",
@@ -30217,6 +31326,77 @@
       ],
       "tips": [
         "Always use dill fresh, not cooked."
+      ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Duck, Butternut Squash, and Banana with Thai Flavors",
+          "attribution": "Grant Achatz, Alinea (Chicago)"
+        },
+        {
+          "text": "Liberty Farms Duck Breast with Smoked Bacon, Savoy Spinach, and Pickled Mulberries, Ginger Consommé",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        },
+        {
+          "text": "Roast Duck Breast, Bok Choy, and Cassava Chips with Sesame Soy Dressing and Pickled Chiles",
+          "attribution": "Brad Farmerie, Public (New York City)"
+        },
+        {
+          "text": "Duck with Tomato, Red Chile, and Dried Mixed Fruits",
+          "attribution": "Zarela Martinez, Zarela (New York City)"
+        },
+        {
+          "text": "Blossom Honey “Lacquered” Aged Moulard Duck Breast, Caramelized Quince and Fennel, Broccoli Rabe, Sicilian Pistachios, and Port",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Grilled Duck Breast with Creamy Farro, Spring Onion, and Sour Cherry Jus",
+          "attribution": "Peter Nowakoski, Rat’s (Hamilton, New Jersey)"
+        },
+        {
+          "text": "Braised Duck Legs on Wilted Watercress in an Aromatic Asian Broth",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Cured Duck Meat with a Salad of Licorice-Scented Fennel Shavings and Blood Orange",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Drake Duck “Sirloin” with Roasted Sweet Potatoes and Port Wine Sauce",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Duck Breast with Fava Beans and Roasted Plums",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Grilled Duck Breast over Aromatic Tamarillo Sauce, Creamy Quinoa, and Sweet Potato Puree",
+          "attribution": "Maricel Presilla, Cucharamama (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Moulard Duck Breast with Parsnips, Wild Mushrooms, and a Rosemary Sauce",
+          "attribution": "Thierry Rautureau, Rover’s (Seattle)"
+        },
+        {
+          "text": "Muscovy Duck Breast with Rainier Cherries, Pecans, and Garden Lettuces",
+          "attribution": "Judy Rodgers, Zuni Café (San Francisco)"
+        },
+        {
+          "text": "Charcoaled Duck with Walnuts, Confit Leg, and Apricots Baked in Brown Sugar Brioche",
+          "attribution": "Lydia Shire, Locke-Ober (Boston)"
+        },
+        {
+          "text": "Grilled Liberty Farm Duck with Duck-Liver Wontons in Wild Mushroom Sauce",
+          "attribution": "Hiro Sone, Terra (St. Helena, California)"
+        },
+        {
+          "text": "Grilled Duck Breast in Lime Leaf Curry with Ginger, Jalapeño Basmati Rice",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        },
+        {
+          "text": "Spit-Roasted Duck with Quince Sauce",
+          "attribution": "Alice Waters, Chez Panisse (Berkeley, California)"
+        }
       ],
       "affinities": [
         "dill + cilantro + mint",
@@ -30724,6 +31904,29 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Duck Confit: Wild Mushrooms, Red Swiss Chard, Sweet and Sour Duck Jus",
+          "attribution": "Olivier Muller, DB Bistro Moderne (New York City)"
+        },
+        {
+          "text": "Grilled Eggplant Terrine with Red Bell Pepper and Italian Parsley Sauce",
+          "attribution": "David Bouley, Bouley (New York City)"
+        },
+        {
+          "text": "Eggplant Ravioli with Medallions of Maine Lobster and Tomato-Basil Butter",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Baba Ghanoush Soup, Made with Eggplant, Tahini, Tomato Water, Garlic, and Cumin",
+          "attribution": "Michel Richard, Citronelle (Washington, DC)"
+        },
+        {
+          "text": "Eggplant, Peas, and Paneer in Pomegranate-Cinnamon Masala with Raita and Chapati",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        }
+      ],
       "affinities": [
         "duck + almonds + apricots",
         "duck + almonds + honey",
@@ -30833,6 +32036,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -31175,6 +32380,45 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Frittata with Zucchini and Parmesan Cheese, with Arugula Salad",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        },
+        {
+          "text": "Poached Eggs with Crispy Polenta and Tomato Hollandaise",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        },
+        {
+          "text": "Warm Salad of Greens with Pancetta and Scrambled Eggs",
+          "attribution": "Cesare Casella, Maremma (New York City)"
+        },
+        {
+          "text": "Organic Egg Frittata with Mushrooms, Zucchini, and Gruyère",
+          "attribution": "Daniel Humm, Eleven Madison Park (New York City)"
+        },
+        {
+          "text": "Organic Farm Egg Omelet with Capriole Farms Goat Cheese, Oranges, and Citrus Hollandaise, Toasted Ciabatta, and Apple Butter",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Organic Farm Egg and Wood-Grilled Spanish Sausage with a Salad of Italian Frisée, Smoked Red Thumb Potatoes, French Breakfast Radishes, Sweet Garlic, and Herbs",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Organic Scrambled Egg with a Lime Crème Fraîche and White Sturgeon Caviar",
+          "attribution": "Thierry Rautureau, Rover’s (Seattle)"
+        },
+        {
+          "text": "Traditional Eggs Benedict, Shaved Canadian Bacon, Lemon-Thyme Hollandaise, and Truffle Pesto",
+          "attribution": "Nori Sugie, Asiate (New York City)"
+        },
+        {
+          "text": "Smoked Chicken, Roasted Bell Pepper, Artichoke, and Fontina Cheese Omelet",
+          "attribution": "Nori Sugie, Asiate (New York City)"
+        }
+      ],
       "affinities": [
         "eggplant + basil + bell peppers + garlic + tomatoes",
         "eggplant + basil + mozzarella cheese",
@@ -31293,6 +32537,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -31426,6 +32672,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -31686,6 +32934,25 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Cabbageless Sauerkraut: Pickled Onions, Fennel, Endive, and Green Apple",
+          "attribution": "Christopher Lee, Gilt (New York City)"
+        },
+        {
+          "text": "Endive Tips with Red Pepper Puree, Maple Molasses, and Candied Walnuts",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Endive and Grapefruit Salad with Honey Dressing and Toasted Pecans",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Belgian Endive Salad, Shredded Carrot and Apple Salad, Concord Grapes, Sonoma Verjus Vinaigrette",
+          "attribution": "Nori Sugie, Asiate (New York City)"
+        }
+      ],
       "affinities": [
         "endive + argula + radicchio",
         "endive + cheese + mushrooms"
@@ -31821,6 +33088,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "caribbean-cuisine",
@@ -31846,6 +33115,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "escalar + Kobe beef + brown butter"
       ],
@@ -31982,6 +33253,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "escarole + apples + Cheddar cheese",
         "escarole + olive oil + shallots"
@@ -32201,6 +33474,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Wild Fennel and Ramp Soup with Broken Capellini and Alaskan King Crab",
+          "attribution": "Lidia Bastianich, Felidia (New York City)"
+        },
+        {
+          "text": "Braised Fennel Salad with Pears and Gorgonzola",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Puree of Fennel Soup with Apples, Almonds, and Madras Curry",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        }
+      ],
       "affinities": [
         "fennel + almond + fennel seeds + honey + lemon",
         "fennel + apple + pecorino cheese + watercress",
@@ -32266,6 +33554,8 @@
       "tips": [
         "Use to finish a dish."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "fennel pollen + lemon + yogurt"
       ],
@@ -32488,6 +33778,8 @@
       "tips": [
         "Add near end of cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "fennel seeds + cinnamon + cloves + peppercorns + star anise (five-spice powder)"
       ],
@@ -32656,6 +33948,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "ethiopian-cuisine",
@@ -32857,6 +34151,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Bresaola with Fiddleheads and Pecorino",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        }
+      ],
       "affinities": [
         "fiddlehead ferns + butter + herbs + morel mushrooms + ramps",
         "fiddlehead ferns + garlic + morel mushrooms + salmon",
@@ -32999,6 +34300,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "dried figs + anise + oranges + walnuts"
       ],
@@ -33307,6 +34610,29 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Fresh Fig Tart with a Dollop of Mascarpone",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Fig and Ricotta Gelato",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Honey-Baked Figs Stuffed with Walnuts",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Black Mission Figs with Goat Cheese Mousse, Honey Ice Cream, and Port Sabayon",
+          "attribution": "Gary Danko, Gary Danko (San Francisco)"
+        },
+        {
+          "text": "Rogue River Oregonzola, Black Mission Figs, Lavender Honey, Toasted Hazelnuts",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        }
+      ],
       "affinities": [
         "figs + almonds + green anise",
         "figs + black pepper + ricotta cheese",
@@ -33450,6 +34776,13 @@
       "tips": [
         "Use late in the cooking process."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Onion-Crusted White Fish with Tomato-Water Sauce",
+          "attribution": "Michel Richard, Citronelle (Washington, DC)"
+        }
+      ],
       "affinities": [
         "chervil + chives + parsley + tarragon",
         "fish + ginger + lemongrass",
@@ -33497,6 +34830,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "southeast-asian-cuisines",
@@ -33541,6 +34876,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cinnamon + cloves + fennel seeds + star anise + Szechuan peppercorns"
       ],
@@ -33684,6 +35021,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "flounder + capers + lemon",
         "flounder + shiso + ume",
@@ -33875,6 +35214,29 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Flounder Wrapped in Spring Roll Paper Served with House-Made Egg Noodles, Thai Green Curry–Coconut Milk Broth with Snow Peas, Yuzu Lime, and Honey Mushrooms",
+          "attribution": "Bob Kinkead, Colvin Run (Vienna, Virginia)"
+        },
+        {
+          "text": "Sesame-Flavored Flounder and Wakame Seaweed Soup",
+          "attribution": "Kaz Okochi, Kaz Sushi Bistro (Washington, DC)"
+        },
+        {
+          "text": "Foie Gras with Roasted Plums",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Foie Gras Sushi with Plum-Wine Jelly",
+          "attribution": "Kaz Okochi, Kaz Sushi Bistro (Washington, DC)"
+        },
+        {
+          "text": "Seared Hudson Valley Foie Gras with Caramelized Three-Pear Salad",
+          "attribution": "Jimmy Schmidt, at the 2003 James Beard Awards gala reception"
+        }
+      ],
       "affinities": [
         "foie gras + cherries + balsamic vinegar",
         "foie gras + cherries + pistachios",
@@ -33967,6 +35329,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "bacon + cheese + cream"
       ],
@@ -34089,6 +35453,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "basil + garlic + olive oil + Parmesan cheese",
         "basil + olive oil + tomatoes",
@@ -34234,6 +35600,21 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Salad “Lyonnaise”: Italian Frisée, Applewood Slab Bacon, and Warm Poached Egg, Sherry Wine–Dijon Mustard Vinaigrette",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Warm Frisée and Bacon Salad with Beet Carpaccio and Toasted Walnuts",
+          "attribution": "Lydia Shire, Locke-Ober Café (Boston)"
+        },
+        {
+          "text": "Frisée and Spinach Salad with Dried Cherries, Blue Cheese, Walnuts, and Maple-Sherry Vinaigrette",
+          "attribution": "Charlie Trotter, Trotter’s to Go (Chicago)"
+        }
+      ],
       "affinities": [
         "frisée + anchovies + garlic + Parmesan cheese",
         "frisée + bacon + poached egg",
@@ -34292,6 +35673,8 @@
       "tips": [
         "If the fruit is hard, steam before using."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -34333,6 +35716,8 @@
       "tips": [
         "Sugar enhances the natural flavor of fruit."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -34473,6 +35858,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Exotic Fruit Salad with Guava Sauce and Phyllo Galettes",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Chocolate Custard Cake with Exotic Fruit Gelée and Caramelized Bananas",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Tropical Fruit Salad with Rosewater and Sweet Tahini Yogurt",
+          "attribution": "Brad Farmerie, Public (New York City)"
+        }
+      ],
       "affinities": [
         "tropical fruit + coconut + honey + lime",
         "tropical fruit + ginger + mint + orange + sugar"
@@ -34593,6 +35993,8 @@
       "tips": [
         "The flavor of cloves adds richness to game."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine",
@@ -34614,6 +36016,8 @@
       "tips": [
         "Add near the end of the cooking process or before serving."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cardamom + black pepper + cinnamon + cloves + coriander + cumin + dried chiles + fennel +",
         "mace + nutmeg"
@@ -34947,6 +36351,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "cajun-cuisine",
@@ -35143,6 +36549,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "gin + apple brandy + lemon juice + orange juice",
         "gin + basil + lemon",
@@ -35692,6 +37100,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Ginger-Honey Gelato",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Ginger-Lemon Drink: Ginger, Lemon, Sugar, Salt, and Pepper",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        }
+      ],
       "affinities": [
         "ginger + carrot + celery + garlic",
         "ginger + chile peppers + garlic",
@@ -35861,6 +37280,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Gingersnap-Lemon Ice Cream Sandwiches",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "asian-cuisine",
@@ -36139,6 +37565,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Yuzu Cream, Caramelized Rice, Grapefruit, Green Tea Ice Cream, Crisp Meringue, Malted Rum Milk Chocolate Ice Cream",
+          "attribution": "Michael Laiskonis, pastry chef, Le Bernardin (New York City)"
+        }
+      ],
       "affinities": [
         "grapefruit + avocado + crème fraîche",
         "grapefruit + caramel + meringue",
@@ -36183,6 +37616,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -36415,6 +37850,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "african-cuisine",
@@ -36512,6 +37949,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "A Simple Salad of Beautiful Greens, Forelli Pears, Pomegranate, and Saba Balsamic",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "soul-food-cuisine",
@@ -36573,6 +38017,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -36627,6 +38073,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "mustard greens + bacon + onions",
         "mustard greens + garlic + olive oil + prosciutto",
@@ -36694,6 +38142,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Wild Dandelion Greens with Anchovy Vinaigrette",
+          "attribution": "David Pasternak, Esca (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -36729,6 +38184,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Turnip Green and Onion Soup with Poached Egg",
+          "attribution": "Judy Rodgers, Zuni Café (San Francisco)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -36863,6 +38325,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "latin-american-cuisine",
@@ -36922,6 +38386,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "southern-cuisine-american",
@@ -37127,6 +38593,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mediterranean-cuisine"
@@ -37268,6 +38736,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Grilled American Red Grouper on Crab Hash, Pancetta–Red Onion Vinaigrette",
+          "attribution": "Sanford D’Amato, Sanford (Milwaukee)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -37683,6 +39158,57 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Wellfleet Line-Caught Halibut, Sweet Corn, Shiitake Mushrooms, and Lemon Thyme Sauce",
+          "attribution": "David Bouley, Upstairs (New York City)"
+        },
+        {
+          "text": "Almond-Crusted Halibut with Parsnip Puree, Fava Beans, Haricots Verts, and Wild Mushrooms",
+          "attribution": "David Bouley, Danube (New York City)"
+        },
+        {
+          "text": "Halibut: Braised Tomato, Olives, Escarole, and Spring Salad",
+          "attribution": "Daniel Boulud/Bertrand Chemel, Café Boulud (New York City)"
+        },
+        {
+          "text": "Olive Oil–Poached Halibut with Star Route Farm’s Fava Beans, Fennel Salad, and Niçoise Olives",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        },
+        {
+          "text": "Alaskan Halibut, Potato, and Black Pepper Crust",
+          "attribution": "Hubert Keller, Fleur de Lys (San Francisco)"
+        },
+        {
+          "text": "Alaskan Halibut on a Bed of Creamy Leeks with Asparagus Puree, Fines Herbe, Spring Ramps, Favas, and English Peas",
+          "attribution": "Bob Kinkead, Kinkead’s (Washington, DC)"
+        },
+        {
+          "text": "Chermoula Halibut with Red Quinoa, Edamame, and Shell Bean Salad with Preserved Lemon Vinaigrette",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Halibut with Morel Mushrooms, English Peas, and Fingerling Potatoes",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Halibut, Kohlrabi, Celery, Verbena-Lime Emulsion",
+          "attribution": "Michel Richard, Citronelle (Washington, DC)"
+        },
+        {
+          "text": "Halibut Poached with Sweet-and-Sour Golden and Red Beets, Citrus and Extra-Virgin Olive Oil Emulsion",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Alaskan Halibut Braised in the Brick Oven with Marble Potatoes, Baby Carrots, English Peas, Butter, and Cilantro",
+          "attribution": "Judy Rodgers, Zuni Café (San Francisco)"
+        },
+        {
+          "text": "Line-Caught Seal Rock Halibut, Leek Emulsion, Reduced Chardonnay, Bacon Vinaigrette",
+          "attribution": "Rick Tramonto, Tru (Chicago)"
+        }
+      ],
       "affinities": [
         "halibut + anchovies + black olives",
         "halibut + anchovies + garlic + lemon + sorrel",
@@ -37910,6 +39436,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Raviolis of Virginia Country Ham and Fontina Cheese",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Serrano Ham with Roasted Onions, Manchego Cheese, and Watercress",
+          "attribution": "Charlie Trotter, Trotter’s to Go (Chicago)"
+        }
+      ],
       "affinities": [
         "ham + cheese + mustard",
         "ham + honey + soy sauce",
@@ -37938,6 +39475,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -37974,6 +39513,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "spanish-cuisine"
@@ -38245,6 +39786,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "spanish-cuisine"
@@ -38293,6 +39836,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Chocolate-Hazelnut Cake with Orange Sauce and Hazelnut Gelato",
+          "attribution": "Gina DePalma, Babbo (New York City)"
+        },
+        {
+          "text": "Hazelnut and Chocolate Soufflé",
+          "attribution": "Odette Fada, San Domenico (New York City)"
+        },
+        {
+          "text": "Gianduja Napoleon with Chocolate-Hazelnut Ganache, Frozen Caramel Mousse, Crispy Hazelnut Nougatine",
+          "attribution": "Gale Gand, pastry chef, Tru (Chicago)"
+        }
+      ],
       "affinities": [
         "basil + fennel seeds + lavender + marjoram + rosemary + sage + summer savory + thyme"
       ],
@@ -38650,6 +40208,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Lavender Honey-Roasted Pig with Spiced Banana Puree",
+          "attribution": "Sandy D’Amato, Sanford (Milwaukee)"
+        },
+        {
+          "text": "Honey Semifreddo with Tropical Consommé, Fresh Coconut, and Bloomed Basil Seeds",
+          "attribution": "Celina Tio, American Restaurant (Kansas City)"
+        }
+      ],
       "affinities": [
         "honey + almonds + chicken + pomegranate",
         "honey + bananas + lavender + pork",
@@ -38682,6 +40251,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -38695,6 +40266,8 @@
       "pairings": [],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -38712,6 +40285,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -38858,6 +40433,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Honeydew-Mint Sorbet with Fresh Blackberries",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Honeydew Melon Salad with Oven-Roasted Tomatoes, Goat Cheese, and Pistachios",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        }
+      ],
       "affinities": [
         "honeydew melon + figs + mint + prosciutto"
       ],
@@ -39105,6 +40691,8 @@
       "tips": [
         "Use horseradish raw or add at end of cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "horseradish + apples + pork + sour cream",
         "horseradish + beef + beets",
@@ -39181,6 +40769,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -39309,6 +40899,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -39373,6 +40965,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -39467,6 +41061,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -39644,6 +41240,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Jicama Callejera: Crunchy Jicama with Oranges, Grapefruit, and Pineapple; Orange- Lime Vinaigrette and Fresh Limes to Squeeze On",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        },
+        {
+          "text": "Ensalada de Jicama y Aguacate: Jicama, Grapefruit, and Avocado Salad with Pumpkin Seeds",
+          "attribution": "Traci Des Jardins, Mijita (San Francisco)"
+        },
+        {
+          "text": "Seaweed and Jicama Salad with Ginger Dressing",
+          "attribution": "Kaz Okochi, Kaz Sushi Bistro (Washington, DC)"
+        }
+      ],
       "affinities": [
         "jicama + avocado + grapefruit + pumpkin seeds",
         "jicama + chili powder + lime juice"
@@ -39833,6 +41444,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "juniper berries + game + garlic + rosemary"
       ],
@@ -39997,6 +41610,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "kale + garlic + olive oil + red wine vinegar",
         "kale + onions + salt + smoked sausage"
@@ -40129,6 +41744,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -40305,6 +41922,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -40422,6 +42041,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisines",
@@ -40969,6 +42590,65 @@
       "tips": [
         "Cloves add richness to the flavor of lamb."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Lamb, Fig, Pernod, and a Pillow of Sassafras Air",
+          "attribution": "Grant Achatz, Alinea (Chicago)"
+        },
+        {
+          "text": "Lamb with Stew of Chickpeas, Root Vegetables, and Braised Lettuces",
+          "attribution": "Dan Barber, Blue Hill at Stone Barns (Pocantico Hills, New York)"
+        },
+        {
+          "text": "Mint Love Letters with Spicy Lamb Sausage",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Grilled Lamb Sirloin in a Roasted Garlic Sauce with Potato–Celery Root Gratin and Sautéed Escarole",
+          "attribution": "Ann Cashion, Cashion’s Eat Place (Washington, DC)"
+        },
+        {
+          "text": "Colorado Rack of Lamb with Roasted Fennel, Glazed Baby Carrots, Fresh Garbanzo Beans, and Cardoon Puree, Niçoise Olive–Kumquat Tapenade",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        },
+        {
+          "text": "Colorado Lamb Loin with Creamy Polenta, Morel Mushrooms, and Star Route Fava Beans, Perigord Truffle Jus",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        },
+        {
+          "text": "Roast Lamb Sirloin on Crispy Goat Cheese Polenta with Saffron-Braised Baby Vegetables and Minted Yogurt",
+          "attribution": "Brad Farmerie, Public (New York City)"
+        },
+        {
+          "text": "“Armenian Style” Lamb Skewers, Mediterranean Chickpea Salad, “Panisses,” and Minted Sheep’s Milk Yogurt",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Poached Spring Lamb with Artichoke Tart and Pine Nut–Morel Gremolata",
+          "attribution": "Bradley Ogden, at the 2003 James Beard Awards gala reception"
+        },
+        {
+          "text": "Moroccan Spiced Rack of Lamb with Couscous Salad, Roasted Eggplant, Lemon–Black Pepper Jus",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Pan-Roasted Lamb Rack and Eighteen-Hours-Braised Leg of Lamb; Goat Cheese Mashed Potatoes; Wild Mushroom–Red Wine Sauce",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Lamb Black Truffle Tagliatelle with Preserved Lemon and Aged Parmesan",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Truffle and Almond-Crusted Rack of Lamb",
+          "attribution": "Brad Thompson, Mary Elaine’s at the Phoenician (Scottsdale, Arizona)"
+        },
+        {
+          "text": "Wine-Marinated Lamb Popsicles in Fenugreek Cream Curry on Spinach Potatoes",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        }
+      ],
       "affinities": [
         "lamb + broccoli rabe + Parmesan cheese",
         "lamb + cardamom + yogurt",
@@ -41234,6 +42914,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "lamb chop + lemon + mint"
       ],
@@ -41466,6 +43148,17 @@
       "tips": [
         "Caraway seeds can substitute for lavender."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Salade de Poireaux Frais: Chilled Leeks with Fingerling Potatoes and Piquillo Peppers",
+          "attribution": "Thomas Keller, Bouchon (Yountville, California)"
+        },
+        {
+          "text": "Leek and Asparagus Pasta with Lemon, Parmesan, and Poached Egg",
+          "attribution": "Peter Nowakoski, Rat’s (Hamilton, New Jersey)"
+        }
+      ],
       "affinities": [
         "lavender + cream + sugar",
         "lavender + meat + salt"
@@ -41690,6 +43383,8 @@
       "tips": [
         "Add early in cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "leeks + anchovies + garlic + olive oil",
         "leeks + bacon + cream",
@@ -42160,6 +43855,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Ricotta-Lemon Pancakes with Blackberries and Honeycomb Butter",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        }
+      ],
       "affinities": [
         "lemon + berries + crème fraîche",
         "lemon + blackberries + honey + ricotta cheese"
@@ -42218,6 +43920,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -42267,6 +43971,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Meyer Lemon Cream Pie with Roasted Strawberries, Candied Coconut, Vanilla Chantilly",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "moroccan-cuisine",
@@ -42365,6 +44076,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -42421,6 +44134,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -42617,6 +44332,8 @@
       "tips": [
         "Add near end of cooking process; use in stir-fries."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "lemongrass + chives + mint",
         "lemongrass + cilantro + mint",
@@ -42801,6 +44518,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -43026,6 +44745,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "lemon verbena + apricots + sugar"
       ],
@@ -43352,6 +45073,17 @@
       "tips": [
         "Green lentils are more flavorful than brown or red."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Green Lentil Soup with Black Truffle, Smoked Quail, Crispy Shallots",
+          "attribution": "Daniel Boulud, Daniel (New York City)"
+        },
+        {
+          "text": "Lentil Stew with Blood Sausage, Chorizo, or Ham with a Poached Egg on Top",
+          "attribution": "Alexandra Raij, Tía Pol (New York City)"
+        }
+      ],
       "affinities": [
         "lentils + bacon + bell pepper + cumin + garlic",
         "lentils + bacon + garlic + sherry vinegar",
@@ -43584,6 +45316,21 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Hearts of Romaine and Treviso Radicchio with Spanish Serrano Ham, Manchego Cheese, White Anchovies, Fire-Roasted Peppers, and Crisp Capers",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Caesar Salad Soup",
+          "attribution": "Nobiyuki Sugie, Asiate (New York City)"
+        },
+        {
+          "text": "Leaves of Romaine, Creamy Garlic Dressing, Red Onions, Capers, and Parmesan",
+          "attribution": "Cory Schreiber, Wildwood (Portland, Oregon)"
+        }
+      ],
       "affinities": [
         "mesclun greens + goat cheese + hazelnuts"
       ],
@@ -43797,6 +45544,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -43992,6 +45741,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "romaine + anchovies + Parmesan cheese",
         "romaine + capers + garlic + Parmesan cheese + red onions"
@@ -44174,6 +45925,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Key Lime Cheesecake with Macadamia Nut Crust, Lime Caramel, Key Lime Curd",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Grilled Lime Pound Cake with Crème Fraîche–Tapioca Pudding, Blueberry Gelée, and Burnt Honey Ice Cream",
+          "attribution": "Celina Tio, American Restaurant (Kansas City)"
+        }
+      ],
       "affinities": [
         "lime + blueberries + burnt honey + crème fraîche",
         "lime + caramel + cream cheese + macadamia nuts",
@@ -44391,6 +46153,8 @@
       "tips": [
         "Cook briefly, one minute per side."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "calf’s liver + arugula + onions + pancetta",
         "calf’s liver + figs + onions + red wine vinegar"
@@ -44544,6 +46308,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "chicken livers + apples + sage",
         "chicken livers + bacon + balsamic vinegar + onions + rosemary",
@@ -45080,6 +46846,61 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Spaghettini with Spicy Budding Chives, Sweet Garlic, and a One-Pound Lobster",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Chatham Bay Day Boat Lobster with Red Wine Sauce and Parsnip-Rosemary-Apple Puree",
+          "attribution": "David Bouley, Upstairs (New York City)"
+        },
+        {
+          "text": "Chilled Maine Lobster: Mango, Fresh Artichoke, and Serrano Ham with a Passion Fruit and Fresh Coconut Tamarind Dressing",
+          "attribution": "David Bouley, Bouley (New York City)"
+        },
+        {
+          "text": "Potato Gnocchi with Maine Lobster, Wild Asparagus, Meyer Lemon, and Tarragon",
+          "attribution": "Traci Des Jardins, Jardiniére (San Francisco)"
+        },
+        {
+          "text": "Lobster and Morel Ravioli in Basil Broth, Hazelnuts, and Lobster Oil",
+          "attribution": "Sandy D’Amato, Sanford (Milwaukee)"
+        },
+        {
+          "text": "Nova Scotia Lobster Poached with Florence Fennel and Chamomile",
+          "attribution": "Daniel Humm, Eleven Madison Park (New York City)"
+        },
+        {
+          "text": "Warm Lobster Salad, Cauliflower and Watercress Coulis",
+          "attribution": "Jean Joho, Everest (Chicago)"
+        },
+        {
+          "text": "Butter-Poached Lobster with Sweet Carrot Emulsion",
+          "attribution": "Thomas Keller, The French Laundry (Yountville, California)"
+        },
+        {
+          "text": "Briny Lobster with Wasabi Mayo",
+          "attribution": "Kaz Okochi, Kaz Sushi Bistro (Washington, DC)"
+        },
+        {
+          "text": "Maine Lobster Tails Roasted with Fingerling Potatoes, Pea Greens, Whole Garlic, and Fava Beans",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Martini of Maine Lobster, Cucumber Salad, Belvedere Vodka, and White Sturgeon Caviar",
+          "attribution": "Thierry Rautureau, Rover’s (Seattle)"
+        },
+        {
+          "text": "Lobster Poached in a Lemon Miso Broth with Shiso and Hon Shimgeji Mushrooms",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Baked Lobster; Braised Endives, with Enoki and Black Trumpet Mushroom with Bourbon–Black Pepper Sauce",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        }
+      ],
       "affinities": [
         "lobster + artichokes + garlic",
         "lobster + avocado + mayonnaise + tarragon + white wine vinegar",
@@ -45168,6 +46989,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -45330,6 +47153,8 @@
       "tips": [
         "Always use fresh, not cooked."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "lovage + Dungeness crab + stinging nettles",
         "lovage + salmon + tomatoes"
@@ -45387,6 +47212,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -45565,6 +47392,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "lychees + ginger + lime",
         "lychees + raspberries + rose"
@@ -45754,6 +47583,13 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Summer Raspberry-Lychee Macaroon with Lemon Sorbet",
+          "attribution": "Eric Bertoia, Cafe Boulud (New York City)"
+        }
+      ],
       "affinities": [
         "macadamia nuts + bananas + caramel + cream",
         "macadamia nuts + beets + goat cheese",
@@ -45975,6 +47811,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisine",
@@ -46079,6 +47917,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "mâche + apples + bacon",
         "mâche + apples + bacon + vinegar",
@@ -46317,6 +48157,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "mackerel + arugula + chickpeas + lemon + rosemary",
         "mackerel + chives + Dijon mustard + lemon juice + shallots + vinegar",
@@ -46396,6 +48238,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Taco de Pescado “Baja”: Battered and Deep-Fried Mahi Mahi in Soft Corn Tortillas with Cabbage and Avocado-Cilantro Cream",
+          "attribution": "Traci Des Jardins, Mijita (San Francisco)"
+        }
+      ],
       "affinities": [
         "mahi mahi + avocado + cabbage + cilantro"
       ],
@@ -46455,6 +48304,33 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Naha Sundae of Vanilla Malt Ice Cream, Hickory Nut Waffle, Bananas, and Bourbon- Pecan Syrup, Shortbread Cookies",
+          "attribution": "Elizabeth Dahl, pastry chef, Naha (Chicago)"
+        },
+        {
+          "text": "Double-Malted Euphoria with Malted Chocolate, Vanilla Mousse, and Marcona Almond Brittle",
+          "attribution": "Celina Tio, American Restaurant (Kansas City)"
+        },
+        {
+          "text": "Mango Mousse, Pineapple Soufflé, Roasted Pineapple, Swiss Meringue",
+          "attribution": "François Payard, Payard Patisserie and Bistro (New York City)"
+        },
+        {
+          "text": "Organic Strawberry and Grapefruit Granitas, Mango “Salad,” Mascarpone",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Mango, Pistachio, and Banana Strudel with Coconut-Curry Sauce",
+          "attribution": "Allen Susser, at the 2003 James Beard Awards gala reception"
+        },
+        {
+          "text": "Raspberry-Mango Soufflé with Fresh Fruit and Bittersweet Chocolate Ice Cream",
+          "attribution": "Celina Tio, American Restaurant (Kansas City)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -46831,6 +48707,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "mango + almonds + lime",
         "mango + basil + Champagne",
@@ -47149,6 +49027,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Maple and Anise French Toast with Lavender Custard",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Milk Chocolate and Maple Caramel Cake",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Milk Chocolate and Maple Caramel Ice Cream, Caramelized Bananas, and Ginger Tuile",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        }
+      ],
       "affinities": [
         "maple syrup + blueberries + lemon",
         "maple syrup + butter + chocolate + cream",
@@ -47456,6 +49349,8 @@
       "tips": [
         "Add at the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "marjoram + chicken + lemon",
         "marjoram + fresh goat cheese + prosciutto",
@@ -47736,6 +49631,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Black Mission Figs with Mascarpone Foam and Prosciutto di Parma",
+          "attribution": "Rick Tramonto, Tru (Chicago)"
+        }
+      ],
       "affinities": [
         "mascarpone + arugula + truffle oil",
         "mascarpone + berries + figs",
@@ -48026,6 +49928,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -48088,6 +49992,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -48631,6 +50537,8 @@
       "tips": [
         "Mint generally refers to spearmint."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "mint + chocolate + cream",
         "mint + cilantro + dill",
@@ -48777,6 +50685,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "eastern-mediterranean-cuisine",
@@ -48860,6 +50770,8 @@
       "tips": [
         "Mint suggests “false coolness.”"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mediterranean-cuisine"
@@ -48875,6 +50787,8 @@
       "tips": [
         "Use as the base of stocks and soups."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "carrots + celery + onions"
       ],
@@ -49025,6 +50939,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Roasted Duck Breast with a Red Wine–Miso Sauce",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        },
+        {
+          "text": "Alaskan Black Cod with Chinese Broccoli, Homemade Tofu, Black Seaweed, Asian Pear, Miso Broth",
+          "attribution": "Christopher Lee, Gilt (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "japanese-cuisine"
@@ -49129,6 +51054,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "new-england-cuisine",
@@ -49530,6 +51457,21 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Line-Caught Monkfish Loin and “Fresh Bacon” Kurobuta Pork Belly with Golden Chanterelles, Wood-Grilled Leeks, and Herb-Crusted Salsifies, Lobster Red Wine Jus",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Sautéed Monkfish with Broccoli Rabe, Pine Nuts, and Raisins",
+          "attribution": "David Pasternak, Esca (New York City)"
+        },
+        {
+          "text": "Roasted Monkfish with Spinach, Oyster Ravioli, Watercress Sauce",
+          "attribution": "Michel Richard, Citronelle (Washington, DC)"
+        }
+      ],
       "affinities": [
         "monkfish + aioli + new potatoes",
         "monkfish + apples + sausage",
@@ -50656,6 +52598,53 @@
       "tips": [
         "Gets firmer with longer cooking."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Vegetarian Texas Chili: Ancho Chile Braise of Grilled Woodland Mushrooms, White Runner Beans, Green Beans, Calabacitas, Cumin, and Beer, topped with Mexican Queso Anejo and Red Onion",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        },
+        {
+          "text": "Wild Mushroom Soup with Ramps and Croutons",
+          "attribution": "Daniel Boulud / Bertrand Chemel, Café Boulud (New York City)"
+        },
+        {
+          "text": "Roasted Garlic Gnocchi with Wild Mushrooms, Sage, and Crispy Sweetbreads",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        },
+        {
+          "text": "Warm Mushroom Salad: Frisée, Bacon, Goat Cheese, and Sherry Vinaigrette",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Mushroom Tart: Thin-Crust Tart Filled with Sautéed Wild Mushrooms, Celeriac Puree, and Aged Port Reduction",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Risotto with Wild Rice, Squash, and Wild Mushrooms",
+          "attribution": "Judy Rodgers, Zuni Café (San Francisco)"
+        },
+        {
+          "text": "Warm Wild Mushroom Spinach Salad with Chickpeas, Olives, and Preserved Lemon",
+          "attribution": "Allen Susser, Chef Allen’s (Miami)"
+        },
+        {
+          "text": "Mushroom and Asparagus Risotto with Lemon Thyme",
+          "attribution": "Jerry Traunfeld, The Herbfarm (Woodinville, Washington)"
+        },
+        {
+          "text": "Pappardelle with Chanterelles and Thyme",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Organic Carnaroli Risotto with Wild Spring Morels, Wood-Grilled Ramps, Confit of Green Garlic and Spinach, Parmigiano-Reggiano, and Umbrian Olive Oil",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Our Local Morel Pizza with Fontina Cheese, Virginia Country Ham, and Frizzled Ramps. A Warm Salad of Grilled Asparagus and Freshwater Blue Prawns with Sherry Vinaigrette",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        }
+      ],
       "affinities": [
         "mushrooms + garlic + lemon + olive oil",
         "mushrooms + garlic + parsley",
@@ -51024,6 +53013,29 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Mussel Soup with Cilantro and Serrano Chile Cream",
+          "attribution": "Robert Del Grande, Café Annie (Houston)"
+        },
+        {
+          "text": "Mussels in a Spicy Sauce of Panca Peppers, Garlic, Cilantro, and Peruvian Dark Beer",
+          "attribution": "Maricel Presilla, Cucharamama (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Our Version of the Classic Portuguese Surf and Turf Braise: Pork Belly, Mussels, Potatoes, and Black Olives in a Savory Ají Panca and Dark Beer Sauce",
+          "attribution": "Maricel Presilla, Cucharamama (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Spaghetti with Mussels, Pine Nuts, Nutmeg, and Parsley",
+          "attribution": "Barton Seaver, Hook (Washington, DC)"
+        },
+        {
+          "text": "Steamed Black Mussels, Coconut Broth, Red Curry Oil",
+          "attribution": "Rick Tramonto, Tru (Chicago)"
+        }
+      ],
       "affinities": [
         "mussels + clams + garlic + onion + thyme + white wine",
         "mussels + cream + curry + saffron",
@@ -51255,6 +53267,8 @@
       "tips": [
         "Add at the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "mustard + curry leaves + cumin",
         "mustard + garlic + oil + shallots + vinegar",
@@ -51504,6 +53518,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -51810,6 +53826,8 @@
       "tips": [
         "Use in moderation."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "nutmeg + allspice + cinnamon",
         "nutmeg + cloves + cream",
@@ -51855,6 +53873,8 @@
       "tips": [
         "Always toast nuts before using to enhance flavor and texture."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mexican-cuisine",
@@ -52084,6 +54104,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "oatmeal + currants + maple syrup",
         "oatmeal + pears + vanilla + yogurt"
@@ -52192,6 +54214,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "octopus + chorizo + lemon",
         "octopus + jalapeño peppers + mint",
@@ -52276,6 +54300,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine",
@@ -52437,6 +54463,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "avocado oil + chardonnay vinegar + tomato water"
       ],
@@ -52464,6 +54492,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -52501,6 +54531,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -52601,6 +54633,8 @@
       "tips": [
         "Avoid cooking, as it burns easily."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -52634,6 +54668,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "hawaiian-cuisine"
@@ -52694,6 +54730,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisines",
@@ -52741,6 +54779,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -52802,6 +54842,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -52851,6 +54893,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -52926,6 +54970,8 @@
       "tips": [
         "Use to finish a dish, not to cook."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -53084,6 +55130,8 @@
       "tips": [
         "Add as a flavoring to raw or cooked dishes."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sesame oil + ginger + mustard + rice wine vinegar"
       ],
@@ -53135,6 +55183,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Endive and Mushroom Salad, Blue Cheese, Spicy Pecans, White Balsamic–White Truffle Vinaigrette",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -53157,6 +55212,8 @@
       "tips": [
         "Avoid cooking as it burns easily."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -53302,6 +55359,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "creole-cuisine",
@@ -53415,6 +55474,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine",
@@ -53641,6 +55702,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Olive and Anchovy Tapenade with Sage Crackers",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "french-cuisine",
@@ -54038,6 +56106,13 @@
       "tips": [
         "Onions increase appetite, and go with virtually all savory foods."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Roasted Vidalia Onion Stuffed with Walnuts, Wild Rice, and Roquefort Served with Wilted Arugula, Fava Beans, and Vegetable Demi-Glace",
+          "attribution": "Peter Nowakoski, Rat’s (Hamilton, New Jersey)"
+        }
+      ],
       "affinities": [
         "onions + balsamic vinegar + brown sugar",
         "onions + beer + cheese + nutmeg",
@@ -54112,6 +56187,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "Vidalia onions + goat cheese + tomatoes + sherry vinegar"
       ],
@@ -54652,6 +56729,25 @@
       "tips": [
         "Lemon brightens the flavor of orange."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Baked Chocolate Mousse with Mandarin Oranges and Anise Seed Croustillant",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Orange and Basil Soup, Alpine Strawberry Compote, and Mascarpone Mousse",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Candied Orange Sponge with Poached Rhubarb and Cream Cheese Mousse",
+          "attribution": "François Payard, Payard Patisserie and Bistro (New York City)"
+        },
+        {
+          "text": "Orange Tart with Carrot Cake and Mandarin",
+          "attribution": "François Payard, Payard Patisserie and Bistro (New York City)"
+        }
+      ],
       "affinities": [
         "orange + anise + chocolate",
         "orange + anise + dried figs + walnuts",
@@ -54742,6 +56838,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Blood Orange–Vanilla Creamsicle",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Chocolate and Tangerine Semifreddo Garnished with Chopped Pistachios",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -54971,6 +57078,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine"
@@ -55293,6 +57402,8 @@
       "tips": [
         "Oregano can have great variability, i.e., from mild to hot and spicy (e.g., Italian oregano is"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "oregano + basil + tomato",
         "oregano + lemon juice + marjoram"
@@ -55668,6 +57779,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Oysters Served with Tomatillo-Habanero “Miñoneta,” Smoky Chipotle-Garlic Salsa and Fresh-Cut Limes",
+          "attribution": "Rick Bayless, Frontera Grill (Chicago)"
+        },
+        {
+          "text": "Oysters on the Half Shell with Champagne Mignonette and Fresh Horseradish",
+          "attribution": "Traci Des Jardins, Jardinière (San Francisco)"
+        }
+      ],
       "affinities": [
         "oysters + caviar + leeks",
         "oysters + caviar + tapioca",
@@ -55777,6 +57899,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine",
@@ -56002,6 +58126,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "african-cuisine",
@@ -56251,6 +58377,8 @@
       "tips": [
         "Add at the beginning of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "paprika + beef + sour cream"
       ],
@@ -56423,6 +58551,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "smoked paprika + mayonnaise + seafood"
       ],
@@ -56690,6 +58820,8 @@
       "tips": [
         "Use fresh. Parsley generally refers to flat-leaf parsley. Parsley is great for blending, as it is"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "parsley + bulgur wheat + garlic + lemon + mint + olive oil + scallions",
         "parsley + butter + garlic",
@@ -56983,6 +59115,21 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Passion Fruit and Bonito Caramel",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Passion Fruit Flip: Passion Fruit + Honey + Lime + Raspberries + Yogurt",
+          "attribution": "Gale Gand, pastry chef, Tru (Chicago)"
+        },
+        {
+          "text": "Passion Fruit Cream Enrobed in White Chocolate, Ginger Caramel, and Mandarin Sorbet",
+          "attribution": "Michael Laiskonis, Le Bernardin (New York City)"
+        }
+      ],
       "affinities": [
         "parsnips + butter + cream + potatoes",
         "parsnips + carrots + nutmeg + potatoes",
@@ -57173,6 +59320,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "passion fruit + banana + orange",
         "passion fruit + caramel + coconut",
@@ -57354,11 +59503,97 @@
         {
           "label": "pecans",
           "strength": 1
+        },
+        {
+          "label": "has some character.",
+          "strength": 1
         }
       ],
       "quotes": [],
       "tips": [],
-      "affinities": [],
+      "notes": [
+        "Which sauces pair best with which pastas? We asked chef Odette Fada of New York City’s\nSan Domenico restaurant.\nAngel hair: In Italy, angel hair pasta is served to old people who can’t chew. It’s for grandparents,\nor for others to eat when they are sick. The problem with angel hair pasta is it’s so thin it’s hard to\ncook al dente, and I like my pasta a little chewy.\nBow tie: Fresh bow tie is great when made by hand, because it stays folded and doesn’t open into a\nsquare. I like to serve it with vegetables and tomato-based sauces.\nFettuccine: This is a flavorful pasta and is good with a Bolognese sauce.\nFusilli: I like their [corkscrew] shape, but they tend to break easily so they are not that attractive\nwhen you cook them in a restaurant setting. I like them at home in a salad or with some pesto because\nthe pesto sticks to it.\nHollow pasta [e.g., macaroni, penne, rigatoni]: Good with sauces that have big chunks in them so\nthat the sauce pieces go inside whole. I like to do penne with fresh peas because the peas will slip\ninside, so you’ll sometimes get a little surprise when you’re chewing.\nPappardelle: This is a strong, rustic pasta. I like it with rabbit sauce, a ragoût, or a fish sauce that"
+      ],
+      "dishes": [
+        {
+          "text": "Goat Cheese Tortelloni with Dried Orange and Fennel Pollen",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Mint Tagliatelle with Lamb and Olives",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Spaghettini with Spicy Artichokes, Sweet Garlic, and Lobster",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Spaghetti Primavera with Prosciutto, Spring Garlic, Sugar Snap Peas, and Parmigiano",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        },
+        {
+          "text": "Homemade Pappardelle with Lamb Bolognese and Sheep’s Milk Ricotta",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        },
+        {
+          "text": "Homemade Soft Egg Yolk–Filled Raviolo with Truffled Butter",
+          "attribution": "Odette Fada, San Domenico (New York City)"
+        },
+        {
+          "text": "Homemade Straccetti with Pesto and Clams",
+          "attribution": "Odette Fada, San Domenico (New York City)"
+        },
+        {
+          "text": "Linguini with Clams, Pancetta, and Spicy Fresno Chile Pesto",
+          "attribution": "Matt Molina, Osteria Mozza (Los Angeles)"
+        },
+        {
+          "text": "Farfalle with Stridoli, Walnuts, and Chanterelles",
+          "attribution": "Matt Molina, Osteria Mozza (Los Angeles)"
+        },
+        {
+          "text": "Tagliatelle with Chanterelles and Parmigiano Reggiano",
+          "attribution": "Holly Smith, Café Juanita (Seattle)"
+        },
+        {
+          "text": "Butternut Squash Ravioli with Oxtail Ragôut and Sage Cream",
+          "attribution": "David Waltuck, Chanterelle (New York City)"
+        }
+      ],
+      "affinities": [
+        "pasta + anchovies + bread crumbs + capers + red pepper flakes + garlic + olives",
+        "pasta + anchovies + mozzarella cheese",
+        "pasta + artichokes + garlic + lobster",
+        "pasta + bacon + black pepper + eggs + olive oil + pecorino cheese",
+        "pasta + basil + garlic + tomato",
+        "pasta + basil + peas + shrimp",
+        "pasta + basil + scallops + tomato",
+        "pasta + bread crumbs + greens + shrimp + white beans",
+        "pasta + bread crumbs + raisins + sardines",
+        "pasta + chickpeas + garlic + sage",
+        "pasta + chile peppers + lobster + mint",
+        "pasta + clams + pancetta",
+        "pasta + cream + peas + prosciutto",
+        "pasta + duck confit + wild mushrooms",
+        "pasta + fennel + sausage + tomato + white beans",
+        "pasta + figs + pancetta",
+        "pasta + Gorgonzola cheese + spinach + walnuts",
+        "pasta + Gruyère cheese + nutmeg + ricotta cheese",
+        "pasta + lamb + lemon + rosemary",
+        "pasta + lamb + mint + olives",
+        "pasta + lobster + peas",
+        "pasta + mushrooms + pumpkin + sage",
+        "pasta + pancetta + stridoli",
+        "pasta + Parmesan cheese + sage + tomato",
+        "pasta + pesto + white beans",
+        "pasta + pumpkin + pecans + ricotta cheese + sage",
+        "pasta + red pepper flakes + fennel + sardines + tomatoes",
+        "pasta + red pepper flakes + garlic + olive oil",
+        "pasta + ricotta cheese + veal shanks",
+        "pasta + rosemary + venison",
+        "pasta + spinach + ricotta cheese",
+        "pasta + tomatoes + ricotta cheese"
+      ],
       "cuisines": [
         "italian-cuisine",
         "italian-cuisine-in-general"
@@ -57791,6 +60026,25 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Jim Core’s Peaches Upside-Down Cake with Blueberry Sorbet",
+          "attribution": "John Besh, August (New Orleans)"
+        },
+        {
+          "text": "Saffron Panna Cotta with Peaches, Peach Sorbetto, and Lemon Balm",
+          "attribution": "Gina DePalma, Babbo (New York City)"
+        },
+        {
+          "text": "White Peach Melba with Raspberry Granita",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Warm Ginger Cake Sabayon with Spiced Peaches",
+          "attribution": "Chuck Subra, La Côte Brasserie (New Orleans)"
+        }
+      ],
       "affinities": [
         "peaches + apples + vanilla",
         "peaches + blueberries + mascarpone",
@@ -58030,6 +60284,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "african-cuisine",
@@ -58494,6 +60750,37 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pear and Fresh Pecorino–Filled Ravioli with Aged Pecorino and Crushed Black Pepper",
+          "attribution": "Lidia Bastianich, Felidia (New York City)"
+        },
+        {
+          "text": "Grilled Pear and Roquefort Tart with Caramelized Onions and Walnuts",
+          "attribution": "Sandy D’Amato, Sanford (Milwaukee)"
+        },
+        {
+          "text": "Grilled Pear Steak with Polenta Frites and Orange-Tarragon Sauce",
+          "attribution": "Dominique and Cindy Duby, Wild Edibles (Vancouver)"
+        },
+        {
+          "text": "Salad of Spicy Poached Pear, Fresh Ricotta, Smoked Almonds, and Edamame with Verjus Dressing",
+          "attribution": "Brad Farmerie, Monday Room (New York City)"
+        },
+        {
+          "text": "Sticky Toffee Pudding with Cinnamon-Sautéed Pears",
+          "attribution": "Gale Gand, at the 2005 James Beard Awards gala reception"
+        },
+        {
+          "text": "Warm Semolina Pancake, Poached Pears, Cumin",
+          "attribution": "Johnny Iuzzini, pastry chef, Jean Georges (New York City)"
+        },
+        {
+          "text": "Honey-Roasted Pear Napoleon",
+          "attribution": "Kate Zuckerman, pastry chef, Chanterelle (New York City)"
+        }
+      ],
       "affinities": [
         "pears + amaretto + hazelnuts",
         "pears + arugula + Parmesan cheese + vinaigrette + walnuts",
@@ -58855,6 +61142,37 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Spring Pea Fricassée with Morels and Butter Lettuce",
+          "attribution": "Daniel Boulud, at the 2003 James Beard Awards gala reception"
+        },
+        {
+          "text": "Chilled Sweet Pea Soup “à la Française” Thumbelina Carrot Salad with Cilantro and Lobster",
+          "attribution": "Daniel Boulud, Daniel (New York City)"
+        },
+        {
+          "text": "Pea Velouté with Apple-Smoked Bacon, Louisiana Crayfish, Savory Cream",
+          "attribution": "Daniel Boulud, Daniel (New York City)"
+        },
+        {
+          "text": "Garden Pea Soup with Morel Cream",
+          "attribution": "Daniel Humm, Eleven Madison Park (New York City)"
+        },
+        {
+          "text": "Sweet Pea Soup with Caramelized Vidalia Onion, Apple-Smoked Bacon, and Mint",
+          "attribution": "Alfred Portale, Gotham Bar and Grill (New York City)"
+        },
+        {
+          "text": "Sweet Pea Sorbet with Preserved Green Almond and Marcona Almond Milk, Fuji Apple with Butterscotch, Rye, and Thyme",
+          "attribution": "Charlie Trotter, Charlie Trotter’s (Chicago)"
+        },
+        {
+          "text": "Fresh Pea Ravioli with Sweet Onions Sauce and Smoked Pork Reduction",
+          "attribution": "David Waltuck, Chanterelle (New York City)"
+        }
+      ],
       "affinities": [
         "peas + bacon + cream + shallots",
         "peas + basil + potatoes",
@@ -59130,6 +61448,25 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pecan Praline Cheesecake",
+          "attribution": "Terrance Brennan, Artisanal (New York City)"
+        },
+        {
+          "text": "Pecan Praline Pancakes with Brown Butter Bananas and Rum Raisins",
+          "attribution": "Daniel Humm, Eleven Madison Park (New York City)"
+        },
+        {
+          "text": "Southern Butter Pecan Ice Cream with Hot Caramel Sauce",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        },
+        {
+          "text": "Phyllo Spirals with Garden Herbs, Rio Grande Organic Pecans, and Pure Luck Feta",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "southern-cuisine-american"
@@ -59338,6 +61675,8 @@
       "tips": [
         "Pepper suggests “false heat” and also stimulates the appetite."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "indian-cuisine",
@@ -59366,6 +61705,8 @@
       "tips": [
         "Add at the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -59516,6 +61857,8 @@
       "tips": [
         "Add at the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -59573,6 +61916,8 @@
       "tips": [
         "Add at the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "caribbean-cuisine",
@@ -59648,6 +61993,8 @@
       "tips": [
         "Add at the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisines",
@@ -59665,6 +62012,8 @@
       "pairings": [],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -59840,6 +62189,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Green Olives Stuffed with Piquillo Peppers and Anchovies",
+          "attribution": "JOSÉ ANDRÉS, Café Atlántico (Washington, DC)"
+        },
+        {
+          "text": "Piquillo Peppers Filled with Manchego Cheese, Avocado Leaf — and Hoja Santa — Seasoned Refried Beans and Vanilla — Bitter Chocolate Sauce",
+          "attribution": "Maricel Presilla, Zafra (Hoboken, New Jersey)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "spanish-cuisine"
@@ -59853,6 +62213,8 @@
       "pairings": [],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -60113,6 +62475,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "persimmons + allspice + cinnamon + ginger"
       ],
@@ -60269,6 +62633,17 @@
       "tips": [
         "Wrap with bacon to keep from drying out when roasting."
       ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pheasant: Cider, Shallot, and Burning Leaves",
+          "attribution": "Grant Achatz, Alinea (Chicago)"
+        },
+        {
+          "text": "Cinnamon-Roasted Pheasant with Applewood-Smoked Bacon and Red Chile Pecan Sauce — Robert Del Grande, Café Annie (Houston)",
+          "attribution": ""
+        }
+      ],
       "affinities": [
         "pheasant + apples + potatoes"
       ],
@@ -60291,6 +62666,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "japanese-cuisine",
@@ -60312,6 +62689,41 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pineapple-Vanilla Vacherin with Coconut Gelée",
+          "attribution": "Daniel Boulud, Restaurant Daniel, New York City"
+        },
+        {
+          "text": "Warm Pineapple Cake “Sottosopra” with Rum Zabaione",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Exotic Fruit and Mint Salad, Star Anise Tuile",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Pineapple Rum Soup with Passion Fruit and Mango Gelée, Coconut Tapioca, Pink Peppercorn–Pineapple Sorbet",
+          "attribution": "Gale Gand, pastry chef, Tru (Chicago)"
+        },
+        {
+          "text": "Pineapple Sorbet, Candied Pine Nut Tart, and Pineapple Chip",
+          "attribution": "Thomas Keller, The French Laundry (Yountville, California)"
+        },
+        {
+          "text": "Fermented Pineapple Peel Drink",
+          "attribution": "Maricel Presilla, Zafra (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Grilled Pineapple, Avocado, and Watercress",
+          "attribution": "Maricel Presilla, Zafra (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Roasted Pineapple with Pistachio Ice Cream",
+          "attribution": "Eric Ripert, Le Bernardin (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -60665,6 +63077,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "pineapple + avocado + watercress",
         "pineapple + banana + ginger + rum + sugar + vanilla",
@@ -60807,6 +63221,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "pine nuts + apples + apricots + rosemary",
         "pine nuts + basil + garlic + olive oil + Parmesan cheese (pesto)"
@@ -60871,6 +63287,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -60934,6 +63352,8 @@
       "tips": [
         "Stimulates appetite; enhances other flavors (e.g., salty, sour)."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -61144,6 +63564,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pistachio and Chocolate Semifreddo",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "A Checkerboard Terrine of Pistachio and White Chocolate Ice Cream with Blackberry Sauce",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "eastern-mediterranean-cuisine",
@@ -61279,6 +63710,8 @@
       "tips": [
         "Look for green plantains without any yellow."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "african-cuisine",
@@ -61403,6 +63836,8 @@
       "tips": [
         "Look for yellow to black plantains that ripen to black."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "african-cuisine",
@@ -61672,6 +64107,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Plum and Bay Leaf Soup with Vanilla Yogurt Sorbetto",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Plum Cornmeal Cake with Plum Sorbet",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        }
+      ],
       "affinities": [
         "plums + arugula + prosciutto",
         "plums + bay leaf + vanilla",
@@ -61929,6 +64375,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "prunes + allspice + bay leaf + cinnamon + black pepper",
         "prunes + apples + brandy + vanilla + yogurt",
@@ -62051,6 +64499,17 @@
       "quotes": [],
       "tips": [
         "Grill or sauté cooked polenta."
+      ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Cornish Game Hens with Pomegranate Sauce and Toasted Almonds",
+          "attribution": "Rafih Benjelloun, Imperial Fez (Atlanta)"
+        },
+        {
+          "text": "Pomegranate Glazed Specialty Chicken Breast with Coconut-Onion Curry",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        }
       ],
       "affinities": [
         "polenta + chanterelle mushrooms + white truffle oil",
@@ -62277,6 +64736,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "pomegranates + almonds + cinnamon + cloves + garlic + ginger + honey",
         "pomegranates + chicken + coconut + curry + onions",
@@ -62394,6 +64855,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "middle-eastern-cuisine"
@@ -62487,6 +64950,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "pomelo + pickled ginger + fish",
         "pomelo + salt + chili powder"
@@ -62540,6 +65005,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "japanese-cuisine"
@@ -62641,6 +65108,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisine",
@@ -63969,6 +66438,53 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Rack of Pork, Marinated in Oranges, Thyme, and Garlic, Served with Fennel and Black Olive Ouzo and Orange Sauce",
+          "attribution": "Ann Cashion, Cashion’s Eat Place (Washington, DC)"
+        },
+        {
+          "text": "Suckling Pig with Quince Paste and Romesco Sauce",
+          "attribution": "Suzanne Goin, at the 2003 James Beard Awards gala reception"
+        },
+        {
+          "text": "Roasted Rack of Pork with Apple Butter Glaze, Country Ham Spoon Bread, Roasted Apples, Mustard Greens, and Bourbon Glaze",
+          "attribution": "Bob Kinkead, Colvin Run (Vienna, Virginia)"
+        },
+        {
+          "text": "Beer-Braised Pork Belly with Sauerkraut and Ginger Jus",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        },
+        {
+          "text": "Organic Berkshire Pork Tenderloin Marinated in Wheat Beer with Barley Risotto, Turnips, and Chicory Emulsion",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        },
+        {
+          "text": "Pork with Fig Maple Jus and Dutch Cabbage",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Cuban Roast Pork Marinated in an Allspice-Cumin Adobo with Ripe Plantains, Rich Oaxacan Six-Chile Mole Sauce, and “Moors and Christians” Rice",
+          "attribution": "Maricel Presilla, Zafra (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Trio of Pan-Seared Pork Tenderloin with House-Made Sausage and Potato Pierogis",
+          "attribution": "Celina Tio, American Restaurant (Kansas City)"
+        },
+        {
+          "text": "Marinated Pork Medallions with Garlic-Yogurt Curry and Naan Bread",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        },
+        {
+          "text": "Grilled Pork Chop with Artichokes, Cipollini, and Aceto Manodori",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Pork Chop, Creamed Sweet Corn, Pan-Fried Summer Squash, and Crushed Blackberries",
+          "attribution": "Cory Schreiber, Wildwood (Portland, Oregon)"
+        }
+      ],
       "affinities": [
         "pork + allspice + mace",
         "pork + apples + mustard",
@@ -64395,6 +66911,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "potatoes + bacon + cheese + onions",
         "potatoes + chives + sour cream",
@@ -64494,6 +67012,8 @@
       "tips": [
         "New potatoes are best not baked or fried."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "new potatoes + garlic + shallots + tarragon + vinegar"
       ],
@@ -64644,6 +67164,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Prosciutto San Daniele with Black Pepper Fettunta and Figs",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Fig and Prosciutto Pizza",
+          "attribution": "Todd English, Figs (Charlestown, Massachusetts)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "italian-cuisine",
@@ -65016,6 +67547,33 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Pumpkin, Brown Sugar, and Tempura with Cinnamon Fragrance",
+          "attribution": "Grant Achatz, Alinea (Chicago)"
+        },
+        {
+          "text": "Pumpkin “Lune” with Butter, Sage, and Amaretti",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Creamy Pumpkin and Cream Cheese Custard with Orange-Rum Raisins",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Grilled Pineapple and Caribbean Pumpkin Salad with Pumpkin Seeds and Cacao Nib Vinaigrette",
+          "attribution": "Maricel Presilla, Zafra (Hoboken, New Jersey)"
+        },
+        {
+          "text": "Pepitas: Toasted Pumpkin Seeds Seasoned with Cumin, Coriander, and Jalapeño",
+          "attribution": "Traci Des Jardins, Mijita (San Francisco)"
+        },
+        {
+          "text": "Cilantro and Pumpkin Seed Pesto",
+          "attribution": "Jerry Traunfeld, The Herbfarm (Woodinville, Washington)"
+        }
+      ],
       "affinities": [
         "pumpkin + allspice + bay leaf + cinnamon + salt",
         "pumpkin + allspice + cinnamon + ginger",
@@ -65076,6 +67634,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mexican-cuisine"
@@ -65133,6 +67693,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -65516,6 +68078,37 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Quail Corn Bread and Pecan Stuffed Breast, Leg Confit, Sweet Corn Pudding, and Chanterelle Mushrooms",
+          "attribution": "Jeffrey Buben, Vidalia (Washington, DC)"
+        },
+        {
+          "text": "Glazed Quail with Caramelized Fennel Bulb and Tangerine Marmalade",
+          "attribution": "Thomas Keller, The French Laundry (Yountville, California)"
+        },
+        {
+          "text": "Walnut-Glazed Quail with a Ragout of Organic Shell Beans, Shiitake Mushrooms, and Applewood-Smoked Bacon",
+          "attribution": "Gabriel Kreuther, The Modern (New York City)"
+        },
+        {
+          "text": "Roast “Brace” of Quail and La Quercia “Americano” Prosciutto with a “Fondant” of Austrian Crescent Potatoes, Roasted Acorn Squash, Red Pearl Onions, Swiss Chard, and Tarragon",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Two Texas Cross Quail and Braised Cabbage with Apple and Hazelnuts",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Roasted Quail with Smoked Bacon, Brussels Sprouts, and a Quail Jus",
+          "attribution": "Thierry Rautureau, Rover’s (Seattle)"
+        },
+        {
+          "text": "Pan-Fried Coriander Quail Cakes with Coconut Curried Vegetables",
+          "attribution": "Vikram Vij and Meeru Dhalwala, Vij’s (Vancouver)"
+        }
+      ],
       "affinities": [
         "quail + arugula + pomegranate",
         "quail + bacon + Brussels sprouts",
@@ -65585,6 +68178,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cloves (allspice or cinnamon) + ginger + nutmeg + black and/or white pepper"
       ],
@@ -65725,6 +68320,25 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Roasted Quince, Foie Gras, and Candied Fennel with Sweet Spices",
+          "attribution": "Grant Achatz, Alinea (Chicago)"
+        },
+        {
+          "text": "Quince and Marcona Almond “Crisp,” Mascarpone Sorbet, and Pedro Ximenez Sherry Caramel",
+          "attribution": "Elizabeth Dahl, pastry chef, Naha (Chicago)"
+        },
+        {
+          "text": "Quince-Filled Maple-Whiskey Cake with Goat Cheese Ice Cream",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Granny Smith Apple Sorbet, Quince, Quinoa, Pecans",
+          "attribution": "Johnny Iuzzini, pastry chef, Jean Georges (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "spanish-cuisine-quince-paste"
@@ -66047,6 +68661,33 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Rabbit Enchiladas with Red Chile Mole and Pumpkin Seeds",
+          "attribution": "Robert Del Grande, at the 2003 James Beard Awards gala reception"
+        },
+        {
+          "text": "Braised Rabbit with Winter Vegetables, Abita Beer Bread, Truffled Parsnips",
+          "attribution": "Bob Iacovone, Cuvée (New Orleans)"
+        },
+        {
+          "text": "Roast Loin of Rabbit with a “Ragoût” of Braised Rabbit, Confit Garlic Crushed Potatoes, Applewood Slab Bacon, “Hen of the Woods” Mushrooms, Glazed Young Carrots, and Turnips",
+          "attribution": "Carrie Nahabedian, Naha (Chicago)"
+        },
+        {
+          "text": "Roasted Rabbit Saddle with Root Vegetables, Green Lentils, and a Game Jus",
+          "attribution": "Thierry Rautureau, Rover’s (Seattle)"
+        },
+        {
+          "text": "Rabbit Braised in Arneis with Chickpea Crepe and Pancetta",
+          "attribution": "Holly Smith, Café Juanita (Seattle)"
+        },
+        {
+          "text": "Rabbit Consommé, Morels, Pea, and Lavender Emulsion",
+          "attribution": "Rick Tramonto, Tru (Chicago)"
+        }
+      ],
       "affinities": [
         "rabbit + bacon + rosemary",
         "rabbit + garlic + potatoes + rosemary + shallots",
@@ -66265,6 +68906,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Grilled Radicchio Trevisano with Asiago and Horseradish",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Radicchio Salad with Parmesan Balsamic Vinaigrette",
+          "attribution": "Hiro Sone and Lissa Doumani, Terra (St. Helena, California)"
+        }
+      ],
       "affinities": [
         "radicchio + arugula + endive",
         "radicchio + Asiago cheese + olive oil + balsamic vinegar",
@@ -66477,6 +69129,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "radishes + bread + butter + salt"
       ],
@@ -66745,6 +69399,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "raisins + orange + rum"
       ],
@@ -66874,6 +69530,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "ramps + asparagus + morels",
         "ramps + lentils + pork",
@@ -67209,6 +69867,29 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Spaghetti with Local Ramps, American Speck, and Parmesan",
+          "attribution": "Andrew Carmellini, A Voce (New York City)"
+        },
+        {
+          "text": "Roasted Pork Chop with Spiced Pulled Pork, Green Lentils, and Ramps",
+          "attribution": "Gray Kunz, Café Gray (New York City)"
+        },
+        {
+          "text": "Flambéed Peaches with Crepes and Raspberry-Lemon Ice Cream",
+          "attribution": "Gary Danko, Gary Danko (San Francisco)"
+        },
+        {
+          "text": "Raspberry Mousse and Star Anise Tuile",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Almond Tart Shell Filled with Rose Cream and Raspberries with Lychee Granité, and Pistachio Crème Anglaise",
+          "attribution": "Michael Laiskonis, pastry chef, Le Bernardin (New York City)"
+        }
+      ],
       "affinities": [
         "raspberries + almonds + lemon",
         "raspberries + almonds + vanilla",
@@ -67522,6 +70203,49 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Cool Rhubarb Soup with Orange and Mint Fior Di Latte",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Ricotta Cheesecake with Rhubarb and Sweet Vanilla Cream",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Rhubarb Stilton and Port Wine Reduction Chocolate",
+          "attribution": "Dominique and Cindy Duby, Wild Sweets (Vancouver)"
+        },
+        {
+          "text": "Rhubarb Consommé, Vanilla-Poached Rhubarb, Strawberry Crisp",
+          "attribution": "Gale Gand, pastry chef, Tru (Chicago)"
+        },
+        {
+          "text": "Vanilla Yogurt Mousse, Rhubarb-Citrus Compote, Blood Orange Sorbet, and Coulis",
+          "attribution": "Michael Laiskonis, pastry chef, Le Bernardin (New York City)"
+        },
+        {
+          "text": "Warm Apple and Rhubarb Turnovers with Rhubarb-Gewürztraminer Jam and Candied Ginger–Crème Fraîche Ice Cream",
+          "attribution": "Emily Luchetti, pastry chef, Farallon (San Francisco)"
+        },
+        {
+          "text": "Rhubarb Napoleon with Mascarpone Cream and Fennel Compote",
+          "attribution": "Ellie Nelson, pastry chef, Jardinière (San Francisco)"
+        },
+        {
+          "text": "Old-Fashioned Rhubarb Crisp with Cinnamon-Walnut Ice Cream",
+          "attribution": "Michael Romano, Union Square Café (New York City)"
+        },
+        {
+          "text": "Rhubarb and Angelica Pie",
+          "attribution": "Jerry Traunfeld, The Herbfarm (Woodinville, Washington)"
+        },
+        {
+          "text": "Rhubarb-Mint Cobbler",
+          "attribution": "Jerry Traunfeld, The Herbfarm (Woodinville, Washington)"
+        }
+      ],
       "affinities": [
         "rhubarb + blood orange + caramelized sugar",
         "rhubarb + caramel + orange",
@@ -67667,6 +70391,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -67846,6 +70572,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "risotto + artichokes + lemon + prosciutto",
         "risotto + asparagus + chervil + morel mushrooms",
@@ -68043,6 +70771,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "indian-cuisine"
@@ -68086,6 +70816,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "midwestern-american-cuisine"
@@ -68177,6 +70909,17 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Rose and Almond Panna Cotta",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        },
+        {
+          "text": "Tropical Fruit Salad with Rosewater and Sweet Tahini Yogurt",
+          "attribution": "Brad Farmerie, Public (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": []
     },
@@ -68279,6 +71022,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "middle-eastern-cuisine"
@@ -68354,6 +71099,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "rose + almonds + cream/milk",
         "rose + honey + yogurt",
@@ -68815,6 +71562,8 @@
       "tips": [
         "Add early in the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "rosemary + anchovies + garlic",
         "rosemary + butter + lemon",
@@ -68992,6 +71741,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "rum + apples + butter + nuts + vanilla",
         "rum + apples + carrot juice + spices",
@@ -69281,6 +72032,13 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Apple-Rutabaga Soup",
+          "attribution": "Patrick O’Connell, The Inn at Little Washington (Washington, Virginia)"
+        }
+      ],
       "affinities": [
         "rutabagas + apples + maple syrup",
         "rutabagas + cheese + potatoes",
@@ -69547,6 +72305,13 @@
       ],
       "tips": [
         "Add later in the cooking process; saffron is activated by the heat of cooking."
+      ],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Saffron Panna Cotta with “Agrumi Misti” and Blood Orange Sorbetto",
+          "attribution": "Gina DePalma, pastry chef, Babbo (New York City)"
+        }
       ],
       "affinities": [
         "saffron + fish + rice",
@@ -69943,6 +72708,8 @@
       "tips": [
         "Always use cooked (never raw); add near the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sage + marjoram + thyme",
         "sage + parsley + rosemary + thyme",
@@ -70014,6 +72781,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sake + cucumber + lime"
       ],
@@ -70095,6 +72864,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -70237,6 +73008,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -70552,6 +73325,21 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Smoked Salmon with Crispy Potatoes and Horseradish Cream",
+          "attribution": "Jean Joho, Brasserie Jo (Chicago)"
+        },
+        {
+          "text": "Rosti Potato Cake with Herb Mascarpone and Fresh-Smoked Salmon",
+          "attribution": "Monica Pope, T’afia (Houston)"
+        },
+        {
+          "text": "Leek Tart with Smoked Salmon and Crème Fraîche",
+          "attribution": "Michel Richard, Citronelle (Washington, DC)"
+        }
+      ],
       "affinities": [
         "smoked salmon + chives + crème fraîche + dill + pumpernickel-rye blini",
         "smoked salmon + chives + dill + scrambled eggs + potatoes",
@@ -70714,6 +73502,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "salsify + Parmesan cheese + prosciutto"
       ],
@@ -70730,6 +73520,8 @@
       "pairings": [],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "creole-cuisine"
@@ -70768,6 +73560,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -70819,6 +73613,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -70856,6 +73652,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -70917,6 +73715,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -70947,6 +73747,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -70996,6 +73798,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -71064,6 +73868,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -71100,6 +73906,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -71158,6 +73966,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -71238,6 +74048,8 @@
       "tips": [
         "Adding salt to a dish diminishes the effects of bitter, sour, and sweet."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -71630,6 +74442,17 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [
+        {
+          "text": "Marinated Fresh Sardines with Caramelized Fennel and Lobster Oil",
+          "attribution": "Mario Batali, Babbo (New York City)"
+        },
+        {
+          "text": "Whole Wheat Spaghetti with Fresh Sardines and Walnuts",
+          "attribution": "David Pasternak, Esca (New York City)"
+        }
+      ],
       "affinities": [],
       "cuisines": [
         "french-cuisine",
@@ -71874,6 +74697,8 @@
         "Sauerkraut is shredded cabbage that is fermented in salt and spices.",
         "Sauerkraut is shredded cabbage that is fermented in salt and spices."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "eastern-european-cuisine",
@@ -72137,6 +74962,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sausages + mustard + sauerkraut",
         "sausages + onions + potatoes + tomatoes",
@@ -72220,6 +75047,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -72457,6 +75286,8 @@
       "tips": [
         "Can stand up to cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "savory + garlic + tomatoes"
       ],
@@ -72634,6 +75465,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "japanese-cuisine",
@@ -73134,6 +75967,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "scallops + almonds + cauliflower",
         "scallops + apples + bacon + watercress",
@@ -73220,6 +76055,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "scotch + Earl Grey tea + tamarind syrup",
         "scotch + ginger + lemon juice"
@@ -73346,6 +76183,8 @@
       "tips": [
         "Tap these ideas when cooking a medley of assorted seafood."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "seafood + brandy + sherry",
         "seafood + fennel + lemon + mint",
@@ -73429,6 +76268,8 @@
       "tips": [
         "Use whole seeds."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisine",
@@ -73569,6 +76410,8 @@
       "tips": [
         "Toast before using; use ground or whole."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sesame seeds + honey + tahini paste + vanilla",
         "sesame seeds + garlic + soy sauce + spinach"
@@ -73749,6 +76592,8 @@
       "tips": [
         "Shallots are milder than garlic or onions."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "french-cuisine",
@@ -73880,6 +76725,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "shellfish + almonds + vanilla",
         "shellfish + curry + lemongrass",
@@ -74077,6 +76924,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "shiso leaf + avocado + crab",
         "shiso leaf + clams + onions"
@@ -74691,6 +77540,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "shrimp + bacon + chives",
         "shrimp + basil + garlic + jalapeño chile",
@@ -74954,6 +77805,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "skate + butter + pistachios",
         "skate + capers + garlic + lemon juice",
@@ -74975,6 +77828,8 @@
       "tips": [
         "These herbs and flavorings taste better with longer cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -75058,6 +77913,8 @@
       "tips": [
         "Add a smoky component to provide a “meaty” flavor to a dish or to counteract the richness"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -75236,6 +78093,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "snap peas + brown butter + sage"
       ],
@@ -75573,6 +78432,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "snapper + clams + romesco sauce + sausage",
         "snapper + fennel + olives + orange + saffron",
@@ -75815,6 +78676,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sole + butter + lemon + parsley",
         "sole + paprika + potatoes"
@@ -76118,6 +78981,8 @@
       "tips": [
         "Always use fresh; as a soft-leaved herb, it will lose flavor in sauces, soups."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sorrel + butter + chicken stock",
         "sorrel + garlic + spinach",
@@ -76209,6 +79074,8 @@
       "tips": [
         "Use fresh, or cook at low temperatures only."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "european-cuisine",
@@ -76232,6 +79099,8 @@
       "tips": [
         "Sourness tends to sharpen other flavors."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -76347,6 +79216,8 @@
       "tips": [
         "Add at the end of the cooking process, or to finish a dish. Use in stir-fries."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "soy sauce + coriander + honey",
         "soy sauce + garlic + ginger",
@@ -76634,6 +79505,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "spinach + bacon + garlic + onions + cider vinegar",
         "spinach + bacon + walnuts",
@@ -76791,6 +79664,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -76828,6 +79703,8 @@
       "tips": [
         "Cook for less than 30 seconds, or they’ll wilt."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -76954,6 +79831,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -77074,6 +79953,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "acorn squash + custard + sage",
         "acorn squash + ginger + maple syrup"
@@ -77343,6 +80224,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "butternut squash + anchovies + bread crumbs + onions + pasta",
         "butternut squash + bacon + maple syrup + sage",
@@ -77367,6 +80250,8 @@
       "pairings": [],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "kabocha squash + coconut + sweet curry"
       ],
@@ -77470,6 +80355,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -77501,6 +80388,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -77750,6 +80639,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "winter squash + butter + garlic + sage",
         "winter squash + garlic + olive oil + parsley",
@@ -78073,6 +80964,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "squid + aioli + anchovies",
         "squid + basil + bell peppers + chiles + garlic + orange + tomatoes + red wine",
@@ -78384,6 +81277,8 @@
       "tips": [
         "Adding sugar enhances strawberry flavor, as does adding an acid such as citrus juice or"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "strawberries + almonds + cream",
         "strawberries + almonds + olive oil + balsamic vinegar",
@@ -78408,6 +81303,8 @@
       "tips": [
         "Balance sweetness with acid (e.g., vinegar) and salt. Avoid dark brown sugar with maple"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine",
@@ -78452,6 +81349,8 @@
       "tips": [
         "Avoid with lighter dishes, which would be overwhelmed."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "indian-cuisine",
@@ -78646,6 +81545,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sumac + lamb + black pepper",
         "sumac + salt + sesame seeds + thyme (aka Middle Eastern za’atar )"
@@ -78953,6 +81854,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "beef + bay leaf + dill + nutmeg + onions",
         "herring + sour cream + vinegar",
@@ -79152,6 +82055,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sweetbreads + asparagus + morels",
         "sweetbreads + bacon + capers",
@@ -79370,6 +82275,8 @@
       "tips": [
         "The colder the food or drink, the less the perception of sweetness. Sweetness tends to"
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -79981,6 +82888,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "sweet potatoes + allspice + cinnamon + ginger",
         "sweet potatoes + apples + sage",
@@ -80139,6 +83048,8 @@
       "tips": [
         "Add at the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "Szechuan pepper + ginger + star anise"
       ],
@@ -80812,6 +83723,8 @@
         "Add at the beginning of the cooking process.",
         "Add at the end of the cooking process."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "tamarind + chicken + yogurt",
         "tarragon + anise + celery seeds",
@@ -80998,6 +83911,8 @@
       "tips": [
         "Authentic Thai cuisine strives for a balance of hot + sour + salty + sweet."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "tequila + cilantro + lime",
         "tequila + Cointreau + lime juice + pomegranate juice",
@@ -81501,6 +84416,8 @@
       "tips": [
         "Add at the beginning of the cooking process; use dried or fresh."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "thyme + goat cheese + olive oil",
         "thyme + savory"
@@ -81624,6 +84541,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mexican-cuisine"
@@ -82009,6 +84928,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "tomatoes + avocado + basil + crab",
         "tomatoes + avocado + lemon",
@@ -82252,6 +85173,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "trout + bacon + lentils + sherry vinegar",
         "trout + capers + lemon"
@@ -82361,6 +85284,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "smoked trout + apples + horseradish",
         "smoked trout + crème fraîche + dill",
@@ -82460,6 +85385,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "french-cuisine",
@@ -82546,6 +85473,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -82623,6 +85552,8 @@
       "tips": [
         "Shave over dishes at the last minute."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "truffles + eggs + pasta"
       ],
@@ -83056,6 +85987,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "tuna + aioli + capers + tomatoes",
         "tuna + anchovies + green beans + olives + potatoes",
@@ -83215,6 +86148,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "turbot + butter + lemon + marjoram",
         "turbot + caviar + Champagne",
@@ -83272,6 +86207,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "mexican-cuisine",
@@ -83627,6 +86564,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "turmeric + cilantro + cumin + garlic + onion + paprika + parsley + pepper (Moroccan",
         "turmeric + coriander + cumin (Indian cuisine)"
@@ -83824,6 +86763,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -84158,6 +87099,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "vanilla + almonds + cream + whiskey",
         "vanilla + bay leaf + brown butter",
@@ -85006,6 +87949,8 @@
       "tips": [
         "Onion enhances the flavor of vegetables, and brings out their sweetness."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "veal + asparagus + morels",
         "veal + basil + lemon",
@@ -85390,6 +88335,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "venison + curry + pomegranate seeds",
         "venison + garlic + juniper berries + rosemary",
@@ -85539,6 +88486,8 @@
       "tips": [
         "Use instead of vinegar or lemon juice, or as a seasoning."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -85555,6 +88504,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "spanish-cuisine",
@@ -85649,6 +88600,8 @@
       "tips": [
         "Use when you want a sweet, low-acid vinegar."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "balsamic vinegar + brown butter + fish",
         "white balsamic vinegar + white truffle oil + whole grain mustard"
@@ -85778,6 +88731,8 @@
       "tips": [
         "Can substitute for red wine vinegar. Use to deglaze a pan."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "Banyuls vinegar + blue cheese + lettuce + pears + walnuts"
       ],
@@ -85796,6 +88751,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -85834,6 +88791,8 @@
       "tips": [
         "Champagne vinegar is the most delicate vinegar."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -85850,6 +88809,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -85927,6 +88888,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "cider vinegar + ginger + sugar"
       ],
@@ -86000,6 +88963,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -86078,6 +89043,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -86121,6 +89088,8 @@
       "tips": [
         "Sprinkle on foods judiciously."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -86228,6 +89197,8 @@
       "tips": [
         "Red wine vinegar can stand up to spices and stronger herbs."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -86329,6 +89300,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "asian-cuisine",
@@ -86457,6 +89430,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "spanish-cuisine"
@@ -86493,6 +89468,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -86562,6 +89539,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -86623,6 +89602,8 @@
       "tips": [
         "Can substitute champagne vinegar if needed."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -87092,6 +90073,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "vodka + amaretto + cream + Kahlúa",
         "vodka + apple + beet + caraway + horseradish",
@@ -87217,6 +90200,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -87319,6 +90304,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "japanese-cuisine"
@@ -87376,6 +90363,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine"
@@ -87697,6 +90686,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "watercress + almonds + green apple + pecorino cheese",
         "watercress + bacon + cream",
@@ -87873,6 +90864,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "watermelon + cilantro + cream + tequila",
         "watermelon + fennel + lemon juice + parsley + salt",
@@ -88409,6 +91402,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "whiskey + cinnamon + dried fruits + ginger + lemon + star anise",
         "whiskey + lemon + orange curaçao",
@@ -88578,6 +91573,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "yuzu + caramel + grapefruit + green tea"
       ],
@@ -88928,6 +91925,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "zucchini + basil + garlic",
         "zucchini + cream + Parmesan cheese",

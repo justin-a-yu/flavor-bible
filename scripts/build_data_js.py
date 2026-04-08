@@ -64,6 +64,8 @@ def build():
             "pairings":   pairings,
             "quotes":     entry.get("quotes", [])[:3],
             "tips":       entry.get("tips", [])[:3],
+            "notes":      entry.get("notes", []),
+            "dishes":     entry.get("dishes", []),
             "affinities": entry.get("affinities", [])[:4],
             "cuisines":   entry.get("cuisines", []),
             "meta":       entry.get("meta", {}),
