@@ -5,6 +5,7 @@ import { FLAVORS } from '../data/flavors_data';
 const LENS_COLORS = ['#d4a840', '#c0603a', '#4a8c5c', '#7a5ab8', '#c06080', '#4a7ab8'];
 
 const DEFAULT_FILTERS = {
+  regions:    [],
   cuisines:   [],
   seasons:    [],
   tastes:     [],
