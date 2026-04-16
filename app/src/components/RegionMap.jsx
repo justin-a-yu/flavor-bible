@@ -1,151 +1,141 @@
 /**
  * RegionMap.jsx
- * Uses the Wikimedia "World Map for Locators" SVG (public domain) as a
- * background, with a transparent clickable overlay SVG defining the six
- * filter regions in the same coordinate space (viewBox 0 0 2280 1293).
  *
- * Coordinate helpers (equirectangular, centred at 10 °E):
- *   x(lon) = (lon + 170) * (2280 / 360)
- *   y(lat) = (90  - lat) * (1293 / 180)
+ * Renders world_map_regions.svg — a preprocessed SVG with 6 <g> elements,
+ * one per filter region. Fills are controlled by React state:
+ *
+ *   selected  → gold  (#b8863a)
+ *   hovered   → light gold  (rgba 184,134,58 × 0.45)
+ *   dimmed    → pale warm-grey when any other region is selected
+ *   default   → warm grey (#c2beb4)
+ *
+ * The SVG is fetched once and injected via dangerouslySetInnerHTML so we
+ * can target individual <g> fills without bundling 5 MB of path data.
  */
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-// ── Region zone definitions ───────────────────────────────────────────────────
-// Zones are rectangles in the map's SVG coordinate space.
-// Render order matters for overlap: later = on top = wins click priority.
+// ── Region metadata ───────────────────────────────────────────────────────────
 
-const REGION_ZONES = [
-  {
-    key: 'Americas',
-    // Covers all of North + South America
-    x: 0, y: 108, w: 920, h: 970,
-    labelX: 430,
-    labelY: 530,
-    label: 'Americas',
-  },
-  {
-    key: 'South & SE Asia',
-    // Indian subcontinent, SE Asia mainland + islands, Australia
-    // Rendered before East Asia so East Asia wins the shared x band at the top
-    x: 1457, y: 524, w: 601, h: 460,
-    labelX: 1760,
-    labelY: 760,
-    label: 'S & SE Asia',
-    fullLabel: 'South & SE Asia',
-  },
-  {
-    key: 'East Asia',
-    // China, Japan, Korea, Mongolia, eastern Russia
-    x: 1539, y: 93, w: 456, h: 431,
-    labelX: 1770,
-    labelY: 300,
-    label: 'E. Asia',
-    fullLabel: 'East Asia',
-  },
-  {
-    key: 'Africa',
-    // Sub-Saharan Africa (below ~8 °N)
-    x: 963, y: 589, w: 443, h: 323,
-    labelX: 1185,
-    labelY: 755,
-    label: 'Africa',
-  },
-  {
-    key: 'Middle East & N. Africa',
-    // North Africa, Arabian Peninsula, Levant, Iran
-    x: 963, y: 388, w: 506, h: 201,
-    labelX: 1220,
-    labelY: 480,
-    label: 'M.E. & N. Africa',
-    fullLabel: 'Middle East & N. Africa',
-  },
-  {
-    key: 'Europe',
-    // Western, Central, Eastern Europe + Scandinavia
-    x: 1001, y: 129, w: 329, h: 259,
-    labelX: 1165,
-    labelY: 262,
-    label: 'Europe',
-  },
+const REGIONS = [
+  { key: 'Americas',              gId: 'region-americas'     },
+  { key: 'Europe',                gId: 'region-europe'       },
+  { key: 'Middle East & N. Africa', gId: 'region-me-nafrica' },
+  { key: 'Africa',                gId: 'region-africa'       },
+  { key: 'South & SE Asia',       gId: 'region-south-se-asia'},
+  { key: 'East Asia',             gId: 'region-east-asia'    },
 ];
 
 // ── Colours ───────────────────────────────────────────────────────────────────
 
-const CLR_SELECTED     = 'rgba(184, 134,  58, 0.50)';
-const CLR_HOVER        = 'rgba(184, 134,  58, 0.20)';
-const CLR_LABEL_ON     = '#5a3800';
-const CLR_LABEL_HOVER  = 'rgba(60, 30, 0, 0.85)';
-const CLR_LABEL_OFF    = 'rgba(50, 30, 0, 0.60)';
+const CLR_DEFAULT  = '#c2beb4';
+const CLR_SELECTED = '#b8863a';
+const CLR_HOVERED  = 'rgba(184,134,58,0.55)';
+const CLR_DIMMED   = '#dbd8d1';
+const CLR_OCEAN    = '#dae8f2';
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function RegionMap({ selected = [], onToggle }) {
-  const [hovered, setHovered] = useState(null);
+  const [svgMarkup, setSvgMarkup] = useState(null);
+  const [hovered, setHovered]     = useState(null);
+  const containerRef = useRef(null);
+
+  // Fetch the regions SVG once
+  useEffect(() => {
+    fetch('/world_map_regions.svg')
+      .then(r => r.text())
+      .then(text => {
+        // Strip the XML declaration and any width/height attrs; we'll control sizing via CSS
+        const cleaned = text
+          .replace(/<\?xml[^?]*\?>\s*/g, '')
+          .replace(/\s+width="[^"]*"/, '')
+          .replace(/\s+height="[^"]*"/, '');
+        setSvgMarkup(cleaned);
+      });
+  }, []);
+
+  // Update fills whenever selected/hovered/svgMarkup changes
+  useEffect(() => {
+    if (!containerRef.current || !svgMarkup) return;
+
+    const anySelected = selected.length > 0;
+
+    REGIONS.forEach(({ key, gId }) => {
+      const g = containerRef.current.querySelector(`#${gId}`);
+      if (!g) return;
+
+      const isSelected = selected.includes(key);
+      const isHovered  = hovered === key;
+
+      let fill;
+      if (isSelected)        fill = CLR_SELECTED;
+      else if (isHovered)    fill = CLR_HOVERED;
+      else if (anySelected)  fill = CLR_DIMMED;
+      else                   fill = CLR_DEFAULT;
+
+      g.setAttribute('fill', fill);
+      g.style.transition = 'fill 0.18s';
+    });
+  }, [selected, hovered, svgMarkup]);
+
+  // Attach mouse + click handlers after SVG is injected
+  useEffect(() => {
+    if (!containerRef.current || !svgMarkup) return;
+
+    const handlers = [];
+
+    REGIONS.forEach(({ key, gId }) => {
+      const g = containerRef.current.querySelector(`#${gId}`);
+      if (!g) return;
+
+      const onEnter = () => setHovered(key);
+      const onLeave = () => setHovered(null);
+      const onClick = () => onToggle(key);
+
+      g.style.cursor = 'pointer';
+      g.addEventListener('mouseenter', onEnter);
+      g.addEventListener('mouseleave', onLeave);
+      g.addEventListener('click',      onClick);
+
+      handlers.push({ g, onEnter, onLeave, onClick });
+    });
+
+    return () => {
+      handlers.forEach(({ g, onEnter, onLeave, onClick }) => {
+        g.removeEventListener('mouseenter', onEnter);
+        g.removeEventListener('mouseleave', onLeave);
+        g.removeEventListener('click',      onClick);
+      });
+    };
+  }, [svgMarkup, onToggle]);
 
   return (
-    <div style={{ position: 'relative', width: '100%', borderRadius: 6, overflow: 'hidden', lineHeight: 0, border: '1px solid #d4c9b0', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-
-      {/* Real-world base map (Wikimedia CC0) */}
-      <img
-        src="/world_map.svg"
-        alt="World map"
-        draggable={false}
-        style={{ width: '100%', display: 'block', userSelect: 'none' }}
-      />
-
-      {/* Clickable region overlays — same coordinate space as the map */}
-      <svg
-        viewBox="0 0 2280 1293"
-        style={{
-          position: 'absolute',
-          top: 0, left: 0,
-          width: '100%', height: '100%',
-        }}
-        aria-label="World region selector"
-      >
-        {REGION_ZONES.map(({ key, x, y, w, h, labelX, labelY, label, fullLabel }) => {
-          const isOn  = selected.includes(key);
-          const isHov = hovered === key;
-
-          return (
-            <g
-              key={key}
-              onClick={() => onToggle(key)}
-              onMouseEnter={() => setHovered(key)}
-              onMouseLeave={() => setHovered(null)}
-              style={{ cursor: 'pointer' }}
-            >
-              <title>{fullLabel ?? label}</title>
-
-              {/* Highlight fill */}
-              <rect
-                x={x} y={y} width={w} height={h}
-                fill={isOn ? CLR_SELECTED : isHov ? CLR_HOVER : 'transparent'}
-                style={{ transition: 'fill 0.15s' }}
-              />
-
-              {/* Label — always visible, styled by state */}
-              <text
-                x={labelX}
-                y={labelY}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fontSize={isOn ? 82 : 72}
-                fontWeight={isOn ? 700 : isHov ? 600 : 500}
-                fontFamily="Georgia, serif"
-                fill={isOn ? CLR_LABEL_ON : isHov ? CLR_LABEL_HOVER : CLR_LABEL_OFF}
-                stroke="rgba(255,255,255,0.85)"
-                strokeWidth={isOn ? 26 : 20}
-                paintOrder="stroke"
-                style={{ pointerEvents: 'none', userSelect: 'none', transition: 'fill 0.15s, font-size 0.1s' }}
-              >
-                {label}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
+    <div style={{
+      width: '100%',
+      borderRadius: 6,
+      overflow: 'hidden',
+      lineHeight: 0,
+      background: CLR_OCEAN,
+    }}>
+      {svgMarkup ? (
+        <div
+          ref={containerRef}
+          dangerouslySetInnerHTML={{ __html: svgMarkup }}
+          style={{ width: '100%', display: 'block' }}
+        />
+      ) : (
+        // Loading placeholder
+        <div style={{
+          width: '100%', aspectRatio: '2280 / 1293',
+          background: CLR_OCEAN, display: 'flex',
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          <span style={{ fontSize: '0.7rem', color: '#a09070', letterSpacing: '0.08em' }}>
+            Loading map…
+          </span>
+        </div>
+      )}
     </div>
   );
 }
