@@ -152,6 +152,8 @@ FilterPanel UI shell deferred to polish phase.
 - [x] BoardView filtering — `buildPairingMap` accepts `filterFn`; `lensColumns` also filtered; both use same predicate
 - [x] FilterPanel UI shell — season toggles, taste toggles, visibility radio, clear-all button; dropdown attached to header
 - [x] Active filter badge — gold badge on Filter button showing count of active dimensions
+- [x] Region filter — geographic dimension added to filter state; `REGIONS` map (6 labels → cuisine slug arrays); `regionsToCuisineSlugs()` for O(1) lookup; `matchesFilters` updated to include region check; LensCanvas + BoardView both use updated predicate
+- [x] `RegionMap.jsx` — custom inline SVG world map (6 hand-crafted bezier-curve blobs, no dependencies); hover/selected states; click toggles region; integrated into FilterPanel replacing region toggle buttons; panel widened to 360px
 
 ### Deferred
 - [ ] Cuisine filter UI (101 options — needs search/scrollable checklist, deferred to Phase 6 polish)

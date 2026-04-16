@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import useExplorerStore from '../store/useExplorerStore';
-import { REGIONS, activeFilterCount } from '../utils/filterUtils';
+import { activeFilterCount } from '../utils/filterUtils';
+import RegionMap from './RegionMap';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
-
-const REGION_LABELS = Object.keys(REGIONS);
 
 const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
 
@@ -129,14 +128,13 @@ export default function FilterPanel() {
           position: 'absolute', top: 'calc(100% + 8px)', right: 0,
           background: '#fff', border: '1px solid #e0d6c4',
           borderRadius: 10, boxShadow: '0 10px 32px rgba(0,0,0,0.09)',
-          padding: '18px 20px', minWidth: 280, zIndex: 200,
+          padding: '18px 20px', minWidth: 360, zIndex: 200,
         }}>
 
-          {/* Region */}
+          {/* Region map */}
           <FilterRow label="Region">
-            <ToggleGroup
-              items={REGION_LABELS}
-              active={filters.regions}
+            <RegionMap
+              selected={filters.regions}
               onToggle={v => toggleFilter('regions', v)}
             />
           </FilterRow>
