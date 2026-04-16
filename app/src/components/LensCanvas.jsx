@@ -2,6 +2,7 @@ import { useEffect, useRef, useCallback } from 'react';
 import useExplorerStore, { serializeHash } from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 import { seededShuffle } from '../utils/rng';
+import { matchesFilters } from '../utils/filterUtils';
 
 // ── Drawing helpers ────────────────────────────────────────────────────────────
 
@@ -101,16 +102,16 @@ export default function LensCanvas({ onBubbleClick }) {
 
       let pairings = ing.pairings;
 
-      // Apply taste filter
-      if (filters.tastes && filters.tastes.length > 0) {
+      // Apply content filters (cuisine / season / taste) — OR within each dimension
+      const needsFilter = (
+        (filters.cuisines?.length > 0) ||
+        (filters.seasons?.length  > 0) ||
+        (filters.tastes?.length   > 0)
+      );
+      if (needsFilter) {
         pairings = pairings.filter(p => {
-          const pid = p.id;
-          if (!pid) return false;
-          const ping = FLAVORS.ingredients[pid];
-          if (!ping) return false;
-          return filters.tastes.some(t =>
-            ping.meta?.taste?.toLowerCase().includes(t.toLowerCase())
-          );
+          if (!p.id) return false;
+          return matchesFilters(FLAVORS.ingredients[p.id], filters);
         });
       }
 

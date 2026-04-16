@@ -73,6 +73,18 @@ const useExplorerStore = create((set, get) => ({
     set(state => ({ filters: { ...state.filters, [key]: value } }));
   },
 
+  // Toggle an item in an array-type filter (cuisines, seasons, tastes)
+  toggleFilter(key, item) {
+    set(state => {
+      const current = state.filters[key];
+      if (!Array.isArray(current)) return state;
+      const next = current.includes(item)
+        ? current.filter(v => v !== item)
+        : [...current, item];
+      return { filters: { ...state.filters, [key]: next } };
+    });
+  },
+
   clearFilters() {
     set({ filters: { ...DEFAULT_FILTERS } });
   },

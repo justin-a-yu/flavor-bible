@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import LensCanvas from '../components/LensCanvas';
 import BoardView from '../components/BoardView';
+import FilterPanel from '../components/FilterPanel';
 import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 
@@ -238,6 +239,7 @@ export default function ExplorerPage() {
         <SearchBar />
         <LensPills />
         <ViewToggle />
+        <FilterPanel />
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />

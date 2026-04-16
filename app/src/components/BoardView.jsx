@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
+import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
 import IngredientCard from './IngredientCard';
 import PairingDetailDrawer from './PairingDetailDrawer';
 import PrintExportButton from './PrintExportButton';
@@ -47,13 +48,15 @@ function combos(arr, k) {
 /**
  * Single scan over all lenses. Returns a map:
  *   { [lowerCaseLabel]: { label, id, modifier, perLens: { lensId: strength } } }
+ * @param {function|null} filterFn  Optional predicate applied to each pairing entry.
  */
-function buildPairingMap(lenses) {
+function buildPairingMap(lenses, filterFn = null) {
   const map = {};
   lenses.forEach(lens => {
     const ing = FLAVORS.ingredients[lens.id];
     if (!ing) return;
-    ing.pairings.forEach(p => {
+    const pairings = filterFn ? ing.pairings.filter(filterFn) : ing.pairings;
+    pairings.forEach(p => {
       const key = p.label.toLowerCase();
       if (!map[key]) map[key] = { label: p.label, id: p.id, modifier: p.modifier, perLens: {} };
       map[key].perLens[lens.id] = p.strength;
@@ -313,6 +316,7 @@ function AffinitiesSection({ lenses, affinities, onAddLens }) {
 export default function BoardView() {
   const lenses  = useExplorerStore(s => s.lenses);
   const addLens = useExplorerStore(s => s.addLens);
+  const filters = useExplorerStore(s => s.filters);
   const [selectedPairing, setSelectedPairing] = useState(null);
 
   if (lenses.length === 0) {
@@ -326,8 +330,15 @@ export default function BoardView() {
 
   const isSolo = lenses.length === 1;
 
+  // Build a content filter predicate from active cuisine/season/taste filters.
+  // Visibility is handled at the map/column level, not via matchesFilters.
+  const contentFiltersActive = hasActiveFilters({ ...filters, visibility: 'all' });
+  const pairingFilterFn = contentFiltersActive
+    ? p => !!(p.id && matchesFilters(FLAVORS.ingredients[p.id], filters))
+    : null;
+
   // Single scan — used for both shared groups and individual column filtering
-  const pairingMap = buildPairingMap(lenses);
+  const pairingMap = buildPairingMap(lenses, pairingFilterFn);
 
   // Keys of any pairing appearing in 2+ lenses — excluded from individual columns
   const sharedKeys = new Set(
@@ -343,9 +354,9 @@ export default function BoardView() {
   const lensColumns = lenses.map(lens => {
     const ing = FLAVORS.ingredients[lens.id];
     if (!ing) return { lens, pairings: [] };
-    const pairings = (isSolo ? ing.pairings : ing.pairings.filter(p => !sharedKeys.has(p.label.toLowerCase())))
-      .slice()
-      .sort((a, b) => b.strength - a.strength || a.label.localeCompare(b.label));
+    let pairings = isSolo ? ing.pairings : ing.pairings.filter(p => !sharedKeys.has(p.label.toLowerCase()));
+    if (pairingFilterFn) pairings = pairings.filter(pairingFilterFn);
+    pairings = pairings.slice().sort((a, b) => b.strength - a.strength || a.label.localeCompare(b.label));
     return { lens, pairings };
   });
 

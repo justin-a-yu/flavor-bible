@@ -225,6 +225,14 @@ def looks_like_quote(text):
         return False
     if is_affinity_line(text):
         return False
+    # Lines like "CHEESE: cheddar, ..." / "cured meats: bacon, ham, ..." /
+    # "SAUCES: Bolognese, ..." are pairing-with-variants, not prose sentences —
+    # even when the modifier contains food names that match verb stems
+    # (e.g. "goat" triggers \bgo, "cured" triggers \bcur).
+    # Guard: label-before-colon is 2–40 chars with no nested paren/colon,
+    # and the value after the colon starts with a lowercase letter (a list of variants).
+    if re.match(r'^[^:(]{2,40}:\s*[a-z]', text):
+        return False
     if QUOTE_INDICATORS.search(text):
         return True
     return False
@@ -644,8 +652,10 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                                        "from ", "to ", "that ", "which ", "as ", "at ",
                                        "into ", "for ", "of ")
                         is_continuation = any(clean.lower().startswith(w) for w in _cont_words)
+                        # Prose sentences end with a period; ingredient pairings never do.
+                        ends_with_period = clean.rstrip().endswith('.')
                         if clean.startswith("•") or looks_like_quote(clean) \
-                                or len(clean) > 60 or is_continuation:
+                                or len(clean) > 60 or is_continuation or ends_with_period:
                             note_buffer.append(stripped if clean.startswith("•") else clean)
                             continue
                         else:
@@ -733,17 +743,29 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                             pending_pairing = combined_pairing
                             continue
 
+                    # If the raw line ends with a trailing comma the entry
+                    # continues on the next line (e.g. "CHEESE: cheddar, ..., mozzarella,")
+                    # — buffer before stripping so the continuation can be appended.
+                    if clean.rstrip().endswith(','):
+                        pending_pairing = (pending_pairing + " " + clean.strip()
+                                           if pending_pairing else clean.strip())
+                        continue
+
                     pairing_label = clean.rstrip(",;").strip()
                     if not pairing_label:
                         continue
 
-                    # If this pairing has an unclosed paren, buffer it
+                    # If this pairing has an unclosed paren buffer it.
                     if pairing_label.count('(') > pairing_label.count(')'):
                         pending_pairing = pairing_label
                         continue
 
                     base_label, modifier = split_modifier(pairing_label)
-                    base_lower = base_label.lower()
+                    base_lower = base_label.lower().strip()
+                    # Skip overflow continuation lines that produce an empty base
+                    # (e.g. second line of "SAUCES: ... Mornay\n(esp. with macaroni), ...")
+                    if not base_lower:
+                        continue
 
                     if current_cuisines:
                         for cs in current_cuisines:

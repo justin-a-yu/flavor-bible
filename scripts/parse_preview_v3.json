@@ -48,12 +48,122 @@
         {
           "label": "shrimp",
           "strength": 1
+        },
+        {
+          "label": "almonds",
+          "strength": 1
+        },
+        {
+          "label": "barley",
+          "strength": 1
+        },
+        {
+          "label": "breads",
+          "strength": 2
+        },
+        {
+          "label": "cardamom",
+          "strength": 1
+        },
+        {
+          "label": "chile pepper",
+          "strength": 1
+        },
+        {
+          "label": "cinnamon",
+          "strength": 1
+        },
+        {
+          "label": "cloves",
+          "strength": 1
+        },
+        {
+          "label": "coriander",
+          "strength": 1
+        },
+        {
+          "label": "cucumber",
+          "strength": 1
+        },
+        {
+          "label": "cumin",
+          "strength": 1
+        },
+        {
+          "label": "dill",
+          "strength": 1
+        },
+        {
+          "label": "fennel",
+          "strength": 1
+        },
+        {
+          "label": "fruits",
+          "strength": 1,
+          "modifier": "esp. dried"
+        },
+        {
+          "label": "ginger",
+          "strength": 1
+        },
+        {
+          "label": "grapes",
+          "strength": 1
+        },
+        {
+          "label": "kebabs",
+          "strength": 1
+        },
+        {
+          "label": "lamb",
+          "strength": 1
+        },
+        {
+          "label": "mint",
+          "strength": 1
+        },
+        {
+          "label": "mushrooms",
+          "strength": 1
+        },
+        {
+          "label": "nuts",
+          "strength": 1,
+          "modifier": "e.g., almonds"
+        },
+        {
+          "label": "pasta",
+          "strength": 2
+        },
+        {
+          "label": "rice, basmati",
+          "strength": 2
+        },
+        {
+          "label": "sesame",
+          "strength": 1
+        },
+        {
+          "label": "tomatoes and tomato sauce",
+          "strength": 1
+        },
+        {
+          "label": "turmeric",
+          "strength": 1
+        },
+        {
+          "label": "yogurt",
+          "strength": 2
         }
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
-        "achiote + pork + sour orange"
+        "achiote + pork + sour orange",
+        "almonds + cardamom + sugar",
+        "cucumber + mint + yogurt"
       ],
       "cuisines": [
         "mexican-cuisine"
@@ -67,7 +177,9 @@
         "season": "autumn–winter",
         "taste": "sweet",
         "weight": "medium",
-        "volume": "loud"
+        "volume": "quiet",
+        "botanical relatives": "peaches",
+        "function": "warming"
       },
       "pairings": [
         {
@@ -179,11 +291,6 @@
           "strength": 1
         },
         {
-          "label": "meats, red",
-          "strength": 2,
-          "modifier": "esp. braised, grilled, or roasted"
-        },
-        {
           "label": "mushrooms",
           "strength": 1
         },
@@ -291,45 +398,7 @@
           "label": "vegetables",
           "strength": 1,
           "modifier": "esp. root"
-        }
-      ],
-      "quotes": [
-        {
-          "text": "In Jamaica, allspice is their pepper. It’s fruitier than black peppercorns. I think it’s especially nice with braised and roasted meats.",
-          "attribution": "BRADFORD THOMPSON, Mary Elaine’s at The Phoenician (Scottsdale, Arizona)"
-        }
-      ],
-      "tips": [
-        "Add early in cooking."
-      ],
-      "affinities": [
-        "allspice + beef + onions",
-        "allspice + garlic + pork"
-      ],
-      "cuisines": [
-        "caribbean-cuisine",
-        "eastern-mediterranean-cuisine",
-        "english-cuisine",
-        "indian-cuisine",
-        "jamaican-cuisine",
-        "mexican-cuisine",
-        "middle-eastern-cuisine",
-        "north-american-cuisine",
-        "west-indies-cuisine"
-      ]
-    },
-    {
-      "id": "almonds",
-      "label": "Almonds",
-      "aliases": [],
-      "meta": {
-        "taste": "sweet",
-        "botanical relatives": "peaches",
-        "function": "warming",
-        "weight": "medium",
-        "volume": "quiet"
-      },
-      "pairings": [
+        },
         {
           "label": "amaretto",
           "strength": 1
@@ -656,6 +725,10 @@
       ],
       "quotes": [
         {
+          "text": "MEATS, red, esp. braised, grilled, or roasted In Jamaica, allspice is their pepper. It’s fruitier than black peppercorns. I think it’s especially nice with braised and roasted meats.",
+          "attribution": "BRADFORD THOMPSON, Mary Elaine’s at The Phoenician (Scottsdale, Arizona)"
+        },
+        {
           "text": "Almonds are fairly versatile in that their flavor is not very specific. When they are manufactured, then they have a distinct flavor: think of Frangelico, almond oil, or marzipan in dessert. In these cases, the almond has a very distinct flavor.",
           "attribution": "MARCEL DESAULNIERS, THE TRELLIS (WILLIAMSBURG, VIRGINIA)"
         },
@@ -664,21 +737,34 @@
           "attribution": "EMILY LUCHETTI, Farallon (San Francisco)"
         }
       ],
-      "tips": [],
+      "tips": [
+        "Add early in cooking."
+      ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
+        "allspice + beef + onions",
+        "allspice + garlic + pork",
         "almonds + chocolate + coconut",
         "almonds + coffee + orange",
         "almonds + green anise + figs",
         "almonds + honey + orange zest + raisins"
       ],
       "cuisines": [
-        "greek-cuisine",
+        "caribbean-cuisine",
+        "eastern-mediterranean-cuisine",
+        "english-cuisine",
         "indian-cuisine",
+        "jamaican-cuisine",
+        "mexican-cuisine",
+        "middle-eastern-cuisine",
+        "north-american-cuisine",
+        "west-indies-cuisine",
+        "greek-cuisine",
         "mediterranean-cuisine",
         "moroccan-cuisine",
         "spanish-cuisine",
-        "turkish-cuisine",
-        "afghan-cuisine"
+        "turkish-cuisine"
       ]
     },
     {
@@ -734,6 +820,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "italian-cuisine"
@@ -935,6 +1023,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "anchovies + lemon + olive oil + rosemary"
       ],
@@ -993,6 +1083,8 @@
       "tips": [
         "Add late in cooking; use in baking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "angelica + cream + rhubarb"
       ],
@@ -1285,6 +1377,8 @@
       "tips": [
         "Add early in cooking."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": [
         "chinese-cuisine",
@@ -1504,6 +1598,8 @@
       ],
       "quotes": [],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [],
       "cuisines": []
     },
@@ -1796,6 +1892,8 @@
       "tips": [
         "Add at the beginning of the cooking process. Use in stir-fries."
       ],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "star anise + cream + maple",
         "star anise + milk + milk chocolate + orange zest + sugar",
@@ -1905,32 +2003,6 @@
         },
         {
           "label": "celery root",
-          "strength": 1
-        },
-        {
-          "label": "cheese",
-          "strength": 2,
-          "modifier": "camembert, cheddar, goat, gruyère"
-        },
-        {
-          "label": "cherries",
-          "strength": 1,
-          "modifier": "dried, fresh"
-        },
-        {
-          "label": "chestnuts",
-          "strength": 1
-        },
-        {
-          "label": "chicken",
-          "strength": 1
-        },
-        {
-          "label": "chives",
-          "strength": 1
-        },
-        {
-          "label": "cider",
           "strength": 1
         },
         {
@@ -2322,6 +2394,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "apples + almonds + caramel",
         "apples + almonds + Armagnac + crème fraîche + raisins",
@@ -2698,6 +2772,8 @@
         }
       ],
       "tips": [],
+      "notes": [],
+      "dishes": [],
       "affinities": [
         "apricots + almonds + cream + sugar",
         "apricots + almonds + meringue + Moscato d’Asti",
@@ -2713,34 +2789,6 @@
   ],
   "cuisines": {
     "mexican-cuisine": [],
-    "afghan-cuisine": [
-      "almonds",
-      "barley",
-      "breads",
-      "cardamom",
-      "chile pepper",
-      "cinnamon",
-      "cloves",
-      "coriander",
-      "cucumber",
-      "cumin",
-      "dill",
-      "fennel",
-      "fruits",
-      "ginger",
-      "grapes",
-      "kebabs",
-      "lamb",
-      "mint",
-      "mushrooms",
-      "nuts",
-      "pasta",
-      "rice, basmati",
-      "sesame",
-      "tomatoes and tomato sauce",
-      "turmeric",
-      "yogurt"
-    ],
     "african-cuisine": [
       "bananas",
       "beans",
@@ -2879,7 +2927,7 @@
   "meta": {
     "source": "The Flavor Bible, Karen Page & Andrew Dornenburg, 2008",
     "pages": "40–65",
-    "total": 11,
-    "cuisines": 25
+    "total": 10,
+    "cuisines": 24
   }
 }
