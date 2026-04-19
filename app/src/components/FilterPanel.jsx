@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import useExplorerStore from '../store/useExplorerStore';
 import { activeFilterCount } from '../utils/filterUtils';
 import RegionMap from './RegionMap';
@@ -88,10 +88,23 @@ export default function FilterPanel() {
   const clearFilters = useExplorerStore(s => s.clearFilters);
 
   const [open, setOpen] = useState(false);
+  const panelRef = useRef(null);
   const count = activeFilterCount(filters);
 
+  // Close on outside click
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e) => {
+      if (panelRef.current && !panelRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [open]);
+
   return (
-    <div style={{ position: 'relative' }}>
+    <div ref={panelRef} style={{ position: 'relative' }}>
 
       {/* Toggle button */}
       <button
