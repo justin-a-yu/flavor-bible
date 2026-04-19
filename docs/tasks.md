@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Phases 2 (data), 3, 4 & 5 complete. Phase 6 (polish) next.**
+> Status: **Phases 2 (data), 3, 4 & 5 complete. Phase 6 (polish) in progress — RegionMap rebuilt.**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -153,11 +153,26 @@ FilterPanel UI shell deferred to polish phase.
 - [x] FilterPanel UI shell — season toggles, taste toggles, visibility radio, clear-all button; dropdown attached to header
 - [x] Active filter badge — gold badge on Filter button showing count of active dimensions
 - [x] Region filter — geographic dimension added to filter state; `REGIONS` map (6 labels → cuisine slug arrays); `regionsToCuisineSlugs()` for O(1) lookup; `matchesFilters` updated to include region check; LensCanvas + BoardView both use updated predicate
-- [x] `RegionMap.jsx` — custom inline SVG world map (6 hand-crafted bezier-curve blobs, no dependencies); hover/selected states; click toggles region; integrated into FilterPanel replacing region toggle buttons; panel widened to 360px
+- [x] `RegionMap.jsx` v1 — custom inline SVG world map (6 hand-crafted bezier-curve blobs, no dependencies); hover/selected states; click toggles region; integrated into FilterPanel replacing region toggle buttons; panel widened to 360px
+- [x] `RegionMap.jsx` v2 — **full rebuild**: fetches `world.svg` (real country shapes, ~458KB); 214 ISO country codes embedded as region→code mapping; imperative `.sm_state_XX` class targeting for per-country fills; 7 regions (split South & SE Asia into South Asia + Southeast Asia); overlay SVG with 7 hit zones + labels in `0 0 701 300` viewBox; same two-layer architecture (fill div + React overlay)
+- [x] `filterUtils.js` — REGIONS map updated from 6 → 7 entries; `South & SE Asia` split into `South Asia` (indian, pakistani, sri-lankan, afghan) and `Southeast Asia` (southeast-asian-*, indonesian, malaysian, thai, vietnamese, cambodian, burmese, australian); `afghan-cuisine` moved from East Asia → South Asia
+- [x] `app/public/` — user-supplied SVGs: `world.svg` (base map, all countries `#c2beb5`) + 7 region SVGs (`americas.svg`, `europe.svg`, `me-nafrica.svg`, `africa.svg`, `south-asia.svg`, `southeast-asia.svg`, `east-asia.svg`); region SVGs are reference only and not loaded at runtime
+
+### 7-Region breakdown (culinary, not political)
+| Region | Countries (ISO) | Count |
+|--------|----------------|-------|
+| Americas | US CA MX GL + Caribbean + S. America | 52 |
+| Europe | EU countries + RU AM AZ GE + Balkans | 47 |
+| Middle East & N. Africa | Arab world + IR TR + Central Asia + CY DJ ER SD | 31 |
+| Africa | Sub-Saharan Africa (SO → Africa, not MENA) | 47 |
+| South Asia | AF BD BT IN MV NP PK LK | 8 |
+| Southeast Asia | SE Asian nations + AU NZ + Pacific islands | 22 |
+| East Asia | CN HK JP KP KR MN TW | 7 |
 
 ### Deferred
 - [ ] Cuisine filter UI (101 options — needs search/scrollable checklist, deferred to Phase 6 polish)
 - [ ] FilterPanel close-on-outside-click (minor UX polish)
+- [ ] Tune RegionMap hit zone coordinates after live visual review
 
 ---
 
@@ -175,6 +190,8 @@ FilterPanel UI shell deferred to polish phase.
 ---
 
 ## Phase 6 — Polish & Launch
+- [x] RegionMap rebuild — real country shapes, 7 culinary regions, per-country fill targeting (see Phase 4 details)
+- [ ] Tune RegionMap hit zone coordinates after live visual review
 - [ ] FilterPanel full UI (built on Phase 4 state/logic)
 - [ ] Responsive / mobile considerations
 - [ ] Performance optimization for large graph

@@ -68,8 +68,12 @@ export const REGIONS = {
     'african-cuisine',
     'ethiopian-cuisine',
   ],
-  'South & SE Asia': [
-    'indian-cuisine', 'indian-cuisine-desserts', 'pakistani-cuisine', 'sri-lankan-cuisine',
+  'South Asia': [
+    'indian-cuisine', 'indian-cuisine-desserts',
+    'pakistani-cuisine', 'sri-lankan-cuisine',
+    'afghan-cuisine',
+  ],
+  'Southeast Asia': [
     'southeast-asian-cuisine', 'southeast-asian-cuisine-as-cassia', 'southeast-asian-cuisines',
     'indonesian-cuisine', 'malaysian-cuisine',
     'thai-cuisine', 'vietnamese-cuisine', 'cambodian-cuisine', 'burmese-cuisine',
@@ -82,7 +86,6 @@ export const REGIONS = {
     'korean-cuisine',
     'szechuan-cuisine',
     'tibetan-cuisine',
-    'afghan-cuisine',
   ],
 };
 
