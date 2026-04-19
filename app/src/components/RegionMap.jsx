@@ -18,24 +18,25 @@ import { useState, useEffect, useRef } from 'react';
 // ── Region metadata ───────────────────────────────────────────────────────────
 
 const REGIONS = [
-  { key: 'Americas',                labelX: 130,  labelY: 155, shortLabel: 'Americas'         },
-  { key: 'Europe',                  labelX: 375,  labelY: 58,  shortLabel: 'Europe'            },
-  { key: 'Middle East & N. Africa', labelX: 412,  labelY: 126, shortLabel: 'M.E. & N. Africa'  },
-  { key: 'Africa',                  labelX: 388,  labelY: 198, shortLabel: 'Africa'            },
-  { key: 'South Asia',              labelX: 503,  labelY: 140, shortLabel: 'S. Asia'           },
-  { key: 'Southeast Asia',          labelX: 615,  labelY: 200, shortLabel: 'SE Asia'           },
-  { key: 'East Asia',               labelX: 610,  labelY: 75,  shortLabel: 'E. Asia'           },
+  { key: 'Americas',                labelX: 155, labelY: 150, shortLabel: 'Americas'         },
+  { key: 'Europe',                  labelX: 368, labelY: 44,  shortLabel: 'Europe'            },
+  { key: 'Middle East & N. Africa', labelX: 390, labelY: 112, shortLabel: 'M.E. & N. Africa'  },
+  { key: 'Africa',                  labelX: 380, labelY: 198, shortLabel: 'Africa'            },
+  { key: 'South Asia',              labelX: 490, labelY: 125, shortLabel: 'S. Asia'           },
+  { key: 'Southeast Asia',          labelX: 580, labelY: 195, shortLabel: 'SE Asia'           },
+  { key: 'East Asia',               labelX: 543, labelY: 78,  shortLabel: 'E. Asia'           },
 ];
 
-// Clickable hit zones in viewBox coords (0 0 701 300)
+// Clickable hit zones in viewBox coords (0 0 701 300).
+// Ordered largest-first so smaller zones render on top and take pointer priority.
 const ZONES = [
-  { key: 'Americas',                x: 0,   y: 0,   w: 255, h: 300 },
-  { key: 'Europe',                  x: 328, y: 22,  w: 105, h: 78  },
-  { key: 'Middle East & N. Africa', x: 328, y: 95,  w: 150, h: 72  },
-  { key: 'Africa',                  x: 315, y: 152, w: 152, h: 118 },
-  { key: 'South Asia',              x: 458, y: 82,  w: 98,  h: 100 },
-  { key: 'Southeast Asia',          x: 533, y: 148, w: 168, h: 152 },
-  { key: 'East Asia',               x: 543, y: 28,  w: 158, h: 105 },
+  { key: 'Americas',                x: 0,   y: 0,   w: 308, h: 300 },
+  { key: 'Europe',                  x: 308, y: 0,   w: 120, h: 90  },
+  { key: 'Middle East & N. Africa', x: 308, y: 90,  w: 168, h: 72  },
+  { key: 'Africa',                  x: 308, y: 162, w: 152, h: 138 },
+  { key: 'East Asia',               x: 500, y: 20,  w: 201, h: 120 },
+  { key: 'Southeast Asia',          x: 455, y: 162, w: 246, h: 138 },
+  { key: 'South Asia',              x: 450, y: 82,  w: 82,  h: 82  },
 ];
 
 // ── Country → region mapping ──────────────────────────────────────────────────
@@ -109,7 +110,7 @@ export default function RegionMap({ selected = [], onToggle }) {
         fillRef.current.innerHTML = cleaned;
         const svg = fillRef.current.querySelector('svg');
         if (svg) {
-          svg.style.cssText = 'display:block;width:100%;pointer-events:none;';
+          svg.style.cssText = 'display:block;width:100%;height:auto;pointer-events:none;';
         }
         // Build ISO code → [element] map for fast imperative updates
         const map = new Map();
@@ -195,12 +196,12 @@ export default function RegionMap({ selected = [], onToggle }) {
                 y={labelY}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize={isOn ? 16 : 14}
+                fontSize={isOn ? 26 : 22}
                 fontWeight={isOn ? 700 : 500}
                 fontFamily="Georgia, serif"
                 fill={isOn ? '#5a3800' : isHov ? 'rgba(60,30,0,0.85)' : 'rgba(50,30,0,0.55)'}
                 stroke="rgba(255,255,255,0.85)"
-                strokeWidth={isOn ? 5 : 4}
+                strokeWidth={isOn ? 9 : 7}
                 paintOrder="stroke"
                 style={{ pointerEvents: 'none', userSelect: 'none', transition: 'fill 0.15s' }}
               >
