@@ -150,67 +150,75 @@ export default function RegionMap({ selected = [], onToggle }) {
   }, [selected, hovered, svgLoaded]);
 
   return (
-    <div style={{ position: 'relative', width: '100%', borderRadius: 6, overflow: 'hidden', background: '#f0ede6', lineHeight: 0 }}>
+    <div>
+      {/* Map — padded top/bottom for breathing room */}
+      <div style={{ position: 'relative', width: '100%', borderRadius: 6, overflow: 'hidden', background: '#f0ede6', lineHeight: 0, paddingTop: 8, paddingBottom: 8 }}>
 
-      {/* Fill layer — React renders nothing here, only imperative innerHTML */}
-      <div ref={fillRef} style={{ width: '100%', display: 'block' }} />
+        {/* Fill layer — React renders nothing here, only imperative innerHTML */}
+        <div ref={fillRef} style={{ width: '100%', display: 'block' }} />
 
-      {/* Loading placeholder — sits on top until SVG is ready */}
-      {!svgLoaded && (
-        <div style={{
-          position: 'absolute', inset: 0,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          minHeight: 90,
-        }}>
-          <span style={{ fontSize: '0.7rem', color: '#a09070', letterSpacing: '0.08em' }}>Loading…</span>
-        </div>
-      )}
+        {/* Loading placeholder */}
+        {!svgLoaded && (
+          <div style={{
+            position: 'absolute', inset: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            minHeight: 90,
+          }}>
+            <span style={{ fontSize: '0.7rem', color: '#a09070', letterSpacing: '0.08em' }}>Loading…</span>
+          </div>
+        )}
 
-      {/* Interaction + label overlay */}
-      {svgLoaded && (
-        <svg
-          viewBox="0 0 701 300"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-        >
-          {/* Hit zones */}
-          {ZONES.map(({ key, x, y, w, h }) => (
-            <rect
+        {/* Hit-zone overlay — no labels, just transparent rects */}
+        {svgLoaded && (
+          <svg
+            viewBox="0 0 701 300"
+            style={{ position: 'absolute', top: 8, bottom: 8, left: 0, right: 0, width: '100%', height: 'calc(100% - 16px)' }}
+          >
+            {ZONES.map(({ key, x, y, w, h }) => (
+              <rect
+                key={key}
+                x={x} y={y} width={w} height={h}
+                fill="transparent"
+                style={{ cursor: 'pointer' }}
+                onClick={() => onToggle(key)}
+                onMouseEnter={() => setHovered(key)}
+                onMouseLeave={() => setHovered(null)}
+              />
+            ))}
+          </svg>
+        )}
+      </div>
+
+      {/* Region chips — always rendered so panel height stays stable */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 8 }}>
+        {REGIONS.map(({ key, shortLabel }) => {
+          const isOn  = selected.includes(key);
+          const isHov = hovered === key;
+          return (
+            <button
               key={key}
-              x={x} y={y} width={w} height={h}
-              fill="transparent"
-              style={{ cursor: 'pointer' }}
               onClick={() => onToggle(key)}
               onMouseEnter={() => setHovered(key)}
               onMouseLeave={() => setHovered(null)}
-            />
-          ))}
-
-          {/* Labels */}
-          {REGIONS.map(({ key, labelX, labelY, shortLabel }) => {
-            const isOn  = selected.includes(key);
-            const isHov = hovered === key;
-            return (
-              <text
-                key={key}
-                x={labelX}
-                y={labelY}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fontSize={isOn ? 26 : 22}
-                fontWeight={isOn ? 700 : 500}
-                fontFamily="Georgia, serif"
-                fill={isOn ? '#5a3800' : isHov ? 'rgba(60,30,0,0.85)' : 'rgba(50,30,0,0.55)'}
-                stroke="rgba(255,255,255,0.85)"
-                strokeWidth={isOn ? 9 : 7}
-                paintOrder="stroke"
-                style={{ pointerEvents: 'none', userSelect: 'none', transition: 'fill 0.15s' }}
-              >
-                {shortLabel}
-              </text>
-            );
-          })}
-        </svg>
-      )}
+              style={{
+                padding: '3px 10px',
+                fontSize: '0.68rem',
+                letterSpacing: '0.05em',
+                borderRadius: 12,
+                border: '1px solid',
+                borderColor: isOn ? '#b8863a' : isHov ? '#c9a870' : '#d4c9b0',
+                background:  isOn ? '#f5ecd6' : 'transparent',
+                color:       isOn ? '#7a5010' : isHov ? '#6a4a20' : '#8a7450',
+                cursor: 'pointer',
+                fontFamily: 'Georgia, serif',
+                transition: 'background 0.12s, color 0.12s, border-color 0.12s',
+              }}
+            >
+              {shortLabel}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

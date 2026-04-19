@@ -110,16 +110,6 @@ export default function FilterPanel() {
         }}
       >
         Filter
-        {count > 0 && (
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            width: 17, height: 17, borderRadius: '50%',
-            background: '#b8863a', color: '#fff',
-            fontSize: '0.6rem', fontFamily: 'sans-serif', fontWeight: 700,
-          }}>
-            {count}
-          </span>
-        )}
       </button>
 
       {/* Dropdown panel */}
