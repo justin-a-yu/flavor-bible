@@ -146,6 +146,7 @@ export function hasActiveFilters(filters) {
     (filters.cuisines?.length  > 0) ||
     (filters.seasons?.length   > 0) ||
     (filters.tastes?.length    > 0) ||
+    (filters.strengths?.length > 0) ||
     (filters.visibility !== 'all')
   );
 }
@@ -157,6 +158,7 @@ export function activeFilterCount(filters) {
   if (filters.cuisines?.length  > 0) n++;
   if (filters.seasons?.length   > 0) n++;
   if (filters.tastes?.length    > 0) n++;
+  if (filters.strengths?.length > 0) n++;
   if (filters.visibility !== 'all')  n++;
   return n;
 }

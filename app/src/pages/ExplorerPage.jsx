@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import Fuse from 'fuse.js';
 import LensCanvas from '../components/LensCanvas';
 import BoardView from '../components/BoardView';
 import FilterPanel from '../components/FilterPanel';
@@ -6,6 +7,8 @@ import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 
 // ── Minimal search bar ─────────────────────────────────────────────────────────
+
+const fuse = new Fuse(FLAVORS.index, { keys: ['label'], threshold: 0.4, distance: 100 });
 
 function SearchBar() {
   const [query, setQuery]   = useState('');
@@ -17,8 +20,9 @@ function SearchBar() {
     const val = e.target.value;
     setQuery(val);
     if (val.trim().length < 2) { setResults([]); return; }
-    const matches = FLAVORS.index
-      .filter(s => s.label.toLowerCase().includes(val.toLowerCase()) && !lenses.find(l => l.id === s.id))
+    const matches = fuse.search(val)
+      .map(r => r.item)
+      .filter(s => !lenses.find(l => l.id === s.id))
       .slice(0, 10);
     setResults(matches);
   };

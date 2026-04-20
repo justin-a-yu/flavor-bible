@@ -1,4 +1,4 @@
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { FLAVORS } from '../data/flavors_data';
 import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
 import {
@@ -268,7 +268,7 @@ export default function PrintPage() {
     return (
       <div className="pp-empty">
         <p>No ingredients selected.</p>
-        <Link to="/">← Back to Explorer</Link>
+        <button onClick={() => history.back()}>← Back</button>
       </div>
     );
   }
@@ -290,7 +290,7 @@ export default function PrintPage() {
     <div className="pp-page">
 
       <header className="pp-header no-print">
-        <Link to="/" className="pp-back">← Back to Explorer</Link>
+        <button className="pp-back" onClick={() => history.back()}>← Back</button>
         <div className="pp-header-title">{title}</div>
         <button className="pp-print-btn" onClick={() => window.print()}>
           ⎙ Print / Save PDF
@@ -299,7 +299,6 @@ export default function PrintPage() {
 
       <main className="pp-main">
         <div className="pp-doc-title">{title}</div>
-        <div className="pp-source">The Flavor Bible — Karen Page &amp; Andrew Dornenburg</div>
 
         <ProfileSection lenses={lenses} />
 

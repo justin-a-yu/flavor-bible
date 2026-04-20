@@ -218,7 +218,11 @@ export default function BoardView() {
   // Visibility is handled at the map/column level, not via matchesFilters.
   const contentFiltersActive = hasActiveFilters({ ...filters, visibility: 'all' });
   const pairingFilterFn = contentFiltersActive
-    ? p => !!(p.id && matchesFilters(FLAVORS.ingredients[p.id], filters))
+    ? p => {
+        if (filters.strengths?.length > 0 && !filters.strengths.includes(p.strength)) return false;
+        if (!p.id) return filters.strengths?.length === 0;
+        return matchesFilters(FLAVORS.ingredients[p.id], filters);
+      }
     : null;
 
   // Single scan — used for both shared groups and individual column filtering

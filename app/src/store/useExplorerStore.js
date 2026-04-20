@@ -9,6 +9,7 @@ const DEFAULT_FILTERS = {
   cuisines:   [],
   seasons:    [],
   tastes:     [],
+  strengths:  [], // [] = all; [4,3] = Holy Grail + Essential only
   visibility: 'all', // 'all' | 'shared' | 'individual'
 };
 

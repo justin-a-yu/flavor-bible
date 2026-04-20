@@ -11,7 +11,7 @@ export default function PrintExportButton() {
     if (filters.tastes.length)               params.set('tastes',     filters.tastes.join(','));
     if (filters.regions.length)              params.set('regions',    filters.regions.join(','));
     if (filters.visibility !== 'all')        params.set('visibility', filters.visibility);
-    window.open(`/print?${params}`, '_blank');
+    window.open(`/#/print?${params}`, '_blank');
   };
 
   return (

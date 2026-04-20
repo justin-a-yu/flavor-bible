@@ -9,6 +9,13 @@ const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
 
 const TASTES = ['sweet', 'sour', 'bitter', 'salty', 'umami', 'spicy'];
 
+const STRENGTHS = [
+  { value: 4, label: 'Holy Grail' },
+  { value: 3, label: 'Essential' },
+  { value: 2, label: 'Highly Recommended' },
+  { value: 1, label: 'Recommended' },
+];
+
 const VISIBILITY_OPTIONS = [
   { value: 'all',        label: 'All' },
   { value: 'shared',     label: 'Shared' },
@@ -29,15 +36,16 @@ function ToggleGroup({ items, active, onToggle }) {
             key={val}
             onClick={() => onToggle(val)}
             style={{
-              padding: '4px 11px',
-              fontSize: '0.72rem',
-              letterSpacing: '0.06em',
-              borderRadius: 20,
+              padding: '3px 10px',
+              fontSize: '0.68rem',
+              letterSpacing: '0.05em',
+              borderRadius: 12,
               border: '1px solid',
               borderColor: isOn ? '#b8863a' : '#d4c9b0',
               background:  isOn ? '#f5ecd6' : 'transparent',
               color:       isOn ? '#7a5010' : '#8a7450',
               cursor: 'pointer',
+              fontFamily: 'Georgia, serif',
               transition: 'background 0.12s, color 0.12s, border-color 0.12s',
             }}
           >
@@ -59,15 +67,16 @@ function RadioGroup({ options, value, onChange }) {
             key={opt.value}
             onClick={() => onChange(opt.value)}
             style={{
-              padding: '4px 11px',
-              fontSize: '0.72rem',
-              letterSpacing: '0.06em',
-              borderRadius: 20,
+              padding: '3px 10px',
+              fontSize: '0.68rem',
+              letterSpacing: '0.05em',
+              borderRadius: 12,
               border: '1px solid',
               borderColor: isOn ? '#b8863a' : '#d4c9b0',
               background:  isOn ? '#f5ecd6' : 'transparent',
               color:       isOn ? '#7a5010' : '#8a7450',
               cursor: 'pointer',
+              fontFamily: 'Georgia, serif',
               transition: 'background 0.12s, color 0.12s, border-color 0.12s',
             }}
           >
@@ -160,8 +169,17 @@ export default function FilterPanel() {
             />
           </FilterRow>
 
+          {/* Strength */}
+          <FilterRow label="Strength">
+            <ToggleGroup
+              items={STRENGTHS}
+              active={filters.strengths}
+              onToggle={v => toggleFilter('strengths', v)}
+            />
+          </FilterRow>
+
           {/* Visibility */}
-          <FilterRow label="Show">
+          <FilterRow label="Overlap">
             <RadioGroup
               options={VISIBILITY_OPTIONS}
               value={filters.visibility}

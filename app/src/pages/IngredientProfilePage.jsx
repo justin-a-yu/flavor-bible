@@ -32,7 +32,7 @@ export default function IngredientProfilePage() {
     return (
       <div className="profile-page">
         <header className="profile-header">
-          <Link to="/" className="profile-back">← Flavor Bible Explorer</Link>
+          <button className="profile-back" onClick={() => history.back()}>← Back</button>
         </header>
         <div className="profile-notfound">
           <div className="profile-notfound-title">Ingredient not found</div>
@@ -59,7 +59,7 @@ export default function IngredientProfilePage() {
     <div className="profile-page">
 
       <header className="profile-header">
-        <Link to="/" className="profile-back">← Flavor Bible Explorer</Link>
+        <button className="profile-back" onClick={() => history.back()}>← Back</button>
         <button className="profile-print-btn" onClick={() => window.print()}>
           <span>⎙</span> Print
         </button>
@@ -114,6 +114,18 @@ export default function IngredientProfilePage() {
           )}
         </div>
 
+        {/* ── Tips ── */}
+        {ing.tips.length > 0 && (
+          <section className="profile-section">
+            <div className="profile-section-label">Tips</div>
+            <div className="profile-tips">
+              {ing.tips.map((tip, i) => (
+                <div key={i} className="profile-tip">{tip}</div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* ── Pairings ── */}
         {tiers.length > 0 && (
           <section className="profile-section">
@@ -158,6 +170,18 @@ export default function IngredientProfilePage() {
           </section>
         )}
 
+        {/* ── Affinities ── */}
+        {ing.affinities.length > 0 && (
+          <section className="profile-section">
+            <div className="profile-section-label">Affinities</div>
+            <div className="profile-affinities">
+              {ing.affinities.map((str, i) => (
+                <div key={i} className="profile-affinity">{str}</div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* ── Avoids ── */}
         {ing.avoids?.length > 0 && (
           <section className="profile-section">
@@ -180,18 +204,6 @@ export default function IngredientProfilePage() {
                   </span>
                 )
               )}
-            </div>
-          </section>
-        )}
-
-        {/* ── Affinities ── */}
-        {ing.affinities.length > 0 && (
-          <section className="profile-section">
-            <div className="profile-section-label">Affinities</div>
-            <div className="profile-affinities">
-              {ing.affinities.map((str, i) => (
-                <div key={i} className="profile-affinity">{str}</div>
-              ))}
             </div>
           </section>
         )}
@@ -235,18 +247,6 @@ export default function IngredientProfilePage() {
                     <div className="profile-quote-attr">— {q.attribution}</div>
                   )}
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* ── Tips ── */}
-        {ing.tips.length > 0 && (
-          <section className="profile-section">
-            <div className="profile-section-label">Tips</div>
-            <div className="profile-tips">
-              {ing.tips.map((tip, i) => (
-                <div key={i} className="profile-tip">{tip}</div>
               ))}
             </div>
           </section>

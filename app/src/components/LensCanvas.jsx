@@ -104,6 +104,7 @@ export default function LensCanvas({ onBubbleClick }) {
 
       // Apply content filters (cuisine / season / taste) — OR within each dimension
       const needsFilter = (
+        (filters.regions?.length  > 0) ||
         (filters.cuisines?.length > 0) ||
         (filters.seasons?.length  > 0) ||
         (filters.tastes?.length   > 0)
@@ -119,6 +120,8 @@ export default function LensCanvas({ onBubbleClick }) {
       shuffled.sort((a, b) => b.strength - a.strength);
 
       shuffled.forEach(p => {
+        // Apply strength filter
+        if (filters.strengths?.length > 0 && !filters.strengths.includes(p.strength)) return;
         // Apply visibility filter
         if (filters.visibility === 'shared' && lenses.length < 2) return;
 
