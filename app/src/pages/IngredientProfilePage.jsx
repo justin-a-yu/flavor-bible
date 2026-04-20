@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FLAVORS } from '../data/flavors_data';
 import './IngredientProfilePage.css';
 
@@ -26,13 +26,14 @@ const LABEL_TO_ID = Object.fromEntries(
 
 export default function IngredientProfilePage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const ing = FLAVORS.ingredients[id];
 
   if (!ing) {
     return (
       <div className="profile-page">
         <header className="profile-header">
-          <button className="profile-back" onClick={() => history.back()}>← Back</button>
+          <button className="profile-back" onClick={() => navigate(-1)}>← Back</button>
         </header>
         <div className="profile-notfound">
           <div className="profile-notfound-title">Ingredient not found</div>
@@ -59,7 +60,7 @@ export default function IngredientProfilePage() {
     <div className="profile-page">
 
       <header className="profile-header">
-        <button className="profile-back" onClick={() => history.back()}>← Back</button>
+        <button className="profile-back" onClick={() => navigate(-1)}>← Back</button>
         <button className="profile-print-btn" onClick={() => window.print()}>
           <span>⎙</span> Print
         </button>

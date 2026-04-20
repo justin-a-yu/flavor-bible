@@ -3,7 +3,7 @@ import Fuse from 'fuse.js';
 import LensCanvas from '../components/LensCanvas';
 import BoardView from '../components/BoardView';
 import FilterPanel from '../components/FilterPanel';
-import useExplorerStore from '../store/useExplorerStore';
+import useExplorerStore, { serializeHash } from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 
 // ── Minimal search bar ─────────────────────────────────────────────────────────
@@ -222,6 +222,22 @@ export default function ExplorerPage() {
     if (window.location.hash) {
       useExplorerStore.getState().loadFromHash(window.location.hash);
     }
+  }, []);
+
+  // Always-on URL sync — updates hash whenever lenses or viewport change
+  useEffect(() => {
+    let timer;
+    const unsub = useExplorerStore.subscribe((state, prevState) => {
+      if (state.lenses === prevState.lenses && state.viewport === prevState.viewport) return;
+      if (state.lenses.length === 0) return;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const { lenses, viewport } = useExplorerStore.getState();
+        const hash = serializeHash({ lenses, viewport });
+        history.replaceState(null, '', hash || location.pathname + location.search);
+      }, 300);
+    });
+    return () => { unsub(); clearTimeout(timer); };
   }, []);
 
   const handleBubbleClick = useCallback((bubble, clientX, clientY) => {

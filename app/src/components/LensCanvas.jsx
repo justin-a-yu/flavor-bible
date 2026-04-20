@@ -1,5 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
-import useExplorerStore, { serializeHash } from '../store/useExplorerStore';
+import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 import { seededShuffle } from '../utils/rng';
 import { matchesFilters } from '../utils/filterUtils';
@@ -73,7 +73,6 @@ export default function LensCanvas({ onBubbleClick }) {
     panStartX:    0,
     panStartY:    0,
     animFrame:    null,
-    saveTimer:    null,
     dimLevels:    {}, // per-lens animated dim: lensId → 0.5–1.0
     ctx:          null, // cached 2d context
     overlapping:  new Set(), // precomputed "lensId:lensId" pairs that overlap this tick
@@ -351,7 +350,7 @@ export default function LensCanvas({ onBubbleClick }) {
       ctx.font = '15px Georgia';
       ctx.textAlign = 'center';
       ctx.fillText('Search for an ingredient above to begin', W / 2, H / 2 - 10);
-      ctx.font = '12px Georgia';
+      ctx.font = '13px Georgia';
       ctx.fillStyle = '#d8c8a8';
       ctx.fillText('Try: garlic, lemon, chocolate, lamb, ginger…', W / 2, H / 2 + 14);
       ctx.restore();
@@ -513,19 +512,6 @@ export default function LensCanvas({ onBubbleClick }) {
     return null;
   }, []);
 
-  // ── Debounced URL save ──────────────────────────────────────────────────────
-
-  const debouncedSaveState = useCallback(() => {
-    const st = stateRef.current;
-    clearTimeout(st.saveTimer);
-    st.saveTimer = setTimeout(() => {
-      const { lenses, viewport } = useExplorerStore.getState();
-      if (lenses.length === 0) return;
-      const hash = serializeHash({ lenses, viewport });
-      history.replaceState(null, '', hash || location.pathname + location.search);
-    }, 300);
-  }, []);
-
   // ── Mount, resize, event wiring ─────────────────────────────────────────────
 
   useEffect(() => {
@@ -567,19 +553,18 @@ export default function LensCanvas({ onBubbleClick }) {
     const unsub = useExplorerStore.subscribe((state, prevState) => {
       if (state.lenses === prevState.lenses && state.filters === prevState.filters) return;
 
-      // Center any freshly-added lenses (x/y === null) onto the canvas.
-      // Stagger each new lens 120° further out at 200px from center so they
-      // don't all stack on the same pixel when added in sequence.
+      // Place only newly-added lenses (x/y === null); existing lenses keep their positions.
+      // Angle is based on the lens's index in the full array so distribution stays even.
       const canvas = canvasRef.current;
-      if (canvas) {
+      if (canvas && state.lenses.length !== prevState.lenses.length) {
+        const n = state.lenses.length;
         const { viewport } = useExplorerStore.getState();
         const cx = (canvas.offsetWidth  / 2 - viewport.panX) / viewport.zoom;
         const cy = (canvas.offsetHeight / 2 - viewport.panY) / viewport.zoom;
-        state.lenses.forEach(lens => {
+        const dist = n <= 1 ? 0 : 230;
+        state.lenses.forEach((lens, i) => {
           if (lens.x === null || lens.y === null) {
-            const n = state.lenses.filter(l => l.x !== null && l.y !== null).length;
-            const angle = (n - 1) * (Math.PI * 2 / 3); // 0°, 120°, 240°, then repeats
-            const dist  = n === 0 ? 0 : 200;
+            const angle = n === 1 ? 0 : (i / n) * Math.PI * 2 - Math.PI / 2;
             useExplorerStore.getState().updateLens(lens.id, {
               x: cx + Math.cos(angle) * dist,
               y: cy + Math.sin(angle) * dist,
@@ -600,15 +585,12 @@ export default function LensCanvas({ onBubbleClick }) {
 
       if (structuralChange) {
         rebuildBubbles();
-        // Save after structural change (add/remove lens, resize, shuffle).
-        // The 300ms debounce ensures centering (x/y update) has settled before serializing.
-        debouncedSaveState();
       }
     });
     // Seed initial bubbles
     rebuildBubbles();
     return unsub;
-  }, [rebuildBubbles, debouncedSaveState]);
+  }, [rebuildBubbles]);
 
   // Canvas and document event listeners
   useEffect(() => {
@@ -678,7 +660,6 @@ export default function LensCanvas({ onBubbleClick }) {
       if (st.isPanning) {
         st.isPanning = false;
         canvas.style.cursor = st.spaceDown ? 'grab' : 'default';
-        debouncedSaveState();
         return;
       }
       const wasDragging = st.dragging && st.didDrag;
@@ -686,7 +667,6 @@ export default function LensCanvas({ onBubbleClick }) {
       st.dragging = null;
 
       if (wasDragging) {
-        debouncedSaveState();
         return;
       }
       // If we clicked inside a lens without dragging, don't open a bubble detail
@@ -721,7 +701,6 @@ export default function LensCanvas({ onBubbleClick }) {
           panY: sy - (sy - viewport.panY) * newZoom / viewport.zoom,
           zoom: newZoom,
         });
-        debouncedSaveState();
         return;
       }
 
@@ -730,8 +709,6 @@ export default function LensCanvas({ onBubbleClick }) {
       if (!lens) return;
       const delta = e.deltaY > 0 ? -10 : 10;
       useExplorerStore.getState().updateLens(lens.id, { r: Math.max(80, lens.r + delta) });
-      // rebuildBubbles is handled by the store subscription (r change = structural change)
-      debouncedSaveState();
     };
 
     const onMouseLeave = () => {
@@ -752,7 +729,6 @@ export default function LensCanvas({ onBubbleClick }) {
           seed: Math.floor(Math.random() * 0xffffffff),
         });
         rebuildBubbles();
-        debouncedSaveState();
       }
     };
 
@@ -783,7 +759,7 @@ export default function LensCanvas({ onBubbleClick }) {
       document.removeEventListener('keydown',  onKeyDown);
       document.removeEventListener('keyup',    onKeyUp);
     };
-  }, [canvasXY, screenXY, bubbleAt, lensAt, debouncedSaveState, rebuildBubbles, onBubbleClick]);
+  }, [canvasXY, screenXY, bubbleAt, lensAt, rebuildBubbles, onBubbleClick]);
 
   return (
     <canvas

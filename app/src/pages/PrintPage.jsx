@@ -268,7 +268,6 @@ export default function PrintPage() {
     return (
       <div className="pp-empty">
         <p>No ingredients selected.</p>
-        <button onClick={() => history.back()}>← Back</button>
       </div>
     );
   }
@@ -290,7 +289,6 @@ export default function PrintPage() {
     <div className="pp-page">
 
       <header className="pp-header no-print">
-        <button className="pp-back" onClick={() => history.back()}>← Back</button>
         <div className="pp-header-title">{title}</div>
         <button className="pp-print-btn" onClick={() => window.print()}>
           ⎙ Print / Save PDF
