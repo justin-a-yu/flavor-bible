@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Phases 2 (data), 3, 4 & 5 complete. Phase 6 (polish) in progress — RegionMap rebuilt.**
+> Status: **Phases 2 (data), 3, 4 & 5 complete. Phase 6 (polish) in progress — data quality audit complete (prose leakage, quote misattribution, meta fields all fixed).**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -34,6 +34,7 @@ Each ingredient entry in the JSON:
 - **Quotes** and **tips** stored per ingredient, surfaced on demand in the UI
 - **Dishes** — chef dish examples from "Dishes" sidebars; 459 entries across 120 ingredients
 - **Notes** — long-form sidebar prose (e.g. pasta's "Pairing Pastas with Sauces" guide)
+- **Avoids** — NOT YET PARSED: ~20 ingredients have explicit "Avoid:" sections in the book; `avoids[]` field not yet in data model
 
 ---
 
@@ -71,17 +72,21 @@ Each ingredient entry in the JSON:
   - Global result: 0 empty pairing labels across all 502 ingredients.
 
 ### Known parser issues (deferred)
-- [ ] **Option A — Quote misattribution:** Pre-header quotes (e.g. pine nut quotes filed under pineapple)
-  are attributed to the wrong ingredient. Root cause: book places intro quotes *before* the ingredient
-  header they belong to. Fix: post-processing re-attribution pass — scan quote text for named ingredients
-  and reassign. Affects ~10–20 entries.
-- [ ] **18 prose-leakage pairings** in anise, asparagus-white, brined-dishes, horseradish, lavender,
-  lettuces, mangoes, cantaloupe-honeydew, mushrooms, oil-avocado, oregano, pepper-black, pickles,
-  quail, rosemary, salt-kosher, smokiness, strawberries. Root cause: `is_clear_ingredient` requires
-  uppercase first char, so once a prose_buffer opens, lowercase pairings accumulate until the next
-  header. Fix: relax uppercase requirement in `is_clear_ingredient`. Deferred.
+- [x] **Quote misattribution fixed:** `fix_quote_attribution()` post-processing pass in `parse_full.py`.
+  Runs after cuisine tagging; moves quotes whose text starts with a different ingredient's name (≥4 chars,
+  word boundary, target not substring of current name, target mentioned ≥ as often as current ingredient,
+  prose not pairing list). 10 quotes correctly reassigned: Chervil→Chestnuts, Dill→Duck,
+  Fennel→Escarole, Herbes De Provence→Hazelnuts (×2), Hyssop→Tomatoes, Lemon Thyme→Lemon Verbena,
+  Mushrooms→Caraway Seeds, Olive Oil→Olives, Pineapples→Pine Nuts.
+- [x] **19 prose-leakage pairings fixed** — two guards added at pairing insertion point:
+  1. Period guard: `if pairing_label.rstrip().endswith('.'): continue` — ingredient pairings never end with `.`
+  2. Pronoun guard: `if re.match(r'^(i|we|you|he|she|they|it)\s', pairing_label): continue` — no pairing starts with a subject pronoun
+  Caught all 19 cases (garlic, horseradish, lavender, rosemary, mushrooms, anise, etc.). Full re-parse run; 19,028 total pairings remain.
 - [ ] **QUOTE_INDICATORS coverage:** Spot-check pairings for prose leakage after each parse run;
   expand verb stems as new edge cases are found. (See project_quote_indicators.md in memory)
+- [ ] **AVOID pairings not parsed:** ~20 ingredients in the book have explicit "Avoid:" sections
+  (e.g. "Avoid: cilantro"). Currently 0 entries in any ingredient. Requires new `avoids[]` field
+  in data model, parser addition, and UI treatment on profile page and board view.
 
 ---
 
@@ -171,7 +176,7 @@ FilterPanel UI shell deferred to polish phase.
 
 ### Deferred
 - [ ] Cuisine filter UI (101 options — needs search/scrollable checklist, deferred to Phase 6 polish)
-- [ ] FilterPanel close-on-outside-click (minor UX polish)
+- [x] FilterPanel close-on-outside-click
 - [ ] Tune RegionMap hit zone coordinates after live visual review
 
 ---
@@ -186,17 +191,26 @@ FilterPanel UI shell deferred to polish phase.
 ### Profile page enhancements
 - [x] Show dishes[] section — list with chef/restaurant attribution, subtle dividers
 - [x] Show notes[] section — long-form prose; PDF line-wraps re-joined into semantic paragraphs by "Word(s): " header detection
+- [x] Show meta fields fully — `techniques` and `botanical relatives` now rendered as chip rows in hero (with links for botanical relatives); `function` stays inline with taste/weight/volume/season; BoardView cards show only compact fields
 
 ---
 
 ## Phase 6 — Polish & Launch
 - [x] RegionMap rebuild — real country shapes, 7 culinary regions, per-country fill targeting (see Phase 4 details)
+- [x] FilterPanel close-on-outside-click — `mousedown` listener on panel wrapper ref
+- [x] BoardView visibility filter — shared/individual correctly hide/show respective sections
+- [x] Filter button badge — removed count number; button highlights gold when any filter is active
+- [x] Region chips — labels moved below map as always-visible chips (stable panel height)
+- [x] Add dishes + notes to IngredientProfilePage
+- [x] Meta fields on profile page — techniques (chips), botanical relatives (linked chips), function inline
+- [x] Prose leakage fix — 19 sentence fragments removed from pairings data via parser guards
 - [ ] Tune RegionMap hit zone coordinates after live visual review
-- [ ] FilterPanel full UI (built on Phase 4 state/logic)
+- [ ] AVOID pairings — parse ~20 `avoids[]` entries from book; add to data model and UI
+- [ ] Cuisine filter UI (101 options — needs search/scrollable checklist)
+- [ ] FilterPanel close-on-outside-click (minor UX polish — already done above, verify)
 - [ ] Responsive / mobile considerations
 - [ ] Performance optimization for large graph
-- [ ] Option A — quote re-attribution post-processing script
-- [x] Add dishes + notes to IngredientProfilePage
+- [x] Quote re-attribution post-processing script — 10 quotes moved to correct ingredients
 - [ ] Testing and QA
 - [ ] Deployment (Vercel/Netlify)
 - [ ] User feedback loop

@@ -8,6 +8,20 @@ const STRENGTH_COLOR = { 4: '#d4a840', 3: '#d4a840', 2: '#e07840', 1: '#5a9e6a' 
 const STRENGTH_LABEL = { 4: 'Holy Grail', 3: 'Essential', 2: 'Highly Recommended', 1: 'Recommended' };
 const TIER_ORDER     = [4, 3, 2, 1];
 
+// Meta fields shown inline (short values); others get their own expanded rows
+const INLINE_META_KEYS = new Set(['taste', 'weight', 'volume', 'season', 'function']);
+
+// Label → ingredient id lookup for linking botanical relatives
+const LABEL_TO_ID = Object.fromEntries(
+  FLAVORS.index.flatMap(item => {
+    const full = item.label.toLowerCase();
+    const entries = [[full, item.id]];
+    const paren = full.indexOf(' (');
+    if (paren > 0) entries.push([full.slice(0, paren).trim(), item.id]);
+    return entries;
+  })
+);
+
 // ─── IngredientProfilePage ────────────────────────────────────────────────────
 
 export default function IngredientProfilePage() {
@@ -29,6 +43,14 @@ export default function IngredientProfilePage() {
   }
 
   const metaEntries = Object.entries(ing.meta ?? {}).filter(([, v]) => v);
+  const inlineMeta  = metaEntries.filter(([k]) => INLINE_META_KEYS.has(k));
+  const techniques  = ing.meta?.techniques
+    ? ing.meta.techniques.split(',').map(s => s.trim()).filter(Boolean)
+    : [];
+  const botanicals  = ing.meta?.['botanical relatives']
+    ? ing.meta['botanical relatives'].split(',').map(s => s.trim()).filter(Boolean)
+    : [];
+
   const tiers = TIER_ORDER
     .map(s => ({ strength: s, pairings: ing.pairings.filter(p => p.strength === s) }))
     .filter(t => t.pairings.length > 0);
@@ -48,9 +70,10 @@ export default function IngredientProfilePage() {
         {/* ── Hero ── */}
         <div className="profile-hero">
           <h1 className="profile-name">{ing.label}</h1>
-          {metaEntries.length > 0 && (
+
+          {inlineMeta.length > 0 && (
             <div className="profile-meta">
-              {metaEntries.map(([key, val]) => (
+              {inlineMeta.map(([key, val]) => (
                 <span key={key} className="profile-meta-item">
                   <span className="profile-meta-key">
                     {key.charAt(0).toUpperCase() + key.slice(1)}:
@@ -58,6 +81,35 @@ export default function IngredientProfilePage() {
                   {' '}{val}
                 </span>
               ))}
+            </div>
+          )}
+
+          {techniques.length > 0 && (
+            <div className="profile-meta-expanded">
+              <span className="profile-meta-key profile-meta-expanded-label">Techniques:</span>
+              <div className="profile-meta-chips">
+                {techniques.map(t => (
+                  <span key={t} className="profile-meta-chip">{t}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {botanicals.length > 0 && (
+            <div className="profile-meta-expanded">
+              <span className="profile-meta-key profile-meta-expanded-label">Botanical relatives:</span>
+              <div className="profile-meta-chips">
+                {botanicals.map(b => {
+                  const bid = LABEL_TO_ID[b.toLowerCase()] ?? null;
+                  return bid ? (
+                    <Link key={b} to={`/ingredient/${bid}`} className="profile-meta-chip profile-meta-chip--link">
+                      {b}
+                    </Link>
+                  ) : (
+                    <span key={b} className="profile-meta-chip">{b}</span>
+                  );
+                })}
+              </div>
             </div>
           )}
         </div>

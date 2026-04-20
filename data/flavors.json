@@ -1326,10 +1326,6 @@
           "strength": 1
         },
         {
-          "label": "italian sausage.",
-          "strength": 1
-        },
-        {
           "label": "sauerkraut",
           "strength": 1
         },
@@ -4006,10 +4002,6 @@
         "techniques": "blanch, boil, sauté, steam"
       },
       "pairings": [
-        {
-          "label": "texture than green asparagus.",
-          "strength": 1
-        },
         {
           "label": "butter",
           "strength": 1
@@ -12368,11 +12360,6 @@
           "modifier": "esp. tannic"
         },
         {
-          "label": "zest",
-          "strength": 1,
-          "modifier": "lemon, orange, etc."
-        },
-        {
           "label": "zucchini",
           "strength": 1
         }
@@ -13759,10 +13746,6 @@
         "taste": "salty"
       },
       "pairings": [
-        {
-          "label": "flavor.",
-          "strength": 1
-        },
         {
           "label": "chicken",
           "strength": 1
@@ -16285,7 +16268,12 @@
           "modifier": "esp. root"
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Caraway seeds bring up the flavor in morel mushrooms.",
+          "attribution": "JERRY TRAUNFELD, The Herbfarm (Woodinville, Washington)"
+        }
+      ],
       "tips": [
         "Add late in the cooking process."
       ],
@@ -22117,10 +22105,6 @@
         {
           "text": "I like to take one ingredient and see how much I can do with it. I made a frozen chestnut semifreddo with bits of candied chestnuts. This was then set on an orange-soaked chestnut sponge cake, next to a chestnut wafer and chestnut paste. I needed a complementary flavor, and I have always liked the combination of pear and chestnut. They both have a richness but depending on how the pear is handled, it can add freshness and acidity. I roasted the pear in sugar, butter, and ice wine vinegar and finished it in the oven until soft. The pear was then diced tartare-like and had orange confit added. The juices from the pear were the only sauce.",
           "attribution": "MICHAEL LAISKONIS, LE BERNARDIN (NEW YORK CITY)"
-        },
-        {
-          "text": "Chestnuts have a bursty flavor and they work with chocolate and pears. You have to combine them with earthy flavors. If you paired chestnuts with berries, they would just get lost.",
-          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
         }
       ],
       "tips": [
@@ -22436,7 +22420,12 @@
           "strength": 1
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Chestnuts have a bursty flavor and they work with chocolate and pears. You have to combine them with earthy flavors. If you paired chestnuts with berries, they would just get lost.",
+          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [],
@@ -32164,10 +32153,6 @@
           "attribution": "JOSÉ ANDRÉS, CAFÉ ATLÁNTICO (WASHINGTON, DC)"
         },
         {
-          "text": "Duck is great with fruit. We serve a duck with Seville oranges that are a little bitter. We made a puree of the pulp and a little peel that had nice acidity and bitterness. We then added fennel that had been cooked with butter and a little star anise.",
-          "attribution": "DANIEL HUMM, ELEVEN MADISON PARK (NEW YORK CITY)"
-        },
-        {
           "text": "For my dish of lacquered duck and peppercress, I make a duck cooked with honey served with a brown butter–honey that gives the duck a sweet, nutty flavor. To cut the sweetness, I added a reduction of pomegranate juice and oil emulsion to give the dish a tart contrast.",
           "attribution": "BOB IACOVONE, CUVÉE (NEW ORLEANS)"
         }
@@ -32768,6 +32753,10 @@
         {
           "text": "We serve a sixteen-ounce duck breast with a Pinot Noir, blackberry, and ginger sauce. The sauce is made from frozen Oregon blackberries, which I am not shy to admit I use, because eleven months out of the year, there is nothing better. At home, I make a version of this sauce with currant preserves: I sauté the duck, then add lots of fresh ginger and shallots, a few tablespoons of currant preserves, and some champagne vinegar to cut the sweetness.",
           "attribution": "MICHAEL LOMONACO, CHEF, PORTER HOUSE NEW YORK (NEW YORK CITY)"
+        },
+        {
+          "text": "Duck is great with fruit. We serve a duck with Seville oranges that are a little bitter. We made a puree of the pulp and a little peel that had nice acidity and bitterness. We then added fennel that had been cooked with butter and a little star anise.",
+          "attribution": "DANIEL HUMM, ELEVEN MADISON PARK (NEW YORK CITY)"
         }
       ],
       "tips": [],
@@ -34118,7 +34107,12 @@
           "strength": 1
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Escarole is a bitter but sturdy leaf, and in a salad dressed with olive oil and red wine vinegar, I like to add Cheddar for its sharpness and creaminess plus some crisp and refreshing apples.",
+          "attribution": "TONY LIU, AUGUST (NEW YORK CITY)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [],
@@ -34380,10 +34374,6 @@
         }
       ],
       "quotes": [
-        {
-          "text": "Escarole is a bitter but sturdy leaf, and in a salad dressed with olive oil and red wine vinegar, I like to add Cheddar for its sharpness and creaminess plus some crisp and refreshing apples.",
-          "attribution": "TONY LIU, AUGUST (NEW YORK CITY)"
-        },
         {
           "text": "I like fennel shaved raw, with just some lemon juice, olive oil, and fennel seeds. Fennel goes well with dried meats like prosciutto. It also pairs nicely with shellfish like langoustines, lobster, or crab. Fennel can work with fish as well as with meat. It goes really well with cold poached salmon or white, light meats like chicken or veal.",
           "attribution": "GABRIEL KREUTHER, THE MODERN (NEW YORK CITY)"
@@ -37235,11 +37225,6 @@
         {
           "label": "meats",
           "strength": 2
-        },
-        {
-          "label": "i use garlic primarily in two ways",
-          "strength": 2,
-          "modifier": "infused into olive oil, or served crispy as a garnish. i’ll use the garlic"
         },
         {
           "label": "mushrooms",
@@ -40850,7 +40835,16 @@
           "modifier": "red, sweet, white"
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Hazelnuts are from the north and are used in Piedmontese cooking. Hazelnuts are very rich and round and buttery, so I will use them to achieve a rich, fatty quality in my dessert. Hazelnuts with chocolate are a natural. Hazelnut with grapes are great; it’s like peanut butter and jelly!",
+          "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
+        },
+        {
+          "text": "Hazelnuts have a complicated flavor, though not as complicated as walnuts.",
+          "attribution": "MARCEL DESAULNIERS, THE TRELLIS (WILLIAMSBURG, VIRGINIA)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [],
@@ -40888,14 +40882,6 @@
         }
       ],
       "quotes": [
-        {
-          "text": "Hazelnuts have a complicated flavor, though not as complicated as walnuts.",
-          "attribution": "MARCEL DESAULNIERS, THE TRELLIS (WILLIAMSBURG, VIRGINIA)"
-        },
-        {
-          "text": "Hazelnuts are from the north and are used in Piedmontese cooking. Hazelnuts are very rich and round and buttery, so I will use them to achieve a rich, fatty quality in my dessert. Hazelnuts with chocolate are a natural. Hazelnut with grapes are great; it’s like peanut butter and jelly!",
-          "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
-        },
         {
           "text": "I am more of an herb guy than a spice guy. It comes back to a certain conservatism I have regarding food. The French are not big on spices; they use more herbs. I know the spices used in European cooking and use them in moderation. I am not going to serve a dish that is wildly nutmegged!",
           "attribution": "DAVID WALTUCK, CHANTERELLE (NEW YORK CITY)"
@@ -41527,10 +41513,6 @@
       },
       "pairings": [
         {
-          "label": "heat diminishes the pungency of horseradish.",
-          "strength": 1
-        },
-        {
           "label": "apples",
           "strength": 2,
           "modifier": "esp. golden delicious"
@@ -41950,10 +41932,6 @@
         {
           "text": "In Eastern European or Hungarian cooking, you will see a stewed or braised dish flavored with paprika that is cut with sour cream either in it or served on top so that it mixes together as you eat it. I serve rare roasted venison in venison stock with hot and sweet paprika that is essentially a goulash. Alongside, I serve creamed sauerkraut that bleeds into the sauce and gives the same effect as a goulash. Even though the sauerkraut has an intense flavor, it is still mild because it has been cooked in cream. It is not a Hungarian dish but rather a play on a Hungarian dish, and it works in the context of the subtler intensity of flavors I like.",
           "attribution": "DAVID WALTUCK, CHANTERELLE (NEW YORK CITY)"
-        },
-        {
-          "text": "Tomatoes are as important to making Indian cuisine as they are to making Italian cuisine. In fact, making an Indian curry is a lot like making an Italian tomato sauce.",
-          "attribution": "MEERU DHALWALA, VIJ’S (VANCOUVER)"
         },
         {
           "text": "If my mind is in India, tamarind will be sneaking its way into the dish. When thinking of India, my inspirations are the flavors of clove, cardamom, and coriander seed. They are aromatic spices that really cut the fat of the dish, so it is not big, fat, and flabby on the palate.",
@@ -44152,10 +44130,6 @@
           "strength": 2
         },
         {
-          "label": "lavender works with plums or peaches.",
-          "strength": 2
-        },
-        {
           "label": "quail",
           "strength": 1
         },
@@ -45656,12 +45630,7 @@
           "modifier": "esp. spring"
         }
       ],
-      "quotes": [
-        {
-          "text": "Lemon verbena is amazing. I love to make a lemon verbena syrup and then poach apricots in it. It is so refreshing! We also make our own soda here, and lemon verbena is great in soda.",
-          "attribution": "JOHNNY IUZZINI, JEAN GEORGES (NEW YORK CITY)"
-        }
-      ],
+      "quotes": [],
       "tips": [],
       "notes": [],
       "dishes": [],
@@ -45888,7 +45857,12 @@
           "strength": 1
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Lemon verbena is amazing. I love to make a lemon verbena syrup and then poach apricots in it. It is so refreshing! We also make our own soda here, and lemon verbena is great in soda.",
+          "attribution": "JOHNNY IUZZINI, JEAN GEORGES (NEW YORK CITY)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [],
@@ -46265,10 +46239,6 @@
         },
         {
           "label": "basil",
-          "strength": 1
-        },
-        {
-          "label": "bread, breadsticks, croutons, etc.",
           "strength": 1
         },
         {
@@ -47847,11 +47817,6 @@
         {
           "label": "lemon, meyer",
           "strength": 1
-        },
-        {
-          "label": "i love lobster",
-          "strength": 2,
-          "modifier": "poached, roasted, or grilled. i like mayonnaise or a vinaigrette with my lobster much more"
         },
         {
           "label": "lemongrass",
@@ -50055,10 +50020,6 @@
         {
           "label": "wasabi",
           "strength": 1
-        },
-        {
-          "label": "beira baixa.",
-          "strength": 1
         }
       ],
       "quotes": [],
@@ -51220,10 +51181,6 @@
           "label": "salads",
           "strength": 2,
           "modifier": "esp. fruit"
-        },
-        {
-          "label": "tarragon works with muskmelons.",
-          "strength": 2
         },
         {
           "label": "salsas, fruit",
@@ -53194,10 +53151,6 @@
           "strength": 1
         },
         {
-          "label": "marjoram brings up the mushroom flavor.",
-          "strength": 2
-        },
-        {
           "label": "bay leaf",
           "strength": 1
         },
@@ -53946,10 +53899,6 @@
         {
           "text": "Matsutake mushrooms have a cinnamon and pine quality to them. This is a fall mushroom and works well with savoy cabbage. I like pairing luxurious ingredients with cabbage. We will roast black cod and serve it with cabbage, cream, and the matsutake.",
           "attribution": "JERRY TRAUNFELD, THE HERBFARM (WOODINVILLE, WASHINGTON)"
-        },
-        {
-          "text": "Caraway seeds bring up the flavor in morel mushrooms.",
-          "attribution": "JERRY TRAUNFELD, The Herbfarm (Woodinville, Washington)"
         }
       ],
       "tips": [
@@ -55800,10 +55749,6 @@
         {
           "label": "zucchini",
           "strength": 1
-        },
-        {
-          "label": "i like almond oil with asparagus salad.",
-          "strength": 2
         }
       ],
       "quotes": [
@@ -56825,10 +56770,6 @@
         {
           "text": "I like Greek black olives the best. I like them by themselves, but they also work great in a chicken, duck, or lamb dish.",
           "attribution": "GABRIEL KREUTHER, THE MODERN (NEW YORK CITY)"
-        },
-        {
-          "text": "Olives have such a strong flavor that they can overwhelm other ingredients, but salmon will stand right up to it.",
-          "attribution": "MICHEL RICHARD, CITRONELLE (WASHINGTON, DC)"
         }
       ],
       "tips": [],
@@ -57058,7 +56999,12 @@
           "strength": 1
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Olives have such a strong flavor that they can overwhelm other ingredients, but salmon will stand right up to it.",
+          "attribution": "MICHEL RICHARD, CITRONELLE (WASHINGTON, DC)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [
@@ -58515,10 +58461,6 @@
           "label": "botanical relative",
           "strength": 2,
           "modifier": "marjoram (milder in flavor than oregano)"
-        },
-        {
-          "label": "“quieter” than greek oregano).",
-          "strength": 1
         },
         {
           "label": "anchovies",
@@ -61042,6 +60984,10 @@
           "modifier": "bolognese (esp. with fettuccine), carbonara (esp. with bucatini or spaghetti), mornay"
         },
         {
+          "label": "with bucatini), tomato",
+          "strength": 1
+        },
+        {
           "label": "sausage",
           "strength": 1
         },
@@ -63097,10 +63043,6 @@
       },
       "pairings": [
         {
-          "label": "add at the end of the cooking process.",
-          "strength": 1
-        },
-        {
           "label": "apricots",
           "strength": 1
         },
@@ -64271,12 +64213,7 @@
       "label": "Pickles",
       "aliases": [],
       "meta": {},
-      "pairings": [
-        {
-          "label": "bay scallop dish.",
-          "strength": 1
-        }
-      ],
+      "pairings": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -64679,14 +64616,6 @@
         {
           "text": "Pineapple benefits from a touch of vanilla.",
           "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
-        },
-        {
-          "text": "You have to be careful with pine nuts because they are so strong that they will dominate a dessert. If I use even a small amount in an apple dessert, it turns it into a pine nut dessert.",
-          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
-        },
-        {
-          "text": "Pine nuts are really fatty and luxurious, so I like to use salt with them for balance. Even in a pesto, you notice the flavor of pine nuts versus using walnuts or no nuts.",
-          "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
         }
       ],
       "tips": [],
@@ -64832,7 +64761,16 @@
           "modifier": "red, sweet"
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Pine nuts are really fatty and luxurious, so I like to use salt with them for balance. Even in a pesto, you notice the flavor of pine nuts versus using walnuts or no nuts.",
+          "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
+        },
+        {
+          "text": "You have to be careful with pine nuts because they are so strong that they will dominate a dessert. If I use even a small amount in an apple dessert, it turns it into a pine nut dessert.",
+          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [],
@@ -69382,10 +69320,6 @@
           "strength": 2
         },
         {
-          "label": "ligurian olive oil.",
-          "strength": 1
-        },
-        {
           "label": "bay leaf",
           "strength": 2
         },
@@ -73097,10 +73031,6 @@
           "modifier": "esp. grilled"
         },
         {
-          "label": "rosemary works with apples or pears.",
-          "strength": 2
-        },
-        {
           "label": "shellfish",
           "strength": 1
         },
@@ -75369,10 +75299,6 @@
         {
           "label": "water for blanching or for pasta",
           "strength": 1
-        },
-        {
-          "label": "we use kosher salt primarily for meats.",
-          "strength": 2
         }
       ],
       "quotes": [],
@@ -79552,10 +79478,6 @@
       "meta": {},
       "pairings": [
         {
-          "label": "of certain meats and seafoods.",
-          "strength": 1
-        },
-        {
           "label": "bacon",
           "strength": 1
         },
@@ -82922,10 +82844,6 @@
         "techniques": "raw, sauté"
       },
       "pairings": [
-        {
-          "label": "vinegar.",
-          "strength": 1
-        },
         {
           "label": "almonds",
           "strength": 2
@@ -86963,7 +86881,12 @@
           "strength": 1
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Tomatoes are as important to making Indian cuisine as they are to making Italian cuisine. In fact, making an Indian curry is a lot like making an Italian tomato sauce.",
+          "attribution": "MEERU DHALWALA, VIJ’S (VANCOUVER)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [],

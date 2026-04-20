@@ -427,6 +427,85 @@ def classify_line(line_spans):
     return None
 
 
+# ── Quote re-attribution ───────────────────────────────────────────────────────
+
+def fix_quote_attribution(ingredients):
+    """
+    Post-processing pass: move quotes that were incorrectly filed under the
+    preceding ingredient because they appeared before the ingredient header
+    in the PDF (the book places intro quotes at the top of each section,
+    before the bold all-caps header).
+
+    A quote is moved from ingredient A to ingredient B when ALL of:
+      1. The quote text starts with B's name (≥5 chars, case-insensitive).
+      2. A's name does not start with B's name (avoids "Fennel Pollen → Fennel",
+         "Rosemary → Rose", "Chardonnay Vinegar → Chard" false positives).
+      3. B is mentioned at least as often as A in the quote text (filters
+         comparison quotes like "Apples are more popular than pears…" under Pears).
+      4. The quote text is prose, not a pairing list (≤5 commas in first 120 chars).
+    """
+    # Build label→id lookup: full label + short form before dash/paren
+    # Minimum 4 chars to avoid matching tiny words like "a", "an", "of".
+    label_to_id = {}
+    for slug, ing in ingredients.items():
+        name = ing['label'].lower()
+        if len(name) >= 4:
+            label_to_id[name] = slug
+        short = re.split(r'[—(,]', ing['label'])[0].strip().lower()
+        if len(short) >= 4 and short not in label_to_id:
+            label_to_id[short] = slug
+
+    moved = 0
+    for ing_id in list(ingredients.keys()):
+        ing = ingredients[ing_id]
+        ing_name = ing['label'].lower()
+        quotes = ing.get('quotes', [])
+        to_move = []  # [(quote_index, target_id)]
+
+        for qi, q in enumerate(quotes):
+            text = q['text'].strip()
+            text_lower = text.lower()
+
+            # Rule 4: skip pairing lists (dense commas in the opening)
+            if text_lower[:120].count(',') > 5:
+                continue
+
+            for target_label, target_id in label_to_id.items():
+                if target_id == ing_id:
+                    continue
+                # Rule 2: skip if the target name is part of the current ingredient's
+                # name — catches "Fennel Pollen → Fennel", "Rosemary → Rose",
+                # and "Vinegar, Chardonnay → Chardonnay".
+                if target_label in ing_name:
+                    continue
+                # Rule 1: quote text must start with target ingredient's name,
+                # followed by a word boundary (space, comma, or end) so that
+                # "Chardonnay vinegar…" doesn't match the 5-char target "chard".
+                if not text_lower.startswith(target_label):
+                    continue
+                pos = len(target_label)
+                if pos < len(text_lower) and text_lower[pos].isalpha():
+                    continue
+                # Rule 3: target mentioned ≥ as often as current ingredient
+                current_short = re.split(r'[—(,]', ing['label'])[0].strip().lower()
+                target_count   = text_lower.count(target_label)
+                current_count  = text_lower.count(current_short)
+                if target_count < current_count:
+                    continue
+                to_move.append((qi, target_id, target_label))
+                break
+
+        # Remove in reverse order so indices stay valid
+        for qi, target_id, match in sorted(to_move, reverse=True):
+            q = quotes.pop(qi)
+            ingredients[target_id]['quotes'].append(q)
+            moved += 1
+            print(f"  Moved quote [{ing['label']}] → [{ingredients[target_id]['label']}]"
+                  f" (starts with '{match}')")
+
+    print(f"Re-attribution: {moved} quote(s) moved.")
+
+
 # ── Main parse ─────────────────────────────────────────────────────────────────
 
 def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
@@ -755,6 +834,17 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                     if not pairing_label:
                         continue
 
+                    # Guard: prose sentences end with a period; ingredient pairings never do.
+                    # Catches fragments like "heat diminishes the pungency of horseradish."
+                    # and "etc." list-endings that leaked out of note/quote detection.
+                    if pairing_label.rstrip().endswith('.'):
+                        continue
+
+                    # Guard: a line starting with a subject pronoun is a sentence fragment,
+                    # not an ingredient name (e.g. "i use garlic primarily in two ways").
+                    if re.match(r'^(i|we|you|he|she|they|it)\s', pairing_label, re.IGNORECASE):
+                        continue
+
                     # If this pairing has an unclosed paren buffer it.
                     if pairing_label.count('(') > pairing_label.count(')'):
                         pending_pairing = pairing_label
@@ -801,6 +891,9 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
             if target and target in ingredients:
                 if cuisine_slug not in ingredients[target]["cuisines"]:
                     ingredients[target]["cuisines"].append(cuisine_slug)
+
+    # ── Quote re-attribution pass ──────────────────────────────────────────────
+    fix_quote_attribution(ingredients)
 
     # ── Write output ───────────────────────────────────────────────────────────
     out_data = {

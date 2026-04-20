@@ -9,6 +9,9 @@ import './BoardView.css';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
+// Only compact, single-line meta shown in the board card; longer fields live on the full profile page
+const CARD_META_KEYS = new Set(['taste', 'weight', 'volume', 'season', 'function']);
+
 const STRENGTH_COLOR = {
   4: '#d4a840',
   3: '#d4a840',
@@ -149,7 +152,7 @@ function parseAffinityStr(str, labelSet, idSet) {
 function IngredientProfileCard({ lens }) {
   const ing = FLAVORS.ingredients[lens.id];
   if (!ing) return null;
-  const metaEntries = Object.entries(ing.meta ?? {}).filter(([, v]) => v);
+  const metaEntries = Object.entries(ing.meta ?? {}).filter(([k, v]) => v && CARD_META_KEYS.has(k));
   const hasBody = ing.tips.length > 0 || ing.quotes.length > 0;
 
   return (
