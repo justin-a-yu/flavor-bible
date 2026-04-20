@@ -25,7 +25,7 @@ export default function PrintExportButton() {
       }}
     >
       <span style={{ fontSize: '1rem' }}>⎙</span>
-      Print / Export
+      Print View
     </button>
   );
 }

@@ -276,17 +276,24 @@ export default function ExplorerPage() {
         </div>
       )}
 
-      {/* Hint bar — lens view only */}
-      {activeView === 'lens' && (
-        <div className="app-hint-bar" style={{
-          padding: '10px 24px', background: '#fff', borderTop: '1px solid #e8e0d0',
-          fontSize: '0.72rem', color: '#b0a488', letterSpacing: '0.08em',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0,
-        }}>
-          <span>Drag lenses together — shared flavors migrate to the overlap</span>
-          <span>Click bubble for notes · Double-click to open as lens · Scroll to resize · R to shuffle · Space+drag to pan · Space+scroll to zoom</span>
-        </div>
-      )}
+      {/* Hint bar */}
+      <div className="app-hint-bar" style={{
+        padding: '10px 24px', background: '#fff', borderTop: '1px solid #e8e0d0',
+        fontSize: '0.72rem', color: '#b0a488', letterSpacing: '0.08em',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0,
+      }}>
+        {activeView === 'lens' ? (
+          <>
+            <span>Drag lenses together — shared flavors migrate to the overlap</span>
+            <span>Click flavor bubble for info · Double-click to open as lens · Scroll to resize · R to shuffle · Space+drag to pan · Space+scroll to zoom</span>
+          </>
+        ) : (
+          <>
+            <span>Click ingredient for full profile</span>
+            <span>Click flavor chip for info · Click chip to add</span>
+          </>
+        )}
+      </div>
     </div>
   );
 }

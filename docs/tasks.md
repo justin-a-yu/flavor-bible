@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Phases 2 (data), 3, 4 & 5 complete. Phase 6 (polish) in progress — data quality audit complete (prose leakage, quote misattribution, meta fields all fixed).**
+> Status: **Phases 1–5 complete. Phase 6 (polish) in progress — data quality, print overhaul, avoid pairings, board UX all done.**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -18,23 +18,25 @@ Each ingredient entry in the JSON:
 {
   "id": "garlic",
   "label": "Garlic",
-  "meta": { "taste": "...", "weight": "...", "volume": "...", "season": "..." },
+  "meta": { "taste": "...", "weight": "...", "volume": "...", "season": "...", "techniques": "...", "botanical relatives": "...", "function": "..." },
   "pairings": [{ "id": "olive-oil", "label": "olive oil", "strength": 3, "modifier": "..." }],
-  "quotes": [{ "text": "...", "attribution": "Chef Name, Restaurant" }],
-  "tips": ["Add early in cooking."],
-  "notes": ["Long-form sidebar text (e.g. pasta pairing guide)"],
-  "dishes": [{ "text": "Dish Name", "attribution": "Chef, Restaurant" }],
+  "avoids":   [{ "id": "tarragon",  "label": "tarragon",  "modifier": "..." }],
+  "quotes":   [{ "text": "...", "attribution": "Chef Name, Restaurant" }],
+  "tips":     ["Add early in cooking."],
+  "notes":    ["Long-form sidebar text (e.g. pasta pairing guide)"],
+  "dishes":   [{ "text": "Dish Name", "attribution": "Chef, Restaurant" }],
   "affinities": ["garlic + lemon + olive oil"],
-  "cuisines": ["mediterranean", "afghan", "african-west"]
+  "cuisines":   ["mediterranean", "afghan", "african-west"]
 }
 ```
 - **Strength tiers**: 1=Recommended, 2=Highly Recommended, 3=Essential, 4=Holy Grail
+- **Avoids**: 21 ingredients have explicit "Avoid:" sections in the book; items have no strength tier
 - **Cuisines** are NOT stored as ingredient entries — they become filter tags on ingredients
 - **Affinities** are flavor combination groups within an entry (e.g. "allspice + garlic + pork")
 - **Quotes** and **tips** stored per ingredient, surfaced on demand in the UI
 - **Dishes** — chef dish examples from "Dishes" sidebars; 459 entries across 120 ingredients
 - **Notes** — long-form sidebar prose (e.g. pasta's "Pairing Pastas with Sauces" guide)
-- **Avoids** — NOT YET PARSED: ~20 ingredients have explicit "Avoid:" sections in the book; `avoids[]` field not yet in data model
+- **Meta extended fields**: `techniques` and `botanical relatives` rendered as chip rows; `function` shown inline
 
 ---
 
@@ -66,27 +68,19 @@ Each ingredient entry in the JSON:
 - [x] Fix quote detection — lower length guard 50→40 chars, add `benefit` stem to QUOTE_INDICATORS
 - [x] Validate completeness — 13 genuinely sparse empty-pairing entries remain (acceptable)
 - [x] **Pasta pairing deep audit** — recovered 46 lost pairings (40 → 86). Three root causes fixed:
-  - `looks_like_quote` false-positives on pairing-with-variants lines: `\bgo` matched `goat` in CHEESE modifier; `\bcur` matched `cured` in "cured meats". Fix: colon-label guards — `^[A-Z][A-Z ]+:\s*\S` (caps) and `^[^:(]{2,40}:\s*[a-z]` (any case) short-circuit before QUOTE_INDICATORS runs.
-  - Note section exiting too early on sentence-fragment lines: `has some character.` (18 chars, no verb, no _cont_word) slipped out of the note buffer, leaving subsequent bullets to open a prose_buffer that swallowed `pepper` through `zucchini`. Fix: added `ends_with_period` guard — ingredient pairings never end with `.`.
-  - Multi-line pairing continuation: lines ending with a bare trailing comma (e.g. `CHEESE: ..., mozzarella,`) weren't buffered because `rstrip(",;")` ran first. Fix: check `clean` (pre-strip) for trailing comma → set `pending_pairing`; added empty-base-label guard after `split_modifier` for overflow lines starting with `(esp. ...`.
+  - `looks_like_quote` false-positives on pairing-with-variants lines: `\bgo` matched `goat` in CHEESE modifier; `\bcur` matched `cured` in "cured meats". Fix: colon-label guards.
+  - Note section exiting too early on sentence-fragment lines. Fix: `ends_with_period` guard.
+  - Multi-line pairing continuation: lines ending with a bare trailing comma weren't buffered. Fix: check `clean` for trailing comma → set `pending_pairing`.
   - Global result: 0 empty pairing labels across all 502 ingredients.
+- [x] **19 prose-leakage pairings fixed** — two guards at pairing insertion point:
+  1. Period guard: `if pairing_label.rstrip().endswith('.'): continue`
+  2. Pronoun guard: `if re.match(r'^(i|we|you|he|she|they|it)\s', pairing_label): continue`
+- [x] **Quote re-attribution** — `fix_quote_attribution()` post-processing pass; 10 quotes moved to correct ingredients (Chervil→Chestnuts, Dill→Duck, Fennel→Escarole, Herbes De Provence→Hazelnuts ×2, Hyssop→Tomatoes, Lemon Thyme→Lemon Verbena, Mushrooms→Caraway Seeds, Olive Oil→Olives, Pineapples→Pine Nuts).
+- [x] **AVOID pairings parsed** — 21 ingredients have `avoids[]` entries. Standalone bold-caps `AVOID` line detected as section header; items routed to `avoids[]` (no strength tier). `"avoid"` removed from META_KEYS. `build_data_js.py` resolves avoid IDs same as pairings.
 
 ### Known parser issues (deferred)
-- [x] **Quote misattribution fixed:** `fix_quote_attribution()` post-processing pass in `parse_full.py`.
-  Runs after cuisine tagging; moves quotes whose text starts with a different ingredient's name (≥4 chars,
-  word boundary, target not substring of current name, target mentioned ≥ as often as current ingredient,
-  prose not pairing list). 10 quotes correctly reassigned: Chervil→Chestnuts, Dill→Duck,
-  Fennel→Escarole, Herbes De Provence→Hazelnuts (×2), Hyssop→Tomatoes, Lemon Thyme→Lemon Verbena,
-  Mushrooms→Caraway Seeds, Olive Oil→Olives, Pineapples→Pine Nuts.
-- [x] **19 prose-leakage pairings fixed** — two guards added at pairing insertion point:
-  1. Period guard: `if pairing_label.rstrip().endswith('.'): continue` — ingredient pairings never end with `.`
-  2. Pronoun guard: `if re.match(r'^(i|we|you|he|she|they|it)\s', pairing_label): continue` — no pairing starts with a subject pronoun
-  Caught all 19 cases (garlic, horseradish, lavender, rosemary, mushrooms, anise, etc.). Full re-parse run; 19,028 total pairings remain.
 - [ ] **QUOTE_INDICATORS coverage:** Spot-check pairings for prose leakage after each parse run;
   expand verb stems as new edge cases are found. (See project_quote_indicators.md in memory)
-- [ ] **AVOID pairings not parsed:** ~20 ingredients in the book have explicit "Avoid:" sections
-  (e.g. "Avoid: cilantro"). Currently 0 entries in any ingredient. Requires new `avoids[]` field
-  in data model, parser addition, and UI treatment on profile page and board view.
 
 ---
 
@@ -96,16 +90,22 @@ Each ingredient entry in the JSON:
 - [x] `flavors_data.js` data layer (static JSON, FLAVORS.index + FLAVORS.ingredients)
 - [x] `SearchBar` with autocomplete dropdown
 - [x] `LensPills` — removable active-ingredient chips in header
-- [x] `ViewToggle` — Lens / Board segmented control
+- [x] `ViewToggle` — Lens / Board segmented control (black fill when active)
 - [x] `LensCanvas` — canvas physics simulation with orbit rings, shared bubble migration
 - [x] `DetailCard` — floating pairing detail card in lens view
 - [x] `BoardView` — structured document view: ingredient profiles, shared pairings, affinities, remaining flavors
 - [x] `IngredientProfileSection` — per-lens profile cards (meta in header, tips → quotes)
-- [x] `SharedBySection` — intersection groups (all-N, then strict pairs); chips grouped by strength tier; all-caps raw labels
+- [x] `SharedBySection` — intersection groups (all-N, then strict pairs); chips grouped by strength tier
 - [x] `AffinitiesSection` — flavor affinity strings with tappable non-active chips
 - [x] `IngredientCard` — per-lens remaining flavors as strength-tiered chips
 - [x] `PairingDetailDrawer` — slide-in drawer on pairing click; "Add as ingredient" / "Open full profile"
-- [x] `PrintExportButton` — triggers `window.print()` with print stylesheet
+- [x] `PrintExportButton` → renamed **"Print View"** — opens `/print` route in new tab with URL-serialized state
+- [x] `boardUtils.js` — shared pure functions (STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LABEL_TO_ID, buildPairingMap, buildSharedGroups, buildAffinities, buildLensColumns, parseAffinityStr)
+- [x] `/print` route — `PrintPage.jsx` standalone print document; user opens browser print dialog themselves
+- [x] Ingredient names in board cards are clickable links to `/ingredient/:id`
+- [x] Board avoid section — compact "Avoid:" row in profile card headers
+- [x] Board cross-lens conflict warning — ⚠ banner when lens A avoids lens B
+- [x] Board hint bar — bottom bar: "Click ingredient for full profile" (left) / "Click flavor chip for info" (right)
 - [x] URL hash persistence (camera + lens positions + seeds)
 - [x] Pan (Space + drag), Zoom (Space + scroll, cursor-centered), R to reshuffle
 - [x] Trackpad click fix — 4px drag threshold prevents micro-movement swallowing clicks
@@ -117,51 +117,26 @@ Each ingredient entry in the JSON:
 
 ## Phase 4 — Filters & Search ✅
 Scope: filter state in Zustand + filtering logic wired into LensCanvas and BoardView.
-FilterPanel UI shell deferred to polish phase.
 
 ### Filter types
 | Filter | Data source | UI control |
 |--------|-------------|------------|
-| Cuisine | `ingredient.cuisines[]` (101 available) | Multi-select checklist |
+| Cuisine | `ingredient.cuisines[]` (101 available) | Multi-select checklist (deferred) |
 | Season | `ingredient.meta.season` (spring/summer/autumn/winter) | 4 toggles |
 | Taste | `ingredient.meta.taste` (sweet/sour/bitter/salty/umami/spicy) | 6 toggles |
-| Visibility | n/a — controls which bubbles render | All / Shared / Individual radio |
-
-### Implementation plan
-1. **Zustand filter slice** — add to `useExplorerStore`:
-   ```js
-   filters: {
-     cuisines: [],        // [] = no filter (show all)
-     seasons: [],         // [] = no filter
-     tastes: [],          // [] = no filter
-     visibility: 'all',   // 'all' | 'shared' | 'individual'
-   },
-   setFilter(key, value) — replaces filter value
-   toggleFilter(key, item) — adds/removes from array filters
-   clearFilters() — resets all
-   ```
-2. **Filter predicate** — `matchesFilters(ingredient, filters)` pure function
-   - cuisine: ingredient.cuisines intersects filters.cuisines (OR logic — any match passes)
-   - season: meta.season string contains any of filters.seasons
-   - taste: meta.taste string contains any of filters.tastes
-   - Returns boolean
-3. **LensCanvas** — pass filtered pairing set to physics sim; grey-out or hide filtered-out bubbles
-4. **BoardView** — apply same predicate to SharedBySection and IngredientCard chip lists
-5. **FilterPanel UI** — collapsible panel with checkboxes/toggles (deferred to Phase 6 polish)
-6. **Active filter indicator** — show badge/count on filter button when filters are active
+| Region | `REGIONS` map → cuisine slug arrays | RegionMap SVG (7 regions) |
+| Visibility | n/a — controls which sections render | All / Shared / Individual radio |
 
 ### Progress
-- [x] Zustand filter slice (`filters`, `setFilter`, `toggleFilter`, `clearFilters` in `useExplorerStore`)
-- [x] `matchesFilters` predicate — `app/src/utils/filterUtils.js` (cuisine OR, season OR, taste OR); also `hasActiveFilters` / `activeFilterCount`
-- [x] LensCanvas filtering — cuisine + season + taste via `matchesFilters`; visibility unchanged
-- [x] BoardView filtering — `buildPairingMap` accepts `filterFn`; `lensColumns` also filtered; both use same predicate
-- [x] FilterPanel UI shell — season toggles, taste toggles, visibility radio, clear-all button; dropdown attached to header
-- [x] Active filter badge — gold badge on Filter button showing count of active dimensions
-- [x] Region filter — geographic dimension added to filter state; `REGIONS` map (6 labels → cuisine slug arrays); `regionsToCuisineSlugs()` for O(1) lookup; `matchesFilters` updated to include region check; LensCanvas + BoardView both use updated predicate
-- [x] `RegionMap.jsx` v1 — custom inline SVG world map (6 hand-crafted bezier-curve blobs, no dependencies); hover/selected states; click toggles region; integrated into FilterPanel replacing region toggle buttons; panel widened to 360px
-- [x] `RegionMap.jsx` v2 — **full rebuild**: fetches `world.svg` (real country shapes, ~458KB); 214 ISO country codes embedded as region→code mapping; imperative `.sm_state_XX` class targeting for per-country fills; 7 regions (split South & SE Asia into South Asia + Southeast Asia); overlay SVG with 7 hit zones + labels in `0 0 701 300` viewBox; same two-layer architecture (fill div + React overlay)
-- [x] `filterUtils.js` — REGIONS map updated from 6 → 7 entries; `South & SE Asia` split into `South Asia` (indian, pakistani, sri-lankan, afghan) and `Southeast Asia` (southeast-asian-*, indonesian, malaysian, thai, vietnamese, cambodian, burmese, australian); `afghan-cuisine` moved from East Asia → South Asia
-- [x] `app/public/` — user-supplied SVGs: `world.svg` (base map, all countries `#c2beb5`) + 7 region SVGs (`americas.svg`, `europe.svg`, `me-nafrica.svg`, `africa.svg`, `south-asia.svg`, `southeast-asia.svg`, `east-asia.svg`); region SVGs are reference only and not loaded at runtime
+- [x] Zustand filter slice (`filters`, `setFilter`, `toggleFilter`, `clearFilters`)
+- [x] `matchesFilters` / `hasActiveFilters` / `activeFilterCount` in `filterUtils.js`
+- [x] LensCanvas filtering — cuisine + season + taste + region via `matchesFilters`
+- [x] BoardView filtering — `buildPairingMap` accepts `filterFn`; `buildLensColumns` also filtered
+- [x] FilterPanel UI — season toggles, taste toggles, visibility radio, region map, clear-all button
+- [x] Filter button — black fill when open (matches Lens/Board toggle); gold highlight when filters active but closed
+- [x] `RegionMap.jsx` v2 — full rebuild with real country shapes (~458KB world.svg); 214 ISO country codes; 7 culinary regions; overlay SVG hit zones + labels
+- [x] 7-Region breakdown (Americas, Europe, Middle East & N. Africa, Africa, South Asia, Southeast Asia, East Asia)
+- [x] FilterPanel close-on-outside-click
 
 ### 7-Region breakdown (culinary, not political)
 | Region | Countries (ISO) | Count |
@@ -169,14 +144,13 @@ FilterPanel UI shell deferred to polish phase.
 | Americas | US CA MX GL + Caribbean + S. America | 52 |
 | Europe | EU countries + RU AM AZ GE + Balkans | 47 |
 | Middle East & N. Africa | Arab world + IR TR + Central Asia + CY DJ ER SD | 31 |
-| Africa | Sub-Saharan Africa (SO → Africa, not MENA) | 47 |
+| Africa | Sub-Saharan Africa | 47 |
 | South Asia | AF BD BT IN MV NP PK LK | 8 |
 | Southeast Asia | SE Asian nations + AU NZ + Pacific islands | 22 |
 | East Asia | CN HK JP KP KR MN TW | 7 |
 
 ### Deferred
-- [ ] Cuisine filter UI (101 options — needs search/scrollable checklist, deferred to Phase 6 polish)
-- [x] FilterPanel close-on-outside-click
+- [ ] Cuisine filter UI (101 options — needs search/scrollable checklist)
 - [ ] Tune RegionMap hit zone coordinates after live visual review
 
 ---
@@ -187,30 +161,32 @@ FilterPanel UI shell deferred to polish phase.
 - [x] Pairing chips link to `/ingredient/:id` for further exploration
 - [x] Clean printable layout
 - [x] Graceful not-found state
-
-### Profile page enhancements
 - [x] Show dishes[] section — list with chef/restaurant attribution, subtle dividers
-- [x] Show notes[] section — long-form prose; PDF line-wraps re-joined into semantic paragraphs by "Word(s): " header detection
-- [x] Show meta fields fully — `techniques` and `botanical relatives` now rendered as chip rows in hero (with links for botanical relatives); `function` stays inline with taste/weight/volume/season; BoardView cards show only compact fields
+- [x] Show notes[] section — long-form prose; PDF line-wraps re-joined into semantic paragraphs
+- [x] Show meta fields fully — `techniques` and `botanical relatives` as chip rows (botanical relatives link to ingredient profiles); `function` stays inline with taste/weight/volume/season; BoardView cards show only compact fields
+- [x] **Avoids section** — red-toned chip row labeled "Avoid" between Pairings and Affinities; chips link to avoided ingredient's profile when resolvable
 
 ---
 
 ## Phase 6 — Polish & Launch
-- [x] RegionMap rebuild — real country shapes, 7 culinary regions, per-country fill targeting (see Phase 4 details)
-- [x] FilterPanel close-on-outside-click — `mousedown` listener on panel wrapper ref
+- [x] RegionMap rebuild — real country shapes, 7 culinary regions, per-country fill targeting
+- [x] FilterPanel close-on-outside-click
+- [x] Filter button state — black when open; gold when filters active + closed; plain otherwise
 - [x] BoardView visibility filter — shared/individual correctly hide/show respective sections
-- [x] Filter button badge — removed count number; button highlights gold when any filter is active
-- [x] Region chips — labels moved below map as always-visible chips (stable panel height)
+- [x] Region chips — labels below map as always-visible chips (stable panel height)
 - [x] Add dishes + notes to IngredientProfilePage
 - [x] Meta fields on profile page — techniques (chips), botanical relatives (linked chips), function inline
-- [x] Prose leakage fix — 19 sentence fragments removed from pairings data via parser guards
-- [ ] Tune RegionMap hit zone coordinates after live visual review
-- [ ] AVOID pairings — parse ~20 `avoids[]` entries from book; add to data model and UI
+- [x] Prose leakage fix — 19 sentence fragments removed from pairings data
+- [x] Quote re-attribution — 10 quotes correctly moved to their intended ingredients
+- [x] AVOID pairings — 21 ingredients parsed; shown on profile page, board cards, and cross-lens conflict warning
+- [x] Print overhaul — dedicated `/print` route (new tab); "Print View" button; active filters shown at bottom of print document; user opens browser print dialog themselves
+- [x] Board ingredient links — ingredient names on board cards link to full profile page
+- [x] Board hint bar — "Click ingredient for full profile" / "Click flavor chip for info"
+- [x] Lens hint bar — updated to "Click flavor bubble for info"
 - [ ] Cuisine filter UI (101 options — needs search/scrollable checklist)
-- [ ] FilterPanel close-on-outside-click (minor UX polish — already done above, verify)
+- [ ] Tune RegionMap hit zone coordinates after live visual review
 - [ ] Responsive / mobile considerations
 - [ ] Performance optimization for large graph
-- [x] Quote re-attribution post-processing script — 10 quotes moved to correct ingredients
 - [ ] Testing and QA
 - [ ] Deployment (Vercel/Netlify)
 - [ ] User feedback loop

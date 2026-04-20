@@ -226,6 +226,21 @@ function RemainingSection({ lensColumns, isSolo }) {
   );
 }
 
+function FiltersFooter({ filters }) {
+  const parts = [];
+  if (filters.seasons.length)    parts.push(`Season: ${filters.seasons.join(', ')}`);
+  if (filters.tastes.length)     parts.push(`Taste: ${filters.tastes.join(', ')}`);
+  if (filters.regions.length)    parts.push(`Region: ${filters.regions.join(', ')}`);
+  if (filters.visibility !== 'all') parts.push(`Show: ${filters.visibility}`);
+  if (!parts.length) return null;
+  return (
+    <div className="pp-filters-footer">
+      <span className="pp-filters-footer-label">Filters applied:</span>
+      {parts.map((p, i) => <span key={i} className="pp-filters-footer-chip">{p}</span>)}
+    </div>
+  );
+}
+
 // ─── PrintPage ────────────────────────────────────────────────────────────────
 
 export default function PrintPage() {
@@ -297,6 +312,8 @@ export default function PrintPage() {
         {filters.visibility !== 'shared' && (
           <RemainingSection lensColumns={lensColumns} isSolo={isSolo} />
         )}
+
+        <FiltersFooter filters={filters} />
       </main>
 
     </div>

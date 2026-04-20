@@ -316,6 +316,36 @@
 .pp-affinity-other  { color: #8a7450; }
 .pp-plus            { color: #c8b89a; margin: 0 2px; }
 
+/* ─── Filters footer ──────────────────────────────────────────────────────── */
+
+.pp-filters-footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ede4d4;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+}
+
+.pp-filters-footer-label {
+  color: #b0a488;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.64rem;
+  flex-shrink: 0;
+}
+
+.pp-filters-footer-chip {
+  padding: 2px 10px;
+  background: #f5f0e8;
+  border: 1px solid #e0d6c4;
+  border-radius: 10px;
+  color: #6a5a3a;
+  white-space: nowrap;
+}
+
 /* ─── Empty state ─────────────────────────────────────────────────────────── */
 
 .pp-empty {

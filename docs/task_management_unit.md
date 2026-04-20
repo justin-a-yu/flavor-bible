@@ -137,10 +137,12 @@ As Alex, I want to see my selected ingredients displayed as cards with their pai
 As Alex, I want to print or export the board view as a clean document, so that I can share my flavor exploration with friends or keep a physical reference for future cooking.
 
 *Acceptance criteria:*
-- Alex can trigger a print or export action from the board view
-- The output is clean and legible — no UI chrome, buttons, or navigation visible
-- Ingredient cards, pairing lists, and strength indicators are preserved in the output
-- The exported format is either print-ready (browser print dialog) or a downloadable PDF
+- Alex can click "Print View" in the board toolbar to open a clean standalone print document in a new tab
+- The print page preserves the current ingredient selection and active filters (serialized into URL params — shareable)
+- The output is clean and legible — no UI chrome, navigation, or interactive buttons visible
+- Ingredient profiles (meta, techniques, botanicals, avoids, tips, quotes), shared pairings, affinities, and remaining flavor cards are all present
+- Active filters are summarized at the bottom of the document
+- Alex opens the browser print dialog themselves (Cmd+P / Ctrl+P) to print or save as PDF
 
 ---
 
@@ -242,6 +244,19 @@ As Alex, I want to click an ingredient in either the lens or board view to open 
 
 ---
 
+**Story 4.4 — See what an ingredient explicitly avoids**
+`Priority: Should Have`
+
+As Alex, I want to know when the book explicitly recommends avoiding a pairing, so that I can steer clear of combinations that don't work.
+
+*Acceptance criteria:*
+- On the full ingredient profile page, a clearly marked "Avoid" section shows ingredients or categories to avoid, in a distinct red-toned style
+- In the board view, each ingredient's profile card shows a compact "Avoid:" line in its header when avoids exist
+- When two active ingredients in the board view explicitly avoid each other, a ⚠ warning banner appears between the profile and pairings sections
+- Avoid items that resolve to known ingredients link to their profile page
+
+---
+
 ### Epic 5: Search
 
 > As Alex, I want to find specific ingredients quickly, so that I can start or extend my exploration without browsing through a long list.
@@ -301,5 +316,6 @@ As Alex, I want the URL to reflect my current exploration state, so that I can b
 | 4.2 | Top pairings in detail panel | Could Have |
 | 4.3 | Full ingredient profile page | Must Have |
 | 4.3a | Ingredient photo on profile page | Could Have |
+| 4.4 | Avoid pairings | Should Have |
 | 5.1 | Search by name | Must Have |
 | 6.1 | Restore from URL | Should Have |
