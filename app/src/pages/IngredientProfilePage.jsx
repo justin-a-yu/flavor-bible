@@ -118,6 +118,33 @@ export default function IngredientProfilePage() {
           </section>
         )}
 
+        {/* ── Notes ── */}
+        {ing.notes?.length > 0 && (
+          <section className="profile-section">
+            <div className="profile-section-label">Notes</div>
+            <div className="profile-notes">
+              {ing.notes.map((note, i) => {
+                // Re-join PDF line-wraps into semantic paragraphs.
+                // A new paragraph starts when a line begins with "Word(s): " pattern.
+                const paras = [];
+                let cur = '';
+                for (const line of note.split('\n')) {
+                  if (cur && /^[A-Z][A-Za-z ,[\]]+:\s/.test(line)) {
+                    paras.push(cur.trim());
+                    cur = line;
+                  } else {
+                    cur = cur ? cur + ' ' + line : line;
+                  }
+                }
+                if (cur) paras.push(cur.trim());
+                return paras.map((para, j) => (
+                  <p key={`${i}-${j}`} className="profile-note-para">{para}</p>
+                ));
+              })}
+            </div>
+          </section>
+        )}
+
         {/* ── From the book ── */}
         {ing.quotes.length > 0 && (
           <section className="profile-section">
@@ -142,6 +169,23 @@ export default function IngredientProfilePage() {
             <div className="profile-tips">
               {ing.tips.map((tip, i) => (
                 <div key={i} className="profile-tip">{tip}</div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ── Dishes ── */}
+        {ing.dishes?.length > 0 && (
+          <section className="profile-section">
+            <div className="profile-section-label">Dishes</div>
+            <div className="profile-dishes">
+              {ing.dishes.map((d, i) => (
+                <div key={i} className="profile-dish">
+                  <div className="profile-dish-text">{d.text}</div>
+                  {d.attribution && (
+                    <div className="profile-dish-attr">— {d.attribution}</div>
+                  )}
+                </div>
               ))}
             </div>
           </section>

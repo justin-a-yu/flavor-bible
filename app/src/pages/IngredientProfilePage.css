@@ -214,6 +214,60 @@
   line-height: 1.65;
 }
 
+/* ─── Notes ──────────────────────────────────────────────────────────────── */
+
+.profile-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.profile-note-para {
+  font-size: 0.86rem;
+  color: #6a5a3a;
+  line-height: 1.75;
+  margin: 0 0 10px;
+}
+
+.profile-note-para:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Dishes ──────────────────────────────────────────────────────────────── */
+
+.profile-dishes {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dish {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0ebe0;
+}
+
+.profile-dish:first-child {
+  padding-top: 0;
+}
+
+.profile-dish:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.profile-dish-text {
+  font-size: 0.86rem;
+  color: #2c2416;
+  line-height: 1.5;
+  margin-bottom: 3px;
+}
+
+.profile-dish-attr {
+  font-size: 0.72rem;
+  color: #b0a488;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
 /* ─── Not found ───────────────────────────────────────────────────────────── */
 
 .profile-notfound {
