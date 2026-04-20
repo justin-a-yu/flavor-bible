@@ -183,9 +183,9 @@ FilterPanel UI shell deferred to polish phase.
 - [x] Clean printable layout
 - [x] Graceful not-found state
 
-### Deferred profile page enhancements
-- [ ] Show dishes[] section (data ready, UI not wired)
-- [ ] Show notes[] section (data ready, UI not wired)
+### Profile page enhancements
+- [x] Show dishes[] section — list with chef/restaurant attribution, subtle dividers
+- [x] Show notes[] section — long-form prose; PDF line-wraps re-joined into semantic paragraphs by "Word(s): " header detection
 
 ---
 
@@ -196,7 +196,7 @@ FilterPanel UI shell deferred to polish phase.
 - [ ] Responsive / mobile considerations
 - [ ] Performance optimization for large graph
 - [ ] Option A — quote re-attribution post-processing script
-- [ ] Add dishes + notes to IngredientProfilePage
+- [x] Add dishes + notes to IngredientProfilePage
 - [ ] Testing and QA
 - [ ] Deployment (Vercel/Netlify)
 - [ ] User feedback loop
