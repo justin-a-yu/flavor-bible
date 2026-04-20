@@ -2,6 +2,10 @@ import { useState } from 'react';
 import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
+import {
+  STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LABEL_TO_ID,
+  buildPairingMap, buildSharedGroups, buildAffinities, buildLensColumns, parseAffinityStr,
+} from '../utils/boardUtils';
 import IngredientCard from './IngredientCard';
 import PairingDetailDrawer from './PairingDetailDrawer';
 import PrintExportButton from './PrintExportButton';
@@ -11,141 +15,6 @@ import './BoardView.css';
 
 // Only compact, single-line meta shown in the board card; longer fields live on the full profile page
 const CARD_META_KEYS = new Set(['taste', 'weight', 'volume', 'season', 'function']);
-
-const STRENGTH_COLOR = {
-  4: '#d4a840',
-  3: '#d4a840',
-  2: '#e07840',
-  1: '#5a9e6a',
-};
-
-const STRENGTH_LABEL = { 4: 'Holy Grail', 3: 'Essential', 2: 'Highly Recommended', 1: 'Recommended' };
-const TIER_ORDER     = [4, 3, 2, 1];
-
-// Label → ingredient id lookup. Indexes both the full label and the short name
-// before any "(see also…)" parenthetical so affinity strings like "basil" match
-// "BASIL (See also Basil, Thai, and Lemon Basil)".
-const LABEL_TO_ID = Object.fromEntries(
-  FLAVORS.index.flatMap(item => {
-    const full = item.label.toLowerCase();
-    const entries = [[full, item.id]];
-    const paren = full.indexOf(' (');
-    if (paren > 0) entries.push([full.slice(0, paren).trim(), item.id]);
-    return entries;
-  })
-);
-
-// ─── Pure helpers ─────────────────────────────────────────────────────────────
-
-/** All k-element ordered subsets of arr (preserving original order). */
-function combos(arr, k) {
-  if (k === arr.length) return [[...arr]];
-  if (k === 1) return arr.map(x => [x]);
-  const out = [];
-  for (let i = 0; i <= arr.length - k; i++) {
-    combos(arr.slice(i + 1), k - 1).forEach(rest => out.push([arr[i], ...rest]));
-  }
-  return out;
-}
-
-/**
- * Single scan over all lenses. Returns a map:
- *   { [lowerCaseLabel]: { label, id, modifier, perLens: { lensId: strength } } }
- * @param {function|null} filterFn  Optional predicate applied to each pairing entry.
- */
-function buildPairingMap(lenses, filterFn = null) {
-  const map = {};
-  lenses.forEach(lens => {
-    const ing = FLAVORS.ingredients[lens.id];
-    if (!ing) return;
-    const pairings = filterFn ? ing.pairings.filter(filterFn) : ing.pairings;
-    pairings.forEach(p => {
-      const key = p.label.toLowerCase();
-      if (!map[key]) map[key] = { label: p.label, id: p.id, modifier: p.modifier, perLens: {} };
-      map[key].perLens[lens.id] = p.strength;
-    });
-  });
-  return map;
-}
-
-/**
- * Generate "Shared by" groups for every combination of 2+ lenses,
- * descending from all lenses down to pairs.
- *
- * The top group (all lenses) is always included even when empty.
- * Smaller groups use strict intersection: a pairing appears in exactly
- * those combo lenses, no others.
- *
- * Each group: { label, lenses: combo, pairings (sorted strength desc → alpha) }
- */
-function buildSharedGroups(lenses, pairingMap) {
-  const all = Object.values(pairingMap);
-  const groups = [];
-
-  for (let size = lenses.length; size >= 2; size--) {
-    combos(lenses, size).forEach(combo => {
-      const isTop = size === lenses.length;
-      const matched = all
-        .filter(p =>
-          combo.every(l => p.perLens[l.id] !== undefined) &&
-          (isTop || Object.keys(p.perLens).length === size)
-        )
-        .sort((a, b) => {
-          const aMax = Math.max(...combo.map(l => a.perLens[l.id] ?? 0));
-          const bMax = Math.max(...combo.map(l => b.perLens[l.id] ?? 0));
-          return bMax - aMax || a.label.localeCompare(b.label);
-        });
-
-      groups.push({
-        label: combo.map(l => l.label).join(' & '),
-        lenses: combo,
-        pairings: matched,
-        isTop,
-      });
-    });
-  }
-  return groups;
-}
-
-/**
- * Find affinities that span 2+ active lenses. Returns them sorted by
- * how many active lenses they mention, descending.
- */
-function buildAffinities(lenses) {
-  if (lenses.length < 2) return [];
-  const labelSet = new Set(lenses.map(l => l.label.toLowerCase()));
-  const idSet    = new Set(lenses.map(l => l.id));
-  const seen = new Set();
-  const out  = [];
-
-  lenses.forEach(lens => {
-    const ing = FLAVORS.ingredients[lens.id];
-    if (!ing) return;
-    (ing.affinities || []).forEach(str => {
-      if (seen.has(str)) return;
-      seen.add(str);
-      const parts = str.split(' + ').map(p => p.trim().toLowerCase());
-      const hits = parts.filter(p => {
-        const pid = LABEL_TO_ID[p] ?? null;
-        return labelSet.has(p) || (pid && idSet.has(pid));
-      }).length;
-      if (hits >= 2) out.push({ str, hits });
-    });
-  });
-
-  return out.sort((a, b) => b.hits - a.hits);
-}
-
-/** Parse an affinity string into parts with isActive / isTappable flags. */
-function parseAffinityStr(str, labelSet, idSet) {
-  return str.split(' + ').map(raw => {
-    const trimmed = raw.trim();
-    const lower   = trimmed.toLowerCase();
-    const id      = LABEL_TO_ID[lower] ?? null;
-    const isActive = (id && idSet.has(id)) || labelSet.has(lower);
-    return { label: trimmed, id, isActive, isTappable: !!id && !isActive };
-  });
-}
 
 // ─── Section components ───────────────────────────────────────────────────────
 
@@ -341,33 +210,20 @@ export default function BoardView() {
     : null;
 
   // Single scan — used for both shared groups and individual column filtering
-  const pairingMap = buildPairingMap(lenses, pairingFilterFn);
-
-  // Keys of any pairing appearing in 2+ lenses — excluded from individual columns
-  const sharedKeys = new Set(
-    Object.entries(pairingMap)
-      .filter(([, p]) => Object.keys(p.perLens).length >= 2)
-      .map(([key]) => key)
-  );
-
+  const pairingMap  = buildPairingMap(lenses, pairingFilterFn);
   const sharedGroups = isSolo ? [] : buildSharedGroups(lenses, pairingMap);
   const affinities   = buildAffinities(lenses);
-
-  // Per-lens individual pairings: everything NOT in any intersection, sorted by strength
-  const lensColumns = lenses.map(lens => {
-    const ing = FLAVORS.ingredients[lens.id];
-    if (!ing) return { lens, pairings: [] };
-    let pairings = isSolo ? ing.pairings : ing.pairings.filter(p => !sharedKeys.has(p.label.toLowerCase()));
-    if (pairingFilterFn) pairings = pairings.filter(pairingFilterFn);
-    pairings = pairings.slice().sort((a, b) => b.strength - a.strength || a.label.localeCompare(b.label));
-    return { lens, pairings };
-  });
+  const lensColumns  = buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn);
 
   return (
     <div className="board-view">
 
       <div className="board-toolbar">
         <PrintExportButton />
+      </div>
+
+      <div className="board-print-title">
+        {lenses.map(l => l.label).join(' · ')}
       </div>
 
       <div className="board-doc">

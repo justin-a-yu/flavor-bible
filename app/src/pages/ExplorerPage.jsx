@@ -228,7 +228,7 @@ export default function ExplorerPage() {
     <div style={{ display: 'flex', flexDirection: 'column', width: '100vw', height: '100vh', background: '#faf7f2', overflow: 'hidden' }}>
 
       {/* Header */}
-      <header style={{
+      <header className="app-header" style={{
         display: 'flex', alignItems: 'center', gap: 20,
         padding: '14px 28px', background: '#fff', borderBottom: '1px solid #e8e0d0',
         flexShrink: 0, zIndex: 20, flexWrap: 'wrap',
@@ -278,7 +278,7 @@ export default function ExplorerPage() {
 
       {/* Hint bar — lens view only */}
       {activeView === 'lens' && (
-        <div className="hint-bar" style={{
+        <div className="app-hint-bar" style={{
           padding: '10px 24px', background: '#fff', borderTop: '1px solid #e8e0d0',
           fontSize: '0.72rem', color: '#b0a488', letterSpacing: '0.08em',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0,

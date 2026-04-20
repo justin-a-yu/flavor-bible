@@ -25,6 +25,12 @@
   gap: 0;
 }
 
+/* ─── Print title (screen: hidden; print: shown) ────────────────────────── */
+
+.board-print-title {
+  display: none;
+}
+
 /* ─── Empty state ─────────────────────────────────────────────────────────── */
 
 .board-empty {
@@ -381,8 +387,55 @@
 }
 
 @media print {
-  .board-toolbar { display: none; }
-  .board-doc { overflow: visible; }
-  .ingredient-card { max-height: none; overflow: visible; page-break-inside: avoid; }
-  .board-view { overflow: visible; }
+  /* ── Print title ── */
+  .board-print-title {
+    display: block !important;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b8863a;
+    padding: 20px 32px 0;
+    font-family: Georgia, serif;
+  }
+
+  /* ── Hide all app chrome ── */
+  .app-header,
+  .app-hint-bar,
+  .board-toolbar,
+  .pairing-drawer-overlay { display: none !important; }
+
+  /* ── Board layout: fill page, no scroll clipping ── */
+  .board-view {
+    overflow: visible !important;
+    height: auto !important;
+    display: block !important;
+  }
+  .board-doc {
+    overflow: visible !important;
+    height: auto !important;
+    padding: 24px 32px 40px !important;
+  }
+
+  /* ── Sections: avoid splitting mid-section where possible ── */
+  .board-section { break-inside: avoid; margin-bottom: 16px; }
+  .ingredient-columns { break-inside: auto; }
+
+  /* ── Ingredient cards: show all content, no scroll clipping ── */
+  .ingredient-card,
+  .ingredient-card--profile {
+    max-height: none !important;
+    overflow: visible !important;
+    break-inside: avoid;
+  }
+  .ingredient-card-pairings {
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+
+  /* ── Shared pairings chips: let them wrap freely ── */
+  .shared-pairing-chips { flex-wrap: wrap !important; }
+
+  /* ── Hide interactive UI that's meaningless on paper ── */
+  .shared-pairing-chip { cursor: default; }
+  .affinity-chip { cursor: default; }
 }

@@ -22,3 +22,12 @@ html, body, #root {
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
 }
+
+/* ── Print: break free from fixed viewport height ── */
+@media print {
+  html, body, #root {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+}
