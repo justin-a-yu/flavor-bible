@@ -58,10 +58,20 @@ def build():
                 "modifier": p.get("modifier", ""),
             })
 
+        avoids = []
+        for a in entry.get("avoids", []):
+            aid = resolve_id(a["label"])
+            avoids.append({
+                "id":       aid,
+                "label":    a["label"],
+                "modifier": a.get("modifier", ""),
+            })
+
         out_ings[entry["id"]] = {
             "id":         entry["id"],
             "label":      entry["label"],
             "pairings":   pairings,
+            "avoids":     avoids,
             "quotes":     entry.get("quotes", [])[:3],
             "tips":       entry.get("tips", [])[:3],
             "notes":      entry.get("notes", []),

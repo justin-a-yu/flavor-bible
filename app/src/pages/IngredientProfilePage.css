@@ -207,6 +207,23 @@
   font-style: italic;
 }
 
+/* ─── Avoid chips ─────────────────────────────────────────────────────────── */
+
+.profile-section-label--avoid {
+  color: #c06050;
+}
+
+.profile-chip--avoid {
+  background: #fdf2f0;
+  border-color: #e8c4bc;
+  color: #7a3028;
+}
+
+.profile-chip--avoid.profile-chip--link:hover {
+  background: #fae4e0;
+  border-color: #c06050;
+}
+
 /* ─── Affinities ──────────────────────────────────────────────────────────── */
 
 .profile-affinities {

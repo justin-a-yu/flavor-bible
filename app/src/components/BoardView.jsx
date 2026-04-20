@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
@@ -22,15 +23,20 @@ function IngredientProfileCard({ lens }) {
   const ing = FLAVORS.ingredients[lens.id];
   if (!ing) return null;
   const metaEntries = Object.entries(ing.meta ?? {}).filter(([k, v]) => v && CARD_META_KEYS.has(k));
+  const avoids = ing.avoids ?? [];
   const hasBody = ing.tips.length > 0 || ing.quotes.length > 0;
 
   return (
     <div className="ingredient-card ingredient-card--profile" style={{ borderTopColor: lens.color }}>
 
       <div className="ingredient-card-header">
-        <div className="ingredient-card-name" style={{ color: lens.color }}>
+        <Link
+          to={`/ingredient/${lens.id}`}
+          className="ingredient-card-name ingredient-card-name--link"
+          style={{ color: lens.color }}
+        >
           {lens.label}
-        </div>
+        </Link>
         {metaEntries.map(([key, val]) => (
           <div key={key} className="profile-meta-row">
             <span className="profile-meta-key">
@@ -39,6 +45,12 @@ function IngredientProfileCard({ lens }) {
             {' '}{val}
           </div>
         ))}
+        {avoids.length > 0 && (
+          <div className="profile-avoid-row">
+            <span className="profile-avoid-label">Avoid:</span>
+            {' '}{avoids.map(a => a.label).join(', ')}
+          </div>
+        )}
       </div>
 
       {hasBody && (
@@ -215,6 +227,24 @@ export default function BoardView() {
   const affinities   = buildAffinities(lenses);
   const lensColumns  = buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn);
 
+  // Cross-lens avoid conflicts: lens A avoids lens B (or vice versa)
+  const avoidConflicts = [];
+  if (!isSolo) {
+    for (let i = 0; i < lenses.length; i++) {
+      for (let j = i + 1; j < lenses.length; j++) {
+        const a = lenses[i];
+        const b = lenses[j];
+        const ingA = FLAVORS.ingredients[a.id];
+        const ingB = FLAVORS.ingredients[b.id];
+        const aAvoidsB = ingA?.avoids?.some(av => av.id === b.id);
+        const bAvoidsA = ingB?.avoids?.some(av => av.id === a.id);
+        if (aAvoidsB || bAvoidsA) {
+          avoidConflicts.push({ a, b, aAvoidsB, bAvoidsA });
+        }
+      }
+    }
+  }
+
   return (
     <div className="board-view">
 
@@ -229,6 +259,25 @@ export default function BoardView() {
       <div className="board-doc">
 
         <IngredientProfileSection lenses={lenses} />
+
+        {avoidConflicts.length > 0 && (
+          <section className="board-section board-avoid-conflicts">
+            {avoidConflicts.map(({ a, b, aAvoidsB, bAvoidsA }) => (
+              <div key={`${a.id}-${b.id}`} className="board-avoid-conflict">
+                <span className="board-avoid-icon">⚠</span>
+                {aAvoidsB && bAvoidsA
+                  ? <>{' '}<strong style={{ color: a.color }}>{a.label}</strong> and{' '}
+                    <strong style={{ color: b.color }}>{b.label}</strong> each avoid the other</>
+                  : aAvoidsB
+                  ? <>{' '}<strong style={{ color: a.color }}>{a.label}</strong> avoids{' '}
+                    <strong style={{ color: b.color }}>{b.label}</strong></>
+                  : <>{' '}<strong style={{ color: b.color }}>{b.label}</strong> avoids{' '}
+                    <strong style={{ color: a.color }}>{a.label}</strong></>
+                }
+              </div>
+            ))}
+          </section>
+        )}
 
         {!isSolo && filters.visibility !== 'individual' && (
           <SharedBySection

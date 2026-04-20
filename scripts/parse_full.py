@@ -52,7 +52,7 @@ FOOTNOTE_MAX = 11.9   # ≤ this size → attribution / footnote
 # ── Keywords ───────────────────────────────────────────────────────────────────
 META_KEYS = {
     "season", "taste", "weight", "volume", "function",
-    "techniques", "technique", "tip", "tips", "avoid",
+    "techniques", "technique", "tip", "tips",
     "botanical relatives", "flavor affinities", "flavor affinity",
 }
 
@@ -532,6 +532,9 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
     in_note_section    = False
     note_buffer        = []      # accumulates lines until sidebar ends
 
+    # Avoid section state
+    in_avoid_section   = False
+
     def get_or_create(label):
         slug = canonical_label(label)
         if slug not in ingredients:
@@ -543,6 +546,7 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                 "aliases":    aliases,
                 "meta":       {},
                 "pairings":   [],
+                "avoids":     [],
                 "quotes":     [],
                 "tips":       [],
                 "notes":      [],
@@ -611,6 +615,7 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                 if role == "header":
                     discard_prose_buffer()
                     pending_pairing = None
+                    in_avoid_section = False
                     # Close any open sidebar sections before moving on
                     in_dishes_section = False
                     if pending_dish_name and current_ingredient in ingredients:
@@ -658,6 +663,7 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                 # ── Cuisine header ─────────────────────────────────────────
                 elif role == "cuisine_header":
                     discard_prose_buffer()
+                    in_avoid_section = False
                     current_ingredient = None
                     if clean.count('(') > clean.count(')'):
                         pending_header = ("cuisine_header", clean)
@@ -749,6 +755,16 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                     # Skip structural section labels
                     if clean_lower in SKIP_EXACT:
                         continue
+
+                    # AVOID section header — standalone bold-caps "AVOID" line
+                    if clean_lower == "avoid":
+                        discard_prose_buffer()
+                        in_avoid_section = True
+                        continue
+
+                    # Any other section header resets avoid mode
+                    if is_affinity_line(clean) or is_meta_key(clean_lower.rstrip(":")):
+                        in_avoid_section = False
 
                     # Meta key-only line (e.g. standalone "Season:")
                     if is_meta_key(clean_lower.rstrip(":")):
@@ -862,8 +878,14 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
                             cuisine_buckets[cs].add(base_lower)
 
                     elif current_ingredient and current_ingredient in ingredients:
+                        # If we're in the AVOID section, route to avoids[]
+                        if in_avoid_section:
+                            entry = {"label": base_lower}
+                            if modifier:
+                                entry["modifier"] = modifier.lower()
+                            ingredients[current_ingredient]["avoids"].append(entry)
                         # If the pairing is itself a cuisine, tag it instead of listing it
-                        if is_cuisine_header(base_lower):
+                        elif is_cuisine_header(base_lower):
                             cuisine_slug = slugify(base_lower)
                             if cuisine_slug not in cuisine_buckets:
                                 cuisine_buckets[cuisine_slug] = set()

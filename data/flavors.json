@@ -156,6 +156,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -723,6 +724,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "MEATS, red, esp. braised, grilled, or roasted In Jamaica, allspice is their pepper. It’s fruitier than black peppercorns. I think it’s especially nice with braised and roasted meats.",
@@ -823,6 +825,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -1021,6 +1024,7 @@
           "modifier": "champagne, red wine, sherry"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "No country in the world has anchovies like Spain. They are sophisticated, and the ones from the north of Spain are best because they are bigger. Spanish anchovies are not salty, either. Once you eat one, your life changes forever! I pay a lot for my anchovies — up to seventy-five cents per fillet — and will have to charge $9 for a plate. My customers will say that is too much to pay, and I agree — but if you don’t pay, you don’t taste. Lately, I have been combining anchovies with nectarines, which I love. I will make a vinaigrette with Pedro Ximénez [i.e., PX sherry], sherry vinegar, and olive oil and it is the perfect dressing — and unique.",
@@ -1081,6 +1085,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Use to balance high-acid fruit, to reduce the need for sweeteners. almonds anise apricots candy cream and ice cream custards desserts fish fruits ginger: fresh, candied hazelnuts juniper berries lavender lemon balm liqueurs mushrooms Angelica pairs well with fresh or candied ginger. And angelica with rhubarb really intensifies the flavor of the rhubarb.",
@@ -1376,6 +1381,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add early in cooking."
@@ -1602,6 +1608,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -1885,6 +1892,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "As a kid, I hated black jelly beans. But I have grown to like all the various forms of anise, and star anise is one of my favorites. My favorite application is when it is infused with milk chocolate. It then has an almost malty-caramely quality to it. It adds that little something that people can’t quite identify. I also love pears with anise, which works well with roasted or poached pears.",
@@ -2361,6 +2369,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "The combination of apple and celery works. A tart green apple sorbet is not going to knock your socks off, because you are programmed to know it. When you add the flavor of celery, you get something new. I also love the flavors of apple and fennel together, especially in sorbet.",
@@ -2771,6 +2780,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Apricots are much better cooked than raw. It is rare that you find a fruit that reaches its full potential as cooked rather than raw, but an apricot is one. A so-so apricot poached will turn into heaven. They are great with either chamomile or lavender.",
@@ -2905,6 +2915,7 @@
           "modifier": "e.g., muscat"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -3214,6 +3225,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "My mom made artichokes that we dipped in mayonnaise, so I tweaked that idea for the stuffed artichoke we serve here. Panko bread crumbs are mixed with chopped mint, salted, and stuffed into the artichoke cavity. The homemade mayonnaise I serve is made with eggs and just a little olive oil but mostly melted butter, which makes it richer and more flavorful — which is based on how it is made for the Chinese dish of shrimp and walnuts. The mayonnaise is then seasoned with anchovies, red pepper flakes, and onion confit.",
@@ -3426,6 +3438,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -3923,6 +3936,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -4103,6 +4117,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Covered to deprive it of sunlight while growing, white asparagus is lighter in flavor and"
@@ -4691,6 +4706,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "The earthy flavors of autumn come together in our chanterelle mushroom and lentil soup with sautéed foie gras.",
@@ -4887,6 +4903,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Avocados are so rich that we always season them with a lot of fleur de sel and lemon juice, and toss them with frisée and endive. Avocados need something bitter for balance.",
@@ -5221,6 +5238,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "A banana in a dessert is an instant sell. Everyone loves caramelized bananas!",
@@ -5401,6 +5419,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -5773,10 +5792,11 @@
         {
           "label": "zucchini",
           "strength": 3
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "tarragon",
-          "strength": 1
+          "label": "tarragon"
         }
       ],
       "quotes": [
@@ -5882,6 +5902,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I use this in lots of vegetarian dishes because it gives them some oomph. It also works well with meat dishes, from beef to carpaccio to venison. I make a Thai basil pesto but make a few adjustments to the recipe or else it can look bruised and take on a funky color. We will add a little pumpkin seed oil to keep it a deep, rich green.",
@@ -6017,6 +6038,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -6253,6 +6275,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Black bass is a fish that can go with the most exotic flavors. We serve black bass with Peking duck, green papaya salad, and a very light, thin chutney sauce. I love Peking duck and find the flavor very soft and not “duck-y” or aggressive.",
@@ -6631,6 +6654,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Striped bass is a hearty fish and is one of my favorites. I love roasting it with the skin on to a crisp, and finishing it with butter, garlic, and thyme. It’s a fish that pairs well with meat, whether bacon, sweetbreads, or braised pork.",
@@ -6957,6 +6981,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -7256,6 +7281,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I am a little too fond of bay leaf. I use it a lot. I probably have a fondness for it because I associate it with so many childhood flavors, like pot roast. It has a hearty quality to it and I associate it with stocks and big flavors. I will use fresh or dried bay leaf. Fresh bay leaf has fresher flavor and is surprisingly more intense than dried bay leaf, but it’s still not as dramatic a difference as you can find with other herbs when it comes to fresh versus dried.",
@@ -7345,6 +7371,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -7622,6 +7649,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -7757,6 +7785,7 @@
           "modifier": "esp. plum"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -8029,6 +8058,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Fava beans have a great flavor. Cooks in the past would blanch them, and the flavor would be left in the water. Today, what I like to do with favas and other vegetables is to put them in a pan with a little water, olive oil, or butter, and to cover them while they cook. That way, all the flavor stays in the vegetables. If I could cook for my customers the way I like to cook and eat at home, I would sweat some spring onions in a pan with butter or oil, covered, to keep in the flavor. Then I’d add the shucked fava beans and let them cook with a little water. At the last second, I’d toss in some chopped parsley or basil, and there’s your sauce. This would be great under some fish. If you added some thyme and maybe a little lamb jus , it would also work with lamb.",
@@ -8223,6 +8253,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -8481,6 +8512,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -8639,6 +8671,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -8813,6 +8846,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -8935,6 +8969,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -9046,6 +9081,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -9119,6 +9155,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -9362,6 +9399,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -11060,6 +11098,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I love blue cheese with beef. We make a dish with blue cheese sauce that has chicken stock, Dijon mustard, truffle juice, and fresh truffle. This is a sauce that has many layers of flavor. The mustard is barely there but adds much more flavor to the sauce than vinegar or lemon would. The sauce is served on a [beef] filet that has been poached in spiced red wine. The poaching liquid is made with Cabernet Sauvignon that has been reduced for 25 minutes to concentrate its flavor, juniper berries, pepper, star anise, fennel seeds, and cloves. The cooked tannin in the wine really brings up the meaty flavor of the beef.",
@@ -11283,6 +11322,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -11659,6 +11699,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Beets are especially delicious when accented by a salty cheese, whether queso fresco or ricotta salata.",
@@ -12063,6 +12104,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "The sweetness of red bell peppers and the acidity of sherry vinegar make for a perfect combination.",
@@ -12204,6 +12246,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -12364,6 +12407,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "So many Western cultures don’t incorporate bitterness into their food. In India and Asia, it is a component of a balanced dish. If you give most of America rice with lime pickle, they will not be thrilled. It will be too sour, bitter, and spicy. To introduce the bitter flavor of lime pickle, we will puree it with yogurt and use it for a marinade for whole prawns. That way, it isn’t overwhelming.",
@@ -12595,6 +12639,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Blackberries are only okay raw, but they are really great cooked .",
@@ -12745,6 +12790,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -13018,6 +13064,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Cinnamon with blueberries really intensifies the flavor of the blueberries.",
@@ -13128,6 +13175,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -13324,6 +13372,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -13372,6 +13421,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Use large flakes to make fish stock and small flakes to season dishes."
@@ -13402,6 +13452,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Bundle of herbs is removed after cooking."
@@ -13513,6 +13564,7 @@
           "modifier": "dry, sweet"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -13572,6 +13624,7 @@
           "modifier": "esp. dry red"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -13725,6 +13778,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Check here for ideas of meats or vegetables to add to a braised dish."
@@ -13767,6 +13821,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I don’t brine automatically. If I have a chicken that I know will cook up on the dry side, then I will brine it first. If it is a great chicken that will cook up naturally juicy and doesn’t need help, then I won’t. You can make a pretty strong brine for squab or even chicken — for instance, with thyme or even chile pepper — and the meat will pick up some flavors, but it’s still very subtle.",
@@ -13965,6 +14020,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Our winter pistou features broccoli, and we’re able to make the broccoli flavor very intense. We use not only broccoli stock, but also broccoli florets and even add broccoli puree. There’s both clarity and lightness of flavor that we’re able to achieve without butter or cream this way.",
@@ -14047,6 +14103,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -14190,6 +14247,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Customers are picky at brunch. They have all cooked what they think they like, they think they can do it slightly better than we can, and they want it twice as fast. So, we take the classics like pancakes or French toast, use them as building blocks, and push them a little further. We will offer seasonal pancakes. In the winter, we’ll make buckwheat pancakes with cinnamon and glazed oranges. Bridging spring into summer, we’ll offer corn and saffron pancakes with a spicy poached pear and fresh ricotta. Saffron and corn work really well together because of the floral nature of the saffron and sweetness of the corn. We will use poached pears on the pancakes until switching to blueberries for the summer, which give a real pop. The pears are poached in a red wine syrup with aleppo chile that is a sun-dried chile with a rich, round, sweet spice to it. The chile is not noticeable, but it acts like an acid by lightening, plus cutting the sugar and richness of, the pancake. When people eat pancakes, they naturally reach for butter. I don’t serve butter with my pancakes and instead serve fresh ricotta. We use ricotta from Anne Saxelby, who supplies us with a fresh, rich, velvety ricotta, and this gives a richness to the dish.",
@@ -14424,6 +14482,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -14553,6 +14612,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I love bulgur [wheat] salad. In the summer, I’ll serve it with greens and tomatoes, while in the fall it’s paired with tangerines and pomegranates. I feel the same about it whether it is under branzino or pike or striped bass; it always makes sense.",
@@ -14614,6 +14674,7 @@
           "modifier": "esp. balsamic"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -14743,6 +14804,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -14785,6 +14847,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "One of my favorite flavors in the world is brown butter. A financier cake made with brown butter is one of the best things ever. I have been making a brown butter vinaigrette for a jillion years! It is a super-easy pan sauce that I love as a warm sauce: I just brown my butter in a pan until it gets the noisette [brown] color, then add some balsamic vinegar. It doesn’t even need to be expensive balsamic. You make an emulsification in the pan, and add a little salt and pepper and it’s done. The flavor of brown butter, salt, and acid is one of my favorites. It works well on different fish like scallops or halibut or soft-shell crabs.",
@@ -15136,6 +15199,7 @@
           "modifier": "e.g., riesling"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Cabbage often has the connotation of being heavy, but in the fall, we’ll make a fine chiffonade of cabbage that’s very light. I like to cut cabbage thin and roast it in a pan so that the edges just get brown because that tastes really good. We figured that out by mistake by putting cabbage into too hot a pan. After the chef raised his voice about how that is the wrong way to cook cabbage, we tasted it, and it was good! We now serve a green cabbage dish cooked this way with caraway seeds and walnuts, then deglazed with Calvados. We also add a little cider vinegar and olive oil to finish. It is a nice, easy marriage. It is not an unpredictable marriage; these things just all work together. We pair this with braised pork belly, but it would also work with a roasted breast of squab with its leg done in a confit.",
@@ -15283,6 +15347,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like coming up with spins using Asian ingredients — such as soaking napa cabbage in ice water to crisp it and serving it with a blue cheese dressing as if it were iceberg lettuce.",
@@ -15458,6 +15523,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -15583,6 +15649,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -15637,6 +15704,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -15691,6 +15759,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Generally an after-dinner drink."
@@ -15789,6 +15858,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -15964,6 +16034,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -16107,6 +16178,7 @@
           "strength": 3
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -16268,6 +16340,7 @@
           "modifier": "esp. root"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Caraway seeds bring up the flavor in morel mushrooms.",
@@ -16430,6 +16503,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add early when cooking."
@@ -16809,6 +16883,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Thumbelina carrots are something I missed when I moved from working in the country [i.e., Pocantico Hills, New York, where Blue Hill at Stone Barns is located] into Manhattan. Luckily, I recently found these short, fat carrots at the green market. We sauté these carrots over an open fire so that they get a little smoky. When they are cooked, they become soft and creamy. Once cooked, we turn them into a puree with a shot of carrot juice at the last second. We pair this with farro that has been cooked like risotto, then add some pine nuts and more Thumbelina carrots that have been quartered. I don’t know what is more seductive: the smooth carrot farro with its light carrot flavor or the carrots themselves that are totally creamy. The dish has no butter or cream but that is not because we are trying to be healthy. The dish just doesn’t need it.",
@@ -17021,6 +17096,7 @@
           "modifier": "esp. indian"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -17169,6 +17245,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -17474,6 +17551,7 @@
           "modifier": "e.g., indian cuisine"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "The first time I had the combination of cauliflower and curry was when I worked with Daniel Boulud, and he used them together in a soup. I didn’t grow up liking cauliflower, but I do now when it’s well roasted or pureed. It has good water content, which makes for a very smooth puree, and it has a subtle yet distinct flavor. Apple combines well with both, as it adds acidity and crunch while cutting the stronger flavors.",
@@ -17593,6 +17671,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "There is an obvious reason why you could argue that white chocolate and caviar go together and that is because of the fact that you are pairing fat and salt. The combination, however, runs a lot deeper than that. The amine [organic chemical compounds] levels in caviar and white chocolate are such that the two ingredients almost “melt” together.",
@@ -17739,18 +17818,17 @@
         {
           "label": "tomatoes",
           "strength": 2
+        }
+      ],
+      "avoids": [
+        {
+          "label": "caviar"
         },
         {
-          "label": "caviar",
-          "strength": 1
+          "label": "delicate flavors"
         },
         {
-          "label": "delicate flavors",
-          "strength": 1
-        },
-        {
-          "label": "truffles",
-          "strength": 1
+          "label": "truffles"
         }
       ],
       "quotes": [
@@ -17906,6 +17984,7 @@
           "modifier": "tarragon, wine"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "cheese, esp. blue , feta, goat, Gruyère, Parmesan, Roquefort chervil chicken and other poultry chickpeas and hummus chives cream cream cheese curry dill eggs, hard-boiled fish garlic legumes lemon, juice lovage mirepoix (key ingredient) mushrooms, wild mustard, esp. Dijon Of all vegetables, celery has one of the strongest flavors. To me, it is almost like a truffle. In a mirepoix, you need all the vegetables — but if I could have only one, it would be celery. I love its earthy flavor. Celery and black truffles are my favorite combination. They work in part because they come out of the ground at the same time of year. Any root vegetable also works with celery. I enjoy celery root and celery separately as well as together.",
@@ -18199,6 +18278,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Always peel before using."
@@ -18237,6 +18317,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -18389,6 +18470,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -18447,6 +18529,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -18506,6 +18589,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -18702,6 +18786,7 @@
           "modifier": "balsamic, red wine"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -18764,6 +18849,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -18828,6 +18914,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -18879,6 +18966,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Since cheese is a near-perfect food, I sometimes look for the few nutrients missing in cheese that can be found in other foods. The two essential nutrients that cheese does not provide are vitamin C and fiber. This recommends fruits especially — and makes a great start to the day: cheese, some high-fiber vitamin C–rich fruit, some whole grain organic bread, and coffee. The breads I prefer with cheese are usually neutral flavored, though I fully appreciate the nutty or herbed or fruity breads as natural partners for cheeses. The main reason I prefer neutral flavors in my breads is because I don’t want to meddle with the flavors in the cheeses themselves. I’m kind of a purist on that! Usually, the softer the cheese, the harder the bread — to an extent. And high-pectin, high-fiber fruits [e.g., apples, pears, apricots, plums, nectarines, peaches, figs] make natural accompaniments for many, many cheeses. Which cheeses? My faves with my espresso to which I add a little unfiltered raw honey would be the pressed sheep milk cheeses: Ossau Iraty, Roncal, Zamorano, Berkswell, Spenwood, Trade Lake Cedar, Vermont Shepherd, manchego, or Pecorino Foglie Noce. But I’m happy with whatever is looking good, and preferably the harder aged cheeses: sheep, goat, or cow.",
@@ -18912,6 +19000,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19033,6 +19122,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19113,6 +19203,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "A wonderful combination I discovered recently that surprised me was Azeitao cheese with foie gras.",
@@ -19192,6 +19283,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19237,6 +19329,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19305,6 +19398,7 @@
           "modifier": "balsamic, sherry"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19444,6 +19538,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19490,6 +19585,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19516,6 +19612,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Cheddar is a particularly friendly cheese to food pairing partners.",
@@ -19548,6 +19645,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19574,6 +19672,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19592,6 +19691,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19724,6 +19824,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19790,6 +19891,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19812,6 +19914,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -19830,6 +19933,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20134,6 +20238,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I enjoy pomegranate with my Ibores [a Spanish goat’s milk cheese ].",
@@ -20283,6 +20388,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20300,6 +20406,7 @@
       "aliases": [],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20380,6 +20487,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I enjoy raspberries with my Hoja Santa, with a little mint thrown in.",
@@ -20409,6 +20517,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20451,6 +20560,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20469,6 +20579,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20546,6 +20657,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20576,6 +20688,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20685,6 +20798,7 @@
           "modifier": "balsamic, red wine"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20733,6 +20847,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20833,6 +20948,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20918,6 +21034,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20936,6 +21053,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -20958,6 +21076,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Piave cheese works with an array of different cured meats.",
@@ -21004,6 +21123,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21234,6 +21354,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "On our brunch menu with our corn and saffron pancakes, we serve fresh ricotta to be used instead of butter.",
@@ -21314,6 +21435,7 @@
           "modifier": "red, sauternes"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21366,6 +21488,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21401,6 +21524,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21427,6 +21551,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21485,6 +21610,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21507,6 +21633,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21530,6 +21657,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21556,6 +21684,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -21899,6 +22028,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Cherries can stand up to a lot of flavors. They have more juice to them as well as complexity. Almonds go with cherries. Dark chocolate actually goes better with cherries than it does raspberries, and white chocolate works with cherries as well.",
@@ -22097,6 +22227,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "One thing chervil has going for it is its looks. Chervil is so cute, it is adorable! You can very carefully make little tiny brushes of them and put them around the plate. Not only does it taste good, but it says to the people eating the dish that you are taking care of them.",
@@ -22414,10 +22545,11 @@
           "label": "wine",
           "strength": 1,
           "modifier": "esp. sweet marsala or sherry"
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "berries",
-          "strength": 1
+          "label": "berries"
         }
       ],
       "quotes": [
@@ -23048,6 +23180,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Red beans and rice with andouille sausage is my favorite! When we opened up after the hurricane [Katrina] and were serving on paper plates, I made a roasted Tabasco chicken served with dirty rice, with the sausage stuffed in a bell pepper alongside red bean puree. For another dish, I was inspired by a diner down the street from us that had chicken and waffles on the menu, which is an old Southern dish. My take is to make a savory waffle and to add Boursin cheese with lots of herbs. Then I pair it with chicken thighs braised in a coq au vin blanc and serve it with spinach. The dish is simple, but I just love the flavors.",
@@ -23406,6 +23539,7 @@
           "modifier": "e.g., indian cuisine"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -23537,6 +23671,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -23786,6 +23921,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add at the end of the cooking process. The spiciness of chile peppers suggests “false heat.”"
@@ -23844,6 +23980,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -23883,6 +24020,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24002,6 +24140,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24056,6 +24195,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24099,6 +24239,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24149,6 +24290,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I have made a red-hot apple gelée that was a garnish to a panna cotta , taking apple cider and infusing it with cinnamon and jalapeño chile — which ended up tasting like red-hot candy. I like using fresh jalapeños in an infusion, or an espelette as a finishing note. I also love the idea of chipotle chile paired with chocolate ice cream.",
@@ -24180,6 +24322,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24206,6 +24349,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24267,6 +24411,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24341,6 +24486,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24375,6 +24521,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24409,6 +24556,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24587,6 +24735,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "You can’t cook without onions, and chives are a delicate way to get that flavor into a dish. They are good in a soup or a sauce. A chive oil is great drizzled around a plate for flavor as well as appearance.",
@@ -24767,6 +24916,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -24879,15 +25029,15 @@
         {
           "label": "tomatoes",
           "strength": 1
-        },
+        }
+      ],
+      "avoids": [
         {
           "label": "delicate fish",
-          "strength": 1,
           "modifier": "e.g., halibut, scallops"
         },
         {
           "label": "oily fish",
-          "strength": 1,
           "modifier": "e.g., sardines"
         }
       ],
@@ -24938,6 +25088,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -25199,6 +25350,11 @@
           "strength": 2
         }
       ],
+      "avoids": [
+        {
+          "label": "japanese cuisine (say some)"
+        }
+      ],
       "quotes": [
         {
           "text": "Use cilantro to provide a cooling note to chile pepper– spiced dishes. After a visit to Spain, I created a chorizo broth to go with monkfish. I love chorizo, with its paprika flavors and the fattiness of the pork. So I had to figure out how to make a sauce out of a dried piece of sausage. We melted the chorizo in a pan for a long time, and ended up with a flavorful grease that was not that appealing. However, we emulsified it in an herb-infused clam broth, and it became velvety. It wasn’t greasy, and gave the sauce a little kick. I chose this sauce to go with monkfish because it is a meaty fish and can stand up to spice and to strong flavors really well. Chorizo would not destroy the soul of the fish.",
@@ -25246,7 +25402,6 @@
         "tex-mex-cuisine",
         "thai-cuisine",
         "vietnamese-cuisine",
-        "japanese-cuisine-say-some",
         "moroccan-cuisine",
         "latin-american-cuisine",
         "southwestern-cuisine",
@@ -25645,6 +25800,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I use Saigon cinnamon that is the most amazing cinnamon you will ever try. It comes in a chip [as opposed to a stick] and is like the cinnamon used to make red-hots [candy]. I use it in a ganache.",
@@ -25722,6 +25878,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -26137,6 +26294,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Orange is the leading lady of citrus — it brings a sunny, citric flavor to dishes. Lemon and lime are the men of citrus — very strong, so use them carefully!",
@@ -26401,6 +26559,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -26771,6 +26930,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "My coconut rice pudding strudel was the result of Takashi’s influence. [Takashi Yagihashi was his chef at Detroit’s Tribute restaurant.] Dessert has to make sense in the context of the rest of the meal. Being a pastry chef is exciting because you have a lot of autonomy, but you are still working within the chef’s framework. Takashi’s food was very Asian-influenced. This dish was meant to bring in Asian ingredients in a new way yet be something familiar. So we have rice pudding flavored with coconut, lemongrass, ginger, and vanilla, and diced apricot for texture. At the time I was introduced to frie de brique, which is a Moroccan dough that is like a cross between phyllo and a wonton wrapper. I would wrap these ingredients in this dough and then sauté them in clarified butter and slice them like a spring roll. Alongside I served green tea ice cream. This covered a lot of bases for me: the warm and cold temperatures, the Asian influence, and doing something with boring old rice pudding. The coolest compliment I ever got was from Andrew Carmellini [chef of New York’s A Voce] who was sitting down with us and asked about my background. When I said I used to be a line cook, he said, “I knew it — a pastry chef would never come up with that!” It was the combination of techniques and flavors as well as sautéing something to order.",
@@ -27124,6 +27284,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Cod is an undervalued fish. It’s light, flaky, and delicate, and I especially like it served with broths or chowders. It’s also great baked for ten minutes on salt on a sheet tray. Cod pairs well with clams and shellfish, and I love the combination of fresh cod with salted cod in a dish.",
@@ -27229,6 +27390,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -27405,6 +27567,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -27663,10 +27826,11 @@
         {
           "label": "vinegar, balsamic",
           "strength": 1
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "lavender",
-          "strength": 1
+          "label": "lavender"
         }
       ],
       "quotes": [],
@@ -27752,6 +27916,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "In addition to seasonality, I always pay attention to temperature. I look at what I feel like eating now given that day’s weather. If it is cold and raining, I make sure soup is on the menu.",
@@ -27829,6 +27994,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -27916,6 +28082,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -28082,6 +28249,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "My personal preference for the ratio of coriander to cumin is three-quarters of a portion of coriander to one portion of cumin.",
@@ -28499,6 +28667,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We participate in an event called “Plate and Pitchfork” that is held on a farm with the food from the farm. The guests sit in the field among the corn and tomatoes, and we cook a meal for them on a couple of grills. I made a corn soup for this event. We removed the husks, then cut the kernels off the cob. Then we used the husks, which produce a juice, to make a stock for the soup. If you were to use cobs, you wouldn’t get the same flavor. It is important to keep the corn flavor pure. Most cooks would throw in a bunch of vegetables in the stock, and what you’d get then is a vegetable stock with corn. I want to have a corny flavor in the end. We made a stock using the corn husks cooked with a little onion, water, and salt, and let it cook for about 45 minutes. What came out was the most amazing sweet broth. We added the corn, pureed it, and served it chilled. It was so sweet and full of corn flavor you would have sworn there were cream and sugar in it. We now make a corn husk broth to add to a corn, chanterelle, and Dungeness crab risotto with a touch of pesto. Basil pesto and corn really speaks to me. It is a wonderful combination.",
@@ -28625,6 +28794,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -28764,6 +28934,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -28807,6 +28978,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -29228,6 +29400,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I’ll never forget tasting the combination of crab, avocado, and almonds at chef Pascal Barbot’s Paris restaurant L’Astrance.",
@@ -29589,6 +29762,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -29818,6 +29992,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -30023,6 +30198,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "When you eat a piece of pumpkin pie, the whipped cream is the first thing you go for! You can take this for granted in desserts, or you can dig deeper: You can think of cream as its own flavor. When I was in Japan, the cream was miles better than here in the U.S. You also need to think about your dairy choice in relation to the country. In India, everything is centered around reduced milk. The counterpart would be dolce de leche in Latin cuisine. I love yogurt because it is simple and complex; it can be in the forefront or in the background.",
@@ -30189,6 +30365,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -30242,6 +30419,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -30557,6 +30735,7 @@
           "modifier": "e.g., indian cuisine"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -30848,6 +31027,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Toast cumin seeds in a dry pan to evaporate their moisture and increase their flavor. allspice anise apples baked goods (e.g., breads) bay leaf beans, esp. black or kidney beef beets bread (e.g., rye) cabbage caramel cardamom carrots cayenne With lighter dishes like rice pilaf or lentils, I use cumin seeds for their gentler flavor. With heavier dishes like chickpeas, kidney beans, or red meat, I’ll use the stronger-flavored cumin powder.",
@@ -31019,6 +31199,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add later in cooking, or to finish a dish."
@@ -31242,6 +31423,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add early in cooking process."
@@ -31414,6 +31596,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -31598,6 +31781,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Torrijas, which means “soaked,” are a [ custardy ] dessert in the Basque country that are like French toast or pain perdu . We soak the bread until it is saturated in milk, then let it sit [in the refrigerator] overnight. The next morning before serving, we coat it in egg and then fry it. We serve our version of torrijas with poached apples and instead of serving it with maple syrup, we serve it with Pedro Ximenez [a rich, sweet, Spanish sherry] syrup that has a raisin-like quality to it. The PX is just warmed and has a little glucose added to thicken it into a syrup. I don’t cook it or reduce it because I want to keep the alcohol in the syrup so it doesn’t become overly cloying.",
@@ -31824,6 +32008,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Someone told me about a savory date dish they had but could only remember that it was stuffed and wrapped in bacon. This led me into the kitchen to stuff a date with chorizo, wrap it in bacon, and then add charmoula [typically made of paprika, cayenne pepper, cumin, garlic, lemon juice, parsley, cilantro, and olive oil]. The dish just hits the mark. I also serve a sweet date dish that I stole from Judy Rodgers of Zuni Café. My version is made with Medjool dates that have maple mascarpone smeared in, pistachios crumbled on top, and orange blossom water. The orange blossom water gives people a visceral reaction because you don’t see it, but you taste it. When people have the dish, they lick their fingers trying to figure it out!",
@@ -32143,6 +32328,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Dill adds a certain freshness and cleanness to a dish. During the winter, most of my fish dishes have dill — as well as dishes like goulash with noodles, which is served with both chives and dill for their herbal freshness.",
@@ -32749,6 +32935,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We serve a sixteen-ounce duck breast with a Pinot Noir, blackberry, and ginger sauce. The sauce is made from frozen Oregon blackberries, which I am not shy to admit I use, because eleven months out of the year, there is nothing better. At home, I make a version of this sauce with currant preserves: I sauté the duck, then add lots of fresh ginger and shallots, a few tablespoons of currant preserves, and some champagne vinegar to cut the sweetness.",
@@ -32890,6 +33077,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -33213,6 +33401,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Eggplant is funny. It is a subtle vegetable that can work with strong herbs like rosemary or marjoram.",
@@ -33391,6 +33580,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -33526,6 +33716,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -33783,6 +33974,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "People shy away from endive because of its bitterness. But a good chef will pair it with a sweet dressing.",
@@ -33937,6 +34129,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I have always loved to mix meat and fish in a very delicate way. I went to Cut [Wolfgang Puck’s steak restaurant] and had my first true Kobe beef steak. I begged Lee [Hefter, the chef] for his source! Surf and turf is not as much about having a piece of meat and fish on the plate as about the ideas they create for flavor combinations. The Kobe beef triggered everything. I can’t serve steak at a fish restaurant, but the Kobe was so good I had to find a way to justify it on the menu. I came up with Kobe beef and escalar, with a brown butter that is classic with the fish. The final dish was inspired by having Korean barbecue at a friend’s house, which is when I realized how to bring it together. I wanted another element in the dish because the Kobe, escalar, and brown butter are all rich and all soft. The dish also has squash, Japanese pears, and napa cabbage marinated like Korean kimchee for just a moment. These elements add contrast, chewiness, and crunchiness.",
@@ -33969,6 +34162,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -34107,6 +34301,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Escarole is a bitter but sturdy leaf, and in a salad dressed with olive oil and red wine vinegar, I like to add Cheddar for its sharpness and creaminess plus some crisp and refreshing apples.",
@@ -34373,6 +34568,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like fennel shaved raw, with just some lemon juice, olive oil, and fennel seeds. Fennel goes well with dried meats like prosciutto. It also pairs nicely with shellfish like langoustines, lobster, or crab. Fennel can work with fish as well as with meat. It goes really well with cold poached salmon or white, light meats like chicken or veal.",
@@ -34451,6 +34647,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Fennel pollen has a light, fennel-anise flavor with a floral component. It is delicate, so you don’t cook with it — you just finish a dish with it. It is great on lighter things like salads, poached or steamed flaky white fish, poultry, or pork. When a dish has fennel pollen, even before the food hits your mouth you will notice a floral smell that gets you thinking of summer, lighter foods, and freshness. I use it with my sea trout dish, which is served with a simple salad of green apple, fennel, jicama, pistachios, and dried gooseberries. The dish is topped with the pollen blended with some yogurt, lemon juice, and preserved lemon, which we drape over the fish. This dish just screams “summer.” With a glass of Sauvignon Blanc on the terrace in the early evening, you’re set!",
@@ -34684,6 +34881,7 @@
           "modifier": "esp. green"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add near end of cooking process."
@@ -34851,6 +35049,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I love fenugreek, and its incredible aromatics. It goes well with everything from lamb to chicken to vegetables.",
@@ -35059,6 +35258,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -35262,6 +35462,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -35573,6 +35774,7 @@
           "modifier": "dry red, marsala, port"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -35728,6 +35930,7 @@
           "modifier": "esp. white"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Think of white fish — dorade, Dover sole, pompano, skate, snapper — as white meat, and red fish — salmon, tuna — as red meat. Salmon is like pork, and tuna like beef, and both combine better with stronger flavors. Tuna even pairs with some of the same flavors as beef, including black pepper, red wine, and wasabi.",
@@ -35793,6 +35996,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -35839,6 +36043,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -35984,6 +36189,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -36172,6 +36378,7 @@
           "modifier": "balsamic, cider"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I found a recipe for olive oil cake at the same time that I was perfecting making a foie gras mousse that was pliable to the point that it could be made into an icing. So, I created a savory cake topped with the icing. Then one day while I was online I heard someone mention Twinkies, and the next thing I knew I was ordering real Twinkie pans online. Three days later, Twinkies stuffed with foie gras was born. I serve it with fresh strawberries and black pepper. It seems like everything has been done already, but I like to think I am the only person working with Twinkies.",
@@ -36287,6 +36494,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Tarte flambée is a dish that is 200 years old and was originally made by farmers in Alsace in the village’s wood-burning oven used for baking bread. The tarte flambée developed from what was on hand on the farm: cheese and cream from the cow, pork from the pig, and onions from the field, which they added to some dough. Since we don’t have a wood-burning oven [in the middle of Manhattan], we have to tweak the recipe from the classic. We have to tweak the cream because if we don’t, it breaks and just becomes grease. Instead, I use a mix of fromage blanc, cream, and sour cream so I can get the same result as cream in the original. And to compensate for not having a fire, I use an applewood-smoked bacon.",
@@ -36416,6 +36624,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -36636,6 +36845,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -36707,6 +36917,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "If the fruit is hard, steam before using."
@@ -36750,6 +36961,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Sugar enhances the natural flavor of fruit."
@@ -36889,6 +37101,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Tropical fruits are strong flavored, and stand up to chocolate better. At the same time, tropical fruits like bananas or mangoes are not overly sweet fruits, so caramel can stand up to them. With tropical fruits, I will use a little lime juice and often rum as well to help give them a little kick. With mangoes, I use a little light brown sugar — or I’ll even blend light brown and white sugar together because I’ll want the flavor but not want it to be too harsh.",
@@ -37027,6 +37240,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "The flavor of cloves adds richness to game."
@@ -37050,6 +37264,7 @@
         "function": "warming"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add near the end of the cooking process or before serving."
@@ -37378,6 +37593,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "When garlic needs to be there, it needs to be there. That includes a lot of dishes, such as lamb. Garlic is also called for with all kinds of vegetables, sauces, pastas, and salads.",
@@ -37576,6 +37792,7 @@
           "modifier": "orange peel"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Cucumber and mint is a fashionable combination in cocktails, [especially] those with Hendrick’s gin, which has a cucumber flavor. Cucumber is a flavor that’s distinct yet delicate, and very refreshing. It goes beautifully with a range of foods, from Asian cuisine to smoked salmon.",
@@ -38136,6 +38353,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -38299,6 +38517,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "baked goods (e.g., breads, cakes, cookies) bananas beverages cardamom carrots chicken chocolate chutneys cinnamon cloves couscous cream and ice cream desserts Ginger and honey is one of my favorite flavor combinations.",
@@ -38588,6 +38807,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We serve a dish of grapefruit, crab salad, and mint. Grapefruit is sweet and a little bitter, which makes it fun to play with. I like mint in the dish because it refreshes and wakes your palate up. When you get a little taste of mint it brings up the other flavors of the dish.",
@@ -38652,6 +38872,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -38886,6 +39107,7 @@
           "modifier": "balsamic, red wine"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -38980,6 +39202,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "It’s hard to even think about bitter greens without thinking about toasted nuts. You can get the flavor from the nuts themselves, or from toasted nut oils, which are balanced by the bright fruitiness of cider vinegar.",
@@ -39053,6 +39276,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -39109,6 +39333,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -39173,6 +39398,7 @@
           "modifier": "red wine, sherry"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "A salad is a tricky thing to season. If you put the salt on too early, it will wilt the greens. You have to be careful not to leach it of its life!",
@@ -39220,6 +39446,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -39361,6 +39588,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -39422,6 +39650,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -39629,6 +39858,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -39772,6 +40002,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -40185,6 +40416,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Halibut from the East Coast is the most delicate and silky fish. It is different than Alaskan halibut, which is drier, meatier, and more robust. East Coast halibut is so delicate that anything can kill it. That is why we steam and poach so much here: Even searing it too strongly in the pan will hurt a piece of halibut. We’ll poach halibut, then serve it with a blood orange vinaigrette made with extra-virgin olive oil, which gives it a round and full flavor. The fish is then served atop a carpaccio of golden beets that have been cooked in sherry vinegar. The beets have a sweet-and-sour flavor to them. They are also very crunchy, which I like with the creamy texture of the halibut. The vinaigrette brings the right degree of acidity to the dish to make it exciting.",
@@ -40459,6 +40691,7 @@
           "modifier": "dry sherry, madeira red, white"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Virtually all vegetables — from asparagus to green beans — pair well with ham because of its natural saltiness.",
@@ -40511,6 +40744,7 @@
           "modifier": "e.g., manchego"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -40549,6 +40783,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -40835,6 +41070,7 @@
           "modifier": "red, sweet, white"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Hazelnuts are from the north and are used in Piedmontese cooking. Hazelnuts are very rich and round and buttery, so I will use them to achieve a rich, fatty quality in my dessert. Hazelnuts with chocolate are a natural. Hazelnut with grapes are great; it’s like peanut butter and jelly!",
@@ -40881,6 +41117,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I am more of an herb guy than a spice guy. It comes back to a certain conservatism I have regarding food. The French are not big on spices; they use more herbs. I know the spices used in European cooking and use them in moderation. I am not going to serve a dish that is wildly nutmegged!",
@@ -41245,6 +41482,7 @@
           "modifier": "red, white"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I might grab honey when I am working with nutty flavors or to macerate some fruit. You can also scorch honey to create a whole new flavor; one of my favorite dishes is a burnt honey caramelized pistachio ice cream.",
@@ -41301,6 +41539,7 @@
           "modifier": "esp. cheddar"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -41316,6 +41555,7 @@
         "taste": "sweet-bitter"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -41335,6 +41575,7 @@
           "modifier": "esp. cheddar"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -41483,6 +41724,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -41730,6 +41972,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Heating grated horseradish changes the horseradish completely. It makes it more mellow and takes away the bite while keeping its yummy flavor. Horseradish prepared this way works well with Nantucket Bay scallops that are naturally sweet and work with the sweetness of the horseradish. We will also use it in a lemony vinaigrette and dress a smoked trout with it. First, grate horseradish on a microplane [a fine grater]. Coat a ten-inch skillet with some Ligurian olive oil, and heat the horseradish over medium heat. Watch it very closely, because the minute it starts to turn from its blond color, it is done. From there, transfer it into cold pans to cool it quickly. When it is totally cool and has its crunch, add some lemon zest and kosher salt.",
@@ -41810,6 +42053,7 @@
           "modifier": "esp. green leafy"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "If it is hot outside, I make sure there are lots of salads on the menu.",
@@ -41928,6 +42172,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "In Eastern European or Hungarian cooking, you will see a stewed or braised dish flavored with paprika that is cut with sour cream either in it or served on top so that it mixes together as you eat it. I serve rare roasted venison in venison stock with hot and sweet paprika that is essentially a goulash. Alongside, I serve creamed sauerkraut that bleeds into the sauce and gives the same effect as a goulash. Even though the sauerkraut has an intense flavor, it is still mild because it has been cooked in cream. It is not a Hungarian dish but rather a play on a Hungarian dish, and it works in the context of the subtler intensity of flavors I like.",
@@ -42007,6 +42252,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -42094,6 +42340,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I only half joke that if you add rum or orange zest to a dessert, it will taste Italian. They are very common flavors in Italy.",
@@ -42273,6 +42520,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Japanese cuisine is very simple. We don’t mix too many ingredients together. One of the main ingredients we use in Japanese cooking is soy sauce, for both its saltiness and umami. Soy sauce is very complex: It takes months and months to make it. Same for the dried bonito used to make dashi , our Japanese broth. So Japanese chefs find that much of the hardest work has already been done for us!",
@@ -42486,6 +42734,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -42647,6 +42896,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like kale blanched then sautéed with some onions, a pinch of salt, and some smoked sausage.",
@@ -42786,6 +43036,7 @@
           "modifier": "champagne, ice wine"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -42959,6 +43210,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Kohlrabi is an underrated vegetable. I admit it has not always been one of my favorites, but it has grown on me over the years. Now, I love it. I can’t precisely place its flavor, which is somewhere between a turnip, radish, and cauliflower. But it tastes great and is really versatile. You can grill it, roast it, glaze it like a carrot, or make a gratin out of it with potatoes. We have even grated it and made a rémoulade out of it like you would with a celery root. But the best way to enjoy kohlrabi is grilled, roasted, and drizzled with olive oil and sea salt. That is my favorite!",
@@ -43083,6 +43335,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -43621,6 +43874,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Our signature wine-marinated lamb popsicles in fenugreek cream curry on spinach potatoes dish is bare rugged simplicity. You have rack of lamb that has been cooked just a few minutes. Then you have a simple sauce that is essentially just cream and garlic — and you can taste all three. We add some green fenugreek that gives an earthiness to the dish and takes it to a whole new level. It is incredibly simple. It is a dish about technique because if the garlic is cooked too long, it gets bitter. Or if you add too much fenugreek, it gets bitter and overpowers the cream. But in the right proportions, it is perfect.",
@@ -43956,6 +44210,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -44200,6 +44455,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Lavender and rosemary work in butter cakes, cookies, and other baked goods.",
@@ -44481,6 +44737,7 @@
           "modifier": "dry white, red"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add early in cooking process."
@@ -44955,6 +45212,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We have lemon juice right next to the salt when we cook. Acid is the most important aspect of how a dish tastes — whether it is there as subtle punctuation or an exclamation point!",
@@ -45037,6 +45295,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -45075,6 +45334,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We churn through preserved lemons ! In the middle of the summer, we buy cases so that we can age them eight months before we use them. After six months, they are great. After eight months or a year, you see God. They become incredible just by waiting those extra few months. I make preserved lemons by feel. I primarily use salt and will add some cinnamon, clove, nigella, a tiny, tiny bit of saffron, and then just tuck them away in the refrigerator. If I wasn’t so greedy, I would give them away, but we are talking a year of my life here!",
@@ -45193,6 +45453,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -45251,6 +45512,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -45447,6 +45709,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add near end of cooking process; use in stir-fries."
@@ -45630,6 +45893,7 @@
           "modifier": "esp. spring"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -45857,6 +46121,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Lemon verbena is amazing. I love to make a lemon verbena syrup and then poach apricots in it. It is so refreshing! We also make our own soda here, and lemon verbena is great in soda.",
@@ -46179,6 +46444,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "A drizzle of sherry vinegar just before you serve lentils elevates them to another level.",
@@ -46429,6 +46695,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -46652,6 +46919,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Bibb lettuce is a light, delicate, and almost creamy lettuce, so I serve it with a creamy dressing to mimic that creaminess. Because of its delicacy, to make the mayonnaise I’ll use a neutral oil that’s a blend of 80 percent canola and 20 percent olive. It finds a counterpoint in lemon and fines herbes, and gets a note of freshness, crunch, and spicy heat from radishes.",
@@ -46854,6 +47122,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -47150,6 +47419,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Acidity awakens flavors. I love lime, and just a squeeze of lime on seafood soup or Thai soup awakens it.",
@@ -47381,6 +47651,7 @@
           "modifier": "dry red or white"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Cook briefly, one minute per side."
@@ -47538,6 +47809,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -48131,6 +48403,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "than butter with lobster. In the summertime, I like it with small potatoes and corn. I really like it with cilantro. For my dish Roasted Maine Lobster in “Folly of Herbs” with Baby Fennel and Salsify, I wanted to do something different with lobster besides a lobster sauce. I make a “tea” of dried herbs: thyme, rosemary, fennel seeds, oregano, sage, mint, and tarragon. This is boiled and strained, then gets a dash of Ricard [also known as Pernod, an anise-flavored liquor]. The lobster gets finished with fresh parsley, mint, and fresh oregano. I chose these two vegetables because salsify is underused and underappreciated. I don’t blanch my salsify in water because when you do, the flavor stays in the water. I roast them and caramelize them a little bit, then deglaze with just a little water with a sprig of thyme and a bay leaf. Baby fennel is good because it plays off the Ricard and fennel. I quickly blanch the fennel and then caramelize it.",
@@ -48283,6 +48556,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -48440,6 +48714,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "fish, e.g., halibut, skate, smoked, tuna garlic greens ham juniper berries lamb marjoram mint mushrooms mussels mustard nettles, stinging onions oregano parsley pork potatoes Stinging nettles and lovage is a wonderful combination. Stinging nettles are peppery with a green flavor and lovage is celery-like. It’s funny: I find nettles without lovage are kind of flat tasting. I will use this combination in a ravioli filling or with local Dungeness crab as a sauce for a soufflé.",
@@ -48506,6 +48781,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -48686,6 +48962,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -48868,6 +49145,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Our macadamia nut tart, which we serve with banana-rum ice cream, is our take on pecan pie.",
@@ -49100,6 +49378,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "If you go to Japan, you’ll find that virtually all the sushi restaurants put a little ginger and scallion on their mackerel sushi. It cuts its “fishiness” while adding flavor.",
@@ -49211,6 +49490,7 @@
           "modifier": "champagne, sherry"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -49476,6 +49756,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -49557,6 +49838,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -49618,6 +49900,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I love malt. It has a sweetness, breadiness, and graininess to its flavor. It works with the classics like chocolate, vanilla, and caramel.",
@@ -50012,14 +50295,14 @@
         {
           "label": "yogurt",
           "strength": 1
+        }
+      ],
+      "avoids": [
+        {
+          "label": "soy sauce"
         },
         {
-          "label": "soy sauce",
-          "strength": 1
-        },
-        {
-          "label": "wasabi",
-          "strength": 1
+          "label": "wasabi"
         }
       ],
       "quotes": [],
@@ -50333,6 +50616,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I typically use maple syrup with nuts, like in a pecan pie. I will replace the dark corn syrup in the recipe with maple syrup instead. It is always important to use a very good quality [e.g., Vermont or Canadian] maple syrup. If you are working with syrup and sugar, you need to be careful because the combination of dark brown sugar with maple syrup can become very intense.",
@@ -50657,6 +50941,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Mediterranean herbs marry well. Rosemary and marjoram, or thyme and savory, are naturals together.",
@@ -50946,6 +51231,7 @@
           "modifier": "red, sweet"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -51235,6 +51521,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -51299,6 +51586,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -51815,10 +52103,11 @@
         {
           "label": "zucchini",
           "strength": 1
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "oregano (say some)",
-          "strength": 1
+          "label": "oregano (say some)"
         }
       ],
       "quotes": [
@@ -51992,6 +52281,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -52069,10 +52359,11 @@
         {
           "label": "teas",
           "strength": 2
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "savory foods",
-          "strength": 1
+          "label": "savory foods"
         }
       ],
       "quotes": [],
@@ -52092,6 +52383,7 @@
       "aliases": [],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Use as the base of stocks and soups."
@@ -52233,6 +52525,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like to add miso to purees because it adds a rich, buttery flavor and a rich texture. I will serve broiled oysters topped with a puree of miso, pineapple, and serrano chile. I am working on miso-avocado puree as well. It is delicious, but I just haven’t found the right dish for it yet. I am also working with miso- huitlacoche soup with tofu, mushrooms, or corn.",
@@ -52361,6 +52654,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -52764,6 +53058,7 @@
           "modifier": "dry white (e.g., gewürztraminer), or full- bodied red, dry sherry"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -53895,6 +54190,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Matsutake mushrooms have a cinnamon and pine quality to them. This is a fall mushroom and works well with savoy cabbage. I like pairing luxurious ingredients with cabbage. We will roast black cod and serve it with cabbage, cream, and the matsutake.",
@@ -54317,6 +54613,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -54560,6 +54857,7 @@
           "modifier": "nuts, oil"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Good cooking transcends all cultures. You can take inspiration from all around the world and apply it to what you are cooking without making it “fusion.” In some cases, you can even take a classic and make it taste better. I worked with Floyd Cardoz [chef of the Indian restaurant Tabla in New York City] and learned a lot about Indian spicing and technique from him. One technique was turka , which is where you fry spices in oil or ghee [Indian clarified butter] until they pop. It really opens up the flavor of the spices. I use this cross-cultural technique when making a veal dish with a great mustard sauce, which is a classic French dish, and the result is not a fusion dish: Take black, yellow, and red mustard seeds and toast them in butter or olive oil until they pop; then add some shallots and vermouth and reduce it. Then, add veal stock with a splash of cream and Dijon mustard. The result is a very complex sauce with a much deeper flavor, versus simply combining some cream and mustard together in the pan.",
@@ -54823,6 +55121,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -55129,6 +55428,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Use in moderation."
@@ -55171,6 +55471,7 @@
         "volume": "moderate (varies by nut)"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [
         {
           "text": "I love nuts, and put them in everything. I find that almost all nuts pair well with a lot of different things. When I am creating a dessert, I will choose my nuts geographically. For example, if I am making a Sicilian dessert, I’ll use pistachios because that is the nut they would use [in Sicily].",
@@ -55409,6 +55710,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -55519,6 +55821,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -55605,6 +55908,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -55751,6 +56055,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I’ll poach everything from saddle of rabbit to guinea fowl to fish — from sturgeon, which holds up nicely, to New Zealand snapper to John Dory — in avocado oil. It gives an incredible texture and depth of flavor. I also like it with vegetarian dishes. I use it in dressings, and it seems to hold an emulsion really well. It has a nice affinity with tomato; I have made tomato water with chardonnay vinegar and avocado oil, and it makes beautiful light dressing. It also goes well with citrus like lemon, lime, or orange. Just like you like to squeeze some citrus over avocado, avocado oil works the same way in reverse.",
@@ -55787,10 +56092,11 @@
         {
           "label": "salads and salad dressings",
           "strength": 1
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "deep-fry",
-          "strength": 1
+          "label": "deep-fry"
         }
       ],
       "quotes": [],
@@ -55832,6 +56138,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -55932,6 +56239,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Avoid cooking, as it burns easily."
@@ -55969,6 +56277,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -56031,6 +56340,7 @@
           "modifier": "esp. balsamic, malt"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -56080,6 +56390,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -56138,6 +56449,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Pistachio oil beautifully complements tuna and asparagus in our dish Big Eye Tuna Thinly Sliced with Provence White Asparagus and Montegotterro Pistachio Oil.",
@@ -56194,6 +56506,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -56264,6 +56577,7 @@
           "modifier": "balsamic, cider, rice wine"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "[ Pumpkin seed oil ] is good for finishing dishes with just a little drizzle. We have even poured it over ice cream that is served with a pumpkin seed brittle.",
@@ -56429,6 +56743,7 @@
           "modifier": "cider, rice wine"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add as a flavoring to raw or cooked dishes."
@@ -56484,6 +56799,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -56506,6 +56822,7 @@
         "techniques": "raw"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [
         {
           "text": "Truffle oil is one of those ingredients that really gets overused, so one day I decided that I wanted to do truffle oil right. We make a dressing of truffle oil, white balsamic vinegar, and whole grain mustard. We toss it over endive, crumbled blue cheese, spicy pecans, and raw cremini mushrooms. You just can’t stop eating it!",
@@ -56660,6 +56977,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -56766,6 +57084,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like Greek black olives the best. I like them by themselves, but they also work great in a chicken, duck, or lamb dish.",
@@ -56999,6 +57318,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Olives have such a strong flavor that they can overwhelm other ingredients, but salmon will stand right up to it.",
@@ -57394,6 +57714,7 @@
           "modifier": "dry red, white, port"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "The onion family is the basis for every cuisine I can think of. Of course, Asian cuisines use more green onions and garlic, while the French use more shallots and garlic, but it’s the onion family providing the foundation.",
@@ -57547,6 +57868,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -58074,6 +58396,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like orange zest with crab and shrimp because it gives them a sunny flavor. Lemon and lime are too strong. Orange is feminine — the lady of citrus — while lemon and lime are the men!",
@@ -58198,6 +58521,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -58438,6 +58762,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -58729,26 +59054,23 @@
         {
           "label": "zucchini",
           "strength": 2
+        }
+      ],
+      "avoids": [
+        {
+          "label": "cilantro"
         },
         {
-          "label": "cilantro",
-          "strength": 1
+          "label": "desserts"
         },
         {
-          "label": "desserts",
-          "strength": 1
+          "label": "dill"
         },
         {
-          "label": "dill",
-          "strength": 1
+          "label": "mint (say some)"
         },
         {
-          "label": "mint (say some)",
-          "strength": 1
-        },
-        {
-          "label": "tarragon",
-          "strength": 1
+          "label": "tarragon"
         }
       ],
       "quotes": [
@@ -59124,10 +59446,11 @@
         {
           "label": "yuzu juice",
           "strength": 1
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "tarragon",
-          "strength": 1
+          "label": "tarragon"
         }
       ],
       "quotes": [
@@ -59255,6 +59578,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -59482,6 +59806,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -59731,6 +60056,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add at the beginning of the cooking process."
@@ -59902,6 +60228,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We use lots of smoked paprika, but need to be careful because it can be really strong. I like to finish our fried chickpeas with this because it makes them taste like they just jumped out of the fire! We also like to mix our paprikas together, typically in equal proportions of sweet, hot, and smoked. Smoked paprika is primarily smoky and doesn’t have a lot of other flavors. So if you combine it with a vibrant sweet paprika, you’ll get a more rounded pepper flavor. Paprika is also very regional. In the south [of Spain] where it gets sunshine and heat, you see more smoked paprika, but in the north where it is colder and rainy, they are not into the heat.",
@@ -60168,10 +60495,11 @@
         {
           "label": "zucchini",
           "strength": 1
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "desserts",
-          "strength": 1
+          "label": "desserts"
         }
       ],
       "quotes": [],
@@ -60471,6 +60799,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -60676,6 +61005,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -61068,6 +61398,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [
@@ -61566,6 +61897,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "When I think of the essence of peaches, it’s their smell — so I think of echoing that with the floralness of Moscato d’Asti. I’ll add acidity, sweetness, and a little fat, such as through crème fraîche.",
@@ -61832,6 +62164,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Anything we put peanuts on sells! Peanuts are associated with the South, so there is a regional appeal. We had a chicken breast with sugar snap peas, white radishes, toasted peanuts, basmati rice, and spicy peanut sauce.",
@@ -62298,6 +62631,7 @@
           "modifier": "red (e.g., burgundy), strong red (e.g., cabernet sauvignon, zinfandel), dry white (e.g., riesling), sparkling (e.g., champagne), sweet (e.g., ice wine)"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Apples are more popular than pears because when you go to the store, pears are all hard. You buy them, bring them home, and wait forever for them to ripen. You have to have a premeditated use for pears.",
@@ -62694,6 +63028,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Bronze fennel grows all over Seattle. One day I walked outside eating peas while going out to get mint for my pea salad. I ate a bite of fennel and thought, “By Jove, I’ve got a dish!” Bronze fennel is a non-bulb fennel that has an amazing fennel and earthy flavor.",
@@ -63000,6 +63335,7 @@
           "modifier": "red, sweet"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We are using pecans on a savory dish of scallops and shrimp, ham, shiitake mushrooms, shallots, and pecan-studded basmati rice.",
@@ -63226,6 +63562,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Pepper suggests “false heat” and also stimulates the appetite."
@@ -63256,6 +63593,7 @@
         "volume": "moderate"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add at the end of the cooking process."
@@ -63408,6 +63746,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add at the end of the cooking process."
@@ -63450,6 +63789,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like white pepper with most white fish, and black pepper with tuna and red meat. White pepper works with halibut because it does not overwhelm the fish. Black pepper has a complex flavor and is spicy, which can be distracting. The problem with many peppers like cayenne or chipotle is that they are so strong they can burn. That is not a problem for me, but it is for our clientele. We use piment d’Espelette , which is spicy but sweet.",
@@ -63544,6 +63884,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add at the end of the cooking process."
@@ -63565,6 +63906,7 @@
       "aliases": [],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -63742,6 +64084,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -63766,6 +64109,7 @@
       "aliases": [],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -64023,6 +64367,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Because of the texture and unique flavor of a persimmon, no matter what you do it will always taste like persimmon pudding. I decided two years ago to stop trying to do anything else with persimmons. Why try and reinvent the wheel? To work with persimmons, you first put them in the freezer overnight to ripen, then peel and puree them. Persimmons are pretty astringent, so you need to add a lot of spices and sugar to them. The combination of allspice, cinnamon, and ginger that you see in traditional recipes is nice with persimmons, and adds an interesting complexity to the flavor.",
@@ -64184,6 +64529,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Wrap with bacon to keep from drying out when roasting."
@@ -64214,6 +64560,7 @@
       "aliases": [],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -64232,6 +64579,7 @@
       ],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [
         {
           "text": "I don’t even like to use the word “paprika” when referring to pimenton. It is not the same as Hungarian paprika, which is just dried pepper and doesn’t taste like anything else. The Spanish were the first to plant peppers. Our pimenton has the right touch of sweetness, bitterness, and smoke. Used in a dish it makes the dish a whole new thing. Sprinkled on octopus, it is astonishing.",
@@ -64604,6 +64952,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Pineapple is 80 to 90 percent water. We’ll freeze the pineapple, then pull it out and put it in a colander, and let the juice run out of it — which has all the flavor of the pineapple. After pressing out all the juice, we’ll throw out the now-flavorless pulp, and use just the juice. You can do the same with strawberries or other fruits to obtain a clear juice, which you can use in drinks or, frozen and scraped, as fruit crystals to serve with a dessert.",
@@ -64616,6 +64965,10 @@
         {
           "text": "Pineapple benefits from a touch of vanilla.",
           "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
+        },
+        {
+          "text": "You have to be careful with pine nuts because they are so strong that they will dominate a dessert. If I use even a small amount in an apple dessert, it turns it into a pine nut dessert.",
+          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
         }
       ],
       "tips": [],
@@ -64761,14 +65114,11 @@
           "modifier": "red, sweet"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Pine nuts are really fatty and luxurious, so I like to use salt with them for balance. Even in a pesto, you notice the flavor of pine nuts versus using walnuts or no nuts.",
           "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
-        },
-        {
-          "text": "You have to be careful with pine nuts because they are so strong that they will dominate a dessert. If I use even a small amount in an apple dessert, it turns it into a pine nut dessert.",
-          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
         }
       ],
       "tips": [],
@@ -64836,6 +65186,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -64899,6 +65250,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Stimulates appetite; enhances other flavors (e.g., salty, sour)."
@@ -65134,6 +65486,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Pistachios are a distinctively flavored nut. You need to be sure that what you pair with them will stand up. They go well with raspberries but not strawberries because the latter are softer in flavor.",
@@ -65287,6 +65640,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Look for green plantains without any yellow."
@@ -65413,6 +65767,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Look for yellow to black plantains that ripen to black."
@@ -65686,6 +66041,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -65959,6 +66315,7 @@
           "modifier": "dry red (e.g., bordeaux, cabernet sauvignon), sauternes , sweet white (e.g., muscat)"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -66082,6 +66439,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Grill or sauté cooked polenta."
@@ -66320,6 +66678,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -66434,6 +66793,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Pomelo is good in salads. During the summer, we will mix it with pickled ginger and a couple of other ingredients and serve it on chicken or fish.",
@@ -66534,6 +66894,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -66589,6 +66950,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -66692,6 +67054,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -68009,6 +68372,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "You’ll often see what is essentially clam chowder [without the clams] used as a sauce: the combination of pork — whether it’s bacon, chorizo, or whatever — and thyme, served with potatoes and cream. It could be served with something poached or sautéed. It is a cute reworking of something that is classic.",
@@ -68490,6 +68854,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We make a potato stew with bacon, olives, mushrooms, and onions, which is perfect for cold winter Sunday suppers. We add two strong flavors — bacon and olives — to the potato. Onions and porcini mushrooms add another layer of flavor.",
@@ -68594,6 +68959,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "New potatoes are best not baked or fried."
@@ -68748,6 +69114,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -69110,6 +69477,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "With pumpkin or even sweet potatoes, the combination of allspice, cinnamon, ginger, and clove works great. If you buy canned pumpkin that has spices already added, it tastes a little off and artificial. Depending on how you like your spices, you typically add equal amounts of ginger and cinnamon and less allspice and clove because the last two are very strong.",
@@ -69218,6 +69586,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -69277,6 +69646,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -69653,6 +70023,7 @@
           "modifier": "red, white"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Quail is too delicate for rosemary, so I like it with a little lavender, pink peppercorns, and fleur de sel.",
@@ -69758,6 +70129,7 @@
           "modifier": "esp. braised"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -69895,6 +70267,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Quince is something that will never be mainstream because of its unique flavor and the fact that you just can’t peel it and eat it. But if you peel quince and cook it forever and show it some love, it is so much better than an apple or a pear.",
@@ -70255,6 +70628,7 @@
           "modifier": "dry red, dry white (e.g., riesling), champagne"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -70491,6 +70865,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "It’s vital that you taste your ingredients to determine the best way to serve them. We got a new radicchio in that is so bitter it just won’t work as a salad. Instead, we will turn it into a pesto or a tiny garnish.",
@@ -70723,6 +71098,7 @@
           "modifier": "cider, white wine"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -70993,6 +71369,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -71124,6 +71501,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -71450,10 +71828,11 @@
         {
           "label": "yogurt",
           "strength": 2
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "chocolate, dark (say some)",
-          "strength": 1
+          "label": "chocolate, dark (say some)"
         }
       ],
       "quotes": [
@@ -71788,6 +72167,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like to pair rhubarb, caramelized sugar, and blood orange juice — which has more character than orange juice — because their seasons barely overlap. I am not a fan of rhubarb desserts because they always tend to be one note — either very tart, or very sweet to make up for the tartness. Caramel works well with rhubarb because it makes the rhubarb not too sweet.",
@@ -71985,6 +72365,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -72166,6 +72547,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -72365,6 +72747,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -72410,6 +72793,7 @@
           "modifier": "hazelnut, vegetable, walnut"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -72498,6 +72882,7 @@
           "modifier": "esp. sautéed"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Floral flavors, when done well, can be really amazing. This is also special because it is something that I never grew up with. Someone from India may not find it a big deal. I tend to think in threes. I’ll pair two classic ingredients, and add a third to elevate the combination. I make my own rose -flavored dessert that was inspired by [French pastry chef] Pierre Hermé and his rose macaroon with raspberry and lychee, which is one of the greatest things I have tasted in my life. I coat a standard tart shell with a layer of liquid raspberry; on top of that I place a rose parfait, which I pair with lemon and pistachio. To make the rose flavor not so overbearing, I use it in three different forms. I infuse rosebuds [used to make rosewater] in the milk for the parfait, and I also use rose syrup, which adds color and sweetness, and finally rosewater as well. You have to be careful with rose because it can be like eating perfume. That is why I take a lot of care using three layers to make it one flavor.",
@@ -72616,6 +73001,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -72693,6 +73079,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -73111,18 +73498,20 @@
         {
           "label": "zucchini (say some)",
           "strength": 1
+        }
+      ],
+      "avoids": [
+        {
+          "label": "corn"
         },
         {
-          "label": "corn",
-          "strength": 1
+          "label": "middle eastern cuisine"
         },
         {
-          "label": "salads",
-          "strength": 1
+          "label": "salads"
         },
         {
-          "label": "zucchini (say some)",
-          "strength": 1
+          "label": "zucchini (say some)"
         }
       ],
       "quotes": [
@@ -73170,7 +73559,6 @@
         "french-cuisine",
         "italian-cuisine",
         "mediterranean-cuisine",
-        "middle-eastern-cuisine",
         "spanish-cuisine",
         "latin-american-cuisine",
         "italian-cuisine-in-general",
@@ -73331,6 +73719,7 @@
           "modifier": "dry, sweet"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -73622,6 +74011,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -73881,6 +74271,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I would definitely have saffron on hand for Spanish cooking. It lends itself to rice, seafood, meat, and poultry. You can combine saffron and salt together for a saffron salt that is incredibly aromatic. Saffron also works very well on a salad. People forget that saffron is a flower and, sprinkled on a salad, it aromatizes the greens.",
@@ -74283,6 +74674,7 @@
           "modifier": "esp. white"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Sage has a much better flavor when it is cooked first. We will cook it in butter, olive oil, or bacon fat.",
@@ -74371,6 +74763,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -74454,6 +74847,7 @@
           "modifier": "dried, fresh, green, jalapeño, red, thai"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -74598,6 +74992,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -74892,14 +75287,14 @@
         {
           "label": "yogurt (say some)",
           "strength": 1
+        }
+      ],
+      "avoids": [
+        {
+          "label": "mayonnaise"
         },
         {
-          "label": "mayonnaise",
-          "strength": 1
-        },
-        {
-          "label": "yogurt (say some)",
-          "strength": 1
+          "label": "yogurt (say some)"
         }
       ],
       "quotes": [
@@ -75087,6 +75482,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "We use fleur de sel on cold dishes, such as salads. We also use it on meats like beef, buffalo rib eye, or roast chicken after they are sliced and a moment before serving.",
@@ -75110,6 +75506,7 @@
         "function": "warming"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -75150,6 +75547,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -75198,6 +75596,7 @@
           "modifier": "esp. tomatoes"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "I like to use Hawaiian salt on a dish where I want a little crunch. This holds up better than other salts that will dissolve more quickly. I will use it on ceviche, which has a little broth.",
@@ -75237,6 +75636,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Japanese salt has ground seaweed in it and works on sashimi. I use this in Japanese dishes.",
@@ -75301,6 +75701,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -75328,6 +75729,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "[Maldon] is the finest of all salts in regard to both flavor and texture. I appreciate its delicacy on fish, especially lobster.",
@@ -75379,6 +75781,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "For delicate foods like vegetables or fish, we use ground sea salt right before it goes into the pan.",
@@ -75449,6 +75852,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "The Danish smoked salt we use is smoked over Chardonnay vines. For us, using smoked salt provides the flavor of cooking over grape vines as they do in Spain. Smoked salt is also great if you don’t have a grill, because even a gas grill can’t provide a smoky flavor. I like smoked salt sprinkled on sardines, which in Spain will be cooked over a fire on the beach where they get really smoky. I can give that sense of place by using this salt on my sardines.",
@@ -75492,6 +75896,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -75552,6 +75957,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -75623,6 +76029,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "ingredients with added salt (e.g., chips, nuts) kelp lemons, preserved lox nuts, salted olives oysters oyster sauce pancetta pickles (salty-sour) prosciutto salmon, smoked salt salt cod salt pork sardines sausages, salty (e.g., chorizo) sea urchin sea vegetables seaweed If you have a piece of Ibérico or Serrano ham in your refrigerator, you’ll eventually end up with this little end of dried-out salt-cured meat. While some might just throw it away, we know there’s a lot of flavor left — so we grind it up in a coffee grinder and use it as meat-flavored salt. We call this “ham salt,” and will use this on a salad to emphasize the aroma and flavor of pork. . . . In Spain we have mojama , which is tuna loin cured like ham. We’ll grind it up in a coffee grinder and it becomes tuna salt. When I sear tuna, I will sprinkle this on and emphasize the tuna with its own tuna flavor. It is simple and dramatic. I even showed this technique to the owner of the best tuna restaurant in the world — called El Campero in Barbate, Spain — where he serves tuna a hundred ways. He loved it!",
@@ -76028,6 +76435,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -76280,6 +76688,7 @@
           "modifier": "dry to off-dry white (e.g., alsatian, riesling)"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Sauerkraut is shredded cabbage that is fermented in salt and spices.",
@@ -76548,6 +76957,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -76633,6 +77043,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -76870,6 +77281,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Can stand up to cooking."
@@ -77051,6 +77463,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -77581,6 +77994,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -77669,6 +78083,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -77795,6 +78210,7 @@
           "modifier": "dry white (e.g., sancerre, soave)"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Tap these ideas when cooking a medley of assorted seafood."
@@ -77880,6 +78296,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Use whole seeds."
@@ -78022,6 +78439,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Toast before using; use ground or whole."
@@ -78204,6 +78622,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Shallots are milder than garlic or onions."
@@ -78339,6 +78758,7 @@
           "modifier": "e.g., sauvighon blanc"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -78538,6 +78958,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -79176,6 +79597,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -79441,6 +79863,7 @@
           "modifier": "dry white, red"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -79462,6 +79885,7 @@
         "season": "autumn–winter"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "These herbs and flavorings taste better with longer cooking."
@@ -79543,6 +79967,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add a smoky component to provide a “meaty” flavor to a dish or to counteract the richness"
@@ -79725,6 +80150,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -80064,6 +80490,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -80330,6 +80757,7 @@
           "modifier": "e.g., chablis"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -80627,10 +81055,11 @@
         {
           "label": "wine, dry white",
           "strength": 1
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "salads (say some)",
-          "strength": 1
+          "label": "salads (say some)"
         }
       ],
       "quotes": [],
@@ -80726,6 +81155,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Use fresh, or cook at low temperatures only."
@@ -80751,6 +81181,7 @@
         "function": "heating; stimulates appetite; increases thirst"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Sourness tends to sharpen other flavors."
@@ -80868,6 +81299,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add at the end of the cooking process, or to finish a dish. Use in stir-fries."
@@ -81215,6 +81647,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -81374,6 +81807,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -81411,6 +81845,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Cook for less than 30 seconds, or they’ll wilt."
@@ -81541,6 +81976,7 @@
           "modifier": "esp. red"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -81663,6 +82099,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -81943,6 +82380,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -81969,6 +82407,7 @@
       ],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -82074,6 +82513,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -82237,6 +82677,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -82488,6 +82929,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -82818,6 +83260,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -83125,6 +83568,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Adding sugar enhances strawberry flavor, as does adding an acid such as citrus juice or"
@@ -83151,6 +83595,7 @@
         "function": "cooling"
       },
       "pairings": [],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Balance sweetness with acid (e.g., vinegar) and salt. Avoid dark brown sugar with maple"
@@ -83197,6 +83642,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Avoid with lighter dishes, which would be overwhelmed."
@@ -83395,6 +83841,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -83694,14 +84141,14 @@
         {
           "label": "pepper",
           "strength": 1
+        }
+      ],
+      "avoids": [
+        {
+          "label": "garlic"
         },
         {
-          "label": "garlic",
-          "strength": 1
-        },
-        {
-          "label": "piquancy",
-          "strength": 1
+          "label": "piquancy"
         }
       ],
       "quotes": [],
@@ -83905,6 +84352,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -84123,6 +84571,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "The colder the food or drink, the less the perception of sweetness. Sweetness tends to"
@@ -84738,6 +85187,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -84896,6 +85346,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add at the end of the cooking process."
@@ -85540,34 +85991,29 @@
         {
           "label": "zucchini",
           "strength": 1
+        }
+      ],
+      "avoids": [
+        {
+          "label": "basil (say some)"
         },
         {
-          "label": "basil (say some)",
-          "strength": 1
+          "label": "desserts"
         },
         {
-          "label": "desserts",
-          "strength": 1
+          "label": "oregano"
         },
         {
-          "label": "oregano",
-          "strength": 1
+          "label": "rosemary"
         },
         {
-          "label": "rosemary",
-          "strength": 1
+          "label": "sage"
         },
         {
-          "label": "sage",
-          "strength": 1
+          "label": "savory"
         },
         {
-          "label": "savory",
-          "strength": 1
-        },
-        {
-          "label": "sweet dishes",
-          "strength": 1
+          "label": "sweet dishes"
         }
       ],
       "quotes": [],
@@ -85759,6 +86205,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Authentic Thai cuisine strives for a balance of hot + sour + salty + sweet."
@@ -86264,6 +86711,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Add at the beginning of the cooking process; use dried or fresh."
@@ -86391,6 +86839,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -86881,6 +87330,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Tomatoes are as important to making Indian cuisine as they are to making Italian cuisine. In fact, making an Indian curry is a lot like making an Italian tomato sauce.",
@@ -87131,6 +87581,7 @@
           "modifier": "dry red, white"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -87242,6 +87693,7 @@
           "modifier": "e.g., riesling"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -87343,6 +87795,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -87431,6 +87884,7 @@
           "modifier": "esp. with white truffles"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -87508,6 +87962,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Shave over dishes at the last minute."
@@ -87976,6 +88431,7 @@
           "modifier": "juice, rind"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -88137,6 +88593,7 @@
           "modifier": "champagne, white"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -88402,6 +88859,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -88759,6 +89217,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -88958,6 +89417,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -89294,6 +89754,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -90137,6 +90598,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "When we make veal cheek osso buco on polenta, each dish gets a squeeze of orange and orange zest on it.",
@@ -90530,6 +90992,7 @@
           "modifier": "red (e.g., cabernet sauvignon), dry white"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -90679,6 +91142,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Use instead of vinegar or lemon juice, or as a seasoning."
@@ -90694,6 +91158,7 @@
       "aliases": [],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [
         {
           "text": "I use a variety of vinegars and right now I am using cider vinegar, balsamic, and white balsamic. What vinegar you grab really depends on how far you can push the product. When we make a walnut sauce, it can handle a good-sized dash of cider vinegar. In a fluke tartare, we’ll only use a drop of vinegar.",
@@ -90810,6 +91275,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Use when you want a sweet, low-acid vinegar."
@@ -90941,6 +91407,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Can substitute for red wine vinegar. Use to deglaze a pan."
@@ -90958,6 +91425,7 @@
       "aliases": [],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [
         {
           "text": "We finish most of our jus for meat dishes with cabernet vinegar. If you use it at the beginning of the cooking process, it cooks out because it is so light.",
@@ -91001,6 +91469,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Champagne vinegar is the most delicate vinegar."
@@ -91016,6 +91485,7 @@
       "aliases": [],
       "meta": {},
       "pairings": [],
+      "avoids": [],
       "quotes": [
         {
           "text": "Chardonnay vinegar is a sweet acid, so you don’t have to add additional sugar to your pickling mixture.",
@@ -91100,6 +91570,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -91165,14 +91636,14 @@
         {
           "label": "walnut oil",
           "strength": 1
+        }
+      ],
+      "avoids": [
+        {
+          "label": "cheese"
         },
         {
-          "label": "cheese",
-          "strength": 1
-        },
-        {
-          "label": "eggs",
-          "strength": 1
+          "label": "eggs"
         }
       ],
       "quotes": [],
@@ -91255,6 +91726,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -91292,10 +91764,11 @@
         {
           "label": "pickles",
           "strength": 1
-        },
+        }
+      ],
+      "avoids": [
         {
-          "label": "sauces",
-          "strength": 1
+          "label": "sauces"
         }
       ],
       "quotes": [],
@@ -91407,6 +91880,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Red wine vinegar can stand up to spices and stronger herbs."
@@ -91512,6 +91986,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -91642,6 +92117,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -91680,6 +92156,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -91751,6 +92228,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -91812,6 +92290,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [
         "Can substitute champagne vinegar if needed."
@@ -92352,6 +92831,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -92479,6 +92959,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -92583,6 +93064,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -92642,6 +93124,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -92965,6 +93448,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -93143,6 +93627,7 @@
           "modifier": "balsamic, rice, sherry"
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -93681,6 +94166,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -93852,6 +94338,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -94222,6 +94709,7 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -95274,7 +95762,6 @@
     ],
     "latin-american-cuisines": [],
     "southeast-asian-cuisine": [],
-    "japanese-cuisine-say-some": [],
     "mediterreanean-cuisine": [],
     "southeast-asian-cuisine-as-cassia": [],
     "korean-cuisine": [
@@ -95556,6 +96043,6 @@
     "source": "The Flavor Bible, Karen Page & Andrew Dornenburg, 2008",
     "pages": "40–811",
     "total": 502,
-    "cuisines": 101
+    "cuisines": 100
   }
 }

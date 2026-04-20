@@ -158,6 +158,32 @@ export default function IngredientProfilePage() {
           </section>
         )}
 
+        {/* ── Avoids ── */}
+        {ing.avoids?.length > 0 && (
+          <section className="profile-section">
+            <div className="profile-section-label profile-section-label--avoid">Avoid</div>
+            <div className="profile-chips">
+              {ing.avoids.map(a =>
+                a.id ? (
+                  <Link
+                    key={a.label}
+                    to={`/ingredient/${a.id}`}
+                    className="profile-chip profile-chip--avoid profile-chip--link"
+                  >
+                    {a.label}
+                    {a.modifier && <span className="profile-chip-modifier">{a.modifier}</span>}
+                  </Link>
+                ) : (
+                  <span key={a.label} className="profile-chip profile-chip--avoid">
+                    {a.label}
+                    {a.modifier && <span className="profile-chip-modifier">{a.modifier}</span>}
+                  </span>
+                )
+              )}
+            </div>
+          </section>
+        )}
+
         {/* ── Affinities ── */}
         {ing.affinities.length > 0 && (
           <section className="profile-section">

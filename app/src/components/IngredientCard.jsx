@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const STRENGTH_LABEL = { 4: 'Holy Grail', 3: 'Essential', 2: 'Highly Recommended', 1: 'Recommended' };
 const STRENGTH_COLOR = { 4: '#d4a840', 3: '#d4a840', 2: '#e07840', 1: '#5a9e6a' };
 const TIER_ORDER     = [4, 3, 2, 1];
@@ -23,9 +25,13 @@ export default function IngredientCard({ lens, pairings, isSolo, onPairingClick 
     <div className="ingredient-card" style={{ borderTopColor: lens.color }}>
 
       <div className="ingredient-card-header">
-        <div className="ingredient-card-name" style={{ color: lens.color }}>
+        <Link
+          to={`/ingredient/${lens.id}`}
+          className="ingredient-card-name ingredient-card-name--link"
+          style={{ color: lens.color }}
+        >
           {lens.label}
-        </div>
+        </Link>
         <div className="ingredient-card-count">
           {pairings.length} {isSolo ? '' : 'individual '}pairing{pairings.length !== 1 ? 's' : ''}
         </div>

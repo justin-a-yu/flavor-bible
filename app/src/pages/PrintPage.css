@@ -141,6 +141,10 @@
 
 .pp-meta-key { color: #b0a488; }
 
+.pp-avoid-label { color: #c06050 !important; }
+.pp-avoid-list { color: #7a3028; }
+.pp-avoid-row { color: #7a3028; }
+
 .pp-meta-expanded {
   font-size: 0.78rem;
   color: #6a5a3a;

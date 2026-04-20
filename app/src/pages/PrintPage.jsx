@@ -56,6 +56,15 @@ function ProfileSection({ lenses }) {
                 </div>
               )}
 
+              {ing.avoids?.length > 0 && (
+                <div className="pp-meta-expanded pp-avoid-row">
+                  <span className="pp-meta-key pp-avoid-label">Avoid:</span>{' '}
+                  <span className="pp-avoid-list">
+                    {ing.avoids.map(a => a.label).join(', ')}
+                  </span>
+                </div>
+              )}
+
               {hasBody && (
                 <div className="pp-profile-body">
                   {ing.tips.length > 0 && (

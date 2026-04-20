@@ -137,6 +137,44 @@
   margin-bottom: 0;
 }
 
+/* ─── Avoid row in ingredient profile card ────────────────────────────────── */
+
+.profile-avoid-row {
+  font-size: 0.78rem;
+  color: #7a3028;
+  line-height: 1.9;
+  margin-top: 1px;
+}
+
+.profile-avoid-label {
+  color: #c06050;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── Cross-lens avoid conflict warning ────────────────────────────────────── */
+
+.board-avoid-conflicts {
+  padding: 12px 0;
+  border-bottom-color: #f0d4cc;
+}
+
+.board-avoid-conflict {
+  font-size: 0.82rem;
+  color: #7a3028;
+  line-height: 1.8;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.board-avoid-icon {
+  color: #c06050;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
 /* ─── Shared pairings ─────────────────────────────────────────────────────── */
 
 .shared-groups {
@@ -342,6 +380,13 @@
   color: #2c2416;
   line-height: 1.3;
   margin-bottom: 3px;
+  text-decoration: none;
+  display: block;
+}
+
+.ingredient-card-name--link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .ingredient-card-count {
