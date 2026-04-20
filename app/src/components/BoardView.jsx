@@ -371,7 +371,7 @@ export default function BoardView() {
 
         <IngredientProfileSection lenses={lenses} />
 
-        {!isSolo && (
+        {!isSolo && filters.visibility !== 'individual' && (
           <SharedBySection
             groups={sharedGroups}
             onPairingClick={setSelectedPairing}
@@ -384,20 +384,22 @@ export default function BoardView() {
           onAddLens={addLens}
         />
 
-        <section className="board-section board-section--columns">
-          <div className="section-label">Remaining Flavors</div>
-          <div className="ingredient-columns">
-            {lensColumns.map(({ lens, pairings }) => (
-              <IngredientCard
-                key={lens.id}
-                lens={lens}
-                pairings={pairings}
-                isSolo={isSolo}
-                onPairingClick={setSelectedPairing}
-              />
-            ))}
-          </div>
-        </section>
+        {filters.visibility !== 'shared' && (
+          <section className="board-section board-section--columns">
+            <div className="section-label">Remaining Flavors</div>
+            <div className="ingredient-columns">
+              {lensColumns.map(({ lens, pairings }) => (
+                <IngredientCard
+                  key={lens.id}
+                  lens={lens}
+                  pairings={pairings}
+                  isSolo={isSolo}
+                  onPairingClick={setSelectedPairing}
+                />
+              ))}
+            </div>
+          </section>
+        )}
 
       </div>
 
