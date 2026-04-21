@@ -249,7 +249,7 @@ export default function ExplorerPage() {
       timer = setTimeout(() => {
         const s = useExplorerStore.getState();
         const url = serializeParams(s);
-        history.replaceState(null, '', url || '/#/');
+        history.replaceState(null, '', url || '/');
       }, 300);
     });
     return () => { unsub(); clearTimeout(timer); };

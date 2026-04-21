@@ -109,8 +109,8 @@ export default useExplorerStore;
 
 // ── URL state utilities (exported standalone) ──────────────────────────────
 //
-// State lives in query params on /#/ so HashRouter can match the "/" route.
-// Format: /#/?lenses=id:x,y,r,seed~id2:x,y,r,seed&vp=panX,panY,zoom
+// State lives in query params so it can be bookmarked and shared.
+// Format: /?lenses=id:x,y,r,seed~id2:x,y,r,seed&vp=panX,panY,zoom
 //         &v=board&seasons=spring,summer&tastes=sweet&strengths=3,4
 //         &regions=french&vis=shared
 
@@ -127,7 +127,7 @@ export function serializeParams({ lenses, viewport, activeView, filters }) {
   if (filters?.strengths?.length)  p.set('strengths', filters.strengths.join(','));
   if (filters?.regions?.length)    p.set('regions',   filters.regions.join(','));
   if (filters?.visibility && filters.visibility !== 'all') p.set('vis', filters.visibility);
-  return `/#/?${p.toString()}`;
+  return `/?${p.toString()}`;
 }
 
 export function deserializeParams(searchParams) {
