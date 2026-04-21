@@ -226,12 +226,15 @@ function RemainingSection({ lensColumns, isSolo }) {
   );
 }
 
+const STRENGTH_NAMES = { 4: 'Holy Grail', 3: 'Essential', 2: 'Highly Recommended', 1: 'Recommended' };
+
 function FiltersFooter({ filters }) {
   const parts = [];
   if (filters.seasons.length)    parts.push(`Season: ${filters.seasons.join(', ')}`);
   if (filters.tastes.length)     parts.push(`Taste: ${filters.tastes.join(', ')}`);
   if (filters.regions.length)    parts.push(`Region: ${filters.regions.join(', ')}`);
-  if (filters.visibility !== 'all') parts.push(`Show: ${filters.visibility}`);
+  if (filters.strengths?.length) parts.push(`Strength: ${filters.strengths.map(s => STRENGTH_NAMES[s]).join(', ')}`);
+  if (filters.visibility !== 'all') parts.push(`Overlap: ${filters.visibility}`);
   if (!parts.length) return null;
   return (
     <div className="pp-filters-footer">
@@ -261,6 +264,7 @@ export default function PrintPage() {
     seasons:    (searchParams.get('seasons')    ?? '').split(',').filter(Boolean),
     tastes:     (searchParams.get('tastes')     ?? '').split(',').filter(Boolean),
     regions:    (searchParams.get('regions')    ?? '').split(',').filter(Boolean),
+    strengths:  (searchParams.get('strengths')  ?? '').split(',').map(Number).filter(Boolean),
     visibility: searchParams.get('visibility') ?? 'all',
   };
 
@@ -275,7 +279,11 @@ export default function PrintPage() {
   const isSolo = lenses.length === 1;
   const contentFiltersActive = hasActiveFilters({ ...filters, visibility: 'all' });
   const pairingFilterFn = contentFiltersActive
-    ? p => !!(p.id && matchesFilters(FLAVORS.ingredients[p.id], filters))
+    ? p => {
+        if (filters.strengths.length > 0 && !filters.strengths.includes(p.strength)) return false;
+        if (!p.id) return filters.strengths.length === 0;
+        return matchesFilters(FLAVORS.ingredients[p.id], filters);
+      }
     : null;
 
   const pairingMap   = buildPairingMap(lenses, pairingFilterFn);
@@ -291,7 +299,7 @@ export default function PrintPage() {
       <header className="pp-header no-print">
         <div className="pp-header-title">{title}</div>
         <button className="pp-print-btn" onClick={() => window.print()}>
-          ⎙ Print / Save PDF
+          ⎙ Print
         </button>
       </header>
 

@@ -7,9 +7,10 @@ export default function PrintExportButton() {
   const openPrint = () => {
     const params = new URLSearchParams();
     params.set('lenses', lenses.map(l => l.id).join(','));
-    if (filters.seasons.length)              params.set('seasons',    filters.seasons.join(','));
-    if (filters.tastes.length)               params.set('tastes',     filters.tastes.join(','));
-    if (filters.regions.length)              params.set('regions',    filters.regions.join(','));
+    if (filters.seasons?.length)             params.set('seasons',    filters.seasons.join(','));
+    if (filters.tastes?.length)              params.set('tastes',     filters.tastes.join(','));
+    if (filters.regions?.length)             params.set('regions',    filters.regions.join(','));
+    if (filters.strengths?.length)           params.set('strengths',  filters.strengths.join(','));
     if (filters.visibility !== 'all')        params.set('visibility', filters.visibility);
     window.open(`/#/print?${params}`, '_blank');
   };
