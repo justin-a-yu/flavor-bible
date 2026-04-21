@@ -15,79 +15,255 @@
  * activeFilterCount(filters) — count of active dimensions (for badge)
  */
 
-// ── Regional cuisine groupings ────────────────────────────────────────────────
-// Each key is the display label; values are all cuisine slugs that belong.
-// Slugs with 0 tagged ingredients are included so alias variants still match.
+// ── Named cuisine → region mapping ───────────────────────────────────────────
+// Single source of truth. Every cuisine slug from the parsed data maps to one
+// of the 7 region keys. Alias/variant slugs (typos, sub-labels from the PDF)
+// map to the same region as their canonical. REGIONS is derived from this.
+//
+// CUISINE_LABEL provides a human-readable name for each slug — used by future
+// per-cuisine filter UI; canonical slugs get proper names, aliases get the same
+// name as the canonical they duplicate.
 
-export const REGIONS = {
-  'Europe': [
-    'french-cuisine', 'french-cuisine-in-general', 'french-basque-cuisine',
-    'provencal-cuisine', 'provencal-cuisine-french', 'alsatian-cuisine',
-    'italian-cuisine', 'italian-cuisine-in-general', 'italian-cuisine-as-garbanzo-beans',
-    'spanish-cuisine', 'spanish-basque-cuisine', 'spanish-cuisine-quince-paste',
-    'portuguese-cuisine',
-    'greek-cuisine',
-    'mediterranean-cuisine', 'mediterranean-cuisines', 'mediterreanean-cuisine',
-    'eastern-mediterranean-cuisine',
-    'german-cuisine', 'austrian-cuisine', 'swiss-cuisine', 'belgian-cuisine',
-    'english-cuisine', 'british-cuisine', 'irish-cuisine',
-    'scandinavian-cuisine',
-    'eastern-european-cuisine', 'eastern-european-cuisines',
-    'hungarian-cuisine', 'polish-cuisine', 'russian-cuisine',
-    'georgian-cuisine',
-    'european-cuisine', 'european-cuisines',
-  ],
-  'Americas': [
-    'american-cuisine', 'north-american-cuisine',
-    'southern-cuisine', 'southern-cuisine-american',
-    'southwestern-cuisine', 'southwestern-american-cuisine',
-    'midwestern-american-cuisine', 'new-england-cuisine',
-    'cajun-cuisine', 'cajun-creole-cuisines', 'creole-cuisine', 'soul-food-cuisine',
-    'tex-mex-cuisine',
-    'canadian-cuisine',
-    'mexican-cuisine',
-    'latin-american-cuisine', 'latin-american-cuisines',
-    'south-american-cuisine', 'central-american-cuisine',
-    'caribbean-cuisine', 'caribbean-cuisines', 'carribbean-cuisine',
-    'west-indian-cuisine', 'west-indies-cuisine',
-    'cuban-cuisine', 'jamaican-cuisine',
-    'argentinian-cuisine', 'chilean-cuisine', 'brazilian-cuisine',
-    'hawaiian-cuisine',
-  ],
-  'Middle East & N. Africa': [
-    'middle-eastern-cuisine', 'middle-eastern-cuisines',
-    'moroccan-cuisine',
-    'north-african-cuisine', 'african-north-cuisine',
-    'iranian-cuisine',
-    'turkish-cuisine',
-    'arabic-cuisine', 'lebanese-cuisine', 'egyptian-cuisine',
-    'eastern-mediterranean-cuisine',
-    'french-southern-italian-middle-eastern-moroccan-cuisine',
-  ],
-  'Africa': [
-    'african-cuisine',
-    'ethiopian-cuisine',
-  ],
-  'South Asia': [
-    'indian-cuisine', 'indian-cuisine-desserts',
-    'pakistani-cuisine', 'sri-lankan-cuisine',
-    'afghan-cuisine',
-  ],
-  'Southeast Asia': [
-    'southeast-asian-cuisine', 'southeast-asian-cuisine-as-cassia', 'southeast-asian-cuisines',
-    'indonesian-cuisine', 'malaysian-cuisine',
-    'thai-cuisine', 'vietnamese-cuisine', 'cambodian-cuisine', 'burmese-cuisine',
-    'asian-cuisine', 'asian-cuisines',
-    'australian-cuisine',
-  ],
-  'East Asia': [
-    'chinese-cuisine', 'east-asian-cuisine',
-    'japanese-cuisine', 'japanese-cuisine-say-some',
-    'korean-cuisine',
-    'szechuan-cuisine',
-    'tibetan-cuisine',
-  ],
+export const CUISINE_TO_REGION = {
+  // ── Europe ──────────────────────────────────────────────────────────────────
+  'french-cuisine':                                        'Europe',
+  'french-cuisine-in-general':                             'Europe', // alias
+  'french-basque-cuisine':                                 'Europe',
+  'provencal-cuisine':                                     'Europe',
+  'provencal-cuisine-french':                              'Europe', // alias
+  'alsatian-cuisine':                                      'Europe',
+  'italian-cuisine':                                       'Europe',
+  'italian-cuisine-in-general':                            'Europe', // alias
+  'italian-cuisine-as-garbanzo-beans':                     'Europe', // alias
+  'spanish-cuisine':                                       'Europe',
+  'spanish-basque-cuisine':                                'Europe',
+  'spanish-cuisine-quince-paste':                          'Europe', // alias
+  'portuguese-cuisine':                                    'Europe',
+  'greek-cuisine':                                         'Europe',
+  'mediterranean-cuisine':                                 'Europe',
+  'mediterranean-cuisines':                                'Europe', // alias
+  'mediterreanean-cuisine':                                'Europe', // typo alias
+  'german-cuisine':                                        'Europe',
+  'austrian-cuisine':                                      'Europe',
+  'swiss-cuisine':                                         'Europe',
+  'belgian-cuisine':                                       'Europe',
+  'english-cuisine':                                       'Europe',
+  'british-cuisine':                                       'Europe',
+  'irish-cuisine':                                         'Europe',
+  'scandinavian-cuisine':                                  'Europe',
+  'eastern-european-cuisine':                              'Europe',
+  'eastern-european-cuisines':                             'Europe', // alias
+  'hungarian-cuisine':                                     'Europe',
+  'polish-cuisine':                                        'Europe',
+  'russian-cuisine':                                       'Europe',
+  'georgian-cuisine':                                      'Europe',
+  'european-cuisine':                                      'Europe',
+  'european-cuisines':                                     'Europe', // alias
+
+  // ── Americas ─────────────────────────────────────────────────────────────────
+  'american-cuisine':                                      'Americas',
+  'north-american-cuisine':                                'Americas',
+  'southern-cuisine':                                      'Americas',
+  'southern-cuisine-american':                             'Americas', // alias
+  'southwestern-cuisine':                                  'Americas',
+  'southwestern-american-cuisine':                         'Americas', // alias
+  'midwestern-american-cuisine':                           'Americas',
+  'new-england-cuisine':                                   'Americas',
+  'cajun-cuisine':                                         'Americas',
+  'cajun-creole-cuisines':                                 'Americas', // alias
+  'creole-cuisine':                                        'Americas',
+  'soul-food-cuisine':                                     'Americas',
+  'tex-mex-cuisine':                                       'Americas',
+  'canadian-cuisine':                                      'Americas',
+  'mexican-cuisine':                                       'Americas',
+  'latin-american-cuisine':                                'Americas',
+  'latin-american-cuisines':                               'Americas', // alias
+  'south-american-cuisine':                                'Americas',
+  'central-american-cuisine':                              'Americas',
+  'caribbean-cuisine':                                     'Americas',
+  'caribbean-cuisines':                                    'Americas', // alias
+  'carribbean-cuisine':                                    'Americas', // typo alias
+  'west-indian-cuisine':                                   'Americas',
+  'west-indies-cuisine':                                   'Americas', // alias
+  'cuban-cuisine':                                         'Americas',
+  'jamaican-cuisine':                                      'Americas',
+  'argentinian-cuisine':                                   'Americas',
+  'chilean-cuisine':                                       'Americas',
+  'brazilian-cuisine':                                     'Americas',
+  'hawaiian-cuisine':                                      'Americas',
+
+  // ── Middle East & N. Africa ──────────────────────────────────────────────────
+  'middle-eastern-cuisine':                                'Middle East & N. Africa',
+  'middle-eastern-cuisines':                               'Middle East & N. Africa', // alias
+  'eastern-mediterranean-cuisine':                         'Middle East & N. Africa',
+  'arabic-cuisine':                                        'Middle East & N. Africa',
+  'lebanese-cuisine':                                      'Middle East & N. Africa',
+  'egyptian-cuisine':                                      'Middle East & N. Africa',
+  'iranian-cuisine':                                       'Middle East & N. Africa',
+  'turkish-cuisine':                                       'Middle East & N. Africa',
+  'moroccan-cuisine':                                      'Middle East & N. Africa',
+  'north-african-cuisine':                                 'Middle East & N. Africa',
+  'african-north-cuisine':                                 'Middle East & N. Africa', // alias
+  'french-southern-italian-middle-eastern-moroccan-cuisine': 'Middle East & N. Africa', // catch-all alias
+
+  // ── Africa ───────────────────────────────────────────────────────────────────
+  'african-cuisine':                                       'Africa',
+  'ethiopian-cuisine':                                     'Africa',
+
+  // ── South Asia ───────────────────────────────────────────────────────────────
+  'indian-cuisine':                                        'South Asia',
+  'indian-cuisine-desserts':                               'South Asia', // alias
+  'pakistani-cuisine':                                     'South Asia',
+  'sri-lankan-cuisine':                                    'South Asia',
+  'afghan-cuisine':                                        'South Asia',
+
+  // ── Southeast Asia ───────────────────────────────────────────────────────────
+  'southeast-asian-cuisine':                               'Southeast Asia',
+  'southeast-asian-cuisines':                              'Southeast Asia', // alias
+  'southeast-asian-cuisine-as-cassia':                     'Southeast Asia', // alias
+  'indonesian-cuisine':                                    'Southeast Asia',
+  'malaysian-cuisine':                                     'Southeast Asia',
+  'thai-cuisine':                                          'Southeast Asia',
+  'vietnamese-cuisine':                                    'Southeast Asia',
+  'cambodian-cuisine':                                     'Southeast Asia',
+  'burmese-cuisine':                                       'Southeast Asia',
+  'asian-cuisine':                                         'Southeast Asia', // broad catch-all
+  'asian-cuisines':                                        'Southeast Asia', // alias
+  'australian-cuisine':                                    'Southeast Asia', // closest region available
+
+  // ── East Asia ────────────────────────────────────────────────────────────────
+  'chinese-cuisine':                                       'East Asia',
+  'east-asian-cuisine':                                    'East Asia',
+  'japanese-cuisine':                                      'East Asia',
+  'japanese-cuisine-say-some':                             'East Asia', // alias
+  'korean-cuisine':                                        'East Asia',
+  'szechuan-cuisine':                                      'East Asia',
+  'tibetan-cuisine':                                       'East Asia',
 };
+
+// Human-readable label for each cuisine slug.
+// Alias/variant slugs share the label of their canonical.
+export const CUISINE_LABEL = {
+  // Europe
+  'french-cuisine':                    'French',
+  'french-cuisine-in-general':         'French',
+  'french-basque-cuisine':             'French Basque',
+  'provencal-cuisine':                 'Provençal',
+  'provencal-cuisine-french':          'Provençal',
+  'alsatian-cuisine':                  'Alsatian',
+  'italian-cuisine':                   'Italian',
+  'italian-cuisine-in-general':        'Italian',
+  'italian-cuisine-as-garbanzo-beans': 'Italian',
+  'spanish-cuisine':                   'Spanish',
+  'spanish-basque-cuisine':            'Spanish Basque',
+  'spanish-cuisine-quince-paste':      'Spanish',
+  'portuguese-cuisine':                'Portuguese',
+  'greek-cuisine':                     'Greek',
+  'mediterranean-cuisine':             'Mediterranean',
+  'mediterranean-cuisines':            'Mediterranean',
+  'mediterreanean-cuisine':            'Mediterranean',
+  'german-cuisine':                    'German',
+  'austrian-cuisine':                  'Austrian',
+  'swiss-cuisine':                     'Swiss',
+  'belgian-cuisine':                   'Belgian',
+  'english-cuisine':                   'English',
+  'british-cuisine':                   'British',
+  'irish-cuisine':                     'Irish',
+  'scandinavian-cuisine':              'Scandinavian',
+  'eastern-european-cuisine':          'Eastern European',
+  'eastern-european-cuisines':         'Eastern European',
+  'hungarian-cuisine':                 'Hungarian',
+  'polish-cuisine':                    'Polish',
+  'russian-cuisine':                   'Russian',
+  'georgian-cuisine':                  'Georgian',
+  'european-cuisine':                  'European',
+  'european-cuisines':                 'European',
+  // Americas
+  'american-cuisine':                  'American',
+  'north-american-cuisine':            'North American',
+  'southern-cuisine':                  'Southern (US)',
+  'southern-cuisine-american':         'Southern (US)',
+  'southwestern-cuisine':              'Southwestern (US)',
+  'southwestern-american-cuisine':     'Southwestern (US)',
+  'midwestern-american-cuisine':       'Midwestern (US)',
+  'new-england-cuisine':               'New England',
+  'cajun-cuisine':                     'Cajun',
+  'cajun-creole-cuisines':             'Cajun / Creole',
+  'creole-cuisine':                    'Creole',
+  'soul-food-cuisine':                 'Soul Food',
+  'tex-mex-cuisine':                   'Tex-Mex',
+  'canadian-cuisine':                  'Canadian',
+  'mexican-cuisine':                   'Mexican',
+  'latin-american-cuisine':            'Latin American',
+  'latin-american-cuisines':           'Latin American',
+  'south-american-cuisine':            'South American',
+  'central-american-cuisine':          'Central American',
+  'caribbean-cuisine':                 'Caribbean',
+  'caribbean-cuisines':                'Caribbean',
+  'carribbean-cuisine':                'Caribbean',
+  'west-indian-cuisine':               'West Indian',
+  'west-indies-cuisine':               'West Indian',
+  'cuban-cuisine':                     'Cuban',
+  'jamaican-cuisine':                  'Jamaican',
+  'argentinian-cuisine':               'Argentinian',
+  'chilean-cuisine':                   'Chilean',
+  'brazilian-cuisine':                 'Brazilian',
+  'hawaiian-cuisine':                  'Hawaiian',
+  // Middle East & N. Africa
+  'middle-eastern-cuisine':            'Middle Eastern',
+  'middle-eastern-cuisines':           'Middle Eastern',
+  'eastern-mediterranean-cuisine':     'Eastern Mediterranean',
+  'arabic-cuisine':                    'Arabic',
+  'lebanese-cuisine':                  'Lebanese',
+  'egyptian-cuisine':                  'Egyptian',
+  'iranian-cuisine':                   'Iranian',
+  'turkish-cuisine':                   'Turkish',
+  'moroccan-cuisine':                  'Moroccan',
+  'north-african-cuisine':             'North African',
+  'african-north-cuisine':             'North African',
+  'french-southern-italian-middle-eastern-moroccan-cuisine': 'Mediterranean / Middle Eastern',
+  // Africa
+  'african-cuisine':                   'African',
+  'ethiopian-cuisine':                 'Ethiopian',
+  // South Asia
+  'indian-cuisine':                    'Indian',
+  'indian-cuisine-desserts':           'Indian',
+  'pakistani-cuisine':                 'Pakistani',
+  'sri-lankan-cuisine':                'Sri Lankan',
+  'afghan-cuisine':                    'Afghan',
+  // Southeast Asia
+  'southeast-asian-cuisine':           'Southeast Asian',
+  'southeast-asian-cuisines':          'Southeast Asian',
+  'southeast-asian-cuisine-as-cassia': 'Southeast Asian',
+  'indonesian-cuisine':                'Indonesian',
+  'malaysian-cuisine':                 'Malaysian',
+  'thai-cuisine':                      'Thai',
+  'vietnamese-cuisine':                'Vietnamese',
+  'cambodian-cuisine':                 'Cambodian',
+  'burmese-cuisine':                   'Burmese',
+  'asian-cuisine':                     'Asian',
+  'asian-cuisines':                    'Asian',
+  'australian-cuisine':                'Australian',
+  // East Asia
+  'chinese-cuisine':                   'Chinese',
+  'east-asian-cuisine':                'East Asian',
+  'japanese-cuisine':                  'Japanese',
+  'japanese-cuisine-say-some':         'Japanese',
+  'korean-cuisine':                    'Korean',
+  'szechuan-cuisine':                  'Sichuan',
+  'tibetan-cuisine':                   'Tibetan',
+};
+
+// Derive REGIONS from CUISINE_TO_REGION — grouped by region for the map filter.
+// This replaces the old hand-maintained arrays and stays in sync automatically.
+export const REGIONS = (() => {
+  const out = {};
+  for (const [slug, region] of Object.entries(CUISINE_TO_REGION)) {
+    if (!out[region]) out[region] = [];
+    out[region].push(slug);
+  }
+  return out;
+})();
 
 /**
  * Expand selected region labels into the full set of cuisine slugs they cover.
