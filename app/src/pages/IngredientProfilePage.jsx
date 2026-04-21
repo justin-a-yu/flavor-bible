@@ -27,6 +27,9 @@ export default function IngredientProfilePage() {
     );
   }
 
+  // Strip "(See also ...)" parenthetical from displayed title — shown separately as relatedIds chips
+  const displayLabel = ing.label.replace(/\s*\(see also[^)]*\)/i, '').trim();
+
   const metaEntries = Object.entries(ing.meta ?? {}).filter(([, v]) => v);
   const inlineMeta  = metaEntries.filter(([k]) => INLINE_META_KEYS.has(k));
   const techniques  = ing.meta?.techniques
@@ -54,7 +57,7 @@ export default function IngredientProfilePage() {
 
         {/* ── Hero ── */}
         <div className="profile-hero">
-          <h1 className="profile-name">{ing.label}</h1>
+          <h1 className="profile-name">{displayLabel}</h1>
 
           {inlineMeta.length > 0 && (
             <div className="profile-meta">
