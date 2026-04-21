@@ -27,12 +27,15 @@
 
 ## 2. Routing
 
+Uses **HashRouter** (`/#/` prefix) so the app works on static hosts without server-side fallback.
+
 | Route | Component | Description |
 |---|---|---|
-| `/` | `ExplorerPage` | Main exploration view (lens or board) |
-| `/ingredient/:id` | `IngredientProfilePage` | Full ingredient profile, deep-linkable |
+| `/#/` | `ExplorerPage` | Main exploration view (lens or board) |
+| `/#/ingredient/:id` | `IngredientProfilePage` | Full ingredient profile, deep-linkable |
+| `/#/print` | `PrintPage` | Print-ready layout; opened in new tab by PrintExportButton |
 
-URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
+URL hash on `/#/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 
 ---
 
@@ -50,9 +53,11 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 
   // Filters
   filters: {
-    cuisines: string[],        // selected cuisine/region slugs
+    cuisines: string[],        // selected cuisine/region slugs (unused in UI; kept for future)
+    regions: string[],         // culinary regions derived from pairing metadata
     seasons: string[],         // 'spring' | 'summer' | 'autumn' | 'winter'
     tastes: string[],          // 'sweet' | 'sour' | 'bitter' | 'umami' | 'salty'
+    strengths: number[],       // 1 | 2 | 3 | 4 (Recommended → Holy Grail)
     visibility: 'all' | 'shared' | 'individual',
   },
 
@@ -72,8 +77,8 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
   id: string,          // ingredient id (e.g. 'garlic')
   label: string,
   color: string,       // assigned from palette
-  x: number,          // canvas world position
-  y: number,
+  x: number | null,   // canvas world position; null until placed by heuristic
+  y: number | null,
   r: number,           // radius (no cap)
   seed: number,        // randomization seed for pairing selection
 }
@@ -107,12 +112,19 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 {
   id: string,
   label: string,
-  meta: { taste, weight, volume, season },
-  pairings: [{ id, label, strength, modifier? }],
-  quotes: [{ text, attribution }],
-  tips: string[],
+  meta: {
+    taste, weight, volume, season, function,
+    techniques,              // comma-separated string
+    'botanical relatives',   // comma-separated string
+  },
+  pairings:   [{ id, label, strength, modifier? }],
+  quotes:     [{ text, attribution }],
+  tips:       string[],
   affinities: string[],
-  cuisines: string[],
+  avoids:     [{ id, label, modifier? }],
+  notes:      string[],        // free-form prose paragraphs
+  dishes:     [{ text, attribution }],
+  cuisines:   string[],
 }
 ```
 
@@ -124,14 +136,14 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 
 ### `App`
 
-**Responsibility:** Root component. Sets up routing and initializes state from URL hash on mount.
+**Responsibility:** Root component. Sets up routing.
 
 **Attributes:**
 - No props
 
 **Behaviors:**
-- On mount: reads `location.hash`, calls `loadFromHash()` to restore session
-- Renders `<Router>` with routes for `ExplorerPage` and `IngredientProfilePage`
+- Renders `<HashRouter>` with routes for `ExplorerPage`, `IngredientProfilePage`, and `PrintPage`
+- State restoration from URL hash is handled by `ExplorerPage` on mount
 
 ---
 
@@ -143,9 +155,10 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 - No props; reads everything from Zustand store
 
 **Behaviors:**
-- Renders `Header`, `FilterPanel`, and either `LensCanvas` or `BoardView` based on `activeView`
-- Renders `DetailCard` (always mounted, conditionally visible)
-- Subscribes to viewport and lens state for URL hash sync on change (debounced `history.replaceState`)
+- On mount: reads `window.location.hash`, calls `loadFromHash()` to restore session
+- Always-on store subscriber: whenever `lenses` or `viewport` change, debounces `history.replaceState` to write URL hash. This runs regardless of active view (lens or board), so URLs stay current when adding ingredients from board view.
+- Renders header (logo, `SearchBar`, `LensPills`, `ViewToggle`, `FilterPanel`, legend), then either `LensCanvas` or `BoardView` based on `activeView`
+- Renders `DetailCard` overlay (lens view only) and a hint bar at the bottom
 
 ---
 
@@ -164,34 +177,18 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 
 ### `SearchBar`
 
-**Responsibility:** Ingredient search input with autocomplete dropdown. Always accessible.
+**Responsibility:** Ingredient search input with fuzzy autocomplete dropdown. Always accessible.
 
 **Attributes:**
 - No props; reads `lenses` from store to exclude already-active ingredients
 
 **Behaviors:**
-- On input (≥2 chars): filters `FLAVORS.index` by partial name match, excludes active lens ids, shows `SearchDropdown`
-- On selection: calls `addLens(id)`
+- Uses **Fuse.js** (`threshold: 0.4, distance: 100`) for fuzzy matching against `FLAVORS.index`
+- On input (≥2 chars): runs fuzzy search, excludes active lens ids, shows up to 10 suggestions inline
+- On selection: calls `addLens(id)`, clears input
 - On Escape: closes dropdown
 - On Enter: selects first result
-
-**Child components:**
-- `SearchDropdown` — the suggestion list rendered below the input
-
----
-
-### `SearchDropdown`
-
-**Responsibility:** Renders filtered ingredient suggestions below the search input.
-
-**Attributes:**
-- `items: { id, label }[]` — filtered suggestions
-- `onSelect: (id) => void`
-
-**Behaviors:**
-- Renders up to 10 items
-- On item click: calls `onSelect(id)`, closes dropdown
-- Dismissed on outside click
+- Suggestions rendered inline (no separate component)
 
 ---
 
@@ -210,78 +207,27 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 
 ### `FilterPanel`
 
-**Responsibility:** Collapsible side panel exposing all filter controls.
+**Responsibility:** Collapsible panel exposing all filter controls. All sub-controls are inline (no separate child components).
 
 **Attributes:**
 - No props; reads and writes `filters` from store
 
-**Child components:**
-- `CuisineFilter`
-- `SeasonFilter`
-- `TasteFilter`
-- `VisibilityFilter`
+**Filter rows (in order):**
+
+| Row | Type | Options |
+|---|---|---|
+| Regions | `ToggleGroup` (multi) | Derived from `REGION_MAP` |
+| Seasons | `ToggleGroup` (multi) | Spring / Summer / Autumn / Winter |
+| Tastes | `ToggleGroup` (multi) | Sweet / Sour / Bitter / Umami / Salty |
+| Strengths | `ToggleGroup` (multi) | Recommended / Highly Recommended / Essential / Holy Grail |
+| Overlap | `RadioGroup` (single) | All / Shared / Individual |
 
 **Behaviors:**
-- On any filter change: calls `setFilter(key, value)`
+- Toggle buttons call `toggleFilter(key, value)`; radio buttons call `setFilter(key, value)`
 - "Clear all" button calls `clearFilters()`
 - Filter state persists when switching between lens and board view
-
----
-
-### `CuisineFilter`
-
-**Responsibility:** Multi-select list of cuisine/region options.
-
-**Attributes:**
-- `selected: string[]`
-- `onChange: (cuisines: string[]) => void`
-
-**Behaviors:**
-- Renders all available cuisines derived from `FLAVORS.index`
-- Toggle-selects individual cuisines
-- Selecting none = show all
-
----
-
-### `SeasonFilter`
-
-**Responsibility:** Season selector (Spring / Summer / Autumn / Winter).
-
-**Attributes:**
-- `selected: string[]`
-- `onChange: (seasons: string[]) => void`
-
-**Behaviors:**
-- Renders four season options as toggle buttons
-- Multi-select; selecting none = show all
-
----
-
-### `TasteFilter`
-
-**Responsibility:** Taste profile selector (sweet / sour / bitter / umami / salty).
-
-**Attributes:**
-- `selected: string[]`
-- `onChange: (tastes: string[]) => void`
-
-**Behaviors:**
-- Renders five taste options as toggle buttons
-- Multi-select (OR logic); selecting none = show all
-
----
-
-### `VisibilityFilter`
-
-**Responsibility:** Toggle between All / Shared only / Individual only pairings.
-
-**Attributes:**
-- `value: 'all' | 'shared' | 'individual'`
-- `onChange: (value) => void`
-
-**Behaviors:**
-- Renders three options as a segmented control
-- On change: updates store filter
+- All filters apply to both `LensCanvas` (bubble visibility/fade) and `BoardView` (pairing lists)
+- Active filter count displayed on the panel toggle button
 
 ---
 
@@ -290,22 +236,24 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 **Responsibility:** Full-canvas physics simulation of lens and bubble interaction. The core exploration view.
 
 **Attributes:**
-- No props; reads `lenses`, `filters`, `viewport` from store
+- `onBubbleClick: (bubble, clientX, clientY) => void` — called when user clicks a bubble
 
 **Behaviors:**
 - Mounts a `<canvas>` element via `useRef`
 - Runs physics loop via `requestAnimationFrame` in `useEffect`
-- On lens drag-end: calls `updateLens(id, { x, y })`; triggers URL hash save
-- On scroll over lens: calls `updateLens(id, { r })`; triggers URL hash save (debounced)
+- On lens drag-end: calls `updateLens(id, { x, y })`
+- On scroll over lens: calls `updateLens(id, { r })`
 - On Space+drag: calls `setViewport({ panX, panY })`
 - On Space+scroll: calls `setViewport({ zoom })`, centered on cursor
 - On R key over hovered lens: calls `updateLens(id, { seed: newSeed })`
-- On bubble single-click: opens `DetailCard` for that pairing
+- On bubble single-click: calls `onBubbleClick` (ExplorerPage shows DetailCard)
 - On bubble double-click: calls `addLens(id)` to promote pairing to new lens
-- On lens label click: opens `/ingredient/:id` in new tab
-- Applies active filters to determine which bubbles are visible/faded
+- On lens label click: opens `/#/ingredient/:id` in new tab
+- When lens count changes: places newly added lenses (those with `x === null`) at radially spaced positions around the canvas center; existing lenses are not moved
+- Applies active filters to determine which bubbles are visible/faded (all filter dimensions including strengths and regions)
 - Translates all drawing by `viewport.panX/Y` and scales by `viewport.zoom`
 - Rebuilds bubble layout when `lenses` or `filters` change
+- **Does not** handle URL sync — that is owned by `ExplorerPage`
 
 **Internal state (React refs, not Zustand):**
 - `bubblesRef` — computed bubble physics objects
@@ -387,67 +335,94 @@ URL hash on `/` encodes session state: `#@panX,panY,zoom;id:x,y,r,seed;...`
 
 ### `PrintExportButton`
 
-**Responsibility:** Triggers print or PDF export of the board view.
+**Responsibility:** Opens the print view in a new tab.
 
 **Attributes:**
-- No props
+- No props; reads `lenses` and `filters` from store
 
 **Behaviors:**
-- On click: calls `window.print()`
-- A `@media print` stylesheet hides all chrome (header, filter panel, buttons) and makes cards full-width and clean
-- Alternatively can use a library (e.g. `react-to-print`) to target only the board content node
+- On click: builds `?lenses=id1,id2&seasons=...&tastes=...&visibility=...` query params from current store state, opens `/#/print?{params}` in a new tab
+- The `PrintPage` at that URL is self-contained and has its own print button
+
+---
+
+### `PrintPage`
+
+**Responsibility:** Print-ready layout showing profiles, shared pairings, affinities, and per-lens remaining pairings. Always opened in a new tab.
+
+**Attributes:**
+- No props; reads state from `?lenses=...&seasons=...` search params
+
+**Sections (in order):**
+1. Profile cards (meta, techniques, botanicals, avoids, tips, quotes)
+2. Shared Pairings (multi-lens only, respects `visibility` filter)
+3. Affinities
+4. Remaining Flavors / Pairings (respects `visibility` filter)
+5. Filters footer (shown when content filters are active)
+
+**Behaviors:**
+- No back button (always a new tab)
+- Print button calls `window.print()`
+- Uses `buildPairingMap`, `buildSharedGroups`, `buildAffinities`, `buildLensColumns` from `boardUtils.js`
 
 ---
 
 ### `IngredientProfilePage`
 
-**Responsibility:** Full-page profile for a single ingredient. Opened in a new tab from lens or board view.
+**Responsibility:** Full-page profile for a single ingredient. Opened via `<Link>` from lens, board, or print views.
 
 **Attributes:**
-- Reads `id` from route params (`/ingredient/:id`)
+- Reads `id` from route params (`/#/ingredient/:id`)
+
+**Section order:**
+1. Header (Back button → `useNavigate(-1)`, Print button)
+2. Hero (name, inline meta, techniques chips, botanical relatives chips)
+3. Tips
+4. Pairings (by strength tier, each chip links to `/ingredient/:id`)
+5. Affinities
+6. Avoid (chips, styled distinctly)
+7. Notes
+8. From the book (quotes with attribution)
+9. Dishes
 
 **Behaviors:**
-- Looks up ingredient from `FLAVORS.ingredients[id]`
-- Renders all available data: label, meta (taste/weight/volume/season), full pairing list with strengths, all quotes with attribution, all tips, all affinities
-- Pairing list sorted by strength descending
-- Page is self-contained — no store dependency, no header navigation
-- Clean printable layout (print stylesheet strips any non-content chrome)
+- Back button uses `useNavigate(-1)` (React Router) — goes back in browser history
+- Botanical relatives that match known ingredient ids are rendered as `<Link>` chips
+- Pairing chips that have an id are rendered as `<Link>` chips
+- Page is self-contained — no store dependency
 - If `id` not found: renders a graceful not-found message
-- **Could Have:** Displays a photo of the ingredient (Story 4.3a) — fetched from a public image API (e.g. Unsplash) or served from a local assets folder
 
 ---
 
 ## 6. Component Interaction Map
 
 ```
-App
-├── Router
-│   ├── ExplorerPage  [reads: lenses, activeView, filters, viewport]
-│   │   ├── Header
-│   │   │   ├── SearchBar  [reads: lenses] [writes: addLens]
-│   │   │   │   └── SearchDropdown
-│   │   │   ├── ViewToggle  [reads: activeView] [writes: setActiveView]
-│   │   │   └── Legend
-│   │   ├── FilterPanel  [reads: filters] [writes: setFilter, clearFilters]
-│   │   │   ├── CuisineFilter
-│   │   │   ├── SeasonFilter
-│   │   │   ├── TasteFilter
-│   │   │   └── VisibilityFilter
-│   │   ├── LensCanvas (when activeView='lens')
-│   │   │   [reads: lenses, filters, viewport]
-│   │   │   [writes: updateLens, addLens, setViewport]
-│   │   │   [opens: DetailCard, /ingredient/:id tab]
-│   │   ├── BoardView (when activeView='board')
-│   │   │   [reads: lenses, filters]
-│   │   │   ├── IngredientCard (×N)
-│   │   │   │   [opens: /ingredient/:id tab, PairingDetailDrawer]
-│   │   │   ├── PairingDetailDrawer
-│   │   │   └── PrintExportButton
-│   │   └── DetailCard (lens view overlay)
-│   │       [opens: /ingredient/:id tab]
-│   │       [writes: addLens (promote)]
-│   │
-│   └── IngredientProfilePage  [reads: route param :id → FLAVORS.ingredients]
+App (HashRouter)
+├── ExplorerPage  [reads: lenses, activeView, filters, viewport]
+│   │             [on mount: loadFromHash]
+│   │             [always-on subscriber: history.replaceState on lens/viewport change]
+│   ├── Header (inline)
+│   │   ├── SearchBar  [reads: lenses] [writes: addLens]  (Fuse.js fuzzy search)
+│   │   ├── LensPills  [reads: lenses] [writes: removeLens]
+│   │   ├── ViewToggle  [reads: activeView] [writes: setActiveView]
+│   │   ├── FilterPanel  [reads: filters] [writes: toggleFilter, setFilter, clearFilters]
+│   │   └── Legend (inline)
+│   ├── LensCanvas (when activeView='lens')
+│   │   [reads: lenses, filters, viewport]
+│   │   [writes: updateLens, addLens, setViewport]
+│   │   [calls: onBubbleClick prop → ExplorerPage shows DetailCard]
+│   ├── BoardView (when activeView='board')
+│   │   [reads: lenses, filters]
+│   │   ├── IngredientCard (×N)  [opens: /#/ingredient/:id]
+│   │   └── PrintExportButton  [opens: /#/print?... in new tab]
+│   ├── DetailCard (lens view overlay)  [opens: /#/ingredient/:id]
+│   └── HintBar (inline, changes text per activeView)
+│
+├── IngredientProfilePage  [reads: route param :id → FLAVORS.ingredients]
+│   [back: useNavigate(-1)]
+│
+└── PrintPage  [reads: ?lenses=&seasons=&tastes=&visibility= search params]
+    [no store dependency]
 ```
 
 ---
@@ -469,7 +444,7 @@ Filters and active view are **not** persisted in the URL hash (they are transien
 
 | Story | Components involved |
 |---|---|
-| 1.1 Start from single ingredient | `SearchBar`, `SearchDropdown`, `LensCanvas` |
+| 1.1 Start from single ingredient | `SearchBar`, `LensCanvas` |
 | 1.2 Add second ingredient | `SearchBar`, `LensCanvas` |
 | 1.3 Promote pairing to lens | `LensCanvas`, `DetailCard` |
 | 1.4 Resize lens | `LensCanvas` |
@@ -477,14 +452,14 @@ Filters and active view are **not** persisted in the URL hash (they are transien
 | 1.6 Pan and zoom | `LensCanvas` |
 | 2.1 Switch to board view | `ViewToggle`, `ExplorerPage` |
 | 2.2 Browse as cards | `BoardView`, `IngredientCard` |
-| 2.3 Print or export board view | `PrintExportButton`, print stylesheet |
-| 3.1 Filter by cuisine | `FilterPanel`, `CuisineFilter`, `LensCanvas`, `BoardView` |
-| 3.2 Filter by season | `FilterPanel`, `SeasonFilter`, `LensCanvas`, `BoardView` |
-| 3.3 Filter by taste profile | `FilterPanel`, `TasteFilter`, `LensCanvas`, `BoardView` |
-| 3.4 Filter shared/individual | `FilterPanel`, `VisibilityFilter`, `LensCanvas`, `BoardView` |
-| 4.1 Pairing detail on click | `DetailCard`, `PairingDetailDrawer` |
-| 4.2 Top pairings in detail panel | `DetailCard`, `PairingDetailDrawer` |
-| 4.3 Full ingredient profile page | `IngredientProfilePage`, `IngredientCard`, `LensCanvas` |
-| 4.3a Ingredient photo (Could Have) | `IngredientProfilePage` |
-| 5.1 Search by name | `SearchBar`, `SearchDropdown` |
-| 6.1 Restore from URL | `App` (on mount), `ExplorerPage` (on change) |
+| 2.3 Print or export board view | `PrintExportButton`, `PrintPage` |
+| 3.1 Filter by region | `FilterPanel`, `LensCanvas`, `BoardView` |
+| 3.2 Filter by season | `FilterPanel`, `LensCanvas`, `BoardView` |
+| 3.3 Filter by taste profile | `FilterPanel`, `LensCanvas`, `BoardView` |
+| 3.4 Filter by strength | `FilterPanel`, `LensCanvas`, `BoardView` |
+| 3.5 Filter shared/individual (Overlap) | `FilterPanel`, `LensCanvas`, `BoardView`, `PrintPage` |
+| 4.1 Pairing detail on click | `DetailCard` |
+| 4.3 Full ingredient profile page | `IngredientProfilePage` |
+| 5.1 Fuzzy search by name | `SearchBar` (Fuse.js) |
+| 6.1 Restore from URL | `ExplorerPage` (on mount + always-on subscriber) |
+| 6.2 Add ingredients from board view → updates URL | `BoardView`, `SearchBar`, `ExplorerPage` subscriber |
