@@ -70,9 +70,10 @@ ALTERNATE_NAMES = {
     # Figs (fresh vs dried split; fresh is the primary entry)
     "figs":                   "figs-fresh",
     "fig":                    "figs-fresh",
-    # Walnuts (parser merged "Walnut Oil" + "Walnuts" into one entry)
-    "walnuts":                "walnut-oil-walnuts",
-    "walnut":                 "walnut-oil-walnuts",
+    # Walnuts — split into two entries (book lists both with identical pairings)
+    "walnuts":                "walnuts",
+    "walnut":                 "walnuts",
+    "walnut oil":             "walnut-oil",
     # Coconut merged entry
     "coconut":                "coconut-and-coconut-milk",
     "coconut milk":           "coconut-and-coconut-milk",
@@ -112,6 +113,20 @@ def slugify(text):
 def build():
     data = json.loads(SRC.read_text(encoding="utf-8"))
     ings = data["ingredients"]
+
+    # ── Split merged entries ──────────────────────────────────────────────────
+    # The parser merged "WALNUT OIL" + "WALNUTS" into a single entry because
+    # the two headers appeared consecutively with no content between them.
+    # The book lists both as separate ingredients with identical pairings.
+    # We split here (before label_to_id is built) so all resolution works correctly.
+    split_ings = []
+    for entry in ings:
+        if entry["id"] == "walnut-oil-walnuts":
+            split_ings.append({**entry, "id": "walnut-oil", "label": "Walnut Oil"})
+            split_ings.append({**entry, "id": "walnuts",    "label": "Walnuts"})
+        else:
+            split_ings.append(entry)
+    ings = split_ings
 
     # ── Build label → id lookup ───────────────────────────────────────────────
     # Rules:
@@ -207,6 +222,18 @@ def build():
             "relatedIds": resolve_aliases(entry.get("aliases", [])),
         }
 
+    # ── Fix up split-entry cross-references ──────────────────────────────────
+    if "walnut-oil" in out_ings and "walnuts" in out_ings:
+        # Absorb the tip from the reversed PDF form (oil-walnut → "Avoid cooking
+        # as it burns easily.") into the canonical walnut-oil entry, then drop it.
+        if "oil-walnut" in out_ings:
+            extra_tips = out_ings["oil-walnut"].get("tips", [])
+            if extra_tips:
+                out_ings["walnut-oil"]["tips"] = extra_tips + out_ings["walnut-oil"]["tips"]
+            del out_ings["oil-walnut"]
+        out_ings["walnut-oil"]["relatedIds"] = ["walnuts"]
+        out_ings["walnuts"]["relatedIds"]    = ["walnut-oil"]
+
     # ── Drop ghost/empty entries ──────────────────────────────────────────────
     # Some ingredients exist in the PDF with two name orderings (e.g., both
     # "BLACK PEPPER" and "PEPPER, BLACK").  The parser creates both slugs, but
@@ -229,10 +256,10 @@ def build():
     for iid in ghosts:
         del out_ings[iid]
 
-    # Build sorted index for search (exclude ghosts)
+    # Build sorted index for search — derived from out_ings so it always
+    # reflects exactly what survived ghost-filtering and manual suppression.
     index = sorted(
-        [{"id": e["id"], "label": e["label"]} for e in ings
-         if e["id"] not in ghosts],
+        [{"id": iid, "label": e["label"]} for iid, e in out_ings.items()],
         key=lambda x: x["label"].lower()
     )
 
