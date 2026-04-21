@@ -203,6 +203,8 @@ Scope: filter state in Zustand + filtering logic wired into LensCanvas and Board
 - [x] Lens hint bar — updated to "Click flavor bubble for info"
 - [x] **DetailCard close-on-outside-click** — clicking anywhere outside the detail card now dismisses it; same `mousedown` listener pattern as FilterPanel
 - [x] **IngredientProfilePage "See also" section** — navigable chip row in the hero using `relatedIds`; shows cross-references from book headers (e.g. Anise → Anise, Star + Fennel)
+- [x] **HashRouter → BrowserRouter** — removed `#` from all URLs; `PrintExportButton` and `serializeParams` updated to use clean paths; Vite dev server handles SPA fallback automatically
+- [x] **Cuisine slug → region mapping** — `filterUtils.js` refactored: `CUISINE_TO_REGION` flat map (101 slugs → 7 regions) replaces hand-maintained arrays; `CUISINE_LABEL` added for human-readable display names (e.g. `szechuan-cuisine` → "Sichuan"); `REGIONS` derived automatically; groundwork for future per-cuisine filter UI
 - [ ] Cuisine filter UI (101 options — needs search/scrollable checklist)
 - [ ] Tune RegionMap hit zone coordinates after live visual review
 - [ ] Responsive / mobile considerations
