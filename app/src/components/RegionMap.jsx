@@ -18,25 +18,28 @@ import { useState, useEffect, useRef } from 'react';
 // ── Region metadata ───────────────────────────────────────────────────────────
 
 const REGIONS = [
-  { key: 'Americas',                labelX: 155, labelY: 150, shortLabel: 'Americas'         },
-  { key: 'Europe',                  labelX: 368, labelY: 44,  shortLabel: 'Europe'            },
-  { key: 'Middle East & N. Africa', labelX: 390, labelY: 112, shortLabel: 'M.E. & N. Africa'  },
-  { key: 'Africa',                  labelX: 380, labelY: 198, shortLabel: 'Africa'            },
-  { key: 'South Asia',              labelX: 490, labelY: 125, shortLabel: 'S. Asia'           },
-  { key: 'Southeast Asia',          labelX: 580, labelY: 195, shortLabel: 'SE Asia'           },
-  { key: 'East Asia',               labelX: 543, labelY: 78,  shortLabel: 'E. Asia'           },
+  { key: 'Americas',                shortLabel: 'Americas'        },
+  { key: 'Europe',                  shortLabel: 'Europe'          },
+  { key: 'Middle East & N. Africa', shortLabel: 'M.E. & N. Africa'},
+  { key: 'Africa',                  shortLabel: 'Africa'          },
+  { key: 'South Asia',              shortLabel: 'S. Asia'         },
+  { key: 'Southeast Asia',          shortLabel: 'SE Asia'         },
+  { key: 'East Asia',               shortLabel: 'E. Asia'         },
 ];
 
 // Clickable hit zones in viewBox coords (0 0 701 300).
 // Ordered largest-first so smaller zones render on top and take pointer priority.
+// Tuned against actual country centroids (scale factor 0.3474 from world.svg internal coords):
+//   TR(408,88)  → ME+NA   NG(360,154) ET(422,154) → Africa
+//   TH(540,145) VN(548,139)           → SE Asia    PK(472,107) IN(501,126) → S.Asia
 const ZONES = [
   { key: 'Americas',                x: 0,   y: 0,   w: 308, h: 300 },
-  { key: 'Europe',                  x: 308, y: 0,   w: 120, h: 90  },
-  { key: 'Middle East & N. Africa', x: 308, y: 90,  w: 168, h: 72  },
-  { key: 'Africa',                  x: 308, y: 162, w: 152, h: 138 },
-  { key: 'East Asia',               x: 500, y: 20,  w: 201, h: 120 },
-  { key: 'Southeast Asia',          x: 455, y: 162, w: 246, h: 138 },
-  { key: 'South Asia',              x: 450, y: 82,  w: 82,  h: 82  },
+  { key: 'Europe',                  x: 308, y: 0,   w: 130, h: 88  },
+  { key: 'Middle East & N. Africa', x: 308, y: 88,  w: 168, h: 62  },
+  { key: 'Africa',                  x: 308, y: 150, w: 155, h: 150 },
+  { key: 'East Asia',               x: 500, y: 15,  w: 201, h: 115 },
+  { key: 'Southeast Asia',          x: 455, y: 130, w: 246, h: 170 },
+  { key: 'South Asia',              x: 447, y: 82,  w: 85,  h: 88  },
 ];
 
 // ── Country → region mapping ──────────────────────────────────────────────────
