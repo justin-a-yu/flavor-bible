@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Phases 1–5 complete. Phase 6 (polish) in progress — data quality, print overhaul, avoid pairings, board UX all done.**
+> Status: **Phases 1–5 complete. Phase 6 (polish) in progress — data quality, print overhaul, avoid pairings, board UX, parser overhaul, and ID resolution all done.**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -19,14 +19,15 @@ Each ingredient entry in the JSON:
   "id": "garlic",
   "label": "Garlic",
   "meta": { "taste": "...", "weight": "...", "volume": "...", "season": "...", "techniques": "...", "botanical relatives": "...", "function": "..." },
-  "pairings": [{ "id": "olive-oil", "label": "olive oil", "strength": 3, "modifier": "..." }],
-  "avoids":   [{ "id": "tarragon",  "label": "tarragon",  "modifier": "..." }],
-  "quotes":   [{ "text": "...", "attribution": "Chef Name, Restaurant" }],
-  "tips":     ["Add early in cooking."],
-  "notes":    ["Long-form sidebar text (e.g. pasta pairing guide)"],
-  "dishes":   [{ "text": "Dish Name", "attribution": "Chef, Restaurant" }],
+  "pairings":   [{ "id": "olive-oil", "label": "olive oil", "strength": 3, "modifier": "..." }],
+  "avoids":     [{ "id": "tarragon",  "label": "tarragon",  "modifier": "..." }],
+  "quotes":     [{ "text": "...", "attribution": "Chef Name, Restaurant" }],
+  "tips":       ["Add early in cooking."],
+  "notes":      ["Long-form sidebar text (e.g. pasta pairing guide)"],
+  "dishes":     [{ "text": "Dish Name", "attribution": "Chef, Restaurant" }],
   "affinities": ["garlic + lemon + olive oil"],
-  "cuisines":   ["mediterranean", "afghan", "african-west"]
+  "cuisines":   ["mediterranean", "afghan", "african-west"],
+  "relatedIds": ["anise-star", "fennel"]
 }
 ```
 - **Strength tiers**: 1=Recommended, 2=Highly Recommended, 3=Essential, 4=Holy Grail
@@ -37,6 +38,7 @@ Each ingredient entry in the JSON:
 - **Dishes** — chef dish examples from "Dishes" sidebars; 459 entries across 120 ingredients
 - **Notes** — long-form sidebar prose (e.g. pasta's "Pairing Pastas with Sauces" guide)
 - **Meta extended fields**: `techniques` and `botanical relatives` rendered as chip rows; `function` shown inline
+- **relatedIds** — resolved IDs from "(See also X, Y)" in the book header; displayed as navigable chips on the profile page
 
 ---
 
@@ -78,9 +80,25 @@ Each ingredient entry in the JSON:
 - [x] **Quote re-attribution** — `fix_quote_attribution()` post-processing pass; 10 quotes moved to correct ingredients (Chervil→Chestnuts, Dill→Duck, Fennel→Escarole, Herbes De Provence→Hazelnuts ×2, Hyssop→Tomatoes, Lemon Thyme→Lemon Verbena, Mushrooms→Caraway Seeds, Olive Oil→Olives, Pineapples→Pine Nuts).
 - [x] **AVOID pairings parsed** — 21 ingredients have `avoids[]` entries. Standalone bold-caps `AVOID` line detected as section header; items routed to `avoids[]` (no strength tier). `"avoid"` removed from META_KEYS. `build_data_js.py` resolves avoid IDs same as pairings.
 
+- [x] **Parser overhaul — round 2** (625 ingredients, up from 502):
+  - `canonical_label()` — strip parentheticals before em-dash; preserve em-dash sub-sections (e.g. "Beef — Braised" → `beef-braised`); only strip "— in general"
+  - `is_sidebar_title()` rewrite — strips em-dash qualifier + function words before word count, normalises "/" as space; fixes CHOCOLATE / COCOA and EGGS AND EGG-BASED DISHES being dropped
+  - `classify_line()` — merged cross-ref header fix: extract trailing ingredient from merged lines like "TANGERINES (see Oranges) TARRAGON"; extract pre-paren content when nothing follows ("FISH — IN GENERAL (See individual fish)" → creates fish entry)
+  - Deduplication post-processing pass — keeps highest strength when the same pairing label appears twice (e.g. from column-break PDF repeats)
+  - Dish reassignment pass — misfiled dishes moved to the ingredient whose name starts the dish title (uses full-label matching + singular/plural guard)
+  - Quote re-attribution — 16 quotes moved in this run
+- [x] **ID resolution overhaul** (`build_data_js.py`):
+  - "See also" aliases removed from `label_to_id`; were overwriting 36 ingredient IDs (bourbon→whiskey, fennel→anise, etc.)
+  - `relatedIds` field: "See also" aliases now resolved to IDs and stored for UI navigation
+  - Singular/plural handling uses `iid` (slug) — not `lbl` — so parenthetical labels don't break the check
+  - Extended `ALTERNATE_NAMES` table: comma-inverted forms (mustard, dijon), shorthand aliases (chocolate→chocolate-cocoa, eggs→eggs-and-egg-based-dishes), common variants
+  - Ghost duplicate entries (0 pairings, 0 tips, 0 notes, 0 quotes) filtered from output — these are alternate name orderings the PDF created (black-pepper vs pepper-black)
+  - Result: **561 real ingredients** in index, **76.2% of pairings resolved** (up from ~64%); remaining ~24% are genuinely unresolvable generic cooking terms (butter, cream, soups, etc.)
+
 ### Known parser issues (deferred)
 - [ ] **QUOTE_INDICATORS coverage:** Spot-check pairings for prose leakage after each parse run;
   expand verb stems as new edge cases are found. (See project_quote_indicators.md in memory)
+- [ ] **"walnut-oil-walnuts" merge** — PDF has WALNUT OIL and WALNUTS as adjacent headers; parser merged them into one entry with a combined slug. Should be split into two entries.
 
 ---
 
@@ -183,6 +201,8 @@ Scope: filter state in Zustand + filtering logic wired into LensCanvas and Board
 - [x] Board ingredient links — ingredient names on board cards link to full profile page
 - [x] Board hint bar — "Click ingredient for full profile" / "Click flavor chip for info"
 - [x] Lens hint bar — updated to "Click flavor bubble for info"
+- [x] **DetailCard close-on-outside-click** — clicking anywhere outside the detail card now dismisses it; same `mousedown` listener pattern as FilterPanel
+- [x] **IngredientProfilePage "See also" section** — navigable chip row in the hero using `relatedIds`; shows cross-references from book headers (e.g. Anise → Anise, Star + Fennel)
 - [ ] Cuisine filter UI (101 options — needs search/scrollable checklist)
 - [ ] Tune RegionMap hit zone coordinates after live visual review
 - [ ] Responsive / mobile considerations

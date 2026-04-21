@@ -89,7 +89,7 @@ Full stack: **React + React Flow + Tailwind CSS + static JSON.**
 
 **Lens ideation decisions:**
 
-- **Single click** on a bubble → detail card (X button to close)
+- **Single click** on a bubble → detail card (X button or click outside to close)
 - **Double click** on a bubble → promote it to a new full lens on the canvas
 - **Shared bubbles keep their strength color** (gold/orange/green) — spatial position between lenses is sufficient to communicate "shared". No purple override.
 - **Lens resize** → scroll wheel over a lens (scroll up = bigger, scroll down = smaller); no size cap

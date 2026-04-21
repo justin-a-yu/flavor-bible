@@ -97,6 +97,24 @@ export default function IngredientProfilePage() {
               </div>
             </div>
           )}
+
+          {/* ── See also ── */}
+          {ing.relatedIds?.length > 0 && (
+            <div className="profile-meta-expanded">
+              <span className="profile-meta-key profile-meta-expanded-label">See also:</span>
+              <div className="profile-meta-chips">
+                {ing.relatedIds.map(rid => {
+                  const rel = FLAVORS.ingredients[rid];
+                  if (!rel) return null;
+                  return (
+                    <Link key={rid} to={`/ingredient/${rid}`} className="profile-meta-chip profile-meta-chip--link">
+                      {rel.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ── Tips ── */}

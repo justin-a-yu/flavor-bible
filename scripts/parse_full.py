@@ -76,6 +76,8 @@ NON_INGREDIENT_SLUGS = {
     "salads", "meats", "spices", "vegetarian-dishes",
     # Technique/process sidebars
     "sous-vide-cooking",
+    # Abstract flavor concepts — described in the book but not pairing ingredients
+    "slow-cooked", "sourness",
 }
 
 # These headers appear as sidebars *within* an ingredient entry and should NOT
@@ -163,18 +165,24 @@ def canonical_label(raw):
     """
     Strip qualifiers to produce a clean ID slug for matching.
       'Apricots — In General'                    → 'apricots'
+      'Beef — Braised'                            → 'beef-braised'
       'ANISE (See also Anise, Star, and Fennel)'  → 'anise'
       'AMARETTO (sweet almond liqueur)'           → 'amaretto'
       'Anise, Star'                               → 'anise-star'
       'Anise Hyssop'                              → 'anise-hyssop'
     """
     text = raw.strip()
-    # Strip em-dash / en-dash qualifiers: "— In General", "— Fresh", etc.
-    # Note: do NOT include ASCII hyphen here — compound names like
-    # "FIVE-SPICE POWDER" and "SOUS-VIDE COOKING" use in-word hyphens.
-    text = re.sub(r'\s*[—–]{1,2}\s*.+$', '', text).strip()
-    # Strip all parentheticals
+    # Strip parentheticals first so the em-dash regex always sees end-of-string.
+    # "NUTS — IN GENERAL (See also Pecans, Walnuts, etc.)" must become "nuts",
+    # not "nuts-in-general" (which happens when parens are stripped after).
     text = re.sub(r'\([^)]*\)', '', text).strip()
+    # Strip ONLY "— In General" / "— in general" em-dash qualifiers.
+    # All other em-dash qualifiers (e.g. "— Braised", "— Smoked", "— Oyster")
+    # are kept so sub-sections become separate ingredient entries
+    # (e.g. "Beef — Braised" → slug "beef-braised", not merged into "beef").
+    # Note: do NOT touch ASCII hyphens — compound names like
+    # "FIVE-SPICE POWDER" and "SOUS-VIDE COOKING" use in-word hyphens.
+    text = re.sub(r'\s*[—–]{1,2}\s*in general\s*$', '', text, flags=re.IGNORECASE).strip()
     return slugify(text)
 
 
@@ -329,20 +337,36 @@ def preprocess_block_lines(block):
     return out
 
 
+_SIDEBAR_STOP = frozenset({
+    'and', 'or', 'of', 'the', 'in', 'on', 'at', 'for', 'a', 'an', 'to',
+    'with', 'as', 'by', 'aka', 'see', 'also',
+})
+
 def is_sidebar_title(text):
     """
     True if a header-sized line looks like a chapter sidebar or section title
     rather than an ingredient name. Real ingredient names are short (≤4 content
-    words after stripping parentheticals and em-dash qualifiers); sidebar titles
-    are longer prose phrases (e.g. "On Selecting the Right Oil").
-    Em-dashes are normalized to spaces before counting so that entries like
-    "CHILE PEPPERS — IN GENERAL" (content: CHILE PEPPERS) are not over-counted.
+    words); sidebar titles are longer prose phrases.
+
+    Counting rules:
+      • Strip parentheticals and everything from the first em-dash onward —
+        the qualifier ("— In General", "— Braised") is irrelevant for length.
+      • Normalize "/" to a space so "CHOCOLATE / COCOA" counts as 2 words.
+      • Strip leading/trailing hyphens from tokens ("EGG-" → "EGG").
+      • Exclude common function words so "EGGS AND EGG-BASED DISHES" counts
+        its 4 content words, not 5 with "and".
     """
     base = re.sub(r'\([^)]*\)', '', text).strip()
-    # Normalise em-dash / en-dash to space so "SALT — IN GENERAL" → "SALT IN GENERAL"
-    base = re.sub(r'[—–]', ' ', base)
-    # Split on whitespace and commas; count only non-empty word-like tokens
-    words = [w for w in re.split(r'[\s,]+', base) if w]
+    # Strip em-dash qualifier entirely — we only count the ingredient name part
+    base = re.sub(r'\s*[—–].*$', '', base).strip()
+    # Normalise slash-separated alternates: "CHOCOLATE / COCOA" → "CHOCOLATE  COCOA"
+    base = base.replace('/', ' ')
+    # Count only meaningful content words
+    tokens = re.split(r'[\s,]+', base)
+    words = [
+        t.strip('-') for t in tokens
+        if t.strip('-') and t.strip('-').lower() not in _SIDEBAR_STOP
+    ]
     return len(words) >= 5
 
 
@@ -386,6 +410,17 @@ def classify_line(line_spans):
     if HEADER_FONT in font and size >= HEADER_SIZE:
         # Pure cross-reference (not "See also")
         if re.search(r'\(see\b(?! also)', full_text, re.IGNORECASE):
+            # Handle "TANGERINES (see Oranges, Mandarin) TARRAGON" — a cross-ref
+            # merged with a real ingredient on the same line.  Extract whatever
+            # follows the closing paren and treat it as the actual header.
+            after = re.sub(r'^.*\)', '', full_text).strip()
+            if after:
+                return ("header", 0, after)
+            # Nothing after closing paren — extract pre-paren content as the header.
+            # e.g. "FISH — IN GENERAL (See individual fish; Seafood)" → "FISH — IN GENERAL"
+            before = re.sub(r'\s*\(see\b[^)]*\)', '', full_text, flags=re.IGNORECASE).strip()
+            if before:
+                return ("header", 0, before)
             return ("skip", 0, full_text)
         if is_cuisine_header(full_text):
             return ("cuisine_header", 0, full_text)
@@ -913,6 +948,87 @@ def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
             if target and target in ingredients:
                 if cuisine_slug not in ingredients[target]["cuisines"]:
                     ingredients[target]["cuisines"].append(cuisine_slug)
+
+    # ── Pairing deduplication pass ────────────────────────────────────────────
+    # Some entries appear twice in the PDF (column-break repeats, e.g. Sardines,
+    # Sauerkraut) or pick up stray pairings from merged cross-ref headers.
+    # Keep only the highest-strength occurrence for each pairing label.
+    total_dupes = 0
+    for entry in ingredients.values():
+        seen = {}   # label → index in best list
+        best = []
+        for p in entry["pairings"]:
+            label = p["label"]
+            if label not in seen:
+                seen[label] = len(best)
+                best.append(p)
+            else:
+                if p["strength"] > best[seen[label]]["strength"]:
+                    best[seen[label]] = p
+                total_dupes += 1
+        entry["pairings"] = best
+    if total_dupes:
+        print(f"Deduplication: removed {total_dupes} duplicate pairing(s).")
+
+    # ── Dish reassignment pass ────────────────────────────────────────────────
+    # Dishes are sometimes attributed to the preceding ingredient when the
+    # sidebar appears at a column break (e.g. Pimenton gets Pineapple's dishes).
+    # Heuristic: if a dish name starts with a known ingredient label (or its
+    # singular form) and the host ingredient's key word doesn't appear in the
+    # dish text, move the dish to the matching ingredient.
+    #
+    # We only index FULL labels (not single first-words of multi-word labels)
+    # to prevent "Grilled Dishes" from capturing "Grilled Duck Breast…".
+    label_to_slug_dishes = {}
+    for slug, entry in ingredients.items():
+        lbl = entry["label"].lower()
+        label_to_slug_dishes[lbl] = slug
+        label_to_slug_dishes[slug.replace("-", " ")] = slug
+        # Add singular form for common plurals so "pineapple-…" matches "pineapples"
+        if lbl.endswith("s") and len(lbl) >= 5:
+            singular = lbl[:-1]
+            if len(singular) >= 4:
+                label_to_slug_dishes.setdefault(singular, slug)
+
+    def dish_starts_with(dish_text, candidate):
+        """True if dish_text begins with candidate followed by a word boundary."""
+        if not dish_text.startswith(candidate):
+            return False
+        pos = len(candidate)
+        return pos >= len(dish_text) or dish_text[pos] in " -,;:()["
+
+    dishes_moved = 0
+    for slug, entry in list(ingredients.items()):
+        host_key = entry["label"].lower().split()[0].rstrip(",")
+        # Also check singular form so "pears" catches "pear" in dish names
+        host_key_bare = host_key.rstrip("s") if host_key.endswith("s") else host_key
+        to_reassign = []
+        for i, dish in enumerate(entry.get("dishes", [])):
+            dish_text_lower = dish["text"].lower()
+            for candidate_label, candidate_slug in label_to_slug_dishes.items():
+                if candidate_slug == slug:
+                    continue
+                if len(candidate_label) < 4:
+                    continue
+                if not dish_starts_with(dish_text_lower, candidate_label):
+                    continue
+                # Only reassign when neither the host's plural nor singular key
+                # appears in the dish name — prevents "Spring Artichoke Fritto"
+                # from leaving Artichokes, or "Honey-Roasted Pear Napoleon"
+                # from leaving Pears.
+                host_in_dish = (host_key in dish_text_lower or
+                                (host_key_bare != host_key and host_key_bare in dish_text_lower))
+                if not host_in_dish:
+                    to_reassign.append((i, candidate_slug))
+                    break
+        for i, target_slug in reversed(to_reassign):
+            dish = entry["dishes"].pop(i)
+            ingredients[target_slug]["dishes"].append(dish)
+            dishes_moved += 1
+            print(f"  Dish reassigned [{entry['label']}] → "
+                  f"[{ingredients[target_slug]['label']}]: {dish['text'][:60]}")
+    if dishes_moved:
+        print(f"Dish reassignment: moved {dishes_moved} dish(es).")
 
     # ── Quote re-attribution pass ──────────────────────────────────────────────
     fix_quote_attribution(ingredients)

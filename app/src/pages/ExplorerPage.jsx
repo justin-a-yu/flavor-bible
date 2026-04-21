@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import LensCanvas from '../components/LensCanvas';
@@ -137,6 +137,19 @@ function LensPills() {
 // ── Bubble detail card ─────────────────────────────────────────────────────────
 
 function DetailCard({ bubble, clientX, clientY, onClose }) {
+  const cardRef = useRef(null);
+
+  // Close on outside click — same pattern as FilterPanel
+  useEffect(() => {
+    const handler = (e) => {
+      if (cardRef.current && !cardRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [onClose]);
+
   if (!bubble) return null;
   const p   = bubble.pairing;
   const col = STRENGTH_COLOR[p.strength];
@@ -147,7 +160,7 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
   const top  = Math.min(clientY - 20, window.innerHeight - 300);
 
   return (
-    <div style={{
+    <div ref={cardRef} style={{
       position: 'fixed', left, top,
       background: '#fff', border: '1px solid #e0d6c4', borderRadius: 10,
       boxShadow: '0 10px 32px rgba(0,0,0,0.1)', padding: '16px 18px',
