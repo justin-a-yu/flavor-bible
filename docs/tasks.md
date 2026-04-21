@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Phases 1–5 complete. Phase 6 (polish) in progress — data quality, print overhaul, avoid pairings, board UX, parser overhaul, and ID resolution all done.**
+> Status: **Phases 1–5 complete. Phase 6 (polish) nearly done — region map tuned, URL cleanup, cuisine mapping, and all core features shipped. Remaining: cuisine granular filter UI, mobile layout, deployment.**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -169,7 +169,6 @@ Scope: filter state in Zustand + filtering logic wired into LensCanvas and Board
 
 ### Deferred
 - [ ] Cuisine filter UI (101 options — needs search/scrollable checklist)
-- [ ] Tune RegionMap hit zone coordinates after live visual review
 
 ---
 
@@ -205,8 +204,10 @@ Scope: filter state in Zustand + filtering logic wired into LensCanvas and Board
 - [x] **IngredientProfilePage "See also" section** — navigable chip row in the hero using `relatedIds`; shows cross-references from book headers (e.g. Anise → Anise, Star + Fennel)
 - [x] **HashRouter → BrowserRouter** — removed `#` from all URLs; `PrintExportButton` and `serializeParams` updated to use clean paths; Vite dev server handles SPA fallback automatically
 - [x] **Cuisine slug → region mapping** — `filterUtils.js` refactored: `CUISINE_TO_REGION` flat map (101 slugs → 7 regions) replaces hand-maintained arrays; `CUISINE_LABEL` added for human-readable display names (e.g. `szechuan-cuisine` → "Sichuan"); `REGIONS` derived automatically; groundwork for future per-cuisine filter UI
+- [x] **RegionMap hit zone tuning** — calibrated all 7 zone rects against actual country centroids (world.svg scale factor 0.3474); Turkey, Nigeria, Ethiopia, Vietnam, Thailand now register their correct region; East Asia / SE Asia share a clean boundary at y=130; removed unused labelX/labelY dead code
 - [ ] Cuisine filter UI (101 options — needs search/scrollable checklist)
-- [ ] Tune RegionMap hit zone coordinates after live visual review
+- [ ] Responsive / mobile layout
+- [ ] Deployment (Vercel / Netlify)
 - [ ] Responsive / mobile considerations
 - [ ] Performance optimization for large graph
 - [ ] Testing and QA
