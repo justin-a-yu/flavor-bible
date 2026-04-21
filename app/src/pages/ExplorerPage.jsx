@@ -1,9 +1,10 @@
 import { useState, useCallback, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import LensCanvas from '../components/LensCanvas';
 import BoardView from '../components/BoardView';
 import FilterPanel from '../components/FilterPanel';
-import useExplorerStore, { serializeHash } from '../store/useExplorerStore';
+import useExplorerStore, { serializeParams, deserializeParams } from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 
 // ── Minimal search bar ─────────────────────────────────────────────────────────
@@ -216,25 +217,30 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
 export default function ExplorerPage() {
   const activeView = useExplorerStore(s => s.activeView);
   const [detail, setDetail] = useState(null); // { bubble, clientX, clientY }
+  const [searchParams] = useSearchParams();
 
-  // Restore state from URL hash on initial load
+  // Restore full state from URL query params on mount
   useEffect(() => {
-    if (window.location.hash) {
-      useExplorerStore.getState().loadFromHash(window.location.hash);
-    }
-  }, []);
+    const state = deserializeParams(searchParams);
+    if (state) useExplorerStore.getState().loadFromHash(state);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Always-on URL sync — updates hash whenever lenses or viewport change
+  // Always-on URL sync — writes /#/?... whenever lenses, viewport, view, or filters change
   useEffect(() => {
     let timer;
     const unsub = useExplorerStore.subscribe((state, prevState) => {
-      if (state.lenses === prevState.lenses && state.viewport === prevState.viewport) return;
+      if (
+        state.lenses    === prevState.lenses    &&
+        state.viewport  === prevState.viewport  &&
+        state.activeView === prevState.activeView &&
+        state.filters   === prevState.filters
+      ) return;
       if (state.lenses.length === 0) return;
       clearTimeout(timer);
       timer = setTimeout(() => {
-        const { lenses, viewport } = useExplorerStore.getState();
-        const hash = serializeHash({ lenses, viewport });
-        history.replaceState(null, '', hash || location.pathname + location.search);
+        const s = useExplorerStore.getState();
+        const url = serializeParams(s);
+        history.replaceState(null, '', url || '/#/');
       }, 300);
     });
     return () => { unsub(); clearTimeout(timer); };

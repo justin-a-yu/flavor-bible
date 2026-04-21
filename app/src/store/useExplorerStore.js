@@ -97,10 +97,9 @@ const useExplorerStore = create((set, get) => ({
     set(state => ({ viewport: { ...state.viewport, ...patch } }));
   },
 
-  // ── Hash restore ──────────────────────────────────────────────────────
+  // ── State restore ─────────────────────────────────────────────────────
 
-  loadFromHash(hash) {
-    const state = deserializeHash(hash);
+  loadFromHash(state) {
     if (!state) return;
     set(state);
   },
@@ -108,60 +107,67 @@ const useExplorerStore = create((set, get) => ({
 
 export default useExplorerStore;
 
-// ── URL hash utilities (exported standalone) ───────────────────────────────
+// ── URL state utilities (exported standalone) ──────────────────────────────
+//
+// State lives in query params on /#/ so HashRouter can match the "/" route.
+// Format: /#/?lenses=id:x,y,r,seed~id2:x,y,r,seed&vp=panX,panY,zoom
+//         &v=board&seasons=spring,summer&tastes=sweet&strengths=3,4
+//         &regions=french&vis=shared
 
-/**
- * serializeHash({ lenses, viewport })
- * → "#@panX,panY,zoom;id:x,y,r,seed;..."
- */
-export function serializeHash({ lenses, viewport }) {
+export function serializeParams({ lenses, viewport, activeView, filters }) {
   if (!lenses || lenses.length === 0) return '';
-  const cam = `@${Math.round(viewport.panX)},${Math.round(viewport.panY)},${viewport.zoom.toFixed(3)}`;
-  const parts = lenses.map(l =>
+  const p = new URLSearchParams();
+  p.set('lenses', lenses.map(l =>
     `${l.id}:${Math.round(l.x)},${Math.round(l.y)},${Math.round(l.r)},${l.seed}`
-  );
-  return '#' + [cam, ...parts].join(';');
+  ).join('~'));
+  p.set('vp', `${Math.round(viewport.panX)},${Math.round(viewport.panY)},${viewport.zoom.toFixed(3)}`);
+  if (activeView && activeView !== 'lens') p.set('v', activeView);
+  if (filters?.seasons?.length)    p.set('seasons',   filters.seasons.join(','));
+  if (filters?.tastes?.length)     p.set('tastes',    filters.tastes.join(','));
+  if (filters?.strengths?.length)  p.set('strengths', filters.strengths.join(','));
+  if (filters?.regions?.length)    p.set('regions',   filters.regions.join(','));
+  if (filters?.visibility && filters.visibility !== 'all') p.set('vis', filters.visibility);
+  return `/#/?${p.toString()}`;
 }
 
-/**
- * deserializeHash(hash)
- * Parses the URL hash string and returns a partial store state,
- * or null if the hash is empty/invalid.
- */
-export function deserializeHash(hash) {
-  const raw = hash.startsWith('#') ? hash.slice(1) : hash;
-  if (!raw) return null;
+export function deserializeParams(searchParams) {
+  const lensesStr = searchParams.get('lenses');
+  if (!lensesStr) return null;
 
-  const viewport = { ...DEFAULT_VIEWPORT };
-  const lenses   = [];
-
-  for (const part of raw.split(';')) {
-    if (part.startsWith('@')) {
-      const [px, py, pz] = part.slice(1).split(',').map(Number);
-      if (!isNaN(px)) viewport.panX = px;
-      if (!isNaN(py)) viewport.panY = py;
-      if (!isNaN(pz) && pz > 0) viewport.zoom = pz;
-      continue;
-    }
-
+  const lenses = [];
+  for (const part of lensesStr.split('~')) {
     const colonIdx = part.indexOf(':');
     if (colonIdx === -1) continue;
     const id   = part.slice(0, colonIdx);
     const nums = part.slice(colonIdx + 1).split(',').map(Number);
     if (nums.length < 4 || !FLAVORS.ingredients[id]) continue;
-
     const [x, y, r, seed] = nums;
     const ing = FLAVORS.ingredients[id];
     lenses.push({
-      id,
-      label: ing.label,
+      id, label: ing.label,
       color: LENS_COLORS[lenses.length % LENS_COLORS.length],
-      x, y,
-      r: Math.max(80, r),
-      seed,
+      x, y, r: Math.max(80, r), seed,
     });
   }
-
   if (lenses.length === 0) return null;
-  return { lenses, viewport };
+
+  const viewport = { ...DEFAULT_VIEWPORT };
+  const vpStr = searchParams.get('vp');
+  if (vpStr) {
+    const [px, py, pz] = vpStr.split(',').map(Number);
+    if (!isNaN(px)) viewport.panX = px;
+    if (!isNaN(py)) viewport.panY = py;
+    if (!isNaN(pz) && pz > 0) viewport.zoom = pz;
+  }
+
+  const activeView = searchParams.get('v') || 'lens';
+
+  const filters = { ...DEFAULT_FILTERS };
+  const seasons   = searchParams.get('seasons');   if (seasons)   filters.seasons   = seasons.split(',').filter(Boolean);
+  const tastes    = searchParams.get('tastes');    if (tastes)    filters.tastes    = tastes.split(',').filter(Boolean);
+  const strengths = searchParams.get('strengths'); if (strengths) filters.strengths = strengths.split(',').map(Number).filter(Boolean);
+  const regions   = searchParams.get('regions');   if (regions)   filters.regions   = regions.split(',').filter(Boolean);
+  const vis       = searchParams.get('vis');       if (vis)       filters.visibility = vis;
+
+  return { lenses, viewport, activeView, filters };
 }
