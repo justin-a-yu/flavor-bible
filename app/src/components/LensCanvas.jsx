@@ -3,12 +3,9 @@ import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 import { seededShuffle } from '../utils/rng';
 import { matchesFilters } from '../utils/filterUtils';
+import { STRENGTH_COLOR } from '../utils/boardUtils';
 
 // ── Drawing helpers ────────────────────────────────────────────────────────────
-
-function strengthColor(s) {
-  return s >= 3 ? '#d4a840' : s === 2 ? '#e07840' : '#5a9e6a';
-}
 
 function strengthBubbleR(s) {
   return s >= 3 ? 22 : s === 2 ? 17 : 13;
@@ -406,7 +403,7 @@ export default function LensCanvas({ onBubbleClick }) {
       if (b.scale < 0.01) return;
 
       const isHovered = st.hoveredBubble && st.hoveredBubble.uid === b.uid;
-      const col = strengthColor(b.pairing.strength);
+      const col = STRENGTH_COLOR[b.pairing.strength];
       const r   = (isHovered ? b.r + 3 : b.r) * b.scale;
 
       // Shared bubbles always full; non-shared bubbles use their owning lens's dim level

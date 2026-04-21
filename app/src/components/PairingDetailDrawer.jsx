@@ -1,14 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { FLAVORS } from '../data/flavors_data';
 import useExplorerStore from '../store/useExplorerStore';
-
-// ── Helpers ────────────────────────────────────────────────────────────────────
-
-const STRENGTH_LABEL = ['', 'Recommended', 'Highly Recommended', 'Essential', 'Holy Grail'];
-
-function strengthColor(s) {
-  return s >= 3 ? '#d4a840' : s === 2 ? '#e07840' : '#5a9e6a';
-}
+import { STRENGTH_COLOR, STRENGTH_LABEL } from '../utils/boardUtils';
 
 // ── Component ──────────────────────────────────────────────────────────────────
 
@@ -46,7 +39,7 @@ export default function PairingDetailDrawer({ pairing, onClose }) {
   if (!pairing) return null;
 
   const ing = pairing.id ? FLAVORS.ingredients[pairing.id] : null;
-  const col = strengthColor(pairing.strength);
+  const col = STRENGTH_COLOR[pairing.strength];
 
   return (
     <div

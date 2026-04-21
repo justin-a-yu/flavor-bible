@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { FLAVORS } from '../data/flavors_data';
 import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
 import {
-  STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LABEL_TO_ID,
+  STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER,
   buildPairingMap, buildSharedGroups, buildAffinities, buildLensColumns, parseAffinityStr,
 } from '../utils/boardUtils';
 import './PrintPage.css';

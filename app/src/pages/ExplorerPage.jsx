@@ -5,6 +5,7 @@ import LensCanvas from '../components/LensCanvas';
 import BoardView from '../components/BoardView';
 import FilterPanel from '../components/FilterPanel';
 import useExplorerStore, { serializeParams, deserializeParams } from '../store/useExplorerStore';
+import { STRENGTH_COLOR, STRENGTH_LABEL } from '../utils/boardUtils';
 import { FLAVORS } from '../data/flavors_data';
 
 // ── Minimal search bar ─────────────────────────────────────────────────────────
@@ -135,15 +136,10 @@ function LensPills() {
 
 // ── Bubble detail card ─────────────────────────────────────────────────────────
 
-const STRENGTH_LABEL = ['', 'Recommended', 'Highly Recommended', 'Essential', 'Holy Grail'];
-function strengthColor(s) {
-  return s >= 3 ? '#d4a840' : s === 2 ? '#e07840' : '#5a9e6a';
-}
-
 function DetailCard({ bubble, clientX, clientY, onClose }) {
   if (!bubble) return null;
   const p   = bubble.pairing;
-  const col = strengthColor(p.strength);
+  const col = STRENGTH_COLOR[p.strength];
   const ing = p.id ? FLAVORS.ingredients[p.id] : null;
 
   // Position: try right of cursor, flip left if near edge

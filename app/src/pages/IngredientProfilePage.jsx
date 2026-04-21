@@ -1,26 +1,10 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FLAVORS } from '../data/flavors_data';
+import { STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LABEL_TO_ID } from '../utils/boardUtils';
 import './IngredientProfilePage.css';
-
-// ─── Constants ────────────────────────────────────────────────────────────────
-
-const STRENGTH_COLOR = { 4: '#d4a840', 3: '#d4a840', 2: '#e07840', 1: '#5a9e6a' };
-const STRENGTH_LABEL = { 4: 'Holy Grail', 3: 'Essential', 2: 'Highly Recommended', 1: 'Recommended' };
-const TIER_ORDER     = [4, 3, 2, 1];
 
 // Meta fields shown inline (short values); others get their own expanded rows
 const INLINE_META_KEYS = new Set(['taste', 'weight', 'volume', 'season', 'function']);
-
-// Label → ingredient id lookup for linking botanical relatives
-const LABEL_TO_ID = Object.fromEntries(
-  FLAVORS.index.flatMap(item => {
-    const full = item.label.toLowerCase();
-    const entries = [[full, item.id]];
-    const paren = full.indexOf(' (');
-    if (paren > 0) entries.push([full.slice(0, paren).trim(), item.id]);
-    return entries;
-  })
-);
 
 // ─── IngredientProfilePage ────────────────────────────────────────────────────
 

@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom';
-
-const STRENGTH_LABEL = { 4: 'Holy Grail', 3: 'Essential', 2: 'Highly Recommended', 1: 'Recommended' };
-const STRENGTH_COLOR = { 4: '#d4a840', 3: '#d4a840', 2: '#e07840', 1: '#5a9e6a' };
-const TIER_ORDER     = [4, 3, 2, 1];
+import { STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER } from '../utils/boardUtils';
 
 /**
  * IngredientCard — one column per active lens in the Remaining Flavors section.
