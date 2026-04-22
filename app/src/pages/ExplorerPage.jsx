@@ -260,34 +260,43 @@ export default function ExplorerPage() {
 
       {/* Header — single row; pills sit inline with the strength legend */}
       <header className="app-header" style={{
-        display: 'flex', alignItems: 'center', gap: 20,
+        display: 'flex', flexDirection: 'column',
         padding: '14px 28px', background: '#fff', borderBottom: '1px solid #e8e0d0',
-        flexShrink: 0, zIndex: 20, flexWrap: 'wrap',
+        flexShrink: 0, zIndex: 20,
       }}>
-        <div style={{ fontSize: '1rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#b8863a', fontWeight: 'normal', flexShrink: 0 }}>
-          Flavor <span style={{ color: '#2c2416' }}>Bible</span> Explorer
-        </div>
-        <SearchBar />
-        {lenses.length > 0 && <LensPills />}
-        <ViewToggle />
-        <FilterPanel />
-        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em', flexWrap: 'wrap' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
-            Essential &nbsp;/&nbsp;
-            <span style={{ background: 'radial-gradient(ellipse at center, rgba(212,168,64,0.55) 0%, rgba(212,168,64,0.22) 55%, transparent 100%)', padding: '1px 7px', borderRadius: 10 }}>
-              Holy Grail
+        {/* Row 1: controls — fixed height, never shifts */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
+          <div style={{ fontSize: '1rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#b8863a', fontWeight: 'normal', flexShrink: 0 }}>
+            Flavor <span style={{ color: '#2c2416' }}>Bible</span> Explorer
+          </div>
+          <SearchBar />
+          <ViewToggle />
+          <FilterPanel />
+          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
+              Essential &nbsp;/&nbsp;
+              <span style={{ background: 'radial-gradient(ellipse at center, rgba(212,168,64,0.55) 0%, rgba(212,168,64,0.22) 55%, transparent 100%)', padding: '1px 7px', borderRadius: 10 }}>
+                Holy Grail
+              </span>
             </span>
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#e07840', display: 'inline-block' }} />
-            Highly Recommended
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#5a9e6a', display: 'inline-block' }} />
-            Recommended
-          </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#e07840', display: 'inline-block' }} />
+              Highly Recommended
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#5a9e6a', display: 'inline-block' }} />
+              Recommended
+            </span>
+          </div>
         </div>
+
+        {/* Row 2: ingredient pills — appears below when ingredients are active */}
+        {lenses.length > 0 && (
+          <div style={{ marginTop: 10 }}>
+            <LensPills />
+          </div>
+        )}
       </header>
 
       {/* Main view — both views share this container so the empty-state overlay is identical */}
