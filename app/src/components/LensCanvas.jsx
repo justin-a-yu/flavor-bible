@@ -53,7 +53,7 @@ function lensesOverlapping(l1, l2) {
 // Returns a Map of uid → {x, y} in world (canvas) coordinates.
 function computeShelfTargets(bubbles, snapCX, snapCY, maxRowW) {
   const shared = bubbles.filter(b => b.isShared);
-  if (shared.length === 0) return new Map();
+  if (shared.length === 0) return { targets: new Map(), rows: [] };
 
   // Group by intersection set (sorted lensIds key), most lenses first
   const groupMap = new Map();
