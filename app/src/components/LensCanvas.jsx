@@ -202,6 +202,10 @@ export default function LensCanvas({ onBubbleClick }) {
     });
 
     // Determine which bubbles to display
+    // When a strength filter is active the set is already narrowed, so skip
+    // ring-capacity caps — otherwise previously-shared pairings that become
+    // individual under the filter would incorrectly get cut by the cap.
+    const strengthFiltered = filters.strengths?.length > 0;
     const s3Counts = {}, s2Counts = {}, s1Counts = {};
     const toDisplay = Object.values(flavorMap).filter(({ pairing, lensIds }) => {
       // Visibility filter: shared-only mode
@@ -209,6 +213,9 @@ export default function LensCanvas({ onBubbleClick }) {
       if (filters.visibility === 'individual' && lensIds.length > 1) return false;
 
       if (lensIds.length > 1) return true;
+
+      // Strength filter already narrowed the set — don't additionally cap by ring
+      if (strengthFiltered) return true;
 
       const lid   = lensIds[0];
       const lensR = lenses.find(l => l.id === lid)?.r || 120;

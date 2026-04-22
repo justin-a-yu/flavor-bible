@@ -281,7 +281,10 @@ export default function PrintPage() {
   const pairingFilterFn = contentFiltersActive
     ? p => {
         if (filters.strengths.length > 0 && !filters.strengths.includes(p.strength)) return false;
-        if (!p.id) return filters.strengths.length === 0;
+        if (!p.id) {
+          const hasContentFilters = (filters.regions?.length > 0) || (filters.seasons?.length > 0) || (filters.tastes?.length > 0);
+          return !hasContentFilters;
+        }
         return matchesFilters(FLAVORS.ingredients[p.id], filters);
       }
     : null;
