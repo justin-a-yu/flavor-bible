@@ -268,10 +268,10 @@ export default function ExplorerPage() {
           Flavor <span style={{ color: '#2c2416' }}>Bible</span> Explorer
         </div>
         <SearchBar />
+        {lenses.length > 0 && <LensPills />}
         <ViewToggle />
         <FilterPanel />
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em', flexWrap: 'wrap' }}>
-          {lenses.length > 0 && <LensPills />}
           <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
             Essential &nbsp;/&nbsp;
@@ -298,7 +298,7 @@ export default function ExplorerPage() {
           <>
             <LensCanvas onBubbleClick={handleBubbleClick} />
             {lenses.length > 0 && (
-              <div style={{ position: 'absolute', top: 12, right: 16, zIndex: 10 }}>
+              <div style={{ position: 'absolute', top: 10, right: 28, zIndex: 10 }}>
                 <PrintExportButton />
               </div>
             )}
