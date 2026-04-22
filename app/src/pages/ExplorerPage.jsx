@@ -320,7 +320,7 @@ export default function ExplorerPage() {
         {activeView === 'lens' ? (
           <>
             <span>Drag lenses together — shared flavors migrate to the overlap</span>
-            <span>Click flavor bubble for info · Double-click to open as lens · Scroll to resize · R to shuffle · Space+drag to pan · Space+scroll to zoom</span>
+            <span>Click flavor bubble for info · Double-click to open as lens · Scroll to resize · R to shuffle · E to explode shared · Space+drag to pan · Space+scroll to zoom</span>
           </>
         ) : (
           <>

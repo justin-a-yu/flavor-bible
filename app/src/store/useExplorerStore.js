@@ -21,10 +21,11 @@ const DEFAULT_VIEWPORT = {
 
 // ── Store ──────────────────────────────────────────────────────────────────
 const useExplorerStore = create((set, get) => ({
-  lenses:     [],
-  activeView: 'lens',
-  filters:    { ...DEFAULT_FILTERS },
-  viewport:   { ...DEFAULT_VIEWPORT },
+  lenses:      [],
+  activeView:  'lens',
+  filters:     { ...DEFAULT_FILTERS },
+  viewport:    { ...DEFAULT_VIEWPORT },
+  explodeMode: false,
 
   // ── Lens actions ──────────────────────────────────────────────────────
 
@@ -95,6 +96,12 @@ const useExplorerStore = create((set, get) => ({
 
   setViewport(patch) {
     set(state => ({ viewport: { ...state.viewport, ...patch } }));
+  },
+
+  // ── Explode mode ──────────────────────────────────────────────────────
+
+  toggleExplodeMode() {
+    set(s => ({ explodeMode: !s.explodeMode }));
   },
 
   // ── State restore ─────────────────────────────────────────────────────
