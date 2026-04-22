@@ -48,47 +48,66 @@ function lensesOverlapping(l1, l2) {
 }
 
 // Compute shelf-row target positions for all shared bubbles.
+// snapCX/snapCY: world-space center snapshotted when explode was toggled (fixed, not live).
+// maxRowW: maximum row width in world units before wrapping.
 // Returns a Map of uid → {x, y} in world (canvas) coordinates.
-function computeShelfTargets(bubbles, lenses, canvasW, canvasH, panX, panY, zoom) {
+function computeShelfTargets(bubbles, snapCX, snapCY, maxRowW) {
   const shared = bubbles.filter(b => b.isShared);
   if (shared.length === 0) return new Map();
 
-  // Group shared bubbles by their intersection set (sorted lensIds key)
+  // Group by intersection set (sorted lensIds key), most lenses first
   const groupMap = new Map();
   shared.forEach(b => {
     const key = b.lensIds.slice().sort().join(':');
     if (!groupMap.has(key)) groupMap.set(key, { lensIds: b.lensIds, items: [] });
     groupMap.get(key).items.push(b);
   });
-
-  // Sort groups: most lenses shared first; within group, sort by strength desc
   const groups = [...groupMap.values()].sort((a, b) => b.lensIds.length - a.lensIds.length);
   groups.forEach(g => g.items.sort((a, b) => b.pairing.strength - a.pairing.strength));
 
-  const ROW_GAP    = 64;
+  const ROW_GAP    = 58;
   const BUBBLE_GAP = 10;
-  const LEGEND_W   = 32; // room for lens-color dots on the left
+  const GROUP_GAP  = 18; // extra vertical padding between intersection groups
 
-  // World-space canvas center
-  const cx = (canvasW / 2 - panX) / zoom;
-  const cy = (canvasH / 2 - panY) / zoom;
-
-  const startY = cy - ((groups.length - 1) * ROW_GAP) / 2;
-  const targets = new Map();
-
-  groups.forEach((g, ri) => {
-    const rowY = startY + ri * ROW_GAP;
-    const totalW = g.items.reduce((sum, b, i) =>
-      sum + b.r * 2 + (i < g.items.length - 1 ? BUBBLE_GAP : 0), 0);
-
-    let bx = cx - totalW / 2 + LEGEND_W / 2;
+  // Build flat list of rows, wrapping within each group when items exceed maxRowW
+  // Each row: { items, lensIds }
+  const rows = [];
+  groups.forEach((g, gi) => {
+    let rowItems = [], rowW = 0;
     g.items.forEach(b => {
-      targets.set(b.uid, { x: bx + b.r, y: rowY });
-      bx += b.r * 2 + BUBBLE_GAP;
+      const bw = b.r * 2 + (rowItems.length > 0 ? BUBBLE_GAP : 0);
+      if (rowItems.length > 0 && rowW + bw > maxRowW) {
+        rows.push({ items: rowItems, lensIds: g.lensIds, firstInGroup: rows.length === 0 || rows[rows.length-1].lensIds.join(':') !== g.lensIds.join(':') });
+        rowItems = []; rowW = 0;
+      }
+      rowItems.push(b);
+      rowW += bw;
+    });
+    if (rowItems.length > 0) {
+      rows.push({ items: rowItems, lensIds: g.lensIds, firstInGroup: rows.length === 0 || rows[rows.length-1].lensIds.join(':') !== g.lensIds.join(':'), lastInGroup: true });
+    }
+  });
+
+  // Total height with group gaps
+  let totalH = 0;
+  rows.forEach((row, i) => {
+    if (i > 0) totalH += ROW_GAP + (row.firstInGroup ? GROUP_GAP : 0);
+  });
+
+  // Place rows
+  const targets = new Map();
+  let y = snapCY - totalH / 2;
+  rows.forEach((row, i) => {
+    if (i > 0) y += ROW_GAP + (row.firstInGroup ? GROUP_GAP : 0);
+    const rowW = row.items.reduce((s, b, j) => s + b.r * 2 + (j > 0 ? BUBBLE_GAP : 0), 0);
+    let x = snapCX - rowW / 2;
+    row.items.forEach(b => {
+      targets.set(b.uid, { x: x + b.r, y });
+      x += b.r * 2 + BUBBLE_GAP;
     });
   });
 
-  return targets;
+  return { targets, rows };
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -118,6 +137,11 @@ export default function LensCanvas({ onBubbleClick }) {
     ctx:          null, // cached 2d context
     overlapping:  new Set(), // precomputed "lensId:lensId" pairs that overlap this tick
     shelfTargets: new Map(), // uid → {x, y} when explodeMode is on
+    shelfRows:    [],        // [{items, lensIds}] for legend rendering
+    shelfSnapCX:  null,      // world-space center snapshotted when explode toggled on
+    shelfSnapCY:  null,
+    prevExplode:  false,     // tracks previous explodeMode to detect toggle
+    legendAlpha:  0,         // animated 0→1 for explode legend fade
   });
 
   // ── Bubble rebuild ──────────────────────────────────────────────────────────
@@ -250,20 +274,25 @@ export default function LensCanvas({ onBubbleClick }) {
     const { lenses, explodeMode } = useExplorerStore.getState();
     const st = stateRef.current;
 
-    // Update shelf targets every frame when explode mode is on
-    if (explodeMode) {
+    // Snapshot viewport center once when explode mode turns on; clear when off
+    if (explodeMode && !st.prevExplode) {
       const canvas = canvasRef.current;
       if (canvas) {
         const { viewport } = useExplorerStore.getState();
-        st.shelfTargets = computeShelfTargets(
-          st.bubbles, lenses,
-          canvas.offsetWidth, canvas.offsetHeight,
-          viewport.panX, viewport.panY, viewport.zoom,
-        );
+        st.shelfSnapCX = (canvas.offsetWidth  / 2 - viewport.panX) / viewport.zoom;
+        st.shelfSnapCY = (canvas.offsetHeight / 2 - viewport.panY) / viewport.zoom;
+        const maxRowW = (canvas.offsetWidth / viewport.zoom) * 0.82;
+        const result = computeShelfTargets(st.bubbles, st.shelfSnapCX, st.shelfSnapCY, maxRowW);
+        st.shelfTargets = result.targets;
+        st.shelfRows    = result.rows;
       }
-    } else {
+    } else if (!explodeMode) {
       st.shelfTargets = new Map();
+      st.shelfRows    = [];
+      st.shelfSnapCX  = null;
+      st.shelfSnapCY  = null;
     }
+    st.prevExplode = explodeMode;
 
     // Precompute all overlapping lens pairs once per tick (used many times below)
     st.overlapping = new Set();
@@ -448,8 +477,10 @@ export default function LensCanvas({ onBubbleClick }) {
       return;
     }
 
-    // Draw lenses
-    lenses.forEach(lens => {
+    // Draw lenses (hidden in explode mode)
+    if (explodeMode) {
+      // Skip lens rendering entirely
+    } else lenses.forEach(lens => {
       const grad = ctx.createRadialGradient(lens.x, lens.y, 0, lens.x, lens.y, lens.r);
       grad.addColorStop(0,   hexAlpha(lens.color, 0.06));
       grad.addColorStop(0.7, hexAlpha(lens.color, 0.03));
@@ -556,40 +587,70 @@ export default function LensCanvas({ onBubbleClick }) {
       ctx.restore();
     });
 
-    // Explode mode: draw row legends (colored dots showing which lenses share each row)
-    if (explodeMode && lenses.length >= 2) {
-      const groupMap = new Map();
-      st.bubbles.filter(b => b.isShared && b.scale > 0.15).forEach(b => {
-        const key = b.lensIds.slice().sort().join(':');
-        if (!groupMap.has(key)) groupMap.set(key, { lensIds: b.lensIds, items: [] });
-        groupMap.get(key).items.push(b);
-      });
-
-      groupMap.forEach(({ lensIds, items }) => {
-        if (items.length === 0) return;
-        const minX   = Math.min(...items.map(b => b.x - b.r));
-        const rowY   = items.reduce((s, b) => s + b.y, 0) / items.length;
-        const dotR   = 5;
-        const dotGap = 13;
-        const totalW = (lensIds.length - 1) * dotGap;
-        let dotX = minX - 18 - totalW;
-
-        lensIds.forEach(lid => {
+    // Explode mode: per-row dots in world space (left of each row's leftmost bubble)
+    if (explodeMode && st.shelfRows.length > 0) {
+      const DOT_R = 5, DOT_GAP = 13;
+      st.shelfRows.forEach(row => {
+        if (!row.items.length) return;
+        const minX = Math.min(...row.items.map(b => b.x - b.r));
+        const rowY = row.items.reduce((s, b) => s + b.y, 0) / row.items.length;
+        const totalDotsW = (row.lensIds.length - 1) * DOT_GAP;
+        let dx = minX - 18 - totalDotsW;
+        row.lensIds.forEach(lid => {
           const l = lenses.find(x => x.id === lid);
-          if (!l) { dotX += dotGap; return; }
+          if (!l) { dx += DOT_GAP; return; }
           ctx.save();
           ctx.globalAlpha = 0.85;
           ctx.beginPath();
-          ctx.arc(dotX, rowY, dotR, 0, Math.PI * 2);
+          ctx.arc(dx, rowY, DOT_R, 0, Math.PI * 2);
           ctx.fillStyle = l.color;
           ctx.fill();
           ctx.restore();
-          dotX += dotGap;
+          dx += DOT_GAP;
         });
       });
     }
 
-    ctx.restore();
+    // Animate legend alpha and draw in world-space at a position that tracks the viewport bottom
+    if (!isFinite(st.legendAlpha)) st.legendAlpha = 0;
+    st.legendAlpha += ((explodeMode ? 1 : 0) - st.legendAlpha) * 0.12;
+    if (st.legendAlpha > 0.01 && lenses.length >= 2) {
+      const DOT_R    = 6 / zoom;     // divide by zoom so size stays constant on screen
+      const ITEM_GAP = 28 / zoom;
+      const FONT_PX  = Math.round(13 / zoom);
+
+      ctx.font = `bold ${FONT_PX}px Georgia`;
+
+      // World-space y that corresponds to H-24 on screen: wy = (screen_y - panY) / zoom
+      const worldLY = (H - 24 - panY) / zoom;
+      // World-space x for screen center
+      const worldCX = (W / 2 - panX) / zoom;
+
+      // Measure total width in world units
+      let totalW = 0;
+      lenses.forEach((lens, i) => {
+        totalW += DOT_R * 2 + 6 / zoom + ctx.measureText(lens.label).width + (i < lenses.length - 1 ? ITEM_GAP : 0);
+      });
+
+      let lx = worldCX - totalW / 2;
+
+      ctx.save();
+      ctx.globalAlpha = st.legendAlpha;
+      lenses.forEach(lens => {
+        ctx.beginPath();
+        ctx.arc(lx + DOT_R, worldLY, DOT_R, 0, Math.PI * 2);
+        ctx.fillStyle = lens.color;
+        ctx.fill();
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = lens.color;
+        ctx.fillText(lens.label, lx + DOT_R * 2 + 6 / zoom, worldLY);
+        lx += DOT_R * 2 + 6 / zoom + ctx.measureText(lens.label).width + ITEM_GAP;
+      });
+      ctx.restore();
+    }
+
+    ctx.restore(); // end world-space transform
   }, []);
 
   // ── Animation loop ──────────────────────────────────────────────────────────
