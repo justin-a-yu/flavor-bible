@@ -4,6 +4,7 @@ import Fuse from 'fuse.js';
 import LensCanvas from '../components/LensCanvas';
 import BoardView from '../components/BoardView';
 import FilterPanel from '../components/FilterPanel';
+import PrintExportButton from '../components/PrintExportButton';
 import useExplorerStore, { serializeParams, deserializeParams } from '../store/useExplorerStore';
 import { STRENGTH_COLOR, STRENGTH_LABEL } from '../utils/boardUtils';
 import { FLAVORS } from '../data/flavors_data';
@@ -172,49 +173,43 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
       >✕</div>
 
       <div style={{ fontSize: '1rem', color: '#2c2416', marginBottom: 2 }}>{p.label}</div>
-      <div style={{ fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: col, marginBottom: 8 }}>
+      <div style={{ fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: col, marginBottom: 4 }}>
         {STRENGTH_LABEL[p.strength] || ''}
       </div>
 
       {p.modifier && (
-        <div style={{ fontSize: '0.75rem', color: '#8a7450', fontStyle: 'italic', marginBottom: 8 }}>
+        <div style={{ fontSize: '0.75rem', color: '#8a7450', fontStyle: 'italic', marginBottom: 6 }}>
           {p.modifier}
         </div>
       )}
 
-      {ing && ing.quotes.length > 0 && (
-        <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic', marginBottom: 10, maxHeight: 80, overflow: 'hidden' }}>
-          &ldquo;{ing.quotes[0].text.slice(0, 140)}{ing.quotes[0].text.length > 140 ? '…' : ''}&rdquo;
-        </div>
-      )}
-      {!ing?.quotes?.length && ing?.tips?.length > 0 && (
-        <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic', marginBottom: 10 }}>
-          {ing.tips[0]}
-        </div>
-      )}
-
-      {bubble.lensIds.length > 1 && (
-        <div style={{ fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 5 }}>
-          Shared by {bubble.lensIds.map(id => FLAVORS.ingredients[id]?.label).filter(Boolean).join(' & ')}
-        </div>
-      )}
-
-      {ing && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-          {ing.pairings.slice(0, 5).map(a => (
-            <span key={a.label} style={{ padding: '2px 8px', background: '#f5f0e8', borderRadius: 10, fontSize: '0.7rem', color: '#8a7450' }}>
-              {a.label}
-            </span>
-          ))}
-        </div>
-      )}
-
-      {ing?.meta && Object.keys(ing.meta).length > 0 && (
-        <div style={{ fontSize: '0.68rem', color: '#b0a488', marginTop: 8, lineHeight: 1.6 }}>
+      {/* Meta — right under strength */}
+      {ing?.meta && (ing.meta.taste || ing.meta.weight || ing.meta.volume || ing.meta.season) && (
+        <div style={{ fontSize: '0.68rem', color: '#b0a488', marginBottom: 8, lineHeight: 1.6 }}>
           {ing.meta.taste  && <div>Taste: {ing.meta.taste}</div>}
           {ing.meta.weight && <div>Weight: {ing.meta.weight}</div>}
           {ing.meta.volume && <div>Volume: {ing.meta.volume}</div>}
           {ing.meta.season && <div>Season: {ing.meta.season}</div>}
+        </div>
+      )}
+
+      {bubble.lensIds.length > 1 && (
+        <div style={{ fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 8 }}>
+          Shared by {bubble.lensIds.map(id => FLAVORS.ingredients[id]?.label).filter(Boolean).join(' & ')}
+        </div>
+      )}
+
+      {/* Tips — italic, above quote */}
+      {ing?.tips?.length > 0 && (
+        <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic', marginBottom: 8 }}>
+          {ing.tips[0]}
+        </div>
+      )}
+
+      {/* Quote — at the bottom */}
+      {ing?.quotes?.length > 0 && (
+        <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic' }}>
+          &ldquo;{ing.quotes[0].text.slice(0, 160)}{ing.quotes[0].text.length > 160 ? '…' : ''}&rdquo;
         </div>
       )}
     </div>
@@ -265,34 +260,40 @@ export default function ExplorerPage() {
 
       {/* Header */}
       <header className="app-header" style={{
-        display: 'flex', alignItems: 'center', gap: 20,
+        display: 'flex', flexDirection: 'column',
         padding: '14px 28px', background: '#fff', borderBottom: '1px solid #e8e0d0',
-        flexShrink: 0, zIndex: 20, flexWrap: 'wrap',
+        flexShrink: 0, zIndex: 20, gap: 10,
       }}>
-        <div style={{ fontSize: '1rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#b8863a', fontWeight: 'normal', flexShrink: 0 }}>
-          Flavor <span style={{ color: '#2c2416' }}>Bible</span> Explorer
-        </div>
-        <SearchBar />
-        <LensPills />
-        <ViewToggle />
-        <FilterPanel />
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
-            Essential &nbsp;/&nbsp;
-            <span style={{ background: 'radial-gradient(ellipse at center, rgba(212,168,64,0.55) 0%, rgba(212,168,64,0.22) 55%, transparent 100%)', padding: '1px 7px', borderRadius: 10 }}>
-              Holy Grail
+        {/* Row 1: controls */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
+          <div style={{ fontSize: '1rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#b8863a', fontWeight: 'normal', flexShrink: 0 }}>
+            Flavor <span style={{ color: '#2c2416' }}>Bible</span> Explorer
+          </div>
+          <SearchBar />
+          <ViewToggle />
+          <FilterPanel />
+          {activeView === 'lens' && lenses.length > 0 && <PrintExportButton />}
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
+              Essential &nbsp;/&nbsp;
+              <span style={{ background: 'radial-gradient(ellipse at center, rgba(212,168,64,0.55) 0%, rgba(212,168,64,0.22) 55%, transparent 100%)', padding: '1px 7px', borderRadius: 10 }}>
+                Holy Grail
+              </span>
             </span>
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#e07840', display: 'inline-block' }} />
-            Highly Recommended
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#5a9e6a', display: 'inline-block' }} />
-            Recommended
-          </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#e07840', display: 'inline-block' }} />
+              Highly Recommended
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#5a9e6a', display: 'inline-block' }} />
+              Recommended
+            </span>
+          </div>
         </div>
+
+        {/* Row 2: ingredient pills (only when lenses are active) */}
+        {lenses.length > 0 && <LensPills />}
       </header>
 
       {/* Main view — both views share this container so the empty-state overlay is identical */}
@@ -335,12 +336,12 @@ export default function ExplorerPage() {
         {activeView === 'lens' ? (
           <>
             <span>Drag lenses together — shared flavors migrate to the overlap</span>
-            <span>Click flavor bubble for info · Double-click to open as lens · Scroll to resize · R to shuffle · E to explode shared · Space+drag to pan · Space+scroll to zoom</span>
+            <span>Click flavor bubble for info · Double-click to add · Scroll to resize · R to shuffle lens · E to expand overlap · Space+drag to pan · Space+scroll to zoom</span>
           </>
         ) : (
           <>
             <span>Click ingredient for full profile</span>
-            <span>Click flavor chip for info · Click chip to add</span>
+            <span>Click flavor chip for info</span>
           </>
         )}
       </div>

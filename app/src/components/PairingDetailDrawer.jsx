@@ -89,41 +89,9 @@ export default function PairingDetailDrawer({ pairing, onClose }) {
         {/* ── Body ── */}
         <div style={{ padding: '18px 20px', flex: 1 }}>
 
-          {/* Quote */}
-          {ing?.quotes?.length > 0 && (
-            <div style={{ marginBottom: 18 }}>
-              <div style={{ fontSize: '0.66rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 7 }}>
-                From the book
-              </div>
-              <div style={{ fontSize: '0.8rem', color: '#6a5a3a', lineHeight: 1.65, fontStyle: 'italic' }}>
-                &ldquo;{ing.quotes[0].text.slice(0, 260)}{ing.quotes[0].text.length > 260 ? '\u2026' : ''}&rdquo;
-              </div>
-              {ing.quotes[0].attribution && (
-                <div style={{ fontSize: '0.68rem', color: '#b0a488', marginTop: 5 }}>
-                  — {ing.quotes[0].attribution}
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Tips (fallback when no quotes) */}
-          {!ing?.quotes?.length && ing?.tips?.length > 0 && (
-            <div style={{ marginBottom: 18 }}>
-              <div style={{ fontSize: '0.66rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 7 }}>
-                Tip
-              </div>
-              <div style={{ fontSize: '0.8rem', color: '#6a5a3a', lineHeight: 1.65 }}>
-                {ing.tips[0]}
-              </div>
-            </div>
-          )}
-
-          {/* Metadata */}
-          {ing?.meta && Object.values(ing.meta).some(Boolean) && (
-            <div style={{ marginBottom: 18 }}>
-              <div style={{ fontSize: '0.66rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 7 }}>
-                Profile
-              </div>
+          {/* Metadata — right under strength */}
+          {ing?.meta && (ing.meta.taste || ing.meta.weight || ing.meta.volume || ing.meta.season) && (
+            <div style={{ marginBottom: 16 }}>
               <div style={{ fontSize: '0.78rem', color: '#6a5a3a', lineHeight: 1.9 }}>
                 {ing.meta.taste  && <div><span style={{ color: '#b0a488' }}>Taste: </span>{ing.meta.taste}</div>}
                 {ing.meta.weight && <div><span style={{ color: '#b0a488' }}>Weight: </span>{ing.meta.weight}</div>}
@@ -133,22 +101,29 @@ export default function PairingDetailDrawer({ pairing, onClose }) {
             </div>
           )}
 
-          {/* Top pairings of this ingredient */}
-          {ing?.pairings?.length > 0 && (
+          {/* Tips — italic, above quote */}
+          {ing?.tips?.length > 0 && (
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontSize: '0.8rem', color: '#6a5a3a', lineHeight: 1.65, fontStyle: 'italic' }}>
+                {ing.tips[0]}
+              </div>
+            </div>
+          )}
+
+          {/* Quote — at the bottom */}
+          {ing?.quotes?.length > 0 && (
             <div>
-              <div style={{ fontSize: '0.66rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 8 }}>
-                Goes well with
+              <div style={{ fontSize: '0.66rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 7 }}>
+                From the chefs
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                {ing.pairings.slice(0, 9).map(p => (
-                  <span key={p.label} style={{
-                    padding: '3px 9px', background: '#f5f0e8',
-                    borderRadius: 10, fontSize: '0.72rem', color: '#6a5a3a',
-                  }}>
-                    {p.label}
-                  </span>
-                ))}
+              <div style={{ fontSize: '0.8rem', color: '#6a5a3a', lineHeight: 1.65, fontStyle: 'italic' }}>
+                &ldquo;{ing.quotes[0].text.slice(0, 260)}{ing.quotes[0].text.length > 260 ? '\u2026' : ''}&rdquo;
               </div>
+              {ing.quotes[0].attribution && (
+                <div style={{ fontSize: '0.68rem', color: '#b0a488', marginTop: 5 }}>
+                  — {ing.quotes[0].attribution}
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -75,7 +75,7 @@ function ProfileSection({ lenses }) {
                   )}
                   {ing.quotes.length > 0 && (
                     <div className="pp-sub-section">
-                      <div className="pp-sub-label">From the book</div>
+                      <div className="pp-sub-label">From the chefs</div>
                       {ing.quotes.map((q, i) => (
                         <div key={i} className="pp-quote">
                           <div className="pp-quote-text">&ldquo;{q.text}&rdquo;</div>
@@ -291,7 +291,7 @@ export default function PrintPage() {
   const affinities   = buildAffinities(lenses);
   const lensColumns  = buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn);
 
-  const title = lenses.map(l => l.label).join(' · ');
+  const title = lenses.map(l => l.label).join(' & ');
 
   return (
     <div className="pp-page">

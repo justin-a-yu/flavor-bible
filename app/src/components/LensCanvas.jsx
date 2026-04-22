@@ -571,7 +571,7 @@ export default function LensCanvas({ onBubbleClick }) {
       if (isHovered && b.id && FLAVORS.ingredients[b.id]) {
         ctx.font      = '8px Georgia';
         ctx.fillStyle = hexAlpha(col, 0.6);
-        ctx.fillText('dbl-click to expand', b.x, b.y + r + 11);
+        ctx.fillText('dbl-click to add', b.x, b.y + r + 11);
       }
 
       ctx.restore();

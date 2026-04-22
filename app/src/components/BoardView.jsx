@@ -65,7 +65,7 @@ function IngredientProfileCard({ lens }) {
           )}
           {ing.quotes.length > 0 && (
             <div className="profile-section">
-              <div className="profile-section-label">From the book</div>
+              <div className="profile-section-label">From the chefs</div>
               {ing.quotes.map((q, i) => (
                 <div key={i} className="profile-quote">
                   <div className="profile-quote-text">&ldquo;{q.text}&rdquo;</div>
@@ -156,7 +156,7 @@ function SharedBySection({ groups, onPairingClick }) {
   );
 }
 
-function AffinitiesSection({ lenses, affinities, onAddLens }) {
+function AffinitiesSection({ lenses, affinities, onPairingClick }) {
   if (!affinities.length) return null;
   const labelSet = new Set(lenses.map(l => l.label.toLowerCase()));
   const idSet    = new Set(lenses.map(l => l.id));
@@ -176,8 +176,8 @@ function AffinitiesSection({ lenses, affinities, onAddLens }) {
                     ? (
                       <button
                         className="affinity-chip"
-                        onClick={() => onAddLens(part.id)}
-                        title={`Add ${part.label} to board`}
+                        onClick={() => onPairingClick({ id: part.id, label: part.label, strength: null })}
+                        title={`Info: ${part.label}`}
                       >
                         {part.label}
                       </button>
@@ -199,7 +199,6 @@ function AffinitiesSection({ lenses, affinities, onAddLens }) {
 
 export default function BoardView() {
   const lenses  = useExplorerStore(s => s.lenses);
-  const addLens = useExplorerStore(s => s.addLens);
   const filters = useExplorerStore(s => s.filters);
   const [selectedPairing, setSelectedPairing] = useState(null);
 
@@ -286,7 +285,7 @@ export default function BoardView() {
         <AffinitiesSection
           lenses={lenses}
           affinities={affinities}
-          onAddLens={addLens}
+          onPairingClick={setSelectedPairing}
         />
 
         {filters.visibility !== 'shared' && (

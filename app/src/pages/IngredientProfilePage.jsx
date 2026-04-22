@@ -126,7 +126,7 @@ export default function IngredientProfilePage() {
             <div className="profile-section-label">Tips</div>
             <div className="profile-tips">
               {ing.tips.map((tip, i) => (
-                <div key={i} className="profile-tip">{tip}</div>
+                <div key={i} className="profile-tip" style={{ fontStyle: 'italic' }}>{tip}</div>
               ))}
             </div>
           </section>
@@ -244,7 +244,7 @@ export default function IngredientProfilePage() {
         {/* ── From the book ── */}
         {ing.quotes.length > 0 && (
           <section className="profile-section">
-            <div className="profile-section-label">From the book</div>
+            <div className="profile-section-label">From the chefs</div>
             <div className="profile-quotes">
               {ing.quotes.map((q, i) => (
                 <div key={i} className="profile-quote">
