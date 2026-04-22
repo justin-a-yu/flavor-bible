@@ -300,7 +300,7 @@ export default function ExplorerPage() {
       </header>
 
       {/* Main view — both views share this container so the empty-state overlay is identical */}
-      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
         {activeView === 'board' ? (
           <BoardView />
         ) : (
