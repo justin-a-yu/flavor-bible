@@ -25,12 +25,78 @@ function hexAlpha(hex, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
+// ── wrapText with result cache ─────────────────────────────────────────────────
+const _wrapCache = new Map();
 function wrapText(text, maxW) {
+  const key = text + '\x00' + Math.round(maxW);
+  let v = _wrapCache.get(key);
+  if (v) return v;
   const words = text.split(' ');
-  if (words.length === 1) return [text];
-  if (text.length * 6 < maxW) return [text];
-  const mid = Math.ceil(words.length / 2);
-  return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+  if (words.length === 1) v = [text];
+  else if (text.length * 6 < maxW) v = [text];
+  else {
+    const mid = Math.ceil(words.length / 2);
+    v = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+  }
+  _wrapCache.set(key, v);
+  return v;
+}
+
+// ── Spatial grid for O(n) bubble repulsion ─────────────────────────────────────
+const GRID_CELL = 60; // ≥ 2 * maxBubbleR(22) + minDGap(5) = 49
+
+function buildGrid(bubbles) {
+  const grid = new Map();
+  for (const b of bubbles) {
+    if (b.scale < 0.01) continue;
+    const cx = Math.floor(b.x / GRID_CELL);
+    const cy = Math.floor(b.y / GRID_CELL);
+    const k = `${cx},${cy}`;
+    let cell = grid.get(k);
+    if (!cell) { cell = []; grid.set(k, cell); }
+    cell.push(b);
+  }
+  return grid;
+}
+
+function applyGridRepulsion(b, grid, force = 3.5, filter = null) {
+  const cx = Math.floor(b.x / GRID_CELL);
+  const cy = Math.floor(b.y / GRID_CELL);
+  for (let dx = -1; dx <= 1; dx++) {
+    for (let dy = -1; dy <= 1; dy++) {
+      const cell = grid.get(`${cx + dx},${cy + dy}`);
+      if (!cell) continue;
+      for (const other of cell) {
+        if (other === b) continue;
+        if (filter && !filter(other)) continue;
+        const rdx = b.x - other.x, rdy = b.y - other.y;
+        const rd  = Math.hypot(rdx, rdy) || 1;
+        const minD = b.r + other.r + 5;
+        if (rd < minD) {
+          const f = (minD - rd) / minD * 0.5;
+          b.vx += (rdx / rd) * f * force;
+          b.vy += (rdy / rd) * f * force;
+        }
+      }
+    }
+  }
+}
+
+// ── Settled check for RAF sleep ────────────────────────────────────────────────
+function checkSettled(st, lenses) {
+  if (lenses.length === 0) return true;
+  for (const b of st.bubbles) {
+    if (Math.abs(b.vx) > 0.06 || Math.abs(b.vy) > 0.06) return false;
+    if (b.scale > 0.008 && b.scale < 0.992) return false;
+  }
+  if (st.legendAlpha > 0.008 && st.legendAlpha < 0.992) return false;
+  for (const lens of lenses) {
+    const cur = st.dimLevels[lens.id];
+    if (cur == null) continue;
+    const isOv = lenses.some(o => o.id !== lens.id && st.overlapping.has(lens.id + ':' + o.id));
+    if (Math.abs(cur - (isOv ? 0.5 : 1.0)) > 0.02) return false;
+  }
+  return true;
 }
 
 function orbitFraction(strength) {
@@ -326,6 +392,9 @@ export default function LensCanvas({ onBubbleClick }) {
 
     const damping = 0.82;
 
+    // Build spatial grid once per tick — used by both repulsion passes
+    const repGrid = buildGrid(st.bubbles);
+
     st.bubbles.forEach(b => {
       const lens = lenses.find(l => l.id === b.lensIds[0]);
       if (!lens) return;
@@ -347,17 +416,7 @@ export default function LensCanvas({ onBubbleClick }) {
           b.vy += (target.y - b.y) * 0.04;
         }
         // Mild repulsion between shared bubbles to avoid overlap
-        st.bubbles.forEach(other => {
-          if (other === b || !other.isShared || other.scale < 0.01) return;
-          const rdx = b.x - other.x, rdy = b.y - other.y;
-          const rd  = Math.hypot(rdx, rdy) || 1;
-          const minD = b.r + other.r + 5;
-          if (rd < minD) {
-            const force = (minD - rd) / minD * 0.5;
-            b.vx += (rdx / rd) * force * 3.5;
-            b.vy += (rdy / rd) * force * 3.5;
-          }
-        });
+        applyGridRepulsion(b, repGrid, 3.5, o => o.isShared);
         b.vx *= damping; b.vy *= damping;
         b.x += b.vx; b.y += b.vy;
         return;
@@ -434,17 +493,7 @@ export default function LensCanvas({ onBubbleClick }) {
         }
       }
 
-      st.bubbles.forEach(other => {
-        if (other === b || other.scale < 0.01) return;
-        const rdx = b.x - other.x, rdy = b.y - other.y;
-        const rd  = Math.hypot(rdx, rdy) || 1;
-        const minD = b.r + other.r + 5;
-        if (rd < minD) {
-          const force = (minD - rd) / minD * 0.5;
-          b.vx += (rdx / rd) * force * 3.5;
-          b.vy += (rdy / rd) * force * 3.5;
-        }
-      });
+      applyGridRepulsion(b, repGrid);
 
       b.vx *= damping;
       b.vy *= damping;
@@ -520,21 +569,19 @@ export default function LensCanvas({ onBubbleClick }) {
       st.dimLevels[lens.id] = (cur == null || isNaN(cur) ? 1 : cur) + (target - (cur ?? 1)) * 0.06;
     });
 
-    // Draw bubbles
-    st.bubbles.forEach(b => {
-      if (b.scale < 0.01) return;
+    // Draw bubbles — sorted ascending so higher-strength (holy grail) renders on top.
+    // Avoids per-bubble save/restore; globalAlpha is reset manually each iteration.
+    const _drawBubbles = st.bubbles.filter(b => b.scale >= 0.01);
+    _drawBubbles.sort((a, b) => a.pairing.strength - b.pairing.strength);
 
-      const isHovered = st.hoveredBubble && st.hoveredBubble.uid === b.uid;
-      const col = STRENGTH_COLOR[b.pairing.strength];
-      const r   = (isHovered ? b.r + 3 : b.r) * b.scale;
-
-      // Shared bubbles always full; non-shared bubbles use their owning lens's dim level
-      const dimFactor = b.isShared ? 1 : (st.dimLevels[b.lensIds[0]] ?? 1);
-
-      ctx.save();
-      ctx.globalAlpha = b.scale * dimFactor;
-
+    _drawBubbles.forEach(b => {
+      const isHovered  = st.hoveredBubble && st.hoveredBubble.uid === b.uid;
+      const col        = STRENGTH_COLOR[b.pairing.strength];
+      const r          = (isHovered ? b.r + 3 : b.r) * b.scale;
+      const dimFactor  = b.isShared ? 1 : (st.dimLevels[b.lensIds[0]] ?? 1);
       const isHolyGrail = b.pairing.strength >= 4;
+
+      ctx.globalAlpha = b.scale * dimFactor;
 
       if (isHolyGrail) {
         const glowR = r + 14;
@@ -561,7 +608,7 @@ export default function LensCanvas({ onBubbleClick }) {
       ctx.beginPath();
       ctx.arc(b.x, b.y, r, 0, Math.PI * 2);
       ctx.strokeStyle = hexAlpha(col, isHovered ? 0.95 : 0.55);
-      ctx.lineWidth = isHovered ? 2 : 1.5;
+      ctx.lineWidth   = isHovered ? 2 : 1.5;
       ctx.stroke();
 
       ctx.shadowColor = 'transparent';
@@ -581,7 +628,7 @@ export default function LensCanvas({ onBubbleClick }) {
         ctx.fillText('dbl-click to add', b.x, b.y + r + 11);
       }
 
-      ctx.restore();
+      ctx.globalAlpha = 1; // reset without save/restore overhead
     });
 
     // Explode mode: per-row dots in world space (left of each row's leftmost bubble)
@@ -655,8 +702,20 @@ export default function LensCanvas({ onBubbleClick }) {
   const loop = useCallback(() => {
     tick();
     draw();
+    const { lenses } = useExplorerStore.getState();
+    if (checkSettled(stateRef.current, lenses)) {
+      stateRef.current.animFrame = null; // pause — wakeLoop will restart when needed
+      return;
+    }
     stateRef.current.animFrame = requestAnimationFrame(loop);
   }, [tick, draw]);
+
+  // Wake the RAF loop after any interaction or state change that needs animation
+  const wakeLoop = useCallback(() => {
+    if (!stateRef.current.animFrame) {
+      stateRef.current.animFrame = requestAnimationFrame(loop);
+    }
+  }, [loop]);
 
   // ── Canvas coordinate helpers ───────────────────────────────────────────────
 
@@ -717,6 +776,7 @@ export default function LensCanvas({ onBubbleClick }) {
     const ro = new ResizeObserver(() => {
       sizeCanvas();
       rebuildBubbles();
+      wakeLoop(); // canvas was cleared by resize — need at least one redraw
     });
     ro.observe(canvas);
 
@@ -727,12 +787,22 @@ export default function LensCanvas({ onBubbleClick }) {
       ro.disconnect();
       cancelAnimationFrame(stateRef.current.animFrame);
     };
-  }, [loop, rebuildBubbles]);
+  }, [loop, rebuildBubbles, wakeLoop]);
 
   // Subscribe to store so any lens/filter change triggers rebuildBubbles.
   // Uses the plain subscribe API (no subscribeWithSelector middleware needed).
   useEffect(() => {
     const unsub = useExplorerStore.subscribe((state, prevState) => {
+      // Wake the loop whenever anything visually relevant changes
+      if (
+        state.lenses      !== prevState.lenses      ||
+        state.filters     !== prevState.filters     ||
+        state.viewport    !== prevState.viewport    ||
+        state.explodeMode !== prevState.explodeMode
+      ) {
+        wakeLoop();
+      }
+
       if (state.lenses === prevState.lenses && state.filters === prevState.filters) return;
 
       // Place only newly-added lenses (x/y === null); existing lenses keep their positions.
@@ -772,7 +842,7 @@ export default function LensCanvas({ onBubbleClick }) {
     // Seed initial bubbles
     rebuildBubbles();
     return unsub;
-  }, [rebuildBubbles]);
+  }, [rebuildBubbles, wakeLoop]);
 
   // Canvas and document event listeners
   useEffect(() => {
@@ -833,8 +903,11 @@ export default function LensCanvas({ onBubbleClick }) {
       if (b !== st.hoveredBubble) {
         st.hoveredBubble = b;
         canvas.style.cursor = st.spaceDown ? 'grab' : (b ? 'pointer' : 'default');
+        wakeLoop(); // hover highlight needs a redraw
       }
       const l = lensAt(ox, oy);
+      const newLensId = l?.id ?? null;
+      if (newLensId !== (st.hoveredLens?.id ?? null)) wakeLoop(); // "scroll to resize" hint
       st.hoveredLens = l || null;
     };
 
@@ -947,7 +1020,7 @@ export default function LensCanvas({ onBubbleClick }) {
       document.removeEventListener('keydown',  onKeyDown);
       document.removeEventListener('keyup',    onKeyUp);
     };
-  }, [canvasXY, screenXY, bubbleAt, lensAt, rebuildBubbles, onBubbleClick]);
+  }, [canvasXY, screenXY, bubbleAt, lensAt, rebuildBubbles, onBubbleClick, wakeLoop]);
 
   return (
     <canvas
