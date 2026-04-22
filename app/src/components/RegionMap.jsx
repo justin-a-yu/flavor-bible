@@ -96,7 +96,7 @@ const CLR_DIMMED   = '#dbd9d3';
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
-export default function RegionMap({ selected = [], onToggle }) {
+export default function RegionMap({ selected = [], onToggle, untaggedActive = false, onUntaggedToggle }) {
   const [svgLoaded, setSvgLoaded] = useState(false);
   const [hovered, setHovered]     = useState(null);
   const fillRef    = useRef(null);
@@ -192,7 +192,7 @@ export default function RegionMap({ selected = [], onToggle }) {
         )}
       </div>
 
-      {/* Region chips — always rendered so panel height stays stable */}
+      {/* Region chips + Untagged — always rendered so panel height stays stable */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 8 }}>
         {REGIONS.map(({ key, shortLabel }) => {
           const isOn  = selected.includes(key);
@@ -221,6 +221,26 @@ export default function RegionMap({ selected = [], onToggle }) {
             </button>
           );
         })}
+        {onUntaggedToggle && (
+          <button
+            onClick={onUntaggedToggle}
+            style={{
+              padding: '3px 10px',
+              fontSize: '0.68rem',
+              letterSpacing: '0.05em',
+              borderRadius: 12,
+              border: '1px solid',
+              borderColor: untaggedActive ? '#b8863a' : '#d4c9b0',
+              background:  untaggedActive ? '#f5ecd6' : 'transparent',
+              color:       untaggedActive ? '#7a5010' : '#8a7450',
+              cursor: 'pointer',
+              fontFamily: 'Georgia, serif',
+              transition: 'background 0.12s, color 0.12s, border-color 0.12s',
+            }}
+          >
+            untagged
+          </button>
+        )}
       </div>
     </div>
   );
