@@ -149,12 +149,19 @@ export default function FilterPanel() {
               selected={filters.regions}
               onToggle={v => toggleFilter('regions', v)}
             />
+            <div style={{ marginTop: 8 }}>
+              <ToggleGroup
+                items={[{ value: '__untagged__', label: 'Untagged' }]}
+                active={filters.regions}
+                onToggle={v => toggleFilter('regions', v)}
+              />
+            </div>
           </FilterRow>
 
           {/* Season */}
           <FilterRow label="Season">
             <ToggleGroup
-              items={SEASONS}
+              items={[...SEASONS, { value: '__untagged__', label: 'Untagged' }]}
               active={filters.seasons}
               onToggle={v => toggleFilter('seasons', v)}
             />
@@ -163,7 +170,7 @@ export default function FilterPanel() {
           {/* Taste */}
           <FilterRow label="Taste">
             <ToggleGroup
-              items={TASTES}
+              items={[...TASTES, { value: '__untagged__', label: 'Untagged' }]}
               active={filters.tastes}
               onToggle={v => toggleFilter('tastes', v)}
             />

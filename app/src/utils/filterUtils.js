@@ -289,10 +289,15 @@ export function matchesFilters(ingredient, filters) {
   const { regions = [], cuisines = [], seasons = [], tastes = [] } = filters;
   const ingCuisines = ingredient.cuisines ?? [];
 
-  // Region — OR logic: ingredient must belong to at least one selected region
+  // Region — OR logic: ingredient must belong to at least one selected region.
+  // '__untagged__' matches ingredients with no cuisine data at all.
   if (regions.length > 0) {
-    const allowedSlugs = regionsToCuisineSlugs(regions);
-    if (!ingCuisines.some(c => allowedSlugs.has(c))) return false;
+    const includeUntagged = regions.includes('__untagged__');
+    const taggedRegions   = regions.filter(r => r !== '__untagged__');
+    const allowedSlugs    = regionsToCuisineSlugs(taggedRegions);
+    const matchesTagged   = taggedRegions.length > 0 && ingCuisines.some(c => allowedSlugs.has(c));
+    const matchesUntagged = includeUntagged && ingCuisines.length === 0;
+    if (!matchesTagged && !matchesUntagged) return false;
   }
 
   // Cuisine — OR logic: ingredient.cuisines[] must intersect the selected set
@@ -300,16 +305,26 @@ export function matchesFilters(ingredient, filters) {
     if (!cuisines.some(c => ingCuisines.includes(c))) return false;
   }
 
-  // Season — OR logic: meta.season string must contain at least one selected value
+  // Season — OR logic: meta.season string must contain at least one selected value.
+  // '__untagged__' matches ingredients with no season metadata.
   if (seasons.length > 0) {
-    const ingSeason = ingredient.meta?.season?.toLowerCase() ?? '';
-    if (!seasons.some(s => ingSeason.includes(s.toLowerCase()))) return false;
+    const includeUntagged = seasons.includes('__untagged__');
+    const taggedSeasons   = seasons.filter(s => s !== '__untagged__');
+    const ingSeason       = ingredient.meta?.season?.toLowerCase() ?? '';
+    const matchesTagged   = taggedSeasons.length > 0 && taggedSeasons.some(s => ingSeason.includes(s.toLowerCase()));
+    const matchesUntagged = includeUntagged && !ingSeason;
+    if (!matchesTagged && !matchesUntagged) return false;
   }
 
-  // Taste — OR logic: meta.taste string must contain at least one selected value
+  // Taste — OR logic: meta.taste string must contain at least one selected value.
+  // '__untagged__' matches ingredients with no taste metadata.
   if (tastes.length > 0) {
-    const ingTaste = ingredient.meta?.taste?.toLowerCase() ?? '';
-    if (!tastes.some(t => ingTaste.includes(t.toLowerCase()))) return false;
+    const includeUntagged = tastes.includes('__untagged__');
+    const taggedTastes    = tastes.filter(t => t !== '__untagged__');
+    const ingTaste        = ingredient.meta?.taste?.toLowerCase() ?? '';
+    const matchesTagged   = taggedTastes.length > 0 && taggedTastes.some(t => ingTaste.includes(t.toLowerCase()));
+    const matchesUntagged = includeUntagged && !ingTaste;
+    if (!matchesTagged && !matchesUntagged) return false;
   }
 
   return true;
