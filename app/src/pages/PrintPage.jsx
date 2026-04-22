@@ -75,7 +75,7 @@ function ProfileSection({ lenses }) {
                   )}
                   {ing.quotes.length > 0 && (
                     <div className="pp-sub-section">
-                      <div className="pp-sub-label">From the chefs</div>
+                      <div className="pp-sub-label">Chefs say</div>
                       {ing.quotes.map((q, i) => (
                         <div key={i} className="pp-quote">
                           <div className="pp-quote-text">&ldquo;{q.text}&rdquo;</div>

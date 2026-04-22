@@ -244,7 +244,7 @@ export default function IngredientProfilePage() {
         {/* ── From the book ── */}
         {ing.quotes.length > 0 && (
           <section className="profile-section">
-            <div className="profile-section-label">From the chefs</div>
+            <div className="profile-section-label">Chefs say</div>
             <div className="profile-quotes">
               {ing.quotes.map((q, i) => (
                 <div key={i} className="profile-quote">

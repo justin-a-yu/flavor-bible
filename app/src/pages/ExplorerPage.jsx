@@ -212,10 +212,15 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
         </div>
       )}
 
-      {/* Quote */}
+      {/* Chefs say */}
       {ing?.quotes?.length > 0 && (
-        <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic', marginBottom: top5.length ? 8 : 0 }}>
-          &ldquo;{ing.quotes[0].text.slice(0, 160)}{ing.quotes[0].text.length > 160 ? '…' : ''}&rdquo;
+        <div style={{ marginBottom: top5.length ? 8 : 0 }}>
+          <div style={{ fontSize: '0.62rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 5 }}>
+            Chefs say
+          </div>
+          <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic' }}>
+            &ldquo;{ing.quotes[0].text.slice(0, 160)}{ing.quotes[0].text.length > 160 ? '…' : ''}&rdquo;
+          </div>
         </div>
       )}
 

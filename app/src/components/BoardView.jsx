@@ -65,7 +65,7 @@ function IngredientProfileCard({ lens }) {
           )}
           {ing.quotes.length > 0 && (
             <div className="profile-section">
-              <div className="profile-section-label">From the chefs</div>
+              <div className="profile-section-label">Chefs say</div>
               {ing.quotes.map((q, i) => (
                 <div key={i} className="profile-quote">
                   <div className="profile-quote-text">&ldquo;{q.text}&rdquo;</div>

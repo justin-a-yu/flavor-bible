@@ -114,7 +114,7 @@ export default function PairingDetailDrawer({ pairing, onClose }) {
           {ing?.quotes?.length > 0 && (
             <div>
               <div style={{ fontSize: '0.66rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 7 }}>
-                From the chefs
+                Chefs say
               </div>
               <div style={{ fontSize: '0.8rem', color: '#6a5a3a', lineHeight: 1.65, fontStyle: 'italic' }}>
                 &ldquo;{ing.quotes[0].text.slice(0, 260)}{ing.quotes[0].text.length > 260 ? '\u2026' : ''}&rdquo;
