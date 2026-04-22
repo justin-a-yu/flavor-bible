@@ -8,6 +8,7 @@ import PrintExportButton from '../components/PrintExportButton';
 import useExplorerStore, { serializeParams, deserializeParams } from '../store/useExplorerStore';
 import { STRENGTH_COLOR, STRENGTH_LABEL } from '../utils/boardUtils';
 import { FLAVORS } from '../data/flavors_data';
+import { seededShuffle } from '../utils/rng';
 
 // ── Minimal search bar ─────────────────────────────────────────────────────────
 
@@ -156,6 +157,11 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
   const col = STRENGTH_COLOR[p.strength];
   const ing = p.id ? FLAVORS.ingredients[p.id] : null;
 
+  // Top-5 pairings via the owning lens's seed (same shuffle as the canvas)
+  const lensId = bubble.lensIds[0];
+  const seed   = useExplorerStore.getState().lenses.find(l => l.id === lensId)?.seed ?? 0;
+  const top5   = ing ? seededShuffle(ing.pairings, seed).slice(0, 5) : [];
+
   // Position: try right of cursor, flip left if near edge
   const left = Math.min(clientX + 20, window.innerWidth  - 310);
   const top  = Math.min(clientY - 20, window.innerHeight - 300);
@@ -202,14 +208,39 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
       {/* Tips — italic, above quote */}
       {ing?.tips?.length > 0 && (
         <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic', marginBottom: 8 }}>
-          <span style={{ color: '#b0a488' }}>Tip: </span>{ing.tips[0]}
+          <span>Tip: </span>{ing.tips[0]}
         </div>
       )}
 
-      {/* Quote — at the bottom */}
+      {/* Quote */}
       {ing?.quotes?.length > 0 && (
-        <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic' }}>
+        <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic', marginBottom: top5.length ? 8 : 0 }}>
           &ldquo;{ing.quotes[0].text.slice(0, 160)}{ing.quotes[0].text.length > 160 ? '…' : ''}&rdquo;
+        </div>
+      )}
+
+      {/* Top-5 seeded pairings */}
+      {top5.length > 0 && (
+        <div style={{ borderTop: '1px solid #f0ebe0', paddingTop: 8 }}>
+          <div style={{ fontSize: '0.62rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 5 }}>
+            Also pairs with
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+            {top5.map(pair => (
+              <span key={pair.label} style={{
+                display: 'inline-flex', alignItems: 'center', gap: 4,
+                padding: '2px 8px 2px 5px',
+                background: '#faf5ea', border: '1px solid #e0d4bc', borderRadius: 10,
+                fontSize: '0.72rem', color: '#2c2416',
+              }}>
+                <span style={{
+                  width: 5, height: 5, borderRadius: '50%', flexShrink: 0,
+                  background: STRENGTH_COLOR[pair.strength], display: 'inline-block',
+                }} />
+                {pair.label}
+              </span>
+            ))}
+          </div>
         </div>
       )}
     </div>

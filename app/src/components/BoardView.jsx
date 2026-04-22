@@ -142,6 +142,7 @@ function SharedBySection({ groups, onPairingClick }) {
                             }}
                           />
                           {p.label}
+                          {p.modifier && <span className="chip-modifier">{p.modifier}</span>}
                         </button>
                       ))}
                     </div>

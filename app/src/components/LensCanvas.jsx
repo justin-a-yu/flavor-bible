@@ -339,6 +339,12 @@ export default function LensCanvas({ onBubbleClick }) {
         scale: prev ? prev.scale : (isShared ? 0 : 1),
       });
     });
+
+    // If explode mode is already on, force the next tick to recompute shelf targets
+    // (the shelf won't update otherwise since the "on transition" flag won't fire)
+    if (useExplorerStore.getState().explodeMode) {
+      st.prevExplode = false;
+    }
   }, []);
 
   // ── Physics ─────────────────────────────────────────────────────────────────

@@ -252,6 +252,12 @@
   display: inline-block;
 }
 
+.chip-modifier {
+  font-size: 0.68rem;
+  color: #b0a488;
+  font-style: italic;
+}
+
 /* ─── Pairing rows (By Ingredient section) ────────────────────────────────── */
 
 .pairing-row {
