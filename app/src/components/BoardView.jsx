@@ -203,14 +203,7 @@ export default function BoardView() {
   const filters = useExplorerStore(s => s.filters);
   const [selectedPairing, setSelectedPairing] = useState(null);
 
-  if (lenses.length === 0) {
-    return (
-      <div className="board-empty">
-        <div className="board-empty-text">Search for an ingredient above to begin</div>
-        <div className="board-empty-hint">Try: garlic, lemon, chocolate, lamb, ginger…</div>
-      </div>
-    );
-  }
+  if (lenses.length === 0) return null;
 
   const isSolo = lenses.length === 1;
 

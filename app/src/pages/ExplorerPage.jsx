@@ -225,6 +225,7 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
 
 export default function ExplorerPage() {
   const activeView = useExplorerStore(s => s.activeView);
+  const lenses     = useExplorerStore(s => s.lenses);
   const [detail, setDetail] = useState(null); // { bubble, clientX, clientY }
   const [searchParams] = useSearchParams();
 
@@ -294,22 +295,36 @@ export default function ExplorerPage() {
         </div>
       </header>
 
-      {/* Main view */}
-      {activeView === 'board' ? (
-        <BoardView />
-      ) : (
-        <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-          <LensCanvas onBubbleClick={handleBubbleClick} />
-          {detail && (
-            <DetailCard
-              bubble={detail.bubble}
-              clientX={detail.clientX}
-              clientY={detail.clientY}
-              onClose={() => setDetail(null)}
-            />
-          )}
-        </div>
-      )}
+      {/* Main view — both views share this container so the empty-state overlay is identical */}
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+        {activeView === 'board' ? (
+          <BoardView />
+        ) : (
+          <>
+            <LensCanvas onBubbleClick={handleBubbleClick} />
+            {detail && (
+              <DetailCard
+                bubble={detail.bubble}
+                clientX={detail.clientX}
+                clientY={detail.clientY}
+                onClose={() => setDetail(null)}
+              />
+            )}
+          </>
+        )}
+
+        {/* Shared empty state — same node in both views for pixel-perfect alignment */}
+        {lenses.length === 0 && (
+          <div style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            gap: 8, fontFamily: 'Georgia, serif',
+          }}>
+            <div style={{ fontSize: '0.94rem', color: '#c8b89a' }}>Search for an ingredient above to begin</div>
+            <div style={{ fontSize: '0.8125rem', color: '#d8c8a8' }}>Try: garlic, lemon, chocolate, lamb, ginger…</div>
+          </div>
+        )}
+      </div>
 
       {/* Hint bar */}
       <div className="app-hint-bar" style={{

@@ -465,17 +465,7 @@ export default function LensCanvas({ onBubbleClick }) {
     ctx.translate(panX, panY);
     ctx.scale(zoom, zoom);
 
-    if (lenses.length === 0) {
-      ctx.fillStyle = '#c8b89a';
-      ctx.font = '15px Georgia';
-      ctx.textAlign = 'center';
-      ctx.fillText('Search for an ingredient above to begin', W / 2, H / 2 - 10);
-      ctx.font = '13px Georgia';
-      ctx.fillStyle = '#d8c8a8';
-      ctx.fillText('Try: garlic, lemon, chocolate, lamb, ginger…', W / 2, H / 2 + 14);
-      ctx.restore();
-      return;
-    }
+    if (lenses.length === 0) { ctx.restore(); return; }
 
     // Draw lenses (hidden in explode mode)
     if (explodeMode) {
