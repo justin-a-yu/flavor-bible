@@ -258,42 +258,36 @@ export default function ExplorerPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100vw', height: '100vh', background: '#faf7f2', overflow: 'hidden' }}>
 
-      {/* Header */}
+      {/* Header — single row; pills sit inline with the strength legend */}
       <header className="app-header" style={{
-        display: 'flex', flexDirection: 'column',
+        display: 'flex', alignItems: 'center', gap: 20,
         padding: '14px 28px', background: '#fff', borderBottom: '1px solid #e8e0d0',
-        flexShrink: 0, zIndex: 20, gap: 10,
+        flexShrink: 0, zIndex: 20, flexWrap: 'wrap',
       }}>
-        {/* Row 1: controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
-          <div style={{ fontSize: '1rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#b8863a', fontWeight: 'normal', flexShrink: 0 }}>
-            Flavor <span style={{ color: '#2c2416' }}>Bible</span> Explorer
-          </div>
-          <SearchBar />
-          <ViewToggle />
-          <FilterPanel />
-          {activeView === 'lens' && lenses.length > 0 && <PrintExportButton />}
-          <div style={{ marginLeft: 'auto', display: 'flex', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
-              Essential &nbsp;/&nbsp;
-              <span style={{ background: 'radial-gradient(ellipse at center, rgba(212,168,64,0.55) 0%, rgba(212,168,64,0.22) 55%, transparent 100%)', padding: '1px 7px', borderRadius: 10 }}>
-                Holy Grail
-              </span>
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#e07840', display: 'inline-block' }} />
-              Highly Recommended
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#5a9e6a', display: 'inline-block' }} />
-              Recommended
-            </span>
-          </div>
+        <div style={{ fontSize: '1rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#b8863a', fontWeight: 'normal', flexShrink: 0 }}>
+          Flavor <span style={{ color: '#2c2416' }}>Bible</span> Explorer
         </div>
-
-        {/* Row 2: ingredient pills (only when lenses are active) */}
-        {lenses.length > 0 && <LensPills />}
+        <SearchBar />
+        <ViewToggle />
+        <FilterPanel />
+        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em', flexWrap: 'wrap' }}>
+          {lenses.length > 0 && <LensPills />}
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
+            Essential &nbsp;/&nbsp;
+            <span style={{ background: 'radial-gradient(ellipse at center, rgba(212,168,64,0.55) 0%, rgba(212,168,64,0.22) 55%, transparent 100%)', padding: '1px 7px', borderRadius: 10 }}>
+              Holy Grail
+            </span>
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#e07840', display: 'inline-block' }} />
+            Highly Recommended
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#5a9e6a', display: 'inline-block' }} />
+            Recommended
+          </span>
+        </div>
       </header>
 
       {/* Main view — both views share this container so the empty-state overlay is identical */}
@@ -303,6 +297,11 @@ export default function ExplorerPage() {
         ) : (
           <>
             <LensCanvas onBubbleClick={handleBubbleClick} />
+            {lenses.length > 0 && (
+              <div style={{ position: 'absolute', top: 12, right: 16, zIndex: 10 }}>
+                <PrintExportButton />
+              </div>
+            )}
             {detail && (
               <DetailCard
                 bubble={detail.bubble}
