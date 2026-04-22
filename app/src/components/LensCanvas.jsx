@@ -916,7 +916,10 @@ export default function LensCanvas({ onBubbleClick }) {
         rebuildBubbles();
       }
       if ((e.key === 'e' || e.key === 'E') && e.target.tagName !== 'INPUT') {
-        useExplorerStore.getState().toggleExplodeMode();
+        const hasShared = stateRef.current.bubbles.some(b => b.isShared);
+        if (hasShared || useExplorerStore.getState().explodeMode) {
+          useExplorerStore.getState().toggleExplodeMode();
+        }
       }
     };
 
