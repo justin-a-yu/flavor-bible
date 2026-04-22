@@ -228,14 +228,11 @@ function RemainingSection({ lensColumns, isSolo }) {
 
 const STRENGTH_NAMES = { 4: 'Holy Grail', 3: 'Essential', 2: 'Highly Recommended', 1: 'Recommended' };
 
-// Replace the internal sentinel with a human-readable label
-const displayFilter = v => v === '__untagged__' ? 'Untagged' : v;
-
 function FiltersFooter({ filters }) {
   const parts = [];
-  if (filters.seasons.length)    parts.push(`Season: ${filters.seasons.map(displayFilter).join(', ')}`);
-  if (filters.tastes.length)     parts.push(`Taste: ${filters.tastes.map(displayFilter).join(', ')}`);
-  if (filters.regions.length)    parts.push(`Region: ${filters.regions.map(displayFilter).join(', ')}`);
+  if (filters.seasons.length)    parts.push(`Season: ${filters.seasons.join(', ')}`);
+  if (filters.tastes.length)     parts.push(`Taste: ${filters.tastes.join(', ')}`);
+  if (filters.regions.length)    parts.push(`Region: ${filters.regions.join(', ')}`);
   if (filters.strengths?.length) parts.push(`Strength: ${filters.strengths.map(s => STRENGTH_NAMES[s]).join(', ')}`);
   if (filters.visibility !== 'all') parts.push(`Overlap: ${filters.visibility}`);
   if (!parts.length) return null;

@@ -290,10 +290,10 @@ export function matchesFilters(ingredient, filters) {
   const ingCuisines = ingredient.cuisines ?? [];
 
   // Region — OR logic: ingredient must belong to at least one selected region.
-  // '__untagged__' matches ingredients with no cuisine data at all.
+  // 'untagged' matches ingredients with no cuisine data at all.
   if (regions.length > 0) {
-    const includeUntagged = regions.includes('__untagged__');
-    const taggedRegions   = regions.filter(r => r !== '__untagged__');
+    const includeUntagged = regions.includes('untagged');
+    const taggedRegions   = regions.filter(r => r !== 'untagged');
     const allowedSlugs    = regionsToCuisineSlugs(taggedRegions);
     const matchesTagged   = taggedRegions.length > 0 && ingCuisines.some(c => allowedSlugs.has(c));
     const matchesUntagged = includeUntagged && ingCuisines.length === 0;
@@ -306,10 +306,10 @@ export function matchesFilters(ingredient, filters) {
   }
 
   // Season — OR logic: meta.season string must contain at least one selected value.
-  // '__untagged__' matches ingredients with no season metadata.
+  // 'untagged' matches ingredients with no season metadata.
   if (seasons.length > 0) {
-    const includeUntagged = seasons.includes('__untagged__');
-    const taggedSeasons   = seasons.filter(s => s !== '__untagged__');
+    const includeUntagged = seasons.includes('untagged');
+    const taggedSeasons   = seasons.filter(s => s !== 'untagged');
     const ingSeason       = ingredient.meta?.season?.toLowerCase() ?? '';
     const matchesTagged   = taggedSeasons.length > 0 && taggedSeasons.some(s => ingSeason.includes(s.toLowerCase()));
     const matchesUntagged = includeUntagged && !ingSeason;
@@ -317,10 +317,10 @@ export function matchesFilters(ingredient, filters) {
   }
 
   // Taste — OR logic: meta.taste string must contain at least one selected value.
-  // '__untagged__' matches ingredients with no taste metadata.
+  // 'untagged' matches ingredients with no taste metadata.
   if (tastes.length > 0) {
-    const includeUntagged = tastes.includes('__untagged__');
-    const taggedTastes    = tastes.filter(t => t !== '__untagged__');
+    const includeUntagged = tastes.includes('untagged');
+    const taggedTastes    = tastes.filter(t => t !== 'untagged');
     const ingTaste        = ingredient.meta?.taste?.toLowerCase() ?? '';
     const matchesTagged   = taggedTastes.length > 0 && taggedTastes.some(t => ingTaste.includes(t.toLowerCase()));
     const matchesUntagged = includeUntagged && !ingTaste;

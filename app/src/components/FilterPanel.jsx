@@ -148,15 +148,15 @@ export default function FilterPanel() {
             <RegionMap
               selected={filters.regions}
               onToggle={v => toggleFilter('regions', v)}
-              untaggedActive={filters.regions.includes('__untagged__')}
-              onUntaggedToggle={() => toggleFilter('regions', '__untagged__')}
+              untaggedActive={filters.regions.includes('untagged')}
+              onUntaggedToggle={() => toggleFilter('regions', 'untagged')}
             />
           </FilterRow>
 
           {/* Season */}
           <FilterRow label="Season">
             <ToggleGroup
-              items={[...SEASONS, { value: '__untagged__', label: 'untagged' }]}
+              items={[...SEASONS, { value: 'untagged', label: 'untagged' }]}
               active={filters.seasons}
               onToggle={v => toggleFilter('seasons', v)}
             />
@@ -165,7 +165,7 @@ export default function FilterPanel() {
           {/* Taste */}
           <FilterRow label="Taste">
             <ToggleGroup
-              items={[...TASTES, { value: '__untagged__', label: 'untagged' }]}
+              items={[...TASTES, { value: 'untagged', label: 'untagged' }]}
               active={filters.tastes}
               onToggle={v => toggleFilter('tastes', v)}
             />
