@@ -180,13 +180,17 @@
 .shared-groups {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .shared-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #faf7f2;
+  border: 1px solid #e8e0d0;
+  border-radius: 8px;
 }
 
 .shared-group-header {
@@ -199,7 +203,7 @@
   font-size: 0.66rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #b0a488;
+  color: #8a7450;
 }
 
 .shared-group-count {
