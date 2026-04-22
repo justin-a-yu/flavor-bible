@@ -95,12 +95,13 @@ function ProfileSection({ lenses }) {
 }
 
 function SharedSection({ groups }) {
-  if (!groups.length) return null;
+  const nonEmpty = groups.filter(g => g.pairings.length > 0);
+  if (!nonEmpty.length) return null;
   return (
     <section className="pp-section">
       <div className="pp-section-label">Shared Pairings</div>
       <div className="pp-shared-groups">
-        {groups.map(group => {
+        {nonEmpty.map(group => {
           const byTier = TIER_ORDER
             .map(s => ({
               strength: s,
@@ -114,13 +115,9 @@ function SharedSection({ groups }) {
             <div key={group.label} className="pp-shared-group">
               <div className="pp-shared-group-header">
                 Shared by {group.label}
-                {group.pairings.length > 0 && (
-                  <span className="pp-shared-count">{group.pairings.length}</span>
-                )}
+                <span className="pp-shared-count">{group.pairings.length}</span>
               </div>
-              {group.pairings.length === 0
-                ? <div className="pp-none">none</div>
-                : byTier.map(tier => (
+              {byTier.map(tier => (
                   <div key={tier.strength} className="pp-tier">
                     <div className="pp-tier-label" style={{ color: STRENGTH_COLOR[tier.strength] }}>
                       {STRENGTH_LABEL[tier.strength]}
