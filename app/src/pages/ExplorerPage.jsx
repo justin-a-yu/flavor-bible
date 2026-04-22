@@ -202,7 +202,7 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
       {/* Tips — italic, above quote */}
       {ing?.tips?.length > 0 && (
         <div style={{ fontSize: '0.76rem', color: '#6a5a3a', lineHeight: 1.55, fontStyle: 'italic', marginBottom: 8 }}>
-          <span style={{ fontStyle: 'normal', color: '#b0a488' }}>Tip: </span>{ing.tips[0]}
+          <span style={{ color: '#b0a488' }}>Tip: </span>{ing.tips[0]}
         </div>
       )}
 
