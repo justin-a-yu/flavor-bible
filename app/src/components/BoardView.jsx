@@ -97,11 +97,13 @@ function IngredientProfileSection({ lenses }) {
 }
 
 function SharedBySection({ groups, onPairingClick }) {
+  const nonEmpty = groups.filter(g => g.pairings.length > 0);
+  if (!nonEmpty.length) return null;
   return (
     <section className="board-section">
       <div className="section-label">Pairings</div>
       <div className="shared-groups">
-        {groups.map(group => {
+        {nonEmpty.map(group => {
           const byTier = TIER_ORDER
             .map(s => ({
               strength: s,
@@ -115,14 +117,10 @@ function SharedBySection({ groups, onPairingClick }) {
             <div key={group.label} className="shared-group">
               <div className="shared-group-header">
                 <span className="shared-group-title">Shared by {group.label}</span>
-                {group.pairings.length > 0 && (
-                  <span className="shared-group-count">{group.pairings.length}</span>
-                )}
+                <span className="shared-group-count">{group.pairings.length}</span>
               </div>
 
-              {group.pairings.length === 0
-                ? <div className="shared-none">none</div>
-                : byTier.map(tier => (
+              {byTier.map(tier => (
                   <div key={tier.strength} className="chip-tier">
                     <div className="pairing-tier-label" style={{ color: STRENGTH_COLOR[tier.strength] }}>
                       {STRENGTH_LABEL[tier.strength]}
