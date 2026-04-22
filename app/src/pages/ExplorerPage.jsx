@@ -219,27 +219,39 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
         </div>
       )}
 
-      {/* Top-5 seeded pairings */}
+      {/* Top-5 seeded pairings — clickable to add as a lens */}
       {top5.length > 0 && (
-        <div style={{ borderTop: '1px solid #f0ebe0', paddingTop: 8 }}>
+        <div>
           <div style={{ fontSize: '0.62rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 5 }}>
             Also pairs with
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-            {top5.map(pair => (
-              <span key={pair.label} style={{
-                display: 'inline-flex', alignItems: 'center', gap: 4,
-                padding: '2px 8px 2px 5px',
-                background: '#faf5ea', border: '1px solid #e0d4bc', borderRadius: 10,
-                fontSize: '0.72rem', color: '#2c2416',
-              }}>
-                <span style={{
-                  width: 5, height: 5, borderRadius: '50%', flexShrink: 0,
-                  background: STRENGTH_COLOR[pair.strength], display: 'inline-block',
-                }} />
-                {pair.label}
-              </span>
-            ))}
+            {top5.map(pair => {
+              const canAdd = pair.id && FLAVORS.ingredients[pair.id] &&
+                !useExplorerStore.getState().lenses.find(l => l.id === pair.id);
+              return (
+                <button
+                  key={pair.label}
+                  onClick={canAdd ? () => useExplorerStore.getState().addLens(pair.id) : undefined}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 4,
+                    padding: '2px 8px 2px 5px',
+                    background: '#faf5ea', border: '1px solid #e0d4bc', borderRadius: 10,
+                    fontSize: '0.72rem', color: '#2c2416', fontFamily: 'Georgia, serif',
+                    cursor: canAdd ? 'pointer' : 'default',
+                    transition: 'background 0.1s, border-color 0.1s',
+                  }}
+                  onMouseEnter={canAdd ? e => { e.currentTarget.style.background = '#f0e8d0'; e.currentTarget.style.borderColor = '#c9a460'; } : undefined}
+                  onMouseLeave={canAdd ? e => { e.currentTarget.style.background = '#faf5ea'; e.currentTarget.style.borderColor = '#e0d4bc'; } : undefined}
+                >
+                  <span style={{
+                    width: 5, height: 5, borderRadius: '50%', flexShrink: 0,
+                    background: STRENGTH_COLOR[pair.strength], display: 'inline-block',
+                  }} />
+                  {pair.label}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
