@@ -2,7 +2,7 @@ import { useEffect, useRef, useCallback } from 'react';
 import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
 import { seededShuffle } from '../utils/rng';
-import { matchesFilters } from '../utils/filterUtils';
+import { matchesFilters, EMPTY_ING } from '../utils/filterUtils';
 import { STRENGTH_COLOR } from '../utils/boardUtils';
 
 // ── Drawing helpers ────────────────────────────────────────────────────────────
@@ -242,8 +242,8 @@ export default function LensCanvas({ onBubbleClick }) {
       );
       if (needsFilter) {
         pairings = pairings.filter(p => {
-          if (!p.id) return false;
-          return matchesFilters(FLAVORS.ingredients[p.id], filters);
+          const ing = p.id ? (FLAVORS.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
+          return matchesFilters(ing, filters);
         });
       }
 
@@ -251,8 +251,6 @@ export default function LensCanvas({ onBubbleClick }) {
       shuffled.sort((a, b) => b.strength - a.strength);
 
       shuffled.forEach(p => {
-        // Apply strength filter
-        if (filters.strengths?.length > 0 && !filters.strengths.includes(p.strength)) return;
         // Apply visibility filter
         if (filters.visibility === 'shared' && lenses.length < 2) return;
 
@@ -267,14 +265,17 @@ export default function LensCanvas({ onBubbleClick }) {
       });
     });
 
-    // Determine which bubbles to display
-    // When a strength filter is active the set is already narrowed, so skip
-    // ring-capacity caps — otherwise previously-shared pairings that become
-    // individual under the filter would incorrectly get cut by the cap.
+    // Determine which bubbles to display.
+    // Strength filter is applied here (post-accumulation) using the max strength
+    // across lenses so a pairing shared at different tiers isn't misclassified as
+    // individual just because one lens rates it below the selected threshold.
+    // When active, skip ring-capacity caps — the set is already narrowed.
     const strengthFiltered = filters.strengths?.length > 0;
     const s3Counts = {}, s2Counts = {}, s1Counts = {};
     const toDisplay = Object.values(flavorMap).filter(({ pairing, lensIds }) => {
-      // Visibility filter: shared-only mode
+      // Strength filter: use max-across-lenses (pairing.strength) not per-lens
+      if (strengthFiltered && !filters.strengths.includes(pairing.strength)) return false;
+      // Visibility filter
       if (filters.visibility === 'shared' && lensIds.length < 2) return false;
       if (filters.visibility === 'individual' && lensIds.length > 1) return false;
 

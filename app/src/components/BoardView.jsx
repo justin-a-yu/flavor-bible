@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useExplorerStore from '../store/useExplorerStore';
 import { FLAVORS } from '../data/flavors_data';
-import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
+import { matchesFilters, EMPTY_ING } from '../utils/filterUtils';
 import {
   STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER,
   buildPairingMap, buildSharedGroups, buildAffinities, buildLensColumns, parseAffinityStr,
@@ -205,26 +205,52 @@ export default function BoardView() {
 
   const isSolo = lenses.length === 1;
 
-  // Build a content filter predicate from active cuisine/season/taste filters.
-  // Visibility is handled at the map/column level, not via matchesFilters.
-  const contentFiltersActive = hasActiveFilters({ ...filters, visibility: 'all' });
-  const pairingFilterFn = contentFiltersActive
+  // ── Filter functions ────────────────────────────────────────────────────────
+  // contentFilterFn: ingredient-level only (no strength). Passed to buildPairingMap
+  // so cross-strength shared pairings accumulate correctly across all lenses.
+  //
+  // columnFilterFn: full filter (content + per-lens strength). Used for individual
+  // columns where the lens-specific strength is the right thing to check.
+  const hasContentFilter = (
+    (filters.regions?.length  > 0) ||
+    (filters.cuisines?.length > 0) ||
+    (filters.seasons?.length  > 0) ||
+    (filters.tastes?.length   > 0)
+  );
+  const contentFilterFn = hasContentFilter
     ? p => {
-        if (filters.strengths?.length > 0 && !filters.strengths.includes(p.strength)) return false;
-        if (!p.id) {
-          // No ingredient data — can't match region/season/taste filters
-          const hasContentFilters = (filters.regions?.length > 0) || (filters.seasons?.length > 0) || (filters.tastes?.length > 0);
-          return !hasContentFilters;
-        }
-        return matchesFilters(FLAVORS.ingredients[p.id], filters);
+        const ing = p.id ? (FLAVORS.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
+        return matchesFilters(ing, filters);
       }
     : null;
 
-  // Single scan — used for both shared groups and individual column filtering
-  const pairingMap  = buildPairingMap(lenses, pairingFilterFn);
-  const sharedGroups = isSolo ? [] : buildSharedGroups(lenses, pairingMap);
+  const columnFilterFn = (hasContentFilter || filters.strengths?.length > 0)
+    ? p => {
+        if (filters.strengths?.length > 0 && !filters.strengths.includes(p.strength)) return false;
+        if (!hasContentFilter) return true;
+        const ing = p.id ? (FLAVORS.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
+        return matchesFilters(ing, filters);
+      }
+    : null;
+
+  // Accumulate without strength filter so shared pairings are detected correctly
+  // even when lenses rate them at different tiers.
+  const pairingMap = buildPairingMap(lenses, contentFilterFn);
+
+  // Apply strength filter post-accumulation using max strength across lenses.
+  // A shared pairing shows if any lens rates it at the selected tier.
+  const strengthPairingMap = filters.strengths?.length > 0
+    ? Object.fromEntries(
+        Object.entries(pairingMap).filter(([, p]) => {
+          const maxStr = Math.max(...Object.values(p.perLens));
+          return filters.strengths.includes(maxStr);
+        })
+      )
+    : pairingMap;
+
+  const sharedGroups = isSolo ? [] : buildSharedGroups(lenses, strengthPairingMap);
   const affinities   = buildAffinities(lenses);
-  const lensColumns  = buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn);
+  const lensColumns  = buildLensColumns(lenses, strengthPairingMap, isSolo, columnFilterFn);
 
   // Cross-lens avoid conflicts: lens A avoids lens B (or vice versa)
   const avoidConflicts = [];

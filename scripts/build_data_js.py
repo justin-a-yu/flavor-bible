@@ -31,20 +31,20 @@ ALTERNATE_NAMES = {
     "pink pepper":            "pepper-pink",
     "red pepper":             "pepper-red",
     "cayenne":                "cayenne-ground",
-    "dijon mustard":          "mustard-dijon",
-    "chinese mustard":        "mustard-chinese",
+    "dijon mustard":          "mustard",
+    "chinese mustard":        "mustard",
     "sea salt":               "salt-sea-fine",
-    "flat-leaf parsley":      "parsley-flat-leaf",
+    "flat-leaf parsley":      "parsley",
     "thai basil":             "basil-thai",
     "lemon basil":            "lemon-basil",
     "meyer lemon":            "lemons-meyer",
     "preserved lemon":        "lemons-preserved",
     "blood orange":           "oranges-blood",
     # Comma-inverted forms ("adjective, noun" → ingredient id)
-    "mustard, dijon":         "mustard-dijon",
-    "mustard, chinese":       "mustard-chinese",
-    "parsley, flat-leaf":     "parsley-flat-leaf",
-    "parsley, italian":       "parsley-flat-leaf",
+    "mustard, dijon":         "mustard",
+    "mustard, chinese":       "mustard",
+    "parsley, flat-leaf":     "parsley",
+    "parsley, italian":       "parsley",
     "pepper, black":          "pepper-black",
     "pepper, white":          "pepper-white",
     "pepper, red":            "pepper-red",
@@ -102,6 +102,30 @@ ALTERNATE_NAMES = {
     "chile flakes":           "chile-peppers",
     # Risotto → arborio/carnaroli rice entry
     "risotto":                "rice-arborio-or-carnaroli",
+    # Word-order slug mismatches (pairing uses one order, ingredient entry uses the other)
+    "sesame oil":             "oil-sesame",
+    "peanut oil":             "oil-peanut",
+    "oil, walnut":            "walnut-oil",
+    # Ghost-filtered entries and missing redirects → best living alternative
+    "poultry":                "chicken",
+    "prunes":                 "plums-dried",
+    "steak":                  "beef-steak-in-general",
+    "legumes":                "beans",
+    "pickles":                "brined-dishes",
+    "smoked salmon":          "salmon-smoked",
+    "morels":                 "mushrooms-morels",
+    "oxtails":                "beef-oxtails",
+    "green beans":            "beans-green",
+    "chicken livers":         "liver-chicken",
+    "dandelion greens":       "greens-dandelion",
+    "calamari":               "squid",
+    "corned beef":            "beef-brisket",
+    "honey, chestnut":        "honey",
+    "romaine":                "lettuce-romaine",
+    "short ribs":             "beef-short-ribs",
+    "mustard greens":         "greens-mustard",
+    "sugar snap peas":        "peas",
+    "vegetables, root":       "vegetables",
 }
 
 
@@ -255,6 +279,19 @@ def build():
     ghosts = {iid for iid, e in out_ings.items() if is_ghost(e)}
     for iid in ghosts:
         del out_ings[iid]
+
+    # ── Nullify dangling pairing/avoid ids ────────────────────────────────────
+    # After ghost-filtering, some p.id values may point to deleted entries
+    # (e.g. "salt" — a ghost with no content that we intentionally leave null).
+    # Nullify rather than silently leave a broken reference.
+    live_ids = set(out_ings.keys())
+    for entry in out_ings.values():
+        for p in entry["pairings"]:
+            if p["id"] is not None and p["id"] not in live_ids:
+                p["id"] = None
+        for a in entry["avoids"]:
+            if a["id"] is not None and a["id"] not in live_ids:
+                a["id"] = None
 
     # Build sorted index for search — derived from out_ings so it always
     # reflects exactly what survived ghost-filtering and manual suppression.

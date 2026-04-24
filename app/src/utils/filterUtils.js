@@ -104,7 +104,7 @@ export const CUISINE_TO_REGION = {
   'moroccan-cuisine':                                      'Middle East & N. Africa',
   'north-african-cuisine':                                 'Middle East & N. Africa',
   'african-north-cuisine':                                 'Middle East & N. Africa', // alias
-  'french-southern-italian-middle-eastern-moroccan-cuisine': 'Middle East & N. Africa', // catch-all alias
+  'french-southern-italian-middle-eastern-moroccan-cuisine': ['Middle East & N. Africa', 'Europe'], // multi-region catch-all
 
   // ── Africa ───────────────────────────────────────────────────────────────────
   'african-cuisine':                                       'Africa',
@@ -256,14 +256,25 @@ export const CUISINE_LABEL = {
 
 // Derive REGIONS from CUISINE_TO_REGION — grouped by region for the map filter.
 // This replaces the old hand-maintained arrays and stays in sync automatically.
+// Values may be a string (single region) or an array (multi-region catch-all slugs).
 export const REGIONS = (() => {
   const out = {};
   for (const [slug, region] of Object.entries(CUISINE_TO_REGION)) {
-    if (!out[region]) out[region] = [];
-    out[region].push(slug);
+    const regions = Array.isArray(region) ? region : [region];
+    for (const r of regions) {
+      if (!out[r]) out[r] = [];
+      out[r].push(slug);
+    }
   }
   return out;
 })();
+
+/**
+ * Stand-in ingredient used when a pairing has no id or an unresolvable id.
+ * Has no cuisine/season/taste metadata, so it behaves as fully "untagged" —
+ * passing through when 'untagged' is selected in any dimension, excluded otherwise.
+ */
+export const EMPTY_ING = { cuisines: [], meta: {} };
 
 /**
  * Expand selected region labels into the full set of cuisine slugs they cover.
