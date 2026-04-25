@@ -35,6 +35,7 @@ import fitz
 import json
 import re
 import unicodedata
+from dataclasses import dataclass
 from pathlib import Path
 
 PDF_PATH   = "/Users/juyu/Documents/flavor bible/Flavor-Bible-epub.pdf"
@@ -462,6 +463,498 @@ def classify_line(line_spans):
     return None
 
 
+# ── Pass 1 ─────────────────────────────────────────────────────────────────────
+
+@dataclass
+class ParsedLine:
+    page:     int
+    role:     str    # header | non_ingredient | cuisine_header
+                     # note_start | dish_start
+                     # attribution
+                     # affinity | meta | avoid_marker
+                     # pairing | skip | sans_content
+    strength: int    # 1–4 for pairings, 0 for everything else
+    text:     str    # asterisk-stripped, whitespace-normalised
+
+
+def classify_content(font_role, strength, text):
+    """
+    Second-level classification: refine font-based role with content patterns.
+    Called after classify_line(); text should already be lstrip("*").strip().
+    Returns (role, strength, text).
+    """
+    clean_lower = text.lower()
+
+    if font_role == "header":
+        slug = canonical_label(text)
+        if slug in NOTE_SIDEBARS:
+            return ("note_start",      0, text)
+        if slug in DISH_SIDEBARS:
+            return ("dish_start",      0, text)
+        if slug in NON_INGREDIENT_SLUGS:
+            return ("non_ingredient",  0, text)
+        if is_sidebar_title(text):
+            return ("non_ingredient",  0, text)
+        return ("header",              0, text)
+
+    if font_role == "pairing":
+        if clean_lower in SKIP_EXACT:
+            return ("skip",            0, text)
+        if clean_lower == "avoid":
+            return ("avoid_marker",    0, text)
+        # Em-dash lines are attribution regardless of font size.
+        # Some chef attributions are typeset at pairing size (12pt), above the
+        # FOOTNOTE_MAX threshold, so classify_line returns "pairing" for them.
+        # Reclassify here so Pass 2 triggers backward_claim correctly.
+        if (text.startswith("\u2014") or text.startswith("\u2013")
+                or text.startswith("—") or text.startswith("–")) and len(text) > 5:
+            return ("attribution",     0, text)
+        # Meta checks before affinity: a line like "Tips: Balance hot + sour + salty"
+        # contains " + " but should be classified as meta, not affinity.
+        if is_meta_key(clean_lower.rstrip(":")):
+            return ("meta",            0, text)
+        colon_m = re.match(r'^([A-Za-z ]{2,30}):\s*(.+)$', text)
+        if colon_m and is_meta_key(colon_m.group(1).strip().lower()):
+            return ("meta",            0, text)
+        if is_affinity_line(text):
+            return ("affinity",        0, text)
+        return ("pairing",      strength, text)
+
+    # cuisine_header, attribution, attribution_cont, skip, sans_content pass through
+    return (font_role, strength, text)
+
+
+def pass1_scan(start=START_PAGE, end=END_PAGE):
+    """
+    Pass 1: read the PDF and emit a flat, ordered list of ParsedLine events.
+
+    Responsibilities:
+      - Font-based classification via classify_line()
+      - Content-pattern refinement via classify_content()
+      - Merging multi-line headers with unclosed parentheses (pending_header)
+      - Merging multi-line pairings with trailing commas / unclosed parens
+        (pending_pairing)
+      - Skipping front matter before "Achiote Seeds"
+
+    NOT responsible for:
+      - Ingredient assignment
+      - Quote / note / avoid state tracking
+      - Cuisine tagging
+    """
+    doc    = fitz.open(PDF_PATH)
+    end    = min(end, len(doc))
+    events: list[ParsedLine] = []
+
+    found_first     = False
+    pending_header  = None   # (font_role, accumulated_text) — unclosed paren
+    pending_pairing = None   # accumulated pairing text — unclosed paren / trailing comma
+
+    for page_num in range(start, end):
+        page   = doc[page_num]
+        blocks = page.get_text("dict", flags=fitz.TEXT_PRESERVE_WHITESPACE)["blocks"]
+
+        if page_num % 50 == 0:
+            print(f"  pass1 page {page_num + 1}…")
+
+        for block in blocks:
+            if block["type"] != 0:
+                continue
+
+            for line in preprocess_block_lines(block):
+                result = classify_line(line["spans"])
+                if result is None:
+                    continue
+
+                font_role, strength, text = result
+                clean = text.lstrip("*").strip()
+
+                # ── Flush pending wrapped header ─────────────────────────────
+                # Headers whose opening paren spans a block boundary are
+                # accumulated here until the paren count balances.
+                if pending_header is not None:
+                    ph_role, ph_text = pending_header
+                    combined = ph_text + " " + clean
+                    if combined.count("(") <= combined.count(")"):
+                        pending_header = None
+                        role, s, t = classify_content(ph_role, 0, combined.lstrip("*").strip())
+                        if not found_first:
+                            if role == "header" and canonical_label(t) == "achiote-seeds":
+                                found_first = True
+                                events.append(ParsedLine(page_num, role, s, t))
+                            continue
+                        events.append(ParsedLine(page_num, role, s, t))
+                    else:
+                        pending_header = (ph_role, combined)
+                    continue
+
+                # ── Front-matter gate ────────────────────────────────────────
+                if not found_first:
+                    if font_role == "header" and slugify(clean) == "achiote-seeds":
+                        found_first = True
+                        # Fall through to classify + emit below
+                    else:
+                        continue
+
+                # ── Headers: open pending or classify + emit ─────────────────
+                if font_role in ("header", "cuisine_header"):
+                    # A new header always closes any dangling pairing buffer
+                    pending_pairing = None
+                    if clean.count("(") > clean.count(")"):
+                        pending_header = (font_role, clean)
+                        continue
+                    role, s, t = classify_content(font_role, 0, clean)
+                    events.append(ParsedLine(page_num, role, s, t))
+                    continue
+
+                # ── Pairing lines: merge continuations, then classify ─────────
+                if font_role == "pairing":
+                    # Pre-check: affinity / meta / skip / avoid lines bypass
+                    # pending_pairing accumulation entirely — matching the old
+                    # parser's behaviour where these checks ran before the
+                    # pending_pairing flush, letting affinity/meta lines escape
+                    # unclosed-paren accumulation.
+                    _pre = classify_content(font_role, strength, clean.rstrip(",;").strip())
+                    if _pre[0] in ("affinity", "meta", "skip", "avoid_marker"):
+                        events.append(ParsedLine(page_num, *_pre))
+                        continue
+
+                    # Flush a pending pairing if this line closes it
+                    if pending_pairing is not None:
+                        combined = pending_pairing + " " + clean.strip()
+                        balanced    = combined.count("(") <= combined.count(")")
+                        trailing    = combined.rstrip().endswith(",")
+                        if balanced and not trailing:
+                            pending_pairing = None
+                            clean = combined.strip()
+                            # Fall through to classify the completed text
+                        else:
+                            pending_pairing = combined.strip()
+                            continue
+
+                    # Open a new pending pairing for trailing comma or unclosed paren
+                    stripped = clean.rstrip(",;").strip()
+                    if clean.rstrip().endswith(","):
+                        pending_pairing = clean.strip()
+                        continue
+                    if stripped.count("(") > stripped.count(")"):
+                        pending_pairing = stripped
+                        continue
+                    clean = stripped
+
+                # ── Classify content and emit ────────────────────────────────
+                role, s, t = classify_content(font_role, strength, clean)
+                events.append(ParsedLine(page_num, role, s, t))
+
+    doc.close()
+    print(f"Pass 1 complete: {len(events)} events.")
+    return events
+
+
+# ── Pass 2 ─────────────────────────────────────────────────────────────────────
+
+def _backward_claim(window):
+    """
+    Walk backwards through the uncommitted pairing window and claim trailing
+    prose lines as a quote block.
+
+    Claim rule (applied in reverse order from end of window):
+      - strength ≥ 3               → always stop (definitive pairing)
+      - ends with '.'              → claim (sentence-final punctuation)
+      - len ≥ 50                   → claim (wrapped column text, prose)
+      - else                       → stop (short noun phrase = pairing boundary)
+
+    Returns (quote_lines, remaining_pairings).  Does not modify window.
+    """
+    claim_start = len(window)
+    for i in range(len(window) - 1, -1, -1):
+        e = window[i]
+        if e.strength >= 3:
+            break
+        if e.text.rstrip().endswith('.') or len(e.text) >= 50:
+            claim_start = i
+        else:
+            break
+    return window[claim_start:], window[:claim_start]
+
+
+def pass2_build(events):
+    """
+    Pass 2: walk the flat ParsedLine list and build ingredients + cuisine_buckets.
+
+    Responsibilities:
+      - Ingredient context tracking
+      - Uncommitted window with attribution-anchored backward quote claiming
+      - Note section state  (note_start → prose into notes[])
+      - Dish section state  (dish_start → sans_content into dishes[])
+      - Avoid section state (avoid_marker → pairings routed to avoids[])
+      - Cuisine header context (cuisine_header → tag pairing labels)
+
+    NOT responsible for:
+      - Ghost-filtering
+      - Pairing deduplication
+      - Dish reassignment
+      - Cross-ingredient quote re-attribution (still handled by fix_quote_attribution)
+    """
+    ingredients     = {}   # slug → entry dict
+    cuisine_buckets = {}   # cuisine_slug → set of pairing labels
+
+    current_ingredient = None
+    current_cuisines   = []
+    window             = []   # uncommitted ParsedLine pairings for current ingredient
+
+    in_dishes    = False
+    pending_dish = None   # dish name awaiting its attribution line
+    in_note      = False
+    note_buffer  = []
+    in_avoid     = False
+
+    # ── Helpers ────────────────────────────────────────────────────────────────
+
+    def get_or_create(text):
+        slug = canonical_label(text)
+        if slug not in ingredients:
+            clean_label = text.title() if text == text.upper() else text
+            ingredients[slug] = {
+                "id":         slug,
+                "label":      clean_label,
+                "aliases":    parse_see_also_aliases(text),
+                "meta":       {},
+                "pairings":   [],
+                "avoids":     [],
+                "quotes":     [],
+                "tips":       [],
+                "notes":      [],
+                "dishes":     [],
+                "affinities": [],
+                "cuisines":   [],
+            }
+        return slug
+
+    def commit_window():
+        """
+        Commit all lines in the window to current_ingredient as pairings or avoids.
+        Filters out prose fragments that were not claimed by a backward_claim:
+          - period-ending lines  (sentence-final prose)
+          - subject-pronoun lines (mid-sentence fragments)
+          - long lines with verb indicators (unattributed quote prose)
+        """
+        nonlocal window
+        if not window or not current_ingredient or current_ingredient not in ingredients:
+            window = []
+            return
+        entry = ingredients[current_ingredient]
+        for e in window:
+            # Prose guards — discard fragments that escaped quote detection
+            if e.text.rstrip().endswith('.'):
+                continue
+            if re.match(r'^(i|we|you|he|she|they|it)\s', e.text, re.IGNORECASE):
+                continue
+            if len(e.text) >= 50 and QUOTE_INDICATORS.search(e.text):
+                continue
+
+            base_label, modifier = split_modifier(e.text)
+            base_lower = base_label.lower().strip()
+            if not base_lower:
+                continue
+
+            # Avoid entries are always routed to avoids[] regardless of whether
+            # the label looks like a cuisine.  The old parser's avoid check ran
+            # before is_cuisine_header, so e.g. "Japanese cuisine (say some)"
+            # in an AVOID section correctly ended up in avoids[], not cuisines[].
+            if in_avoid:
+                entry["avoids"].append({"label": base_lower,
+                                        **({"modifier": modifier.lower()} if modifier else {})})
+                continue
+
+            # A pairing that is itself a cuisine → tag, don't list
+            if is_cuisine_header(base_lower):
+                cs = slugify(base_lower)
+                if cs not in cuisine_buckets:
+                    cuisine_buckets[cs] = set()
+                if cs not in entry["cuisines"]:
+                    entry["cuisines"].append(cs)
+                continue
+
+            p = {"label": base_lower, "strength": e.strength}
+            if modifier:
+                p["modifier"] = modifier.lower()
+            entry["pairings"].append(p)
+        window = []
+
+    def close_sections():
+        """Flush any open dish / note sections before resetting ingredient context."""
+        nonlocal in_dishes, pending_dish, in_note, note_buffer
+        if pending_dish and current_ingredient and current_ingredient in ingredients:
+            ingredients[current_ingredient]["dishes"].append(
+                {"text": pending_dish, "attribution": ""}
+            )
+        if in_note and note_buffer and current_ingredient and current_ingredient in ingredients:
+            ingredients[current_ingredient]["notes"].append("\n".join(note_buffer))
+        in_dishes    = False
+        pending_dish = None
+        in_note      = False
+        note_buffer  = []
+
+    # ── Main event loop ────────────────────────────────────────────────────────
+
+    for e in events:
+
+        # ── New ingredient ─────────────────────────────────────────────────────
+        if e.role == "header":
+            commit_window()
+            close_sections()
+            in_avoid         = False
+            current_cuisines = []
+            current_ingredient = get_or_create(e.text)
+
+        # ── Non-ingredient header (sidebar title, known non-ingredient slug) ───
+        elif e.role == "non_ingredient":
+            commit_window()
+            close_sections()
+            in_avoid           = False
+            current_ingredient = None
+            current_cuisines   = []
+
+        # ── Cuisine header ─────────────────────────────────────────────────────
+        elif e.role == "cuisine_header":
+            commit_window()
+            in_avoid           = False
+            current_ingredient = None
+            primary_slug, alias_slugs = parse_cuisine_header(e.text)
+            current_cuisines = [primary_slug] + alias_slugs
+            for slug in current_cuisines:
+                if slug not in cuisine_buckets:
+                    cuisine_buckets[slug] = set()
+
+        # ── Note section start ─────────────────────────────────────────────────
+        elif e.role == "note_start":
+            commit_window()
+            in_avoid  = False
+            in_dishes = False
+            in_note   = True
+            note_buffer = []
+
+        # ── Dish section start ─────────────────────────────────────────────────
+        elif e.role == "dish_start":
+            commit_window()
+            in_avoid     = False
+            in_dishes    = True
+            pending_dish = None
+
+        # ── Attribution: claim quote backwards through window ──────────────────
+        elif e.role == "attribution":
+            quote_lines, remaining = _backward_claim(window)
+            window = remaining
+            commit_window()
+            if quote_lines and current_ingredient and current_ingredient in ingredients:
+                ingredients[current_ingredient]["quotes"].append({
+                    "text":        " ".join(ln.text for ln in quote_lines).strip(),
+                    "attribution": e.text.lstrip("—–").strip(),
+                })
+
+        # ── Avoid section marker ───────────────────────────────────────────────
+        elif e.role == "avoid_marker":
+            commit_window()
+            in_avoid = True
+
+        # ── Affinity ───────────────────────────────────────────────────────────
+        elif e.role == "affinity":
+            commit_window()
+            in_avoid = False
+            if current_ingredient and current_ingredient in ingredients:
+                ingredients[current_ingredient]["affinities"].append(e.text)
+
+        # ── Meta (includes tip key:value lines) ────────────────────────────────
+        elif e.role == "meta":
+            commit_window()
+            in_avoid = False
+            if not current_ingredient or current_ingredient not in ingredients:
+                continue
+            entry   = ingredients[current_ingredient]
+            colon_m = re.match(r'^([A-Za-z ]{2,30}):\s*(.+)$', e.text)
+            if colon_m:
+                key = colon_m.group(1).strip().lower()
+                val = colon_m.group(2).strip()
+                if key in ("tip", "tips"):
+                    entry["tips"].append(val)
+                else:
+                    entry["meta"][key] = val
+            # key-only lines (no value) are section separators — skip
+
+        # ── Pairing ────────────────────────────────────────────────────────────
+        elif e.role == "pairing":
+
+            # First serif pairing exits the dish section
+            if in_dishes:
+                if pending_dish and current_ingredient and current_ingredient in ingredients:
+                    ingredients[current_ingredient]["dishes"].append(
+                        {"text": pending_dish, "attribution": ""}
+                    )
+                pending_dish = None
+                in_dishes    = False
+
+            # Note section: absorb prose / exit on short content-word line
+            if in_note:
+                stripped = e.text.lstrip("•").strip()
+                _cont = ("the ", "a ", "an ", "or ", "and ", "but ", "so ",
+                         "when ", "if ", "then ", "in ", "with ", "from ",
+                         "to ", "that ", "which ", "as ", "at ", "into ",
+                         "for ", "of ")
+                is_prose = (
+                    e.text.startswith("•")
+                    or len(e.text) > 60
+                    or any(e.text.lower().startswith(w) for w in _cont)
+                    or e.text.rstrip().endswith('.')
+                )
+                if is_prose:
+                    note_buffer.append(stripped if e.text.startswith("•") else e.text)
+                    continue
+                # Short content-word line — back to normal pairings
+                in_note = False
+                if note_buffer and current_ingredient and current_ingredient in ingredients:
+                    ingredients[current_ingredient]["notes"].append(
+                        "\n".join(note_buffer)
+                    )
+                note_buffer = []
+                # Fall through to normal pairing handling below
+
+            # Cuisine context: tag the label directly, skip the window
+            if current_cuisines:
+                base_label, _ = split_modifier(e.text)
+                base_lower = base_label.lower().strip()
+                if base_lower:
+                    for cs in current_cuisines:
+                        cuisine_buckets[cs].add(base_lower)
+            elif current_ingredient:
+                window.append(e)
+
+        # ── Sans content (dish names / note intro in sans font) ────────────────
+        elif e.role == "sans_content":
+            if in_dishes and current_ingredient and current_ingredient in ingredients:
+                if e.text.startswith("—") or e.text.startswith("–"):
+                    attr = re.sub(r'^[—–]\s*', '', e.text).strip()
+                    if pending_dish:
+                        ingredients[current_ingredient]["dishes"].append(
+                            {"text": pending_dish, "attribution": attr}
+                        )
+                        pending_dish = None
+                else:
+                    pending_dish = (pending_dish + " " + e.text) if pending_dish else e.text
+            elif in_note and current_ingredient:
+                note_buffer.append(e.text)
+
+        # ── Skip ───────────────────────────────────────────────────────────────
+        # (cross-references, structural labels — nothing to do)
+
+    # ── End of events: flush remaining state ──────────────────────────────────
+    commit_window()
+    close_sections()
+
+    print(f"Pass 2 complete: {len(ingredients)} ingredients, "
+          f"{len(cuisine_buckets)} cuisine buckets.")
+    return ingredients, cuisine_buckets
+
+
 # ── Quote re-attribution ───────────────────────────────────────────────────────
 
 def fix_quote_attribution(ingredients):
@@ -544,397 +1037,13 @@ def fix_quote_attribution(ingredients):
 # ── Main parse ─────────────────────────────────────────────────────────────────
 
 def parse(start=START_PAGE, end=END_PAGE, out=OUT_PATH):
-    doc = fitz.open(PDF_PATH)
-    end = min(end, len(doc))
+    # ── Pass 1: classify PDF lines ────────────────────────────────────────────
+    events = pass1_scan(start, end)
 
-    ingredients    = {}          # slug → entry dict
-    cuisine_buckets = {}         # cuisine_slug → set of pairing labels
+    # ── Pass 2: build ingredient data from events ─────────────────────────────
+    ingredients, cuisine_buckets = pass2_build(events)
 
-    current_ingredient  = None   # slug
-    current_cuisines    = []     # slugs active in cuisine-header mode
-    pending_header      = None   # (type, text) — wraps a header with unclosed paren
-    pending_pairing     = None   # partial pairing text with unclosed parenthesis
-    found_first         = False  # skip headers until "achiote seeds" is reached
-
-    # Quote buffering
-    prose_buffer   = []          # lines buffered waiting to see if attribution follows
-
-    # Dish sidebar state
-    in_dishes_section  = False   # True while inside a "Dishes" sidebar
-    pending_dish_name  = None    # dish name awaiting its attribution line
-
-    # Note sidebar state (long-form sidebar prose, e.g. "Pairing Pastas with Sauces")
-    in_note_section    = False
-    note_buffer        = []      # accumulates lines until sidebar ends
-
-    # Avoid section state
-    in_avoid_section   = False
-
-    def get_or_create(label):
-        slug = canonical_label(label)
-        if slug not in ingredients:
-            clean_label = label.title() if label == label.upper() else label
-            aliases = parse_see_also_aliases(label)
-            ingredients[slug] = {
-                "id":         slug,
-                "label":      clean_label,
-                "aliases":    aliases,
-                "meta":       {},
-                "pairings":   [],
-                "avoids":     [],
-                "quotes":     [],
-                "tips":       [],
-                "notes":      [],
-                "dishes":     [],
-                "affinities": [],
-                "cuisines":   [],
-            }
-        return slug
-
-    def flush_prose_as_quote(attribution):
-        """Buffer was followed by attribution → it's a quote."""
-        if prose_buffer and current_ingredient and current_ingredient in ingredients:
-            ingredients[current_ingredient]["quotes"].append({
-                "text":        " ".join(prose_buffer).strip(),
-                "attribution": attribution.strip().lstrip("—").strip(),
-            })
-        prose_buffer.clear()
-
-    def discard_prose_buffer():
-        """Buffer was NOT followed by attribution → discard."""
-        prose_buffer.clear()
-
-    for page_num in range(start, end):
-        page   = doc[page_num]
-        blocks = page.get_text("dict", flags=fitz.TEXT_PRESERVE_WHITESPACE)["blocks"]
-
-        if page_num % 50 == 0:
-            print(f"  page {page_num + 1}…")
-
-        for block in blocks:
-            if block["type"] != 0:
-                continue
-
-            for line in preprocess_block_lines(block):
-                result = classify_line(line["spans"])
-                if result is None:
-                    continue
-
-                role, strength, text = result
-                clean = text.lstrip("*").strip()
-                clean_lower = clean.lower()
-
-                # ── Pending wrapped header continuation ───────────────────
-                # Either a cuisine or ingredient header had an unclosed paren;
-                # absorb lines until balanced, then process the combined text.
-                if pending_header is not None:
-                    ph_type, ph_text = pending_header
-                    combined = ph_text + " " + clean
-                    if combined.count('(') <= combined.count(')'):
-                        pending_header = None
-                        if ph_type == "cuisine_header":
-                            primary_slug, alias_slugs = parse_cuisine_header(combined)
-                            current_cuisines = [primary_slug] + alias_slugs
-                            for slug in current_cuisines:
-                                if slug not in cuisine_buckets:
-                                    cuisine_buckets[slug] = set()
-                        else:
-                            if canonical_label(combined) not in NON_INGREDIENT_SLUGS:
-                                current_cuisines   = []
-                                current_ingredient = get_or_create(combined)
-                    else:
-                        pending_header = (ph_type, combined)
-                    continue
-
-                # ── New ingredient header ──────────────────────────────────
-                if role == "header":
-                    discard_prose_buffer()
-                    pending_pairing = None
-                    in_avoid_section = False
-                    # Close any open sidebar sections before moving on
-                    in_dishes_section = False
-                    if pending_dish_name and current_ingredient in ingredients:
-                        ingredients[current_ingredient]["dishes"].append(
-                            {"text": pending_dish_name, "attribution": ""}
-                        )
-                    pending_dish_name = None
-                    if in_note_section and note_buffer and current_ingredient in ingredients:
-                        ingredients[current_ingredient]["notes"].append(
-                            "\n".join(note_buffer)
-                        )
-                    in_note_section = False
-                    note_buffer = []
-
-                    if not found_first:
-                        if slugify(clean) == "achiote-seeds":
-                            found_first = True
-                        else:
-                            continue
-                    # Mid-entry sidebars appear inside an ingredient's section —
-                    # activate the appropriate collection mode, don't reset context.
-                    if canonical_label(clean) in MID_ENTRY_SIDEBARS:
-                        slug = canonical_label(clean)
-                        if slug in DISH_SIDEBARS:
-                            in_dishes_section = True
-                        elif slug in NOTE_SIDEBARS:
-                            in_note_section = True
-                            note_buffer = []
-                        continue
-                    if canonical_label(clean) in NON_INGREDIENT_SLUGS:
-                        current_ingredient = None
-                        current_cuisines   = []
-                        continue
-                    # Sidebar titles (chef essays, section intros) share the
-                    # same header font but are too long to be ingredient names.
-                    if is_sidebar_title(clean):
-                        current_ingredient = None
-                        continue
-                    if clean.count('(') > clean.count(')'):
-                        pending_header = ("header", clean)
-                    else:
-                        current_cuisines   = []
-                        current_ingredient = get_or_create(clean)
-
-                # ── Cuisine header ─────────────────────────────────────────
-                elif role == "cuisine_header":
-                    discard_prose_buffer()
-                    in_avoid_section = False
-                    current_ingredient = None
-                    if clean.count('(') > clean.count(')'):
-                        pending_header = ("cuisine_header", clean)
-                    else:
-                        primary_slug, alias_slugs = parse_cuisine_header(clean)
-                        current_cuisines = [primary_slug] + alias_slugs
-                        for slug in current_cuisines:
-                            if slug not in cuisine_buckets:
-                                cuisine_buckets[slug] = set()
-
-                # ── Skip ───────────────────────────────────────────────────
-                elif role == "skip":
-                    continue
-
-                # ── Sans-font sidebar content (dish items / notes) ─────────
-                elif role == "sans_content":
-                    if not current_ingredient or current_ingredient not in ingredients:
-                        continue
-                    if in_dishes_section:
-                        # Lines starting with "—" are dish attributions
-                        if clean.startswith("—") or clean.startswith("–"):
-                            attr = re.sub(r'^[—–]\s*', '', clean).strip()
-                            if pending_dish_name:
-                                ingredients[current_ingredient]["dishes"].append(
-                                    {"text": pending_dish_name, "attribution": attr}
-                                )
-                                pending_dish_name = None
-                        else:
-                            # Dish name — may be multi-line, concatenate
-                            if pending_dish_name:
-                                pending_dish_name += " " + clean
-                            else:
-                                pending_dish_name = clean
-                    elif in_note_section:
-                        note_buffer.append(clean)
-
-                # ── Attribution line — flush prose buffer as quote ─────────
-                elif role == "attribution":
-                    flush_prose_as_quote(clean)
-
-                # ── Attribution continuation (restaurant name) ─────────────
-                elif role == "attribution_cont":
-                    if current_ingredient and current_ingredient in ingredients:
-                        quotes = ingredients[current_ingredient]["quotes"]
-                        if quotes:
-                            last = quotes[-1]
-                            # Append restaurant to attribution
-                            last["attribution"] = (
-                                last["attribution"].rstrip(", ") + ", " + clean
-                            ).strip(", ")
-
-                # ── Pairing / meta / prose lines ───────────────────────────
-                elif role == "pairing":
-
-                    # Exit the dishes section — serif pairings resume
-                    if in_dishes_section:
-                        in_dishes_section = False
-                        if pending_dish_name and current_ingredient in ingredients:
-                            ingredients[current_ingredient]["dishes"].append(
-                                {"text": pending_dish_name, "attribution": ""}
-                            )
-                        pending_dish_name = None
-
-                    # Note section: route bullet/prose lines into note_buffer;
-                    # a short clean line signals we're back to normal pairings.
-                    if in_note_section and current_ingredient and current_ingredient in ingredients:
-                        stripped = clean.lstrip("•").strip()
-                        # Sentence-continuation words never start an ingredient name
-                        _cont_words = ("the ", "a ", "an ", "or ", "and ", "but ",
-                                       "so ", "when ", "if ", "then ", "in ", "with ",
-                                       "from ", "to ", "that ", "which ", "as ", "at ",
-                                       "into ", "for ", "of ")
-                        is_continuation = any(clean.lower().startswith(w) for w in _cont_words)
-                        # Prose sentences end with a period; ingredient pairings never do.
-                        ends_with_period = clean.rstrip().endswith('.')
-                        if clean.startswith("•") or looks_like_quote(clean) \
-                                or len(clean) > 60 or is_continuation or ends_with_period:
-                            note_buffer.append(stripped if clean.startswith("•") else clean)
-                            continue
-                        else:
-                            # Short content-word line — back to normal pairings
-                            in_note_section = False
-                            if note_buffer:
-                                ingredients[current_ingredient]["notes"].append(
-                                    "\n".join(note_buffer)
-                                )
-                            note_buffer = []
-
-                    # Skip structural section labels
-                    if clean_lower in SKIP_EXACT:
-                        continue
-
-                    # AVOID section header — standalone bold-caps "AVOID" line
-                    if clean_lower == "avoid":
-                        discard_prose_buffer()
-                        in_avoid_section = True
-                        continue
-
-                    # Any other section header resets avoid mode
-                    if is_affinity_line(clean) or is_meta_key(clean_lower.rstrip(":")):
-                        in_avoid_section = False
-
-                    # Meta key-only line (e.g. standalone "Season:")
-                    if is_meta_key(clean_lower.rstrip(":")):
-                        discard_prose_buffer()
-                        continue
-
-                    # Meta key: value on same line (e.g. "Taste: sweet, bitter")
-                    colon_match = re.match(r'^([A-Za-z ]{2,30}):\s*(.+)$', clean)
-                    if colon_match:
-                        key = colon_match.group(1).strip().lower()
-                        val = colon_match.group(2).strip()
-                        if key in META_KEYS:
-                            discard_prose_buffer()
-                            if current_ingredient and current_ingredient in ingredients:
-                                # Tips go to tips[], others to meta{}
-                                if key in ("tip", "tips"):
-                                    ingredients[current_ingredient]["tips"].append(val)
-                                else:
-                                    ingredients[current_ingredient]["meta"][key] = val
-                            continue
-
-                    # Flavor affinity line
-                    if is_affinity_line(clean):
-                        discard_prose_buffer()
-                        if current_ingredient and current_ingredient in ingredients:
-                            ingredients[current_ingredient]["affinities"].append(clean)
-                        continue
-
-                    # Explicit tip line
-                    tip_match = re.match(r'^tip[s]?:\s*(.+)', clean, re.IGNORECASE)
-                    if tip_match:
-                        discard_prose_buffer()
-                        if current_ingredient and current_ingredient in ingredients:
-                            ingredients[current_ingredient]["tips"].append(tip_match.group(1).strip())
-                        continue
-
-                    # ── Quote detection ────────────────────────────────────
-                    # Opening trigger: a long line with a recognisable verb.
-                    if looks_like_quote(clean):
-                        prose_buffer.append(clean)
-                        continue
-
-                    # Continuation: once the buffer is open, keep absorbing lines
-                    # unless the line is clearly a short ingredient noun-phrase.
-                    # A "clear ingredient" is short, starts with uppercase in the
-                    # original PDF text, and has no sentence-verb — i.e. it looks
-                    # like a pairing entry, not a mid-sentence fragment.
-                    if prose_buffer:
-                        is_clear_ingredient = (
-                            len(clean) < 40
-                            and clean[:1] == clean[:1].upper()
-                            and clean[:1].isalpha()
-                            and not QUOTE_INDICATORS.search(clean)
-                        )
-                        if not is_clear_ingredient:
-                            prose_buffer.append(clean)
-                            continue
-                        # Looks like a real pairing — close the buffer and fall through
-                        discard_prose_buffer()
-                    # ── No open buffer: nothing to discard ────────────────────
-
-                    # ── Actual pairing ─────────────────────────────────────
-                    # If there's a partial pairing with an unclosed paren, append
-                    # this line to it and keep waiting for the closing paren.
-                    if pending_pairing is not None:
-                        combined_pairing = pending_pairing + " " + clean.strip()
-                        if combined_pairing.count('(') <= combined_pairing.count(')'):
-                            pending_pairing = None
-                            clean = combined_pairing
-                        else:
-                            pending_pairing = combined_pairing
-                            continue
-
-                    # If the raw line ends with a trailing comma the entry
-                    # continues on the next line (e.g. "CHEESE: cheddar, ..., mozzarella,")
-                    # — buffer before stripping so the continuation can be appended.
-                    if clean.rstrip().endswith(','):
-                        pending_pairing = (pending_pairing + " " + clean.strip()
-                                           if pending_pairing else clean.strip())
-                        continue
-
-                    pairing_label = clean.rstrip(",;").strip()
-                    if not pairing_label:
-                        continue
-
-                    # Guard: prose sentences end with a period; ingredient pairings never do.
-                    # Catches fragments like "heat diminishes the pungency of horseradish."
-                    # and "etc." list-endings that leaked out of note/quote detection.
-                    if pairing_label.rstrip().endswith('.'):
-                        continue
-
-                    # Guard: a line starting with a subject pronoun is a sentence fragment,
-                    # not an ingredient name (e.g. "i use garlic primarily in two ways").
-                    if re.match(r'^(i|we|you|he|she|they|it)\s', pairing_label, re.IGNORECASE):
-                        continue
-
-                    # If this pairing has an unclosed paren buffer it.
-                    if pairing_label.count('(') > pairing_label.count(')'):
-                        pending_pairing = pairing_label
-                        continue
-
-                    base_label, modifier = split_modifier(pairing_label)
-                    base_lower = base_label.lower().strip()
-                    # Skip overflow continuation lines that produce an empty base
-                    # (e.g. second line of "SAUCES: ... Mornay\n(esp. with macaroni), ...")
-                    if not base_lower:
-                        continue
-
-                    if current_cuisines:
-                        for cs in current_cuisines:
-                            cuisine_buckets[cs].add(base_lower)
-
-                    elif current_ingredient and current_ingredient in ingredients:
-                        # If we're in the AVOID section, route to avoids[]
-                        if in_avoid_section:
-                            entry = {"label": base_lower}
-                            if modifier:
-                                entry["modifier"] = modifier.lower()
-                            ingredients[current_ingredient]["avoids"].append(entry)
-                        # If the pairing is itself a cuisine, tag it instead of listing it
-                        elif is_cuisine_header(base_lower):
-                            cuisine_slug = slugify(base_lower)
-                            if cuisine_slug not in cuisine_buckets:
-                                cuisine_buckets[cuisine_slug] = set()
-                            if cuisine_slug not in ingredients[current_ingredient]["cuisines"]:
-                                ingredients[current_ingredient]["cuisines"].append(cuisine_slug)
-                        else:
-                            entry = {"label": base_lower, "strength": strength}
-                            if modifier:
-                                entry["modifier"] = modifier.lower()
-                            ingredients[current_ingredient]["pairings"].append(entry)
-
-    doc.close()
-
-    # ── Second pass: tag ingredients with cuisine slugs ────────────────────────
+    # ── Tag ingredients with cuisine slugs ────────────────────────────────────
     print("Tagging cuisines…")
     label_to_slug = {}
     for slug, entry in ingredients.items():
