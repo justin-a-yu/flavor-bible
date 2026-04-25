@@ -5365,10 +5365,6 @@
           "strength": 1
         },
         {
-          "label": "falls apart. a brown banana gives me shivers!",
-          "strength": 1
-        },
-        {
           "label": "peanuts and peanut butter",
           "strength": 1
         },
@@ -5476,6 +5472,10 @@
         {
           "text": "I serve a banana crème brûlée that is not made in ramekins (the usual individual serving cups) but cut out of a sheet pan and caramelized. I serve this set up in a grid with two squares of crème brûlée, one topped with a little citrus, the other with caramelized bananas — alternated with citrus biscuit, one topped with a brown butter ice cream, and the other with caramelized banana. So I have these three flavors — banana, citrus, and brown butter — tied together with a salted peanut–caramel sauce.",
           "attribution": "MICHAEL LAISKONIS, LE BERNARDIN (NEW YORK CITY)"
+        },
+        {
+          "text": "A banana ’s ripeness will determine what you do with it. I like my bananas yellow and firm. If you are going to make a bananas Foster and your bananas are very yellow, you can cook them longer and they won’t fall apart or turn to mush. If you start with a banana that is pretty brown, the second you add heat, it falls apart. A brown banana gives me shivers!",
+          "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
         }
       ],
       "tips": [
@@ -12776,8 +12776,8 @@
           "attribution": "MICHEL RICHARD, CITRONELLE (WASHINGTON, DC)"
         },
         {
-          "text": "Green bell peppers are used for the equivalent of Spanish mirepoix. In Spain you don’t see much celery",
-          "attribution": "but you’ll see green pepper, onion, garlic, and leeks."
+          "text": "Green bell peppers are used for the equivalent of Spanish mirepoix. In Spain you don’t see much celery — but you’ll see green pepper, onion, garlic, and leeks.",
+          "attribution": "ALEXANDRA RAIJ, TÍA POL (NEW YORK CITY)"
         }
       ],
       "tips": [],
@@ -34226,14 +34226,15 @@
         {
           "label": "rum",
           "strength": 1
-        },
-        {
-          "label": "charmoula [typically made of paprika, cayenne pepper, cumin, garlic, lemon juice, parsley, cilantro, and",
-          "strength": 1
         }
       ],
       "avoids": [],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Someone told me about a savory date dish they had but could only remember that it was stuffed and wrapped in bacon. This led me into the kitchen to stuff a date with chorizo, wrap it in bacon, and then add charmoula [typically made of paprika, cayenne pepper, cumin, garlic, lemon juice, parsley, cilantro, and olive oil]. The dish just hits the mark. I also serve a sweet date dish that I stole from Judy Rodgers of Zuni Café. My version is made with Medjool dates that have maple mascarpone smeared in, pistachios crumbled on top, and orange blossom water. The orange blossom water gives people a visceral reaction because you don’t see it, but you taste it. When people have the dish, they lick their fingers trying to figure it out!",
+          "attribution": "MONICA POPE, T’AFIA (HOUSTON)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [
@@ -34498,10 +34499,6 @@
           "strength": 1
         },
         {
-          "label": "paella!",
-          "strength": 1
-        },
-        {
           "label": "shrimp",
           "strength": 1
         },
@@ -34554,12 +34551,12 @@
       "avoids": [],
       "quotes": [
         {
-          "text": "Dill adds a certain freshness and cleanness to a dish. During the winter, most of my fish dishes have dill",
-          "attribution": "as well as dishes like goulash with noodles, which is served with both chives and dill for their herbal"
+          "text": "Dill adds a certain freshness and cleanness to a dish. During the winter, most of my fish dishes have dill — as well as dishes like goulash with noodles, which is served with both chives and dill for their herbal freshness.",
+          "attribution": "TONY LIU, AUGUST (NEW YORK CITY)"
         },
         {
-          "text": "freshness.",
-          "attribution": "TONY LIU, AUGUST (NEW YORK CITY)"
+          "text": "Our paella made with duck confit, foie gras, and morels is in honor of [the late chef] Jean-Louis Palladin. We made a paella with the fat from the duck and morels, and to finish it we topped it with thin slices of raw foie gras. The foie gras would get warm from the hot rice and melt into the rice. It is an amazing paella!",
+          "attribution": "JOSÉ ANDRÉS, CAFÉ ATLÁNTICO (WASHINGTON, DC)"
         },
         {
           "text": "For my dish of lacquered duck and peppercress, I make a duck cooked with honey served with a brown butter–honey that gives the duck a sweet, nutty flavor. To cut the sweetness, I added a reduction of pomegranate juice and oil emulsion to give the dish a tart contrast.",
@@ -37379,18 +37376,14 @@
         {
           "label": "yogurt",
           "strength": 1
-        },
-        {
-          "label": "lemon, which we drape over the fish. this dish just screams “summer.” with a glass of sauvignon blanc",
-          "strength": 1
-        },
-        {
-          "label": "on the terrace in the early evening, you’re set!",
-          "strength": 1
         }
       ],
       "avoids": [],
       "quotes": [
+        {
+          "text": "Fennel pollen has a light, fennel-anise flavor with a floral component. It is delicate, so you don’t cook with it — you just finish a dish with it. It is great on lighter things like salads, poached or steamed flaky white fish, poultry, or pork. When a dish has fennel pollen, even before the food hits your mouth you will notice a floral smell that gets you thinking of summer, lighter foods, and freshness. I use it with my sea trout dish, which is served with a simple salad of green apple, fennel, jicama, pistachios, and dried gooseberries. The dish is topped with the pollen blended with some yogurt, lemon juice, and preserved lemon, which we drape over the fish. This dish just screams “summer.” With a glass of Sauvignon Blanc on the terrace in the early evening, you’re set!",
+          "attribution": "BRAD FARMERIE, PUBLIC (NEW YORK CITY)"
+        },
         {
           "text": "I really like fennel pollen. The majority of the time, we use it in a marinade for meats like pork, boar, chicken, and lamb. It adds an interesting herbaceous, aromatic note and a mysterious flavor.",
           "attribution": "SHARON HAGE, YORK STREET (DALLAS)"
@@ -42469,14 +42462,15 @@
           "label": "vinegar",
           "strength": 1,
           "modifier": "red wine, sherry"
-        },
-        {
-          "label": "careful not to leach it of its life!",
-          "strength": 1
         }
       ],
       "avoids": [],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "A salad is a tricky thing to season. If you put the salt on too early, it will wilt the greens. You have to be careful not to leach it of its life!",
+          "attribution": "TRACI DES JARDINS, JARDINIÈRE (SAN FRANCISCO)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [
@@ -46245,10 +46239,6 @@
           "strength": 1
         },
         {
-          "label": "with olive oil and sea salt. that is my favorite!",
-          "strength": 1
-        },
-        {
           "label": "coriander",
           "strength": 1
         },
@@ -46356,7 +46346,12 @@
         }
       ],
       "avoids": [],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Kohlrabi is an underrated vegetable. I admit it has not always been one of my favorites, but it has grown on me over the years. Now, I love it. I can’t precisely place its flavor, which is somewhere between a turnip, radish, and cauliflower. But it tastes great and is really versatile. You can grill it, roast it, glaze it like a carrot, or make a gratin out of it with potatoes. We have even grated it and made a rémoulade out of it like you would with a celery root. But the best way to enjoy kohlrabi is grilled, roasted, and drizzled with olive oil and sea salt. That is my favorite!",
+          "attribution": "VITALY PALEY, PALEY’S PLACE (PORTLAND, OREGON)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [],
@@ -47626,10 +47621,6 @@
           "strength": 2
         },
         {
-          "label": "like eating a piece of soap!",
-          "strength": 1
-        },
-        {
           "label": "quail",
           "strength": 1
         },
@@ -47709,6 +47700,10 @@
         {
           "text": "Lavender and rosemary work in butter cakes, cookies, and other baked goods.",
           "attribution": "JERRY TRAUNFELD, THE HERBFARM (WOODINVILLE, WASHINGTON)"
+        },
+        {
+          "text": "I like very little lavender with quail for its savory aroma, but the key phrase is “very little” — or else it’s like eating a piece of soap!",
+          "attribution": "SHARON HAGE, YORK STREET (DALLAS)"
         }
       ],
       "tips": [
@@ -48600,14 +48595,14 @@
         {
           "label": "saffron",
           "strength": 1
-        },
-        {
-          "label": "my life here!",
-          "strength": 1
         }
       ],
       "avoids": [],
       "quotes": [
+        {
+          "text": "We churn through preserved lemons ! In the middle of the summer, we buy cases so that we can age them eight months before we use them. After six months, they are great. After eight months or a year, you see God. They become incredible just by waiting those extra few months. I make preserved lemons by feel. I primarily use salt and will add some cinnamon, clove, nigella, a tiny, tiny bit of saffron, and then just tuck them away in the refrigerator. If I wasn’t so greedy, I would give them away, but we are talking a year of my life here!",
+          "attribution": "BRAD FARMERIE, PUBLIC (NEW YORK CITY)"
+        },
         {
           "text": "When you are using different kinds of lemons, you need to treat them as different things. A Meyer lemon is different from a regular lemon. If you are using a Meyer lemon, you may want the perfume, aroma, and subtlety of it. Yet when you taste it, you may want to add a touch of regular lemon to give it a little more acidity and a little kick.",
           "attribution": "EMILY LUCHETTI, FARALLON (SAN FRANCISCO)"
@@ -56270,10 +56265,6 @@
           "strength": 1
         },
         {
-          "label": "monkfish is great with garlic!",
-          "strength": 2
-        },
-        {
           "label": "fennel",
           "strength": 2
         },
@@ -56507,7 +56498,12 @@
         }
       ],
       "avoids": [],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Monkfish is great with garlic!",
+          "attribution": "ERIC RIPERT , LE BERNARDIN (NEW YORK CITY)"
+        }
+      ],
       "tips": [],
       "notes": [],
       "dishes": [
@@ -60896,14 +60892,14 @@
         "volume": "moderate",
         "techniques": "raw"
       },
-      "pairings": [
+      "pairings": [],
+      "avoids": [],
+      "quotes": [
         {
-          "label": "eating it!",
-          "strength": 1
+          "text": "Truffle oil is one of those ingredients that really gets overused, so one day I decided that I wanted to do truffle oil right. We make a dressing of truffle oil, white balsamic vinegar, and whole grain mustard. We toss it over endive, crumbled blue cheese, spicy pecans, and raw cremini mushrooms. You just can’t stop eating it!",
+          "attribution": "MONICA POPE, T’AFIA (HOUSTON)"
         }
       ],
-      "avoids": [],
-      "quotes": [],
       "tips": [
         "Avoid cooking as it burns easily."
       ],
@@ -61637,10 +61633,6 @@
           "strength": 1
         },
         {
-          "label": "don’t need truffles; you do need onions.”",
-          "strength": 1
-        },
-        {
           "label": "chile peppers",
           "strength": 2,
           "modifier": "esp. jalapeño"
@@ -61922,6 +61914,10 @@
         {
           "text": "cheese : cheddar, Comté, Emmental, fromage blanc, goat, Gruyère, Parmesan, Swiss The onion family is the basis for every cuisine I can think of. Of course, Asian cuisines use more green onions and garlic, while the French use more shallots and garlic, but it’s the onion family providing the foundation.",
           "attribution": "TONY LIU, AUGUST (NEW YORK CITY)"
+        },
+        {
+          "text": "You can’t cook without onions. There is not a single thing you can do without onions. There are so many things made with onions that when people come in to our restaurant and say that they are allergic to onions, I say, “No, you are not — it is impossible. You just don’t like onions.” People eat onions all the time and just don’t know it. I remember having a conversation with [the artist] Jasper Johns, with him saying, “If truffles and onions cost the same amount of money, you would obviously choose an onion. You don’t need truffles; you do need onions.”",
+          "attribution": "DAVID WALTUCK, CHANTERELLE (NEW YORK CITY)"
         },
         {
           "text": "I roast onions a long, long time and use them to add a meaty flavor to soups.",
@@ -63013,10 +63009,6 @@
           "strength": 2
         },
         {
-          "label": "calls to mind pizza sauce!",
-          "strength": 1
-        },
-        {
           "label": "beans",
           "strength": 2,
           "modifier": "esp. dried and/or white"
@@ -63295,7 +63287,12 @@
           "label": "tarragon"
         }
       ],
-      "quotes": [],
+      "quotes": [
+        {
+          "text": "Avoid oregano with desserts. Oregano firmly belongs in savory cuisine; one taste, and it immediately calls to mind pizza sauce!",
+          "attribution": "GINA DEPALMA, BABBO (NEW YORK CITY)"
+        }
+      ],
       "tips": [
         "Oregano can have great variability, i.e., from mild to hot and spicy (e.g., Italian oregano is"
       ],
@@ -81556,11 +81553,7 @@
       "avoids": [],
       "quotes": [
         {
-          "text": "If you have a piece of Ibérico or Serrano ham in your refrigerator, you’ll eventually end up with this little end of dried-out salt-cured meat. While some might just throw it away, we know there’s a lot of flavor left",
-          "attribution": "so we grind it up in a coffee grinder and use it as meat-flavored salt. We call this “ham salt,” and will"
-        },
-        {
-          "text": "use this on a salad to emphasize the aroma and flavor of pork. . . . In Spain we have mojama , which is tuna loin cured like ham. We’ll grind it up in a coffee grinder and it becomes tuna salt. When I sear tuna, I will sprinkle this on and emphasize the tuna with its own tuna flavor. It is simple and dramatic. I even showed this technique to the owner of the best tuna restaurant in the world — called El Campero in Barbate, Spain — where he serves tuna a hundred ways. He loved it!",
+          "text": "If you have a piece of Ibérico or Serrano ham in your refrigerator, you’ll eventually end up with this little end of dried-out salt-cured meat. While some might just throw it away, we know there’s a lot of flavor left — so we grind it up in a coffee grinder and use it as meat-flavored salt. We call this “ham salt,” and will use this on a salad to emphasize the aroma and flavor of pork. . . . In Spain we have mojama , which is tuna loin cured like ham. We’ll grind it up in a coffee grinder and it becomes tuna salt. When I sear tuna, I will sprinkle this on and emphasize the tuna with its own tuna flavor. It is simple and dramatic. I even showed this technique to the owner of the best tuna restaurant in the world — called El Campero in Barbate, Spain — where he serves tuna a hundred ways. He loved it!",
           "attribution": "JOSÉ ANDRÉS, CAFÉ ATLÁNTICO (WASHINGTON, DC)"
         },
         {

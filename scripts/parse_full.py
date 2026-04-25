@@ -510,7 +510,12 @@ def classify_content(font_role, strength, text):
         # Reclassify here so Pass 2 triggers backward_claim correctly.
         if (text.startswith("\u2014") or text.startswith("\u2013")
                 or text.startswith("—") or text.startswith("–")) and len(text) > 5:
-            return ("attribution",     0, text)
+            # Only treat as attribution when content after the dash starts with
+            # uppercase — chef names are always capitalised, but quote-continuation
+            # fragments (e.g. "— but you'll see…") use lowercase and are not chefs.
+            after_dash = text.lstrip("\u2014\u2013—– ")
+            if after_dash and after_dash[0].isupper():
+                return ("attribution",     0, text)
         # Meta checks before affinity: a line like "Tips: Balance hot + sour + salty"
         # contains " + " but should be classified as meta, not affinity.
         if is_meta_key(clean_lower.rstrip(":")):
@@ -661,18 +666,26 @@ def _backward_claim(window):
 
     Claim rule (applied in reverse order from end of window):
       - strength ≥ 3               → always stop (definitive pairing)
-      - ends with '.'              → claim (sentence-final punctuation)
-      - len ≥ 50                   → claim (wrapped column text, prose)
+      - colon-list format           → always stop (“cheese: cheddar, ...” is a
+                                      pairing variant, not prose, even if long)
+      - ends with sentence-final   → claim (. ! ? curly-quotes)
+      - len >= 50                  → claim (wrapped column text, prose)
       - else                       → stop (short noun phrase = pairing boundary)
 
     Returns (quote_lines, remaining_pairings).  Does not modify window.
     """
+    # Sentence-final punctuation: period, !, ?, and curly quote variants.
+    _SENTENCE_FINAL = ('.', '!', '?', '\u201c', '\u201d', '\u2019')
+    # Pairing-variant lines: “CATEGORY: val1, val2, ...” — long but not prose.
+    _PAIRING_LIST   = re.compile(r'^[A-Za-z ,/()-]{2,35}:\s*[a-z]')
     claim_start = len(window)
     for i in range(len(window) - 1, -1, -1):
         e = window[i]
         if e.strength >= 3:
             break
-        if e.text.rstrip().endswith('.') or len(e.text) >= 50:
+        if _PAIRING_LIST.match(e.text):
+            break
+        if e.text.rstrip().endswith(_SENTENCE_FINAL) or len(e.text) >= 50:
             claim_start = i
         else:
             break
