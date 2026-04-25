@@ -922,11 +922,20 @@ def pass2_build(events):
 
             # Cuisine context: tag the label directly, skip the window
             if current_cuisines:
-                base_label, _ = split_modifier(e.text)
-                base_lower = base_label.lower().strip()
-                if base_lower:
-                    for cs in current_cuisines:
-                        cuisine_buckets[cs].add(base_lower)
+                # Prose guards — same filters as commit_window to keep
+                # quotes / sentence fragments out of cuisine buckets.
+                if e.text.rstrip().endswith('.'):
+                    pass
+                elif re.match(r'^(i|we|you|he|she|they|it)\s', e.text, re.IGNORECASE):
+                    pass
+                elif len(e.text) >= 50 and QUOTE_INDICATORS.search(e.text):
+                    pass
+                else:
+                    base_label, _ = split_modifier(e.text)
+                    base_lower = base_label.lower().strip()
+                    if base_lower:
+                        for cs in current_cuisines:
+                            cuisine_buckets[cs].add(base_lower)
             elif current_ingredient:
                 window.append(e)
 
