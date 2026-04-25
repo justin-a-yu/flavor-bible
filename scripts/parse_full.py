@@ -416,12 +416,14 @@ def classify_line(line_spans):
             # follows the closing paren and treat it as the actual header.
             after = re.sub(r'^.*\)', '', full_text).strip()
             if after:
-                return ("header", 0, after)
+                role = "cuisine_header" if is_cuisine_header(after) else "header"
+                return (role, 0, after)
             # Nothing after closing paren — extract pre-paren content as the header.
             # e.g. "FISH — IN GENERAL (See individual fish; Seafood)" → "FISH — IN GENERAL"
             before = re.sub(r'\s*\(see\b[^)]*\)', '', full_text, flags=re.IGNORECASE).strip()
             if before:
-                return ("header", 0, before)
+                role = "cuisine_header" if is_cuisine_header(before) else "header"
+                return (role, 0, before)
             return ("skip", 0, full_text)
         if is_cuisine_header(full_text):
             return ("cuisine_header", 0, full_text)

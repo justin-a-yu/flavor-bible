@@ -63,130 +63,6 @@
       ]
     },
     {
-      "id": "afghan-cuisine",
-      "label": "Afghan Cuisine",
-      "aliases": [],
-      "meta": {},
-      "pairings": [
-        {
-          "label": "almonds",
-          "strength": 1
-        },
-        {
-          "label": "barley",
-          "strength": 1
-        },
-        {
-          "label": "breads",
-          "strength": 2
-        },
-        {
-          "label": "cardamom",
-          "strength": 1
-        },
-        {
-          "label": "chile pepper",
-          "strength": 1
-        },
-        {
-          "label": "cinnamon",
-          "strength": 1
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "coriander",
-          "strength": 1
-        },
-        {
-          "label": "cucumber",
-          "strength": 1
-        },
-        {
-          "label": "cumin",
-          "strength": 1
-        },
-        {
-          "label": "dill",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "fruits",
-          "strength": 1,
-          "modifier": "esp. dried"
-        },
-        {
-          "label": "ginger",
-          "strength": 1
-        },
-        {
-          "label": "grapes",
-          "strength": 1
-        },
-        {
-          "label": "kebabs",
-          "strength": 1
-        },
-        {
-          "label": "lamb",
-          "strength": 1
-        },
-        {
-          "label": "mint",
-          "strength": 1
-        },
-        {
-          "label": "mushrooms",
-          "strength": 1
-        },
-        {
-          "label": "nuts",
-          "strength": 1,
-          "modifier": "e.g., almonds"
-        },
-        {
-          "label": "pasta",
-          "strength": 2
-        },
-        {
-          "label": "rice, basmati",
-          "strength": 2
-        },
-        {
-          "label": "sesame",
-          "strength": 1
-        },
-        {
-          "label": "tomatoes and tomato sauce",
-          "strength": 1
-        },
-        {
-          "label": "turmeric",
-          "strength": 1
-        },
-        {
-          "label": "yogurt",
-          "strength": 2
-        }
-      ],
-      "avoids": [],
-      "quotes": [],
-      "tips": [],
-      "notes": [],
-      "dishes": [],
-      "affinities": [
-        "almonds + cardamom + sugar",
-        "cucumber + mint + yogurt"
-      ],
-      "cuisines": []
-    },
-    {
       "id": "allspice",
       "label": "Allspice",
       "aliases": [],
@@ -470,7 +346,8 @@
         "north-african-cuisine",
         "caribbean-cuisines",
         "cuban-cuisine",
-        "eastern-european-cuisines"
+        "eastern-european-cuisines",
+        "swedish-cuisine"
       ]
     },
     {
@@ -836,6 +713,7 @@
         "moroccan-cuisine",
         "spanish-cuisine",
         "turkish-cuisine",
+        "afghan-cuisine",
         "middle-eastern-cuisine",
         "belgian-cuisine"
       ]
@@ -5768,7 +5646,9 @@
       "notes": [],
       "dishes": [],
       "affinities": [],
-      "cuisines": []
+      "cuisines": [
+        "afghan-cuisine"
+      ]
     },
     {
       "id": "basil",
@@ -7661,7 +7541,8 @@
         "spanish-cuisine",
         "german-cuisine",
         "caribbean-cuisines",
-        "cuban-cuisine"
+        "cuban-cuisine",
+        "swedish-cuisine"
       ]
     },
     {
@@ -12929,6 +12810,7 @@
         "moroccan-cuisine",
         "greek-cuisine",
         "mediterranean-cuisine",
+        "thai-cuisine",
         "cuban-cuisine",
         "italian-cuisine-in-general"
       ]
@@ -16703,20 +16585,6 @@
       "cuisines": []
     },
     {
-      "id": "cantonese-cuisine",
-      "label": "Cantonese Cuisine",
-      "aliases": [],
-      "meta": {},
-      "pairings": [],
-      "avoids": [],
-      "quotes": [],
-      "tips": [],
-      "notes": [],
-      "dishes": [],
-      "affinities": [],
-      "cuisines": []
-    },
-    {
       "id": "capers",
       "label": "Capers",
       "aliases": [],
@@ -17485,8 +17353,10 @@
         "indonesian-cuisine",
         "north-african-cuisine",
         "scandinavian-cuisine",
+        "afghan-cuisine",
         "latin-american-cuisine",
-        "brazilian-cuisine"
+        "brazilian-cuisine",
+        "swedish-cuisine"
       ]
     },
     {
@@ -27829,6 +27699,7 @@
         "south-american-cuisine",
         "southeast-asian-cuisine-as-cassia",
         "spanish-cuisine",
+        "afghan-cuisine",
         "african-cuisine",
         "greek-cuisine",
         "mediterranean-cuisine",
@@ -27844,7 +27715,8 @@
         "caribbean-cuisines",
         "szechuan-cuisine",
         "eastern-european-cuisines",
-        "iranian-cuisine"
+        "iranian-cuisine",
+        "swedish-cuisine"
       ]
     },
     {
@@ -28617,6 +28489,7 @@
         "indian-cuisine",
         "mexican-cuisine",
         "sri-lankan-cuisine",
+        "afghan-cuisine",
         "african-cuisine",
         "middle-eastern-cuisine",
         "greek-cuisine",
@@ -28626,7 +28499,8 @@
         "russian-cuisine",
         "brazilian-cuisine",
         "caribbean-cuisines",
-        "eastern-european-cuisines"
+        "eastern-european-cuisines",
+        "swedish-cuisine"
       ]
     },
     {
@@ -30498,6 +30372,8 @@
         "southeast-asian-cuisine",
         "southwestern-cuisine",
         "vietnamese-cuisine",
+        "afghan-cuisine",
+        "thai-cuisine",
         "indonesian-cuisine"
       ]
     },
@@ -33385,6 +33261,7 @@
         "tex-mex-cuisine",
         "thai-cuisine",
         "vietnamese-cuisine",
+        "afghan-cuisine",
         "african-cuisine",
         "middle-eastern-cuisine",
         "turkish-cuisine",
@@ -34765,9 +34642,11 @@
         "russian-cuisine",
         "scandinavian-cuisine",
         "turkish-cuisine",
+        "afghan-cuisine",
         "caribbean-cuisines",
         "eastern-european-cuisines",
-        "iranian-cuisine"
+        "iranian-cuisine",
+        "swedish-cuisine"
       ]
     },
     {
@@ -36953,20 +36832,6 @@
       "cuisines": []
     },
     {
-      "id": "european-eastern-cuisines",
-      "label": "European, Eastern Cuisines",
-      "aliases": [],
-      "meta": {},
-      "pairings": [],
-      "avoids": [],
-      "quotes": [],
-      "tips": [],
-      "notes": [],
-      "dishes": [],
-      "affinities": [],
-      "cuisines": []
-    },
-    {
       "id": "fall",
       "label": "Fall",
       "aliases": [],
@@ -37406,6 +37271,7 @@
       "cuisines": [
         "italian-cuisine",
         "mediterranean-cuisine",
+        "afghan-cuisine",
         "greek-cuisine",
         "italian-cuisine-in-general"
       ]
@@ -38887,6 +38753,7 @@
         "portuguese-cuisine",
         "vietnamese-cuisine",
         "australian-cuisine",
+        "thai-cuisine",
         "russian-cuisine",
         "german-cuisine",
         "indonesian-cuisine",
@@ -38895,7 +38762,8 @@
         "korean-cuisine",
         "georgian-cuisine",
         "iranian-cuisine",
-        "italian-cuisine-in-general"
+        "italian-cuisine-in-general",
+        "swedish-cuisine"
       ]
     },
     {
@@ -40581,7 +40449,8 @@
         "iranian-cuisine",
         "italian-cuisine-in-general",
         "mediterranean-cuisines",
-        "french-southern-italian-middle-eastern-moroccan-cuisine"
+        "french-southern-italian-middle-eastern-moroccan-cuisine",
+        "swedish-cuisine"
       ]
     },
     {
@@ -41329,6 +41198,7 @@
         "north-african-cuisine",
         "thai-cuisine",
         "vietnamese-cuisine",
+        "afghan-cuisine",
         "african-cuisine",
         "scandinavian-cuisine",
         "latin-american-cuisine",
@@ -41338,7 +41208,8 @@
         "caribbean-cuisines",
         "szechuan-cuisine",
         "eastern-european-cuisines",
-        "southeast-asian-cuisines"
+        "southeast-asian-cuisines",
+        "swedish-cuisine"
       ]
     },
     {
@@ -42050,7 +41921,9 @@
       "notes": [],
       "dishes": [],
       "affinities": [],
-      "cuisines": []
+      "cuisines": [
+        "afghan-cuisine"
+      ]
     },
     {
       "id": "green-beans",
@@ -47349,6 +47222,7 @@
         "italian-cuisine",
         "middle-eastern-cuisine",
         "moroccan-cuisine",
+        "afghan-cuisine",
         "african-cuisine",
         "english-cuisine",
         "mediterranean-cuisine",
@@ -57129,10 +57003,12 @@
       ],
       "cuisines": [
         "french-cuisine",
+        "afghan-cuisine",
         "russian-cuisine",
         "hungarian-cuisine",
         "eastern-european-cuisines",
-        "italian-cuisine-in-general"
+        "italian-cuisine-in-general",
+        "swedish-cuisine"
       ]
     },
     {
@@ -59031,7 +58907,8 @@
         "mediterranean-cuisine",
         "scandinavian-cuisine",
         "belgian-cuisine",
-        "eastern-european-cuisines"
+        "eastern-european-cuisines",
+        "swedish-cuisine"
       ]
     },
     {
@@ -59649,7 +59526,8 @@
         "turkish-cuisine",
         "russian-cuisine",
         "brazilian-cuisine",
-        "caribbean-cuisines"
+        "caribbean-cuisines",
+        "swedish-cuisine"
       ]
     },
     {
@@ -59678,6 +59556,7 @@
       "affinities": [],
       "cuisines": [
         "mexican-cuisine",
+        "afghan-cuisine",
         "moroccan-cuisine",
         "middle-eastern-cuisine",
         "greek-cuisine",
@@ -62091,7 +61970,8 @@
         "cuban-cuisine",
         "eastern-european-cuisines",
         "french-cuisine-in-general",
-        "iranian-cuisine"
+        "iranian-cuisine",
+        "swedish-cuisine"
       ]
     },
     {
@@ -65972,6 +65852,7 @@
       ],
       "cuisines": [
         "italian-cuisine",
+        "afghan-cuisine",
         "italian-cuisine-in-general"
       ]
     },
@@ -67601,7 +67482,8 @@
         "ethiopian-cuisine",
         "moroccan-cuisine",
         "english-cuisine",
-        "indian-cuisine"
+        "indian-cuisine",
+        "swedish-cuisine"
       ]
     },
     {
@@ -69988,7 +69870,9 @@
       "notes": [],
       "dishes": [],
       "affinities": [],
-      "cuisines": []
+      "cuisines": [
+        "swedish-cuisine"
+      ]
     },
     {
       "id": "pistachio-oil",
@@ -74034,7 +73918,8 @@
         "hungarian-cuisine",
         "southern-cuisine",
         "eastern-european-cuisines",
-        "french-cuisine-in-general"
+        "french-cuisine-in-general",
+        "swedish-cuisine"
       ]
     },
     {
@@ -78141,7 +78026,8 @@
       "dishes": [],
       "affinities": [],
       "cuisines": [
-        "indian-cuisine"
+        "indian-cuisine",
+        "afghan-cuisine"
       ]
     },
     {
@@ -84247,7 +84133,8 @@
         "indonesian-cuisine",
         "caribbean-cuisines",
         "korean-cuisine",
-        "italian-cuisine-in-general"
+        "italian-cuisine-in-general",
+        "swedish-cuisine"
       ]
     },
     {
@@ -89239,11 +89126,13 @@
       "cuisines": [
         "chinese-cuisine",
         "vietnamese-cuisine",
+        "thai-cuisine",
         "german-cuisine",
         "szechuan-cuisine",
         "korean-cuisine",
         "eastern-european-cuisines",
-        "southeast-asian-cuisines"
+        "southeast-asian-cuisines",
+        "swedish-cuisine"
       ]
     },
     {
@@ -89737,119 +89626,6 @@
         }
       ],
       "affinities": [],
-      "cuisines": []
-    },
-    {
-      "id": "swedish-cuisine",
-      "label": "Swedish Cuisine",
-      "aliases": [],
-      "meta": {},
-      "pairings": [
-        {
-          "label": "allspice",
-          "strength": 1
-        },
-        {
-          "label": "bay leaf",
-          "strength": 1
-        },
-        {
-          "label": "cardamom",
-          "strength": 1
-        },
-        {
-          "label": "cinnamon",
-          "strength": 1
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "dill",
-          "strength": 3
-        },
-        {
-          "label": "fish",
-          "strength": 1
-        },
-        {
-          "label": "ginger",
-          "strength": 1
-        },
-        {
-          "label": "herring, pickled",
-          "strength": 1
-        },
-        {
-          "label": "meatballs",
-          "strength": 1
-        },
-        {
-          "label": "mushrooms",
-          "strength": 1
-        },
-        {
-          "label": "mustard",
-          "strength": 1
-        },
-        {
-          "label": "nutmeg",
-          "strength": 1
-        },
-        {
-          "label": "onions",
-          "strength": 1
-        },
-        {
-          "label": "peas",
-          "strength": 1
-        },
-        {
-          "label": "pepper",
-          "strength": 1
-        },
-        {
-          "label": "pickled dishes",
-          "strength": 1,
-          "modifier": "e.g., fish, meat, vegetables"
-        },
-        {
-          "label": "potatoes",
-          "strength": 1
-        },
-        {
-          "label": "shellfish",
-          "strength": 1
-        },
-        {
-          "label": "soups",
-          "strength": 1,
-          "modifier": "esp. fruit"
-        },
-        {
-          "label": "sugar",
-          "strength": 1
-        }
-      ],
-      "avoids": [
-        {
-          "label": "garlic"
-        },
-        {
-          "label": "piquancy"
-        }
-      ],
-      "quotes": [],
-      "tips": [],
-      "notes": [],
-      "dishes": [],
-      "affinities": [
-        "beef + bay leaf + dill + nutmeg + onions",
-        "herring + sour cream + vinegar",
-        "red wine + allspice + cinnamon + cloves + raisins + sugar",
-        "veal + allspice + onions"
-      ],
       "cuisines": []
     },
     {
@@ -92098,123 +91874,6 @@
       "cuisines": [
         "mexican-cuisine"
       ]
-    },
-    {
-      "id": "thai-cuisine",
-      "label": "Thai Cuisine",
-      "aliases": [],
-      "meta": {},
-      "pairings": [
-        {
-          "label": "basil, thai",
-          "strength": 1
-        },
-        {
-          "label": "bell peppers",
-          "strength": 1
-        },
-        {
-          "label": "chile peppers",
-          "strength": 3
-        },
-        {
-          "label": "cilantro",
-          "strength": 2
-        },
-        {
-          "label": "coconut",
-          "strength": 2
-        },
-        {
-          "label": "coriander",
-          "strength": 1
-        },
-        {
-          "label": "cumin",
-          "strength": 1
-        },
-        {
-          "label": "curries",
-          "strength": 2
-        },
-        {
-          "label": "fish",
-          "strength": 1
-        },
-        {
-          "label": "fish sauce",
-          "strength": 2
-        },
-        {
-          "label": "garlic",
-          "strength": 2
-        },
-        {
-          "label": "ginger",
-          "strength": 1
-        },
-        {
-          "label": "herbs, fresh",
-          "strength": 1
-        },
-        {
-          "label": "lemongrass",
-          "strength": 2
-        },
-        {
-          "label": "lime",
-          "strength": 1
-        },
-        {
-          "label": "mint",
-          "strength": 1
-        },
-        {
-          "label": "noodles, as in pad thai",
-          "strength": 1
-        },
-        {
-          "label": "peanuts",
-          "strength": 2
-        },
-        {
-          "label": "rice",
-          "strength": 1
-        },
-        {
-          "label": "shrimp paste",
-          "strength": 1
-        },
-        {
-          "label": "sugar",
-          "strength": 1
-        },
-        {
-          "label": "turmeric",
-          "strength": 2
-        },
-        {
-          "label": "vegetables",
-          "strength": 1
-        }
-      ],
-      "avoids": [],
-      "quotes": [],
-      "tips": [
-        "Authentic Thai cuisine strives for a balance of hot + sour + salty + sweet."
-      ],
-      "notes": [],
-      "dishes": [],
-      "affinities": [
-        "chile peppers + cilantro + coconut milk",
-        "chile peppers + curry",
-        "chile peppers + curry + fish sauce",
-        "chile peppers + curry + peanuts",
-        "chile peppers + fish sauce",
-        "chile peppers + garlic",
-        "chile peppers + peanuts"
-      ],
-      "cuisines": []
     },
     {
       "id": "thyme",
@@ -95095,6 +94754,7 @@
         "north-african-cuisine",
         "southeast-asian-cuisine",
         "thai-cuisine",
+        "afghan-cuisine",
         "african-cuisine"
       ]
     },
@@ -96778,6 +96438,7 @@
         "spanish-cuisine",
         "chinese-cuisine",
         "latin-american-cuisine",
+        "thai-cuisine",
         "indonesian-cuisine",
         "north-african-cuisine",
         "szechuan-cuisine",
@@ -100553,6 +100214,7 @@
         "indian-cuisine",
         "middle-eastern-cuisine",
         "turkish-cuisine",
+        "afghan-cuisine",
         "mediterranean-cuisine",
         "russian-cuisine"
       ]
@@ -101130,6 +100792,34 @@
       "turkey",
       "vanilla",
       "wheat"
+    ],
+    "afghan-cuisine": [
+      "almonds",
+      "barley",
+      "breads",
+      "cardamom",
+      "chile pepper",
+      "cinnamon",
+      "cloves",
+      "coriander",
+      "cucumber",
+      "cumin",
+      "dill",
+      "fennel",
+      "fruits",
+      "ginger",
+      "grapes",
+      "kebabs",
+      "lamb",
+      "mint",
+      "mushrooms",
+      "nuts",
+      "pasta",
+      "rice, basmati",
+      "sesame",
+      "tomatoes and tomato sauce",
+      "turmeric",
+      "yogurt"
     ],
     "african-cuisine": [
       "bananas",
@@ -101824,7 +101514,31 @@
     ],
     "asian-cuisine": [],
     "cambodian-cuisine": [],
-    "thai-cuisine": [],
+    "thai-cuisine": [
+      "basil, thai",
+      "bell peppers",
+      "chile peppers",
+      "cilantro",
+      "coconut",
+      "coriander",
+      "cumin",
+      "curries",
+      "fish",
+      "fish sauce",
+      "garlic",
+      "ginger",
+      "herbs, fresh",
+      "lemongrass",
+      "lime",
+      "mint",
+      "noodles, as in pad thai",
+      "peanuts",
+      "rice",
+      "shrimp paste",
+      "sugar",
+      "turmeric",
+      "vegetables"
+    ],
     "asian-cuisines": [],
     "carribbean-cuisine": [],
     "south-american-cuisine": [],
@@ -101969,6 +101683,7 @@
       "wild rice",
       "wine"
     ],
+    "cantonese-cuisine": [],
     "british-cuisine": [],
     "eastern-european-cuisine": [],
     "german-cuisine": [
@@ -102274,6 +101989,7 @@
       "vegetables, root",
       "vinegar"
     ],
+    "european-eastern-cuisines": [],
     "american-cuisine": [],
     "southeast-asian-cuisines": [
       "chile peppers",
@@ -102443,7 +102159,6 @@
       "tomatoes",
       "vinegar"
     ],
-    "afghan-cuisine": [],
     "egyptian-cuisine": [],
     "burmese-cuisine": [],
     "spanish-cuisine-quince-paste": [],
@@ -102451,13 +102166,38 @@
     "indian-cuisine-desserts": [],
     "european-cuisine": [],
     "lebanese-cuisine": [],
+    "swedish-cuisine": [
+      "allspice",
+      "bay leaf",
+      "cardamom",
+      "cinnamon",
+      "cloves",
+      "dill",
+      "fish",
+      "garlic",
+      "ginger",
+      "herring, pickled",
+      "meatballs",
+      "mushrooms",
+      "mustard",
+      "nutmeg",
+      "onions",
+      "peas",
+      "pepper",
+      "pickled dishes",
+      "piquancy",
+      "potatoes",
+      "shellfish",
+      "soups",
+      "sugar"
+    ],
     "tibetan-cuisine": [],
     "polish-cuisine": []
   },
   "meta": {
     "source": "The Flavor Bible, Karen Page & Andrew Dornenburg, 2008",
     "pages": "40–811",
-    "total": 625,
-    "cuisines": 100
+    "total": 620,
+    "cuisines": 103
   }
 }
