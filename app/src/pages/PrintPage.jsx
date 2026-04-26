@@ -4,6 +4,7 @@ import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
 import {
   STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER,
   buildPairingMap, buildSharedGroups, buildAffinities, buildLensColumns, parseAffinityStr,
+  splitOutsideParens,
 } from '../utils/boardUtils';
 import './PrintPage.css';
 
@@ -23,8 +24,8 @@ function ProfileSection({ lenses }) {
           const ing = FLAVORS.ingredients[lens.id];
           if (!ing) return null;
           const metaEntries = Object.entries(ing.meta ?? {}).filter(([k, v]) => v && CARD_META_KEYS.has(k));
-          const techniques  = ing.meta?.techniques?.split(',').map(s => s.trim()).filter(Boolean) ?? [];
-          const botanicals  = ing.meta?.['botanical relatives']?.split(',').map(s => s.trim()).filter(Boolean) ?? [];
+          const techniques  = ing.meta?.techniques ? splitOutsideParens(ing.meta.techniques) : [];
+          const botanicals  = ing.meta?.['botanical relatives'] ? splitOutsideParens(ing.meta['botanical relatives']) : [];
           const hasBody     = ing.tips.length > 0 || ing.quotes.length > 0;
 
           return (

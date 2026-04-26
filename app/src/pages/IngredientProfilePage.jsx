@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FLAVORS } from '../data/flavors_data';
-import { STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LABEL_TO_ID } from '../utils/boardUtils';
+import { STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LABEL_TO_ID, splitOutsideParens } from '../utils/boardUtils';
 import './IngredientProfilePage.css';
 
 // Meta fields shown inline (short values); others get their own expanded rows
@@ -33,10 +33,10 @@ export default function IngredientProfilePage() {
   const metaEntries = Object.entries(ing.meta ?? {}).filter(([, v]) => v);
   const inlineMeta  = metaEntries.filter(([k]) => INLINE_META_KEYS.has(k));
   const techniques  = ing.meta?.techniques
-    ? ing.meta.techniques.split(',').map(s => s.trim()).filter(Boolean)
+    ? splitOutsideParens(ing.meta.techniques)
     : [];
   const botanicals  = ing.meta?.['botanical relatives']
-    ? ing.meta['botanical relatives'].split(',').map(s => s.trim()).filter(Boolean)
+    ? splitOutsideParens(ing.meta['botanical relatives'])
     : [];
 
   const tiers = TIER_ORDER

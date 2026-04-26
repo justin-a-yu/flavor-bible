@@ -5,6 +5,26 @@
 
 import { FLAVORS } from '../data/flavors_data';
 
+// ─── Utilities ────────────────────────────────────────────────────────────────
+
+/** Split a comma-separated string, treating commas inside parentheses as part of the item. */
+export function splitOutsideParens(str) {
+  const items = [];
+  let depth = 0, start = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '(') depth++;
+    else if (str[i] === ')') depth--;
+    else if (str[i] === ',' && depth === 0) {
+      const item = str.slice(start, i).trim();
+      if (item) items.push(item);
+      start = i + 1;
+    }
+  }
+  const last = str.slice(start).trim();
+  if (last) items.push(last);
+  return items;
+}
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 export const STRENGTH_COLOR = {

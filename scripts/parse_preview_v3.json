@@ -48,122 +48,15 @@
         {
           "label": "shrimp",
           "strength": 1
-        },
-        {
-          "label": "almonds",
-          "strength": 1
-        },
-        {
-          "label": "barley",
-          "strength": 1
-        },
-        {
-          "label": "breads",
-          "strength": 2
-        },
-        {
-          "label": "cardamom",
-          "strength": 1
-        },
-        {
-          "label": "chile pepper",
-          "strength": 1
-        },
-        {
-          "label": "cinnamon",
-          "strength": 1
-        },
-        {
-          "label": "cloves",
-          "strength": 1
-        },
-        {
-          "label": "coriander",
-          "strength": 1
-        },
-        {
-          "label": "cucumber",
-          "strength": 1
-        },
-        {
-          "label": "cumin",
-          "strength": 1
-        },
-        {
-          "label": "dill",
-          "strength": 1
-        },
-        {
-          "label": "fennel",
-          "strength": 1
-        },
-        {
-          "label": "fruits",
-          "strength": 1,
-          "modifier": "esp. dried"
-        },
-        {
-          "label": "ginger",
-          "strength": 1
-        },
-        {
-          "label": "grapes",
-          "strength": 1
-        },
-        {
-          "label": "kebabs",
-          "strength": 1
-        },
-        {
-          "label": "lamb",
-          "strength": 1
-        },
-        {
-          "label": "mint",
-          "strength": 1
-        },
-        {
-          "label": "mushrooms",
-          "strength": 1
-        },
-        {
-          "label": "nuts",
-          "strength": 1,
-          "modifier": "e.g., almonds"
-        },
-        {
-          "label": "pasta",
-          "strength": 2
-        },
-        {
-          "label": "rice, basmati",
-          "strength": 2
-        },
-        {
-          "label": "sesame",
-          "strength": 1
-        },
-        {
-          "label": "tomatoes and tomato sauce",
-          "strength": 1
-        },
-        {
-          "label": "turmeric",
-          "strength": 1
-        },
-        {
-          "label": "yogurt",
-          "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
       "dishes": [],
       "affinities": [
-        "achiote + pork + sour orange",
-        "almonds + cardamom + sugar",
-        "cucumber + mint + yogurt"
+        "achiote + pork + sour orange"
       ],
       "cuisines": [
         "mexican-cuisine"
@@ -177,9 +70,7 @@
         "season": "autumn–winter",
         "taste": "sweet",
         "weight": "medium",
-        "volume": "quiet",
-        "botanical relatives": "peaches",
-        "function": "warming"
+        "volume": "loud"
       },
       "pairings": [
         {
@@ -192,6 +83,23 @@
         },
         {
           "label": "beans",
+          "strength": 1
+        },
+        {
+          "label": "beets",
+          "strength": 1
+        },
+        {
+          "label": "breads",
+          "strength": 1,
+          "modifier": "esp. breakfast"
+        },
+        {
+          "label": "cabbage",
+          "strength": 1
+        },
+        {
+          "label": "cakes",
           "strength": 1
         },
         {
@@ -289,6 +197,11 @@
         {
           "label": "mace",
           "strength": 1
+        },
+        {
+          "label": "meats, red",
+          "strength": 2,
+          "modifier": "esp. braised, grilled, or roasted"
         },
         {
           "label": "mushrooms",
@@ -398,7 +311,48 @@
           "label": "vegetables",
           "strength": 1,
           "modifier": "esp. root"
-        },
+        }
+      ],
+      "avoids": [],
+      "quotes": [
+        {
+          "text": "In Jamaica, allspice is their pepper. It’s fruitier than black peppercorns. I think it’s especially nice with braised and roasted meats.",
+          "attribution": "BRADFORD THOMPSON, Mary Elaine’s at The Phoenician (Scottsdale, Arizona)"
+        }
+      ],
+      "tips": [
+        "Add early in cooking."
+      ],
+      "notes": [],
+      "dishes": [],
+      "affinities": [
+        "allspice + beef + onions",
+        "allspice + garlic + pork"
+      ],
+      "cuisines": [
+        "caribbean-cuisine",
+        "eastern-mediterranean-cuisine",
+        "english-cuisine",
+        "indian-cuisine",
+        "jamaican-cuisine",
+        "mexican-cuisine",
+        "middle-eastern-cuisine",
+        "north-american-cuisine",
+        "west-indies-cuisine"
+      ]
+    },
+    {
+      "id": "almonds",
+      "label": "Almonds",
+      "aliases": [],
+      "meta": {
+        "taste": "sweet",
+        "botanical relatives": "peaches",
+        "function": "warming",
+        "weight": "medium",
+        "volume": "quiet"
+      },
+      "pairings": [
         {
           "label": "amaretto",
           "strength": 1
@@ -723,13 +677,10 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
-          "text": "MEATS, red, esp. braised, grilled, or roasted In Jamaica, allspice is their pepper. It’s fruitier than black peppercorns. I think it’s especially nice with braised and roasted meats.",
-          "attribution": "BRADFORD THOMPSON, Mary Elaine’s at The Phoenician (Scottsdale, Arizona)"
-        },
-        {
-          "text": "Almonds are fairly versatile in that their flavor is not very specific. When they are manufactured, then they have a distinct flavor: think of Frangelico, almond oil, or marzipan in dessert. In these cases, the almond has a very distinct flavor.",
+          "text": "almond has a very distinct flavor.",
           "attribution": "MARCEL DESAULNIERS, THE TRELLIS (WILLIAMSBURG, VIRGINIA)"
         },
         {
@@ -737,34 +688,23 @@
           "attribution": "EMILY LUCHETTI, Farallon (San Francisco)"
         }
       ],
-      "tips": [
-        "Add early in cooking."
-      ],
+      "tips": [],
       "notes": [],
       "dishes": [],
       "affinities": [
-        "allspice + beef + onions",
-        "allspice + garlic + pork",
         "almonds + chocolate + coconut",
         "almonds + coffee + orange",
         "almonds + green anise + figs",
         "almonds + honey + orange zest + raisins"
       ],
       "cuisines": [
-        "caribbean-cuisine",
-        "eastern-mediterranean-cuisine",
-        "english-cuisine",
-        "indian-cuisine",
-        "jamaican-cuisine",
-        "mexican-cuisine",
-        "middle-eastern-cuisine",
-        "north-american-cuisine",
-        "west-indies-cuisine",
         "greek-cuisine",
+        "indian-cuisine",
         "mediterranean-cuisine",
         "moroccan-cuisine",
         "spanish-cuisine",
-        "turkish-cuisine"
+        "turkish-cuisine",
+        "afghan-cuisine"
       ]
     },
     {
@@ -818,6 +758,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -1016,6 +957,7 @@
           "modifier": "champagne, red wine, sherry"
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "No country in the world has anchovies like Spain. They are sophisticated, and the ones from the north of Spain are best because they are bigger. Spanish anchovies are not salty, either. Once you eat one, your life changes forever! I pay a lot for my anchovies — up to seventy-five cents per fillet — and will have to charge $9 for a plate. My customers will say that is too much to pay, and I agree — but if you don’t pay, you don’t taste. Lately, I have been combining anchovies with nectarines, which I love. I will make a vinaigrette with Pedro Ximénez [i.e., PX sherry], sherry vinegar, and olive oil and it is the perfect dressing — and unique.",
@@ -1041,6 +983,71 @@
         "volume": "loud"
       },
       "pairings": [
+        {
+          "label": "almonds",
+          "strength": 2
+        },
+        {
+          "label": "anise",
+          "strength": 1
+        },
+        {
+          "label": "apricots",
+          "strength": 2
+        },
+        {
+          "label": "candy",
+          "strength": 1
+        },
+        {
+          "label": "cream and ice cream",
+          "strength": 2
+        },
+        {
+          "label": "custards",
+          "strength": 1
+        },
+        {
+          "label": "desserts",
+          "strength": 2
+        },
+        {
+          "label": "fish",
+          "strength": 1
+        },
+        {
+          "label": "fruits",
+          "strength": 1
+        },
+        {
+          "label": "ginger",
+          "strength": 2,
+          "modifier": "fresh, candied"
+        },
+        {
+          "label": "hazelnuts",
+          "strength": 1
+        },
+        {
+          "label": "juniper berries",
+          "strength": 1
+        },
+        {
+          "label": "lavender",
+          "strength": 2
+        },
+        {
+          "label": "lemon balm",
+          "strength": 1
+        },
+        {
+          "label": "liqueurs",
+          "strength": 1
+        },
+        {
+          "label": "mushrooms",
+          "strength": 1
+        },
         {
           "label": "nutmeg",
           "strength": 1
@@ -1074,9 +1081,10 @@
           "strength": 2
         }
       ],
+      "avoids": [],
       "quotes": [
         {
-          "text": "Use to balance high-acid fruit, to reduce the need for sweeteners. almonds anise apricots candy cream and ice cream custards desserts fish fruits ginger: fresh, candied hazelnuts juniper berries lavender lemon balm liqueurs mushrooms Angelica pairs well with fresh or candied ginger. And angelica with rhubarb really intensifies the flavor of the rhubarb.",
+          "text": "Angelica pairs well with fresh or candied ginger. And angelica with rhubarb really intensifies the flavor of the rhubarb.",
           "attribution": "JERRY TRAUNFELD, The Herbfarm (Woodinville, Washington)"
         }
       ],
@@ -1369,7 +1377,13 @@
           "strength": 1
         }
       ],
-      "quotes": [],
+      "avoids": [],
+      "quotes": [
+        {
+          "text": "Anise seeds and fennel are used for braising our pork belly. Fennel and pork is a natural, just like in Italian sausage.",
+          "attribution": "CARRIE NAHABEDIAN, Naha (Chicago)"
+        }
+      ],
       "tips": [
         "Add early in cooking."
       ],
@@ -1592,6 +1606,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [],
       "tips": [],
       "notes": [],
@@ -1875,6 +1890,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "As a kid, I hated black jelly beans. But I have grown to like all the various forms of anise, and star anise is one of my favorites. My favorite application is when it is infused with milk chocolate. It then has an almost malty-caramely quality to it. It adds that little something that people can’t quite identify. I also love pears with anise, which works well with roasted or poached pears.",
@@ -1999,6 +2015,32 @@
         },
         {
           "label": "celery root",
+          "strength": 1
+        },
+        {
+          "label": "cheese",
+          "strength": 2,
+          "modifier": "camembert, cheddar, goat, gruyère"
+        },
+        {
+          "label": "cherries",
+          "strength": 1,
+          "modifier": "dried, fresh"
+        },
+        {
+          "label": "chestnuts",
+          "strength": 1
+        },
+        {
+          "label": "chicken",
+          "strength": 1
+        },
+        {
+          "label": "chives",
+          "strength": 1
+        },
+        {
+          "label": "cider",
           "strength": 1
         },
         {
@@ -2351,6 +2393,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "The combination of apple and celery works. A tart green apple sorbet is not going to knock your socks off, because you are programmed to know it. When you add the flavor of celery, you get something new. I also love the flavors of apple and fennel together, especially in sorbet.",
@@ -2761,6 +2804,7 @@
           "strength": 1
         }
       ],
+      "avoids": [],
       "quotes": [
         {
           "text": "Apricots are much better cooked than raw. It is rare that you find a fruit that reaches its full potential as cooked rather than raw, but an apricot is one. A so-so apricot poached will turn into heaven. They are great with either chamomile or lavender.",
@@ -2785,6 +2829,34 @@
   ],
   "cuisines": {
     "mexican-cuisine": [],
+    "afghan-cuisine": [
+      "almonds",
+      "barley",
+      "breads",
+      "cardamom",
+      "chile pepper",
+      "cinnamon",
+      "cloves",
+      "coriander",
+      "cucumber",
+      "cumin",
+      "dill",
+      "fennel",
+      "fruits",
+      "ginger",
+      "grapes",
+      "kebabs",
+      "lamb",
+      "mint",
+      "mushrooms",
+      "nuts",
+      "pasta",
+      "rice, basmati",
+      "sesame",
+      "tomatoes and tomato sauce",
+      "turmeric",
+      "yogurt"
+    ],
     "african-cuisine": [
       "bananas",
       "beans",
@@ -2923,7 +2995,7 @@
   "meta": {
     "source": "The Flavor Bible, Karen Page & Andrew Dornenburg, 2008",
     "pages": "40–65",
-    "total": 10,
-    "cuisines": 24
+    "total": 11,
+    "cuisines": 25
   }
 }

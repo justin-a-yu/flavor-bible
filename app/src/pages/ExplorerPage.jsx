@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import LensCanvas from '../components/LensCanvas';
 import BoardView from '../components/BoardView';
@@ -178,7 +178,17 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
         style={{ position: 'absolute', top: 10, right: 12, cursor: 'pointer', fontSize: 11, color: '#b0a488' }}
       >✕</div>
 
-      <div style={{ fontSize: '1rem', color: '#2c2416', marginBottom: 2 }}>{p.label}</div>
+      {p.id ? (
+        <Link
+          to={`/ingredient/${p.id}`}
+          onClick={onClose}
+          style={{ fontSize: '1rem', color: '#2c2416', marginBottom: 2, display: 'block', textDecoration: 'none' }}
+          onMouseEnter={e => { e.currentTarget.style.textDecoration = 'underline'; e.currentTarget.style.textUnderlineOffset = '3px'; }}
+          onMouseLeave={e => { e.currentTarget.style.textDecoration = 'none'; }}
+        >{p.label}</Link>
+      ) : (
+        <div style={{ fontSize: '1rem', color: '#2c2416', marginBottom: 2 }}>{p.label}</div>
+      )}
       <div style={{ fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: col, marginBottom: 4 }}>
         {STRENGTH_LABEL[p.strength] || ''}
       </div>
@@ -260,6 +270,7 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
           </div>
         </div>
       )}
+
     </div>
   );
 }

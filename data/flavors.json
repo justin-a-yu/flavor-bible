@@ -17433,6 +17433,11 @@
           "strength": 1
         },
         {
+          "label": "chile peppers",
+          "strength": 2,
+          "modifier": "dried red, fresh green (e.g., jalapeño)"
+        },
+        {
           "label": "chives",
           "strength": 1
         },
@@ -17719,7 +17724,7 @@
       "avoids": [],
       "quotes": [
         {
-          "text": "chile peppers : dried red, fresh green (e.g., jalapeño) Thumbelina carrots are something I missed when I moved from working in the country [i.e., Pocantico Hills, New York, where Blue Hill at Stone Barns is located] into Manhattan. Luckily, I recently found these short, fat carrots at the green market. We sauté these carrots over an open fire so that they get a little smoky. When they are cooked, they become soft and creamy. Once cooked, we turn them into a puree with a shot of carrot juice at the last second. We pair this with farro that has been cooked like risotto, then add some pine nuts and more Thumbelina carrots that have been quartered. I don’t know what is more seductive: the smooth carrot farro with its light carrot flavor or the carrots themselves that are totally creamy. The dish has no butter or cream but that is not because we are trying to be healthy. The dish just doesn’t need it.",
+          "text": "Thumbelina carrots are something I missed when I moved from working in the country [i.e., Pocantico Hills, New York, where Blue Hill at Stone Barns is located] into Manhattan. Luckily, I recently found these short, fat carrots at the green market. We sauté these carrots over an open fire so that they get a little smoky. When they are cooked, they become soft and creamy. Once cooked, we turn them into a puree with a shot of carrot juice at the last second. We pair this with farro that has been cooked like risotto, then add some pine nuts and more Thumbelina carrots that have been quartered. I don’t know what is more seductive: the smooth carrot farro with its light carrot flavor or the carrots themselves that are totally creamy. The dish has no butter or cream but that is not because we are trying to be healthy. The dish just doesn’t need it.",
           "attribution": "MICHAEL ANTHONY, GRAMERCY TAVERN (NEW YORK CITY)"
         },
         {
@@ -39296,7 +39301,7 @@
       "avoids": [],
       "quotes": [
         {
-          "text": "Tarte flambée is a dish that is 200 years old and was originally made by farmers in Alsace in the village’s wood-burning oven used for baking bread. The tarte flambée developed from what was on hand on the farm: cheese and cream from the cow, pork from the pig, and onions from the field, which they added to some dough. Since we don’t have a wood-burning oven [in the middle of Manhattan], we have to tweak the recipe from the classic. We have to tweak the cream because if we don’t, it breaks and just becomes grease. Instead, I use a mix of fromage blanc, cream, and sour cream so I can get the same result as cream in the original. And to compensate for not having a fire, I use an applewood-smoked bacon.",
+          "text": "some dough. Since we don’t have a wood-burning oven [in the middle of Manhattan], we have to tweak the recipe from the classic. We have to tweak the cream because if we don’t, it breaks and just becomes grease. Instead, I use a mix of fromage blanc, cream, and sour cream so I can get the same result as cream in the original. And to compensate for not having a fire, I use an applewood-smoked bacon.",
           "attribution": "GABRIEL KREUTHER, THE MODERN (NEW YORK CITY)"
         }
       ],
@@ -61912,7 +61917,7 @@
       "avoids": [],
       "quotes": [
         {
-          "text": "cheese : cheddar, Comté, Emmental, fromage blanc, goat, Gruyère, Parmesan, Swiss The onion family is the basis for every cuisine I can think of. Of course, Asian cuisines use more green onions and garlic, while the French use more shallots and garlic, but it’s the onion family providing the foundation.",
+          "text": "The onion family is the basis for every cuisine I can think of. Of course, Asian cuisines use more green onions and garlic, while the French use more shallots and garlic, but it’s the onion family providing the foundation.",
           "attribution": "TONY LIU, AUGUST (NEW YORK CITY)"
         },
         {

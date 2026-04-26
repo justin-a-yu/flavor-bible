@@ -677,13 +677,29 @@ def _backward_claim(window):
     # Sentence-final punctuation: period, !, ?, and curly quote variants.
     _SENTENCE_FINAL = ('.', '!', '?', '\u201c', '\u201d', '\u2019')
     # Pairing-variant lines: “CATEGORY: val1, val2, ...” — long but not prose.
-    _PAIRING_LIST   = re.compile(r'^[A-Za-z ,/()-]{2,35}:\s*[a-z]')
+    # Two false-positive patterns are excluded:
+    #   - pre-colon label contains a verb  ("they have a distinct flavor: think ...")
+    #   - post-colon content starts with an article ("seductive: the smooth ...")
+    _PAIRING_LIST_RE = re.compile(r'^([A-Za-z ,/()-]{2,35}):\s*([a-z].*)')
+    _ARTICLE_START   = re.compile(r'^(the|a|an)\s', re.IGNORECASE)
+
+    def _is_pairing_list(text):
+        m = _PAIRING_LIST_RE.match(text)
+        if not m:
+            return False
+        label, post = m.group(1).strip(), m.group(2)
+        if QUOTE_INDICATORS.search(label):   # pre-colon is a prose clause
+            return False
+        if _ARTICLE_START.match(post):       # post-colon starts with article = prose
+            return False
+        return True
+
     claim_start = len(window)
     for i in range(len(window) - 1, -1, -1):
         e = window[i]
         if e.strength >= 3:
             break
-        if _PAIRING_LIST.match(e.text):
+        if _is_pairing_list(e.text):
             break
         if e.text.rstrip().endswith(_SENTENCE_FINAL) or len(e.text) >= 50:
             claim_start = i
