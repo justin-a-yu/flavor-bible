@@ -13,6 +13,20 @@
       "runtimeArgs": ["/Users/juyu/Documents/flavor bible/app/node_modules/.bin/vite", "--port", "5173"],
       "cwd": "/Users/juyu/Documents/flavor bible/app",
       "port": 5173
+    },
+    {
+      "name": "explode-shelf",
+      "runtimeExecutable": "/opt/homebrew/Cellar/node/25.9.0_1/bin/node",
+      "runtimeArgs": ["/Users/juyu/Documents/flavor bible/app/node_modules/.bin/vite", "--port", "5174"],
+      "cwd": "/Users/juyu/Documents/flavor bible/.claude/worktrees/agent-ad2db284/app",
+      "port": 5174
+    },
+    {
+      "name": "explode-halo",
+      "runtimeExecutable": "/opt/homebrew/Cellar/node/25.9.0_1/bin/node",
+      "runtimeArgs": ["/Users/juyu/Documents/flavor bible/app/node_modules/.bin/vite", "--port", "5175"],
+      "cwd": "/Users/juyu/Documents/flavor bible/.claude/worktrees/agent-aff8b412/app",
+      "port": 5175
     }
   ]
 }

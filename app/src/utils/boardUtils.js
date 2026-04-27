@@ -5,6 +5,11 @@
 
 import { FLAVORS } from '../data/flavors_data';
 
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+/** Color assigned to each lens in order of addition. */
+export const LENS_COLORS = ['#d4a840', '#c0603a', '#4a8c5c', '#7a5ab8', '#c06080', '#4a7ab8'];
+
 // ─── Utilities ────────────────────────────────────────────────────────────────
 
 /** Split a comma-separated string, treating commas inside parentheses as part of the item. */

@@ -280,7 +280,7 @@ export const EMPTY_ING = { cuisines: [], meta: {} };
  * Expand selected region labels into the full set of cuisine slugs they cover.
  * Returns a Set for O(1) lookup.
  */
-export function regionsToCuisineSlugs(regions) {
+function regionsToCuisineSlugs(regions) {
   const slugs = new Set();
   regions.forEach(r => {
     (REGIONS[r] ?? []).forEach(s => slugs.add(s));

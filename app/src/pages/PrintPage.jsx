@@ -2,15 +2,13 @@ import { useSearchParams } from 'react-router-dom';
 import { FLAVORS } from '../data/flavors_data';
 import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
 import {
-  STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER,
+  STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LENS_COLORS,
   buildPairingMap, buildSharedGroups, buildAffinities, buildLensColumns, parseAffinityStr,
   splitOutsideParens,
 } from '../utils/boardUtils';
 import './PrintPage.css';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-
-const LENS_COLORS = ['#d4a840', '#c0603a', '#4a8c5c', '#7a5ab8', '#c06080', '#4a7ab8'];
 
 const CARD_META_KEYS = new Set(['taste', 'weight', 'volume', 'season', 'function']);
 
