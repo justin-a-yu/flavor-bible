@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import LensCanvas from '../components/LensCanvas';
@@ -7,23 +7,27 @@ import FilterPanel from '../components/FilterPanel';
 import PrintExportButton from '../components/PrintExportButton';
 import useExplorerStore, { serializeParams, deserializeParams } from '../store/useExplorerStore';
 import { STRENGTH_COLOR, STRENGTH_LABEL } from '../utils/boardUtils';
-import { FLAVORS } from '../data/flavors_data';
 import { seededShuffle } from '../utils/rng';
 
 // ── Minimal search bar ─────────────────────────────────────────────────────────
-
-const fuse = new Fuse(FLAVORS.index, { keys: ['label'], threshold: 0.4, distance: 100 });
 
 function SearchBar() {
   const [query, setQuery]   = useState('');
   const [results, setResults] = useState([]);
   const addLens   = useExplorerStore(s => s.addLens);
   const lenses    = useExplorerStore(s => s.lenses);
+  const flavors   = useExplorerStore(s => s.flavors);
+
+  // fuse is recreated only when flavors loads (once per session)
+  const fuse = useMemo(
+    () => flavors ? new Fuse(flavors.index, { keys: ['label'], threshold: 0.4, distance: 100 }) : null,
+    [flavors]
+  );
 
   const onInput = (e) => {
     const val = e.target.value;
     setQuery(val);
-    if (val.trim().length < 2) { setResults([]); return; }
+    if (!fuse || val.trim().length < 2) { setResults([]); return; }
     const matches = fuse.search(val)
       .map(r => r.item)
       .filter(s => !lenses.find(l => l.id === s.id))
@@ -140,6 +144,7 @@ function LensPills() {
 
 function DetailCard({ bubble, clientX, clientY, onClose }) {
   const cardRef = useRef(null);
+  const flavors = useExplorerStore(s => s.flavors);
 
   // Close on outside click — same pattern as FilterPanel
   useEffect(() => {
@@ -155,7 +160,7 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
   if (!bubble) return null;
   const p   = bubble.pairing;
   const col = STRENGTH_COLOR[p.strength];
-  const ing = p.id ? FLAVORS.ingredients[p.id] : null;
+  const ing = p.id ? flavors?.ingredients[p.id] : null;
 
   // Top-5 pairings via the owning lens's seed (same shuffle as the canvas)
   const lensId = bubble.lensIds[0];
@@ -211,7 +216,7 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
 
       {bubble.lensIds.length > 1 && (
         <div style={{ fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#b0a488', marginBottom: 8 }}>
-          Shared by {bubble.lensIds.map(id => FLAVORS.ingredients[id]?.label).filter(Boolean).join(' & ')}
+          Shared by {bubble.lensIds.map(id => flavors?.ingredients[id]?.label).filter(Boolean).join(' & ')}
         </div>
       )}
 
@@ -242,7 +247,7 @@ function DetailCard({ bubble, clientX, clientY, onClose }) {
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
             {top5.map(pair => {
-              const canAdd = pair.id && FLAVORS.ingredients[pair.id] &&
+              const canAdd = pair.id && flavors?.ingredients[pair.id] &&
                 !useExplorerStore.getState().lenses.find(l => l.id === pair.id);
               return (
                 <button
@@ -283,9 +288,10 @@ export default function ExplorerPage() {
   const [detail, setDetail] = useState(null); // { bubble, clientX, clientY }
   const [searchParams] = useSearchParams();
 
-  // Restore full state from URL query params on mount
+  // Restore full state from URL query params on mount.
+  // flavors is always loaded by the time ExplorerPage mounts (App gates on it).
   useEffect(() => {
-    const state = deserializeParams(searchParams);
+    const state = deserializeParams(searchParams, useExplorerStore.getState().flavors);
     if (state) useExplorerStore.getState().loadFromHash(state);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 

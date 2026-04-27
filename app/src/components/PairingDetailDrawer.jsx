@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { FLAVORS } from '../data/flavors_data';
 import useExplorerStore from '../store/useExplorerStore';
 import { STRENGTH_COLOR, STRENGTH_LABEL } from '../utils/boardUtils';
 
@@ -34,11 +33,12 @@ export default function PairingDetailDrawer({ pairing, onClose }) {
 
   const lenses        = useExplorerStore(s => s.lenses);
   const addLens       = useExplorerStore(s => s.addLens);
+  const flavors       = useExplorerStore(s => s.flavors);
   const isAlreadyActive = lenses.some(l => l.id === pairing?.id);
 
   if (!pairing) return null;
 
-  const ing = pairing.id ? FLAVORS.ingredients[pairing.id] : null;
+  const ing = pairing.id ? flavors?.ingredients[pairing.id] : null;
   const col = STRENGTH_COLOR[pairing.strength];
 
   return (

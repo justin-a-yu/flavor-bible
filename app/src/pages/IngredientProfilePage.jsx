@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { FLAVORS } from '../data/flavors_data';
-import { STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LABEL_TO_ID, splitOutsideParens } from '../utils/boardUtils';
+import useExplorerStore from '../store/useExplorerStore';
+import { STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, splitOutsideParens } from '../utils/boardUtils';
 import './IngredientProfilePage.css';
 
 // Meta fields shown inline (short values); others get their own expanded rows
@@ -11,7 +11,9 @@ const INLINE_META_KEYS = new Set(['taste', 'weight', 'volume', 'season', 'functi
 export default function IngredientProfilePage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const ing = FLAVORS.ingredients[id];
+  const flavors   = useExplorerStore(s => s.flavors);
+  const labelToId = useExplorerStore(s => s.labelToId);
+  const ing = flavors?.ingredients[id];
 
   if (!ing) {
     return (
@@ -88,7 +90,7 @@ export default function IngredientProfilePage() {
               <span className="profile-meta-key profile-meta-expanded-label">Botanical relatives:</span>
               <div className="profile-meta-chips">
                 {botanicals.map(b => {
-                  const bid = LABEL_TO_ID[b.toLowerCase()] ?? null;
+                  const bid = labelToId[b.toLowerCase()] ?? null;
                   return bid ? (
                     <Link key={b} to={`/ingredient/${bid}`} className="profile-meta-chip profile-meta-chip--link">
                       {b}
@@ -107,7 +109,7 @@ export default function IngredientProfilePage() {
               <span className="profile-meta-key profile-meta-expanded-label">See also:</span>
               <div className="profile-meta-chips">
                 {ing.relatedIds.map(rid => {
-                  const rel = FLAVORS.ingredients[rid];
+                  const rel = flavors?.ingredients[rid];
                   if (!rel) return null;
                   return (
                     <Link key={rid} to={`/ingredient/${rid}`} className="profile-meta-chip profile-meta-chip--link">

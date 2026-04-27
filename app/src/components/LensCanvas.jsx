@@ -1,6 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
 import useExplorerStore from '../store/useExplorerStore';
-import { FLAVORS } from '../data/flavors_data';
 import { seededShuffle } from '../utils/rng';
 import { matchesFilters, EMPTY_ING } from '../utils/filterUtils';
 import { STRENGTH_COLOR } from '../utils/boardUtils';
@@ -213,7 +212,7 @@ export default function LensCanvas({ onBubbleClick }) {
   // ── Bubble rebuild ──────────────────────────────────────────────────────────
 
   const rebuildBubbles = useCallback(() => {
-    const { lenses, filters } = useExplorerStore.getState();
+    const { lenses, filters, flavors } = useExplorerStore.getState();
     const st = stateRef.current;
 
     // Preserve existing positions/velocities
@@ -228,7 +227,7 @@ export default function LensCanvas({ onBubbleClick }) {
     // Build flavor map from all lens pairings
     const flavorMap = {};
     lenses.forEach(lens => {
-      const ing = FLAVORS.ingredients[lens.id];
+      const ing = flavors?.ingredients[lens.id];
       if (!ing) return;
 
       let pairings = ing.pairings;
@@ -242,8 +241,8 @@ export default function LensCanvas({ onBubbleClick }) {
       );
       if (needsFilter) {
         pairings = pairings.filter(p => {
-          const ing = p.id ? (FLAVORS.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
-          return matchesFilters(ing, filters);
+          const pIng = p.id ? (flavors.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
+          return matchesFilters(pIng, filters);
         });
       }
 
@@ -629,7 +628,7 @@ export default function LensCanvas({ onBubbleClick }) {
         ctx.fillText(line, b.x, b.y + (i - (lines.length - 1) / 2) * 12 + 1);
       });
 
-      if (isHovered && b.id && FLAVORS.ingredients[b.id]) {
+      if (isHovered && b.id && useExplorerStore.getState().flavors?.ingredients[b.id]) {
         ctx.font      = '8px Georgia';
         ctx.fillStyle = hexAlpha(col, 0.6);
         ctx.fillText('dbl-click to add', b.x, b.y + r + 11);
@@ -943,7 +942,7 @@ export default function LensCanvas({ onBubbleClick }) {
       if (st.spaceDown) return;
       const { ox, oy } = canvasXY(e);
       const b = bubbleAt(ox, oy);
-      if (!b || !b.id || !FLAVORS.ingredients[b.id]) return;
+      if (!b || !b.id || !useExplorerStore.getState().flavors?.ingredients[b.id]) return;
       const { lenses } = useExplorerStore.getState();
       if (lenses.find(l => l.id === b.id)) return;
       useExplorerStore.getState().addLens(b.id);

@@ -1,9 +1,9 @@
 /**
  * boardUtils.js
  * Pure data-building helpers shared by BoardView and PrintPage.
+ * All functions that need ingredient data accept `flavors` (and `labelToId`)
+ * as explicit parameters — there is no module-level import of the data file.
  */
-
-import { FLAVORS } from '../data/flavors_data';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -48,18 +48,9 @@ export const STRENGTH_LABEL = {
 
 export const TIER_ORDER = [4, 3, 2, 1];
 
-// Label → ingredient id lookup. Indexes both the full label and the short name
-// before any "(see also…)" parenthetical so affinity strings like "basil" match
-// "BASIL (See also Basil, Thai, and Lemon Basil)".
-export const LABEL_TO_ID = Object.fromEntries(
-  FLAVORS.index.flatMap(item => {
-    const full = item.label.toLowerCase();
-    const entries = [[full, item.id]];
-    const paren = full.indexOf(' (');
-    if (paren > 0) entries.push([full.slice(0, paren).trim(), item.id]);
-    return entries;
-  })
-);
+// Note: LABEL_TO_ID was previously a module-level constant. It is now computed
+// in useExplorerStore when flavors data loads (stored as `labelToId`) and
+// passed explicitly to functions that need it (buildAffinities, parseAffinityStr).
 
 // ─── Pure helpers ─────────────────────────────────────────────────────────────
 
@@ -78,10 +69,10 @@ export function combos(arr, k) {
  * Single scan over all lenses. Returns a map:
  *   { [lowerCaseLabel]: { label, id, modifier, perLens: { lensId: strength } } }
  */
-export function buildPairingMap(lenses, filterFn = null) {
+export function buildPairingMap(lenses, flavors, filterFn = null) {
   const map = {};
   lenses.forEach(lens => {
-    const ing = FLAVORS.ingredients[lens.id];
+    const ing = flavors.ingredients[lens.id];
     if (!ing) return;
     const pairings = filterFn ? ing.pairings.filter(filterFn) : ing.pairings;
     pairings.forEach(p => {
@@ -123,7 +114,7 @@ export function buildSharedGroups(lenses, pairingMap) {
 }
 
 /** Find affinities that span 2+ active lenses, sorted by hit count. */
-export function buildAffinities(lenses) {
+export function buildAffinities(lenses, flavors, labelToId) {
   if (lenses.length < 2) return [];
   const labelSet = new Set(lenses.map(l => l.label.toLowerCase()));
   const idSet    = new Set(lenses.map(l => l.id));
@@ -131,14 +122,14 @@ export function buildAffinities(lenses) {
   const out  = [];
 
   lenses.forEach(lens => {
-    const ing = FLAVORS.ingredients[lens.id];
+    const ing = flavors.ingredients[lens.id];
     if (!ing) return;
     (ing.affinities || []).forEach(str => {
       if (seen.has(str)) return;
       seen.add(str);
       const parts = str.split(' + ').map(p => p.trim().toLowerCase());
       const hits = parts.filter(p => {
-        const pid = LABEL_TO_ID[p] ?? null;
+        const pid = labelToId[p] ?? null;
         return labelSet.has(p) || (pid && idSet.has(pid));
       }).length;
       if (hits >= 2) out.push({ str, hits });
@@ -149,11 +140,11 @@ export function buildAffinities(lenses) {
 }
 
 /** Parse an affinity string into parts with isActive / isTappable flags. */
-export function parseAffinityStr(str, labelSet, idSet) {
+export function parseAffinityStr(str, labelSet, idSet, labelToId) {
   return str.split(' + ').map(raw => {
     const trimmed = raw.trim();
     const lower   = trimmed.toLowerCase();
-    const id      = LABEL_TO_ID[lower] ?? null;
+    const id      = labelToId[lower] ?? null;
     const isActive = (id && idSet.has(id)) || labelSet.has(lower);
     return { label: trimmed, id, isActive, isTappable: !!id && !isActive };
   });
@@ -163,7 +154,7 @@ export function parseAffinityStr(str, labelSet, idSet) {
  * Build per-lens individual pairing columns.
  * In solo mode: all pairings. In multi-lens: only those NOT in any intersection.
  */
-export function buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn) {
+export function buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn, flavors) {
   const sharedKeys = isSolo ? new Set() : new Set(
     Object.entries(pairingMap)
       .filter(([, p]) => Object.keys(p.perLens).length >= 2)
@@ -171,7 +162,7 @@ export function buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn) {
   );
 
   return lenses.map(lens => {
-    const ing = FLAVORS.ingredients[lens.id];
+    const ing = flavors.ingredients[lens.id];
     if (!ing) return { lens, pairings: [] };
     let pairings = isSolo ? ing.pairings : ing.pairings.filter(p => !sharedKeys.has(p.label.toLowerCase()));
     if (pairingFilterFn) pairings = pairings.filter(pairingFilterFn);

@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { FLAVORS } from '../data/flavors_data';
+import useExplorerStore from '../store/useExplorerStore';
 import { matchesFilters, hasActiveFilters } from '../utils/filterUtils';
 import {
   STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER, LENS_COLORS,
@@ -14,12 +14,12 @@ const CARD_META_KEYS = new Set(['taste', 'weight', 'volume', 'season', 'function
 
 // ─── Section components ───────────────────────────────────────────────────────
 
-function ProfileSection({ lenses }) {
+function ProfileSection({ lenses, flavors }) {
   return (
     <section className="pp-section">
       <div className="pp-columns">
         {lenses.map(lens => {
-          const ing = FLAVORS.ingredients[lens.id];
+          const ing = flavors.ingredients[lens.id];
           if (!ing) return null;
           const metaEntries = Object.entries(ing.meta ?? {}).filter(([k, v]) => v && CARD_META_KEYS.has(k));
           const techniques  = ing.meta?.techniques ? splitOutsideParens(ing.meta.techniques) : [];
@@ -147,7 +147,7 @@ function SharedSection({ groups }) {
   );
 }
 
-function AffinitiesSection({ lenses, affinities }) {
+function AffinitiesSection({ lenses, affinities, labelToId }) {
   if (!affinities.length) return null;
   const labelSet = new Set(lenses.map(l => l.label.toLowerCase()));
   const idSet    = new Set(lenses.map(l => l.id));
@@ -157,7 +157,7 @@ function AffinitiesSection({ lenses, affinities }) {
       <div className="pp-section-label">Affinities</div>
       <div className="pp-affinities">
         {affinities.map(({ str }) => {
-          const parts = parseAffinityStr(str, labelSet, idSet);
+          const parts = parseAffinityStr(str, labelSet, idSet, labelToId);
           return (
             <div key={str} className="pp-affinity">
               {parts.map((part, i) => (
@@ -244,14 +244,16 @@ function FiltersFooter({ filters }) {
 
 export default function PrintPage() {
   const [searchParams] = useSearchParams();
+  const flavors   = useExplorerStore(s => s.flavors);
+  const labelToId = useExplorerStore(s => s.labelToId);
 
   const lensIds = (searchParams.get('lenses') ?? '').split(',').filter(Boolean);
 
   const lenses = lensIds
-    .filter(id => FLAVORS.ingredients[id])
+    .filter(id => flavors?.ingredients[id])
     .map((id, i) => ({
       id,
-      label: FLAVORS.ingredients[id].label,
+      label: flavors.ingredients[id].label,
       color: LENS_COLORS[i % LENS_COLORS.length],
     }));
 
@@ -281,14 +283,14 @@ export default function PrintPage() {
           const hasContentFilters = (filters.regions?.length > 0) || (filters.seasons?.length > 0) || (filters.tastes?.length > 0);
           return !hasContentFilters;
         }
-        return matchesFilters(FLAVORS.ingredients[p.id], filters);
+        return matchesFilters(flavors.ingredients[p.id], filters);
       }
     : null;
 
-  const pairingMap   = buildPairingMap(lenses, pairingFilterFn);
+  const pairingMap   = buildPairingMap(lenses, flavors, pairingFilterFn);
   const sharedGroups = isSolo ? [] : buildSharedGroups(lenses, pairingMap);
-  const affinities   = buildAffinities(lenses);
-  const lensColumns  = buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn);
+  const affinities   = buildAffinities(lenses, flavors, labelToId);
+  const lensColumns  = buildLensColumns(lenses, pairingMap, isSolo, pairingFilterFn, flavors);
 
   const title = lenses.map(l => l.label).join(' & ');
 
@@ -305,13 +307,13 @@ export default function PrintPage() {
       <main className="pp-main">
         <div className="pp-doc-title">{title}</div>
 
-        <ProfileSection lenses={lenses} />
+        <ProfileSection lenses={lenses} flavors={flavors} />
 
         {!isSolo && filters.visibility !== 'individual' && (
           <SharedSection groups={sharedGroups} />
         )}
 
-        <AffinitiesSection lenses={lenses} affinities={affinities} />
+        <AffinitiesSection lenses={lenses} affinities={affinities} labelToId={labelToId} />
 
         {filters.visibility !== 'shared' && (
           <RemainingSection lensColumns={lensColumns} isSolo={isSolo} />

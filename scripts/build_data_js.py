@@ -1,8 +1,8 @@
 """
 build_data_js.py
-Converts data/flavors.json → app/src/data/flavors_data.js
+Converts data/flavors.json → app/public/flavors_data.json
 
-Output sets window.FLAVORS with:
+Output is a JSON file with:
   ingredients  — { [id]: entry }  (full data per ingredient)
   index        — [ { id, label } ] sorted alphabetically (for search)
 
@@ -11,13 +11,16 @@ or null if no matching ingredient exists. This enables double-click promote.
 
 Each ingredient gets a `relatedIds` field: resolved ids from its "See also"
 aliases, for display as navigable links on the ingredient profile page.
+
+The app fetches this file asynchronously at startup so the main JS bundle
+stays small and the UI shell renders before the flavor data arrives.
 """
 
 import json, unicodedata, re
 from pathlib import Path
 
 SRC  = Path(__file__).parent.parent / "data" / "flavors.json"
-DEST = Path(__file__).parent.parent / "app" / "src" / "data" / "flavors_data.js"
+DEST = Path(__file__).parent.parent / "app" / "public" / "flavors_data.json"
 
 # Common alternate phrasings used in pairing lists that differ from the
 # ingredient's header format (usually reversed adjective-noun order).
@@ -315,7 +318,7 @@ def build():
     payload = json.dumps({"ingredients": out_ings, "index": index},
                          ensure_ascii=False, separators=(",", ":"))
 
-    DEST.write_text(f"export const FLAVORS={payload};", encoding="utf-8")
+    DEST.write_text(payload, encoding="utf-8")
     print(f"✓  Written {DEST}")
     print(f"   {len(out_ings)} ingredients, {len(index)} index entries")
     size_kb = DEST.stat().st_size / 1024

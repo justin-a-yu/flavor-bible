@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { FLAVORS } from '../data/flavors_data';
 import { LENS_COLORS } from '../utils/boardUtils';
 
 const DEFAULT_FILTERS = {
@@ -20,15 +19,36 @@ const DEFAULT_VIEWPORT = {
 // ── Store ──────────────────────────────────────────────────────────────────
 const useExplorerStore = create((set, get) => ({
   lenses:      [],
+  flavors:     null,  // loaded async from /flavors_data.json
+  labelToId:   {},    // derived index: label.toLowerCase() → id
   activeView:  'lens',
   filters:     { ...DEFAULT_FILTERS },
   viewport:    { ...DEFAULT_VIEWPORT },
   explodeMode: false,
 
+  // ── Data loading ──────────────────────────────────────────────────────
+
+  async loadFlavors() {
+    if (get().flavors) return; // already loaded
+    const data = await fetch(`${import.meta.env.BASE_URL}flavors_data.json`).then(r => r.json());
+    // Build label → id index (same logic as old LABEL_TO_ID in boardUtils)
+    const labelToId = Object.fromEntries(
+      (data.index || []).flatMap(item => {
+        const full  = item.label.toLowerCase();
+        const pairs = [[full, item.id]];
+        const paren = full.indexOf(' (');
+        if (paren > 0) pairs.push([full.slice(0, paren).trim(), item.id]);
+        return pairs;
+      })
+    );
+    set({ flavors: data, labelToId });
+  },
+
   // ── Lens actions ──────────────────────────────────────────────────────
 
   addLens(id) {
-    if (!FLAVORS.ingredients[id]) return;
+    const { flavors } = get();
+    if (!flavors?.ingredients[id]) return;
     if (get().lenses.find(l => l.id === id)) return;
 
     const { lenses } = get();
@@ -41,7 +61,7 @@ const useExplorerStore = create((set, get) => ({
         ...state.lenses,
         {
           id,
-          label: FLAVORS.ingredients[id].label,
+          label: flavors.ingredients[id].label,
           color,
           x: null,
           y: null,
@@ -135,9 +155,9 @@ export function serializeParams({ lenses, viewport, activeView, filters }) {
   return `/?${p.toString()}`;
 }
 
-export function deserializeParams(searchParams) {
+export function deserializeParams(searchParams, flavors) {
   const lensesStr = searchParams.get('lenses');
-  if (!lensesStr) return null;
+  if (!lensesStr || !flavors) return null;
 
   const lenses = [];
   for (const part of lensesStr.split('~')) {
@@ -145,9 +165,9 @@ export function deserializeParams(searchParams) {
     if (colonIdx === -1) continue;
     const id   = part.slice(0, colonIdx);
     const nums = part.slice(colonIdx + 1).split(',').map(Number);
-    if (nums.length < 4 || !FLAVORS.ingredients[id]) continue;
+    if (nums.length < 4 || !flavors.ingredients[id]) continue;
     const [x, y, r, seed] = nums;
-    const ing = FLAVORS.ingredients[id];
+    const ing = flavors.ingredients[id];
     lenses.push({
       id, label: ing.label,
       color: LENS_COLORS[lenses.length % LENS_COLORS.length],

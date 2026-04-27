@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useExplorerStore from '../store/useExplorerStore';
-import { FLAVORS } from '../data/flavors_data';
 import { matchesFilters, EMPTY_ING } from '../utils/filterUtils';
 import {
   STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER,
@@ -19,8 +18,8 @@ const CARD_META_KEYS = new Set(['taste', 'weight', 'volume', 'season', 'function
 
 // ─── Section components ───────────────────────────────────────────────────────
 
-function IngredientProfileCard({ lens }) {
-  const ing = FLAVORS.ingredients[lens.id];
+function IngredientProfileCard({ lens, flavors }) {
+  const ing = flavors.ingredients[lens.id];
   if (!ing) return null;
   const metaEntries = Object.entries(ing.meta ?? {}).filter(([k, v]) => v && CARD_META_KEYS.has(k));
   const avoids = ing.avoids ?? [];
@@ -83,13 +82,13 @@ function IngredientProfileCard({ lens }) {
   );
 }
 
-function IngredientProfileSection({ lenses }) {
+function IngredientProfileSection({ lenses, flavors }) {
   return (
     <section className="board-section">
       <div className="section-label">Ingredients</div>
       <div className="ingredient-columns">
         {lenses.map(lens => (
-          <IngredientProfileCard key={lens.id} lens={lens} />
+          <IngredientProfileCard key={lens.id} lens={lens} flavors={flavors} />
         ))}
       </div>
     </section>
@@ -155,7 +154,7 @@ function SharedBySection({ groups, onPairingClick }) {
   );
 }
 
-function AffinitiesSection({ lenses, affinities, onPairingClick }) {
+function AffinitiesSection({ lenses, affinities, labelToId, onPairingClick }) {
   if (!affinities.length) return null;
   const labelSet = new Set(lenses.map(l => l.label.toLowerCase()));
   const idSet    = new Set(lenses.map(l => l.id));
@@ -165,7 +164,7 @@ function AffinitiesSection({ lenses, affinities, onPairingClick }) {
       <div className="section-label">Affinities</div>
       <div className="affinities-list">
         {affinities.map(({ str }) => {
-          const parts = parseAffinityStr(str, labelSet, idSet);
+          const parts = parseAffinityStr(str, labelSet, idSet, labelToId);
           return (
             <div key={str} className="affinity-row">
               {parts.map((part, i) => (
@@ -197,8 +196,10 @@ function AffinitiesSection({ lenses, affinities, onPairingClick }) {
 // ─── BoardView ────────────────────────────────────────────────────────────────
 
 export default function BoardView() {
-  const lenses  = useExplorerStore(s => s.lenses);
-  const filters = useExplorerStore(s => s.filters);
+  const lenses    = useExplorerStore(s => s.lenses);
+  const filters   = useExplorerStore(s => s.filters);
+  const flavors   = useExplorerStore(s => s.flavors);
+  const labelToId = useExplorerStore(s => s.labelToId);
   const [selectedPairing, setSelectedPairing] = useState(null);
 
   if (lenses.length === 0) return null;
@@ -219,7 +220,7 @@ export default function BoardView() {
   );
   const contentFilterFn = hasContentFilter
     ? p => {
-        const ing = p.id ? (FLAVORS.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
+        const ing = p.id ? (flavors.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
         return matchesFilters(ing, filters);
       }
     : null;
@@ -228,14 +229,14 @@ export default function BoardView() {
     ? p => {
         if (filters.strengths?.length > 0 && !filters.strengths.includes(p.strength)) return false;
         if (!hasContentFilter) return true;
-        const ing = p.id ? (FLAVORS.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
+        const ing = p.id ? (flavors.ingredients[p.id] ?? EMPTY_ING) : EMPTY_ING;
         return matchesFilters(ing, filters);
       }
     : null;
 
   // Accumulate without strength filter so shared pairings are detected correctly
   // even when lenses rate them at different tiers.
-  const pairingMap = buildPairingMap(lenses, contentFilterFn);
+  const pairingMap = buildPairingMap(lenses, flavors, contentFilterFn);
 
   // Apply strength filter post-accumulation using max strength across lenses.
   // A shared pairing shows if any lens rates it at the selected tier.
@@ -249,8 +250,8 @@ export default function BoardView() {
     : pairingMap;
 
   const sharedGroups = isSolo ? [] : buildSharedGroups(lenses, strengthPairingMap);
-  const affinities   = buildAffinities(lenses);
-  const lensColumns  = buildLensColumns(lenses, strengthPairingMap, isSolo, columnFilterFn);
+  const affinities   = buildAffinities(lenses, flavors, labelToId);
+  const lensColumns  = buildLensColumns(lenses, strengthPairingMap, isSolo, columnFilterFn, flavors);
 
   // Cross-lens avoid conflicts: lens A avoids lens B (or vice versa)
   const avoidConflicts = [];
@@ -259,8 +260,8 @@ export default function BoardView() {
       for (let j = i + 1; j < lenses.length; j++) {
         const a = lenses[i];
         const b = lenses[j];
-        const ingA = FLAVORS.ingredients[a.id];
-        const ingB = FLAVORS.ingredients[b.id];
+        const ingA = flavors.ingredients[a.id];
+        const ingB = flavors.ingredients[b.id];
         const aAvoidsB = ingA?.avoids?.some(av => av.id === b.id);
         const bAvoidsA = ingB?.avoids?.some(av => av.id === a.id);
         if (aAvoidsB || bAvoidsA) {
@@ -283,7 +284,7 @@ export default function BoardView() {
 
       <div className="board-doc">
 
-        <IngredientProfileSection lenses={lenses} />
+        <IngredientProfileSection lenses={lenses} flavors={flavors} />
 
         {avoidConflicts.length > 0 && (
           <section className="board-section board-avoid-conflicts">
@@ -314,6 +315,7 @@ export default function BoardView() {
         <AffinitiesSection
           lenses={lenses}
           affinities={affinities}
+          labelToId={labelToId}
           onPairingClick={setSelectedPairing}
         />
 

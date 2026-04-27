@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Phases 1–6 nearly complete. Live on GitHub Pages. Remaining: mobile layout, performance, user feedback.**
+> Status: **Phases 1–6 complete. Live on GitHub Pages. Remaining: mobile layout, user feedback.**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -214,6 +214,7 @@ Scope: filter state in Zustand + filtering logic wired into LensCanvas and Board
 - [x] **QA pass** — verified: profile pages (pairings, avoids, affinities, quotes, dishes, see-also, techniques), board shared pairings, filters (season, taste, region, strength, visibility), print view with filter footer, not-found state
 - [x] **Deployment** — live on GitHub Pages
 - [x] **Tech debt cleanup** — deleted `App.css` (Vite template), `plans/` (superseded planning docs), `parse_preview*.json` (test artifacts); consolidated `LENS_COLORS` into `boardUtils.js`; made `regionsToCuisineSlugs` private; added `__pycache__/` and `.claude/` to `.gitignore`
+- [x] **Route splitting** — `IngredientProfilePage` and `PrintPage` lazy-loaded via `React.lazy()`; `ExplorerPage` stays eager as primary entry point
+- [x] **Lazy data loading** — `flavors_data.js` (1.75 MB) removed from bundle; moved to `public/flavors_data.json` and fetched async at startup via `store.loadFlavors()`; `labelToId` index computed in store on load; `build_data_js.py` updated to output JSON; main bundle: **1.88 MB → 316 KB** (gzip: ~300 KB → 100 KB)
 - [ ] Responsive / mobile layout
-- [ ] Performance optimization for large graph
 - [ ] User feedback loop
