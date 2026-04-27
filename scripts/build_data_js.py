@@ -134,6 +134,18 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", normalized.lower()).strip("-")
 
 
+def normalize_label(label):
+    """Title-case labels whose main text (before any parenthetical) is all-caps."""
+    paren_idx = label.find("(")
+    if paren_idx == -1:
+        prefix, suffix = label, ""
+    else:
+        prefix, suffix = label[:paren_idx].strip(), " " + label[paren_idx:]
+    if prefix and prefix == prefix.upper():
+        return prefix.title() + suffix
+    return label
+
+
 def build():
     data = json.loads(SRC.read_text(encoding="utf-8"))
     ings = data["ingredients"]
@@ -233,7 +245,7 @@ def build():
 
         out_ings[entry["id"]] = {
             "id":         entry["id"],
-            "label":      entry["label"],
+            "label":      normalize_label(entry["label"]),
             "pairings":   pairings,
             "avoids":     avoids,
             "quotes":     entry.get("quotes", [])[:3],

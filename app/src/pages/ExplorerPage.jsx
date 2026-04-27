@@ -331,20 +331,20 @@ export default function ExplorerPage() {
           <SearchBar />
           <ViewToggle />
           <FilterPanel />
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block' }} />
-              Essential &nbsp;/&nbsp;
+          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16, fontSize: '0.68rem', color: '#a09070', letterSpacing: '0.07em', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#d4a840', display: 'inline-block', flexShrink: 0 }} />
+              Essential /
               <span style={{ background: 'radial-gradient(ellipse at center, rgba(212,168,64,0.55) 0%, rgba(212,168,64,0.22) 55%, transparent 100%)', padding: '1px 7px', borderRadius: 10 }}>
                 Holy Grail
               </span>
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#e07840', display: 'inline-block' }} />
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#e07840', display: 'inline-block', flexShrink: 0 }} />
               Highly Recommended
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#5a9e6a', display: 'inline-block' }} />
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#5a9e6a', display: 'inline-block', flexShrink: 0 }} />
               Recommended
             </span>
           </div>
