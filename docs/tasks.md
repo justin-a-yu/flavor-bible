@@ -1,6 +1,6 @@
 # Project Tasks — Flavor Bible Explorer
 
-> Status: **Phases 1–5 complete. Phase 6 (polish) nearly done — all core features shipped. Remaining: mobile layout, performance, QA, deployment.**
+> Status: **Phases 1–6 nearly complete. Live on GitHub Pages. Remaining: mobile layout, performance, user feedback.**
 
 ## Decisions Log
 - **User:** Home cooks
@@ -206,8 +206,14 @@ Scope: filter state in Zustand + filtering logic wired into LensCanvas and Board
 - [x] **Cuisine slug → region mapping** — `filterUtils.js` refactored: `CUISINE_TO_REGION` flat map (101 slugs → 7 regions) replaces hand-maintained arrays; `CUISINE_LABEL` added for human-readable display names (e.g. `szechuan-cuisine` → "Sichuan"); `REGIONS` derived automatically; groundwork for future per-cuisine filter UI
 - [x] **RegionMap hit zone tuning** — calibrated all 7 zone rects against actual country centroids (world.svg scale factor 0.3474); Turkey, Nigeria, Ethiopia, Vietnam, Thailand now register their correct region; East Asia / SE Asia share a clean boundary at y=130; removed unused labelX/labelY dead code
 - [x] Cuisine filter UI (101 options — search/scrollable checklist)
+- [x] **DetailCard ingredient name as link** — clicking the ingredient name in the lens view info card navigates to the full profile page; "Full profile" footer button removed
+- [x] **`splitOutsideParens` utility** — techniques and botanical relatives now split correctly on commas outside parentheses (e.g. "bake (frittata, quiche, etc.)" stays as one chip)
+- [x] **Quote truncation fix** — `_backward_claim` parser fix: `_is_pairing_list()` helper prevents prose sentences containing colons (e.g. "seductive: the smooth carrot farro…") from being mistaken for pairing-category lines; recovered 9-line Michael Anthony carrot quote
+- [x] **Label casing fix** — 85 ingredient labels with all-caps PDF headers and mixed-case parentheticals (e.g. `ANISE (See also…)`, `BEANS, FAVA (aka…)`) now correctly title-cased in `build_data_js.py` via `normalize_label()`
+- [x] **Strength legend wrapping fix** — legend items in the header now have `whiteSpace: nowrap` so "Essential / Holy Grail" never breaks mid-label at narrow viewports
+- [x] **QA pass** — verified: profile pages (pairings, avoids, affinities, quotes, dishes, see-also, techniques), board shared pairings, filters (season, taste, region, strength, visibility), print view with filter footer, not-found state
+- [x] **Deployment** — live on GitHub Pages
+- [x] **Tech debt cleanup** — deleted `App.css` (Vite template), `plans/` (superseded planning docs), `parse_preview*.json` (test artifacts); consolidated `LENS_COLORS` into `boardUtils.js`; made `regionsToCuisineSlugs` private; added `__pycache__/` and `.claude/` to `.gitignore`
 - [ ] Responsive / mobile layout
 - [ ] Performance optimization for large graph
-- [ ] Testing and QA
-- [ ] Deployment (Vercel / Netlify)
 - [ ] User feedback loop
