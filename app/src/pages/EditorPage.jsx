@@ -451,6 +451,49 @@ export default function EditorPage() {
     updateDraft({ notes: draft.notes.filter((_, idx) => idx !== i) });
   }
 
+  // ── Tip helpers ──────────────────────────────────────────────────────────────
+
+  function addTip() {
+    updateDraft({ tips: [...(draft.tips || []), ''] });
+  }
+
+  function updateTip(i, val) {
+    const arr = [...(draft.tips || [])];
+    arr[i] = val;
+    updateDraft({ tips: arr });
+  }
+
+  function removeTip(i) {
+    updateDraft({ tips: draft.tips.filter((_, idx) => idx !== i) });
+  }
+
+  // ── Dish helpers ─────────────────────────────────────────────────────────────
+
+  function addDish() {
+    updateDraft({ dishes: [...(draft.dishes || []), { text: '', attribution: '' }] });
+  }
+
+  function updateDish(i, patch) {
+    const arr = [...(draft.dishes || [])];
+    arr[i] = { ...arr[i], ...patch };
+    updateDraft({ dishes: arr });
+  }
+
+  function removeDish(i) {
+    updateDraft({ dishes: draft.dishes.filter((_, idx) => idx !== i) });
+  }
+
+  // ── Related helpers ──────────────────────────────────────────────────────────
+
+  function addRelated(id) {
+    if (!id || (draft.relatedIds || []).includes(id)) return;
+    updateDraft({ relatedIds: [...(draft.relatedIds || []), id] });
+  }
+
+  function removeRelated(id) {
+    updateDraft({ relatedIds: draft.relatedIds.filter(r => r !== id) });
+  }
+
   // ── Render ───────────────────────────────────────────────────────────────────
 
   return (
@@ -677,6 +720,91 @@ export default function EditorPage() {
                   </div>
                 ))}
                 <button className="editor-add-btn" onClick={addNote}>+ Add note</button>
+              </section>
+
+              {/* ── Tips ── */}
+              <section className="editor-section">
+                <div className="editor-section-label">
+                  Tips
+                  <span className="editor-section-count">{draft.tips?.length ?? 0}</span>
+                </div>
+                {draft.tips?.map((tip, i) => (
+                  <div key={i} className="editor-note-block">
+                    <textarea
+                      className="editor-textarea editor-note-text"
+                      value={tip}
+                      placeholder="Tip…"
+                      rows={2}
+                      onChange={e => updateTip(i, e.target.value)}
+                    />
+                    <button className="editor-btn-icon editor-delete-btn editor-note-delete" onClick={() => removeTip(i)}>×</button>
+                  </div>
+                ))}
+                <button className="editor-add-btn" onClick={addTip}>+ Add tip</button>
+              </section>
+
+              {/* ── Dishes ── */}
+              <section className="editor-section">
+                <div className="editor-section-label">
+                  Dishes
+                  <span className="editor-section-count">{draft.dishes?.length ?? 0}</span>
+                </div>
+                {draft.dishes?.map((d, i) => (
+                  <div key={i} className="editor-quote-block">
+                    <div className="editor-quote-top">
+                      <textarea
+                        className="editor-textarea editor-quote-text"
+                        value={d.text}
+                        placeholder="Dish description…"
+                        rows={2}
+                        onChange={e => updateDish(i, { text: e.target.value })}
+                      />
+                      <button className="editor-btn-icon editor-delete-btn" onClick={() => removeDish(i)}>×</button>
+                    </div>
+                    <input
+                      className="editor-input editor-quote-attribution"
+                      value={d.attribution ?? ''}
+                      placeholder="Attribution (e.g. Chef name, restaurant)"
+                      onChange={e => updateDish(i, { attribution: e.target.value })}
+                    />
+                  </div>
+                ))}
+                <button className="editor-add-btn" onClick={addDish}>+ Add dish</button>
+              </section>
+
+              {/* ── See also (relatedIds) ── */}
+              <section className="editor-section">
+                <div className="editor-section-label">
+                  See Also
+                  <span className="editor-section-count">{draft.relatedIds?.length ?? 0}</span>
+                </div>
+                <div className="cuisines-chips" style={{ marginBottom: 8 }}>
+                  {(draft.relatedIds || []).map(rid => {
+                    const label = ingredients[rid]?.label ?? rid;
+                    return (
+                      <span key={rid} className="cuisine-chip">
+                        {label}
+                        <button
+                          className="cuisine-chip-remove"
+                          onMouseDown={e => { e.preventDefault(); removeRelated(rid); }}
+                        >×</button>
+                      </span>
+                    );
+                  })}
+                </div>
+                <SuggestInput
+                  value=""
+                  placeholder="Add related ingredient…"
+                  suggestions={ingredientLabels.filter(l => {
+                    const rid = labelToId[l.toLowerCase()];
+                    return rid && !(draft.relatedIds || []).includes(rid) && rid !== draft.id;
+                  })}
+                  onChange={val => {
+                    const rid = labelToId[val.toLowerCase()];
+                    if (rid) addRelated(rid);
+                  }}
+                  className="cuisines-add-input"
+                />
               </section>
 
             </>
