@@ -29,12 +29,27 @@ function resolvePairingIds(pairings, labelToId) {
   return pairings.map(p => ({ ...p, id: labelToId[p.label.toLowerCase()] ?? null }));
 }
 
+// ── useFlipUp ─────────────────────────────────────────────────────────────────
+// Returns true if a dropdown should open upward to avoid being clipped.
+// dropdownHeight: estimated height of the dropdown in px.
+
+function useFlipUp(wrapRef, open, dropdownHeight = 200) {
+  const [flipUp, setFlipUp] = useState(false);
+  useEffect(() => {
+    if (!open || !wrapRef.current) return;
+    const rect = wrapRef.current.getBoundingClientRect();
+    setFlipUp(rect.bottom + dropdownHeight > window.innerHeight - 8);
+  }, [open, wrapRef, dropdownHeight]);
+  return flipUp;
+}
+
 // ── SuggestInput ──────────────────────────────────────────────────────────────
 // Controlled input that shows a filtered dropdown of suggestions.
 
 function SuggestInput({ value, onChange, suggestions, placeholder, className }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
+  const flipUp  = useFlipUp(wrapRef, open, 220);
 
   const filtered = useMemo(() => {
     const q = (value ?? '').toLowerCase().trim();
@@ -63,7 +78,7 @@ function SuggestInput({ value, onChange, suggestions, placeholder, className }) 
         onFocus={() => setOpen(true)}
       />
       {open && filtered.length > 0 && (
-        <ul className="suggest-dropdown">
+        <ul className={`suggest-dropdown${flipUp ? ' suggest-dropdown--up' : ''}`}>
           {filtered.map(s => (
             <li
               key={s}
@@ -161,6 +176,7 @@ function CuisinesEditor({ cuisines, onChange, allCuisines }) {
 function StrengthPicker({ value, onChange }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
+  const flipUp  = useFlipUp(wrapRef, open, 160);
 
   useEffect(() => {
     function handle(e) {
@@ -182,7 +198,7 @@ function StrengthPicker({ value, onChange }) {
         <span className="strength-trigger-arrow">▾</span>
       </button>
       {open && (
-        <ul className="strength-dropdown">
+        <ul className={`strength-dropdown${flipUp ? ' strength-dropdown--up' : ''}`}>
           {TIER_ORDER.map(s => (
             <li
               key={s}
@@ -235,11 +251,13 @@ export default function AdminPage() {
   const [ingredients,  setIngredients]  = useState(() => ({ ...flavors.ingredients }));
   const [selectedId,   setSelectedId]   = useState(null);
   const [draft,        setDraft]        = useState(null);
-  const [dirty,        setDirty]        = useState(false);
+  const [modifiedIds,  setModifiedIds]  = useState(() => new Set());
   const [search,       setSearch]       = useState('');
   const [isCreating,   setIsCreating]   = useState(false);
   const [newLabel,     setNewLabel]     = useState('');
-  const newInputRef = useRef(null);
+  const [newError,     setNewError]     = useState('');
+  const newInputRef    = useRef(null);
+  const activeItemRef  = useRef(null);
 
   // ── Derived / suggestion data ─────────────────────────────────────────────────
 
@@ -285,26 +303,34 @@ export default function AdminPage() {
 
   // ── Actions ──────────────────────────────────────────────────────────────────
 
+  // Resolve IDs and write current draft back to ingredients state.
+  function syncDraft(currentDraft) {
+    if (!currentDraft) return;
+    const resolved = {
+      ...currentDraft,
+      pairings: resolvePairingIds(currentDraft.pairings, labelToId),
+      avoids:   resolvePairingIds(currentDraft.avoids,   labelToId),
+    };
+    setIngredients(prev => ({ ...prev, [resolved.id]: resolved }));
+    return resolved;
+  }
+
   function selectIngredient(id) {
+    // Auto-sync current draft before switching away
+    if (draft) syncDraft(draft);
     setDraft(JSON.parse(JSON.stringify(ingredients[id])));
     setSelectedId(id);
-    setDirty(false);
+    // Scroll the active sidebar item into view after render
+    setTimeout(() => activeItemRef.current?.scrollIntoView({ block: 'nearest' }), 0);
   }
 
   function updateDraft(patch) {
     setDraft(prev => ({ ...prev, ...patch }));
-    setDirty(true);
-  }
-
-  function saveDraft() {
-    const resolved = {
-      ...draft,
-      pairings: resolvePairingIds(draft.pairings, labelToId),
-      avoids:   resolvePairingIds(draft.avoids,   labelToId),
-    };
-    setIngredients(prev => ({ ...prev, [resolved.id]: resolved }));
-    setDraft(resolved);
-    setDirty(false);
+    // Only trigger a re-render of sidebar once per ingredient (first edit)
+    setModifiedIds(prev => {
+      if (prev.has(selectedId)) return prev;
+      return new Set([...prev, selectedId]);
+    });
   }
 
   function startCreating() {
@@ -316,6 +342,7 @@ export default function AdminPage() {
   function cancelCreating() {
     setIsCreating(false);
     setNewLabel('');
+    setNewError('');
   }
 
   function confirmCreating() {
@@ -323,20 +350,28 @@ export default function AdminPage() {
     if (!label) { cancelCreating(); return; }
     const id = slugify(label);
     if (ingredients[id]) {
+      setNewError(`"${id}" already exists`);
       newInputRef.current?.select();
       return;
     }
+    // Sync current draft before switching to new ingredient
+    if (draft) syncDraft(draft);
     const ing = emptyIngredient(label);
     setIngredients(prev => ({ ...prev, [id]: ing }));
     setDraft(JSON.parse(JSON.stringify(ing)));
     setSelectedId(id);
+    setModifiedIds(prev => new Set([...prev, id]));
     setIsCreating(false);
     setNewLabel('');
-    setDirty(false);
+    setNewError('');
+    // Scroll new ingredient into view after render
+    setTimeout(() => activeItemRef.current?.scrollIntoView({ block: 'nearest' }), 0);
   }
 
   function exportJson() {
-    const data = dirty && draft ? { ...ingredients, [draft.id]: draft } : { ...ingredients };
+    // Sync current draft so the open ingredient is always included
+    const synced = draft ? { ...ingredients, [draft.id]: { ...draft, pairings: resolvePairingIds(draft.pairings, labelToId), avoids: resolvePairingIds(draft.avoids, labelToId) } } : { ...ingredients };
+    const data = synced;
     const index = Object.values(data)
       .sort((a, b) => a.label.localeCompare(b.label))
       .map(({ id, label }) => ({ id, label }));
@@ -443,19 +478,24 @@ export default function AdminPage() {
           </div>
           {isCreating && (
             <div className="admin-new-row">
-              <input
-                ref={newInputRef}
-                className="admin-input admin-new-input"
-                value={newLabel}
-                placeholder="Ingredient name…"
-                onChange={e => setNewLabel(e.target.value)}
-                onKeyDown={e => {
-                  if (e.key === 'Enter') confirmCreating();
-                  if (e.key === 'Escape') cancelCreating();
-                }}
-              />
-              <button className="admin-new-confirm" onClick={confirmCreating} title="Create">✓</button>
-              <button className="admin-btn-icon admin-delete-btn" onClick={cancelCreating} title="Cancel">×</button>
+              <div className="admin-new-field">
+                <div className="admin-new-inputs">
+                  <input
+                    ref={newInputRef}
+                    className={`admin-input admin-new-input${newError ? ' admin-new-input--error' : ''}`}
+                    value={newLabel}
+                    placeholder="Ingredient name…"
+                    onChange={e => { setNewLabel(e.target.value); setNewError(''); }}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') confirmCreating();
+                      if (e.key === 'Escape') cancelCreating();
+                    }}
+                  />
+                  <button className="admin-new-confirm" onClick={confirmCreating} title="Create">✓</button>
+                  <button className="admin-btn-icon admin-delete-btn" onClick={cancelCreating} title="Cancel">×</button>
+                </div>
+                {newError && <div className="admin-new-error">{newError}</div>}
+              </div>
             </div>
           )}
           <div className="admin-sidebar-count">
@@ -465,12 +505,13 @@ export default function AdminPage() {
             {filteredIds.map(id => (
               <li
                 key={id}
+                ref={selectedId === id ? activeItemRef : null}
                 className={`admin-ingredient-item${selectedId === id ? ' admin-ingredient-item--active' : ''}`}
                 onClick={() => selectIngredient(id)}
               >
                 {ingredients[id].label}
-                {selectedId === id && dirty && (
-                  <span className="admin-dirty-dot" title="Unsaved changes" />
+                {modifiedIds.has(id) && (
+                  <span className="admin-dirty-dot" title="Modified since load" />
                 )}
               </li>
             ))}
@@ -488,13 +529,6 @@ export default function AdminPage() {
                   <h2 className="admin-editor-title">{draft.label || '(untitled)'}</h2>
                   <div className="admin-editor-id">{draft.id}</div>
                 </div>
-                <button
-                  className={`admin-save-btn${dirty ? ' admin-save-btn--dirty' : ''}`}
-                  onClick={saveDraft}
-                  disabled={!dirty}
-                >
-                  {dirty ? 'Save' : 'Saved'}
-                </button>
               </div>
 
               {/* ── Label ── */}

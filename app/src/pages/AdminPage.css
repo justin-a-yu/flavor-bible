@@ -101,18 +101,39 @@
 .admin-new-btn:hover { background: #a0722f; }
 
 .admin-new-row {
-  display: flex;
-  align-items: center;
-  gap: 4px;
   padding: 8px 12px;
   border-bottom: 1px solid #f0e8d8;
   background: #fffdf8;
+}
+
+.admin-new-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-new-inputs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .admin-new-input {
   flex: 1;
   font-size: 0.82rem;
   padding: 5px 8px;
+}
+
+.admin-new-input--error {
+  border-color: #c0392b;
+}
+.admin-new-input--error:focus { border-color: #c0392b; }
+
+.admin-new-error {
+  font-size: 0.72rem;
+  color: #c0392b;
+  font-family: Georgia, serif;
+  padding-left: 2px;
 }
 
 .admin-new-confirm {
@@ -209,25 +230,6 @@
   font-family: 'Courier New', monospace;
 }
 
-.admin-save-btn {
-  background: #e8e0d0;
-  border: 1px solid #d8cfc0;
-  border-radius: 6px;
-  padding: 7px 20px;
-  font-size: 0.82rem;
-  cursor: pointer;
-  color: #8a7450;
-  font-family: Georgia, serif;
-  transition: background 0.15s, border-color 0.15s;
-  white-space: nowrap;
-}
-.admin-save-btn--dirty {
-  background: #b8863a;
-  border-color: #a0722f;
-  color: #fff;
-}
-.admin-save-btn--dirty:hover { background: #a0722f; }
-.admin-save-btn:disabled { cursor: default; }
 
 /* ─── Sections ────────────────────────────────────────────────────────────── */
 
@@ -350,6 +352,11 @@
   min-width: 100%;
 }
 
+.strength-dropdown--up {
+  top: auto;
+  bottom: calc(100% + 3px);
+}
+
 .strength-option {
   display: flex;
   align-items: center;
@@ -451,6 +458,11 @@
   max-height: 220px;
   overflow-y: auto;
   z-index: 100;
+}
+
+.suggest-dropdown--up {
+  top: auto;
+  bottom: calc(100% + 3px);
 }
 
 .suggest-item {
