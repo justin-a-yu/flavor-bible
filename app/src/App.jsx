@@ -7,7 +7,7 @@ import ExplorerPage from './pages/ExplorerPage';
 // they're only downloaded when the user first navigates to those routes.
 const IngredientProfilePage = lazy(() => import('./pages/IngredientProfilePage'));
 const PrintPage             = lazy(() => import('./pages/PrintPage'));
-const AdminPage             = lazy(() => import('./pages/AdminPage'));
+const EditorPage            = lazy(() => import('./pages/EditorPage'));
 
 export default function App() {
   const loadFlavors = useExplorerStore(s => s.loadFlavors);
@@ -37,7 +37,7 @@ export default function App() {
           <Route path="/"               element={<ExplorerPage />} />
           <Route path="/ingredient/:id" element={<IngredientProfilePage />} />
           <Route path="/print"          element={<PrintPage />} />
-          <Route path="/admin"          element={<AdminPage />} />
+          <Route path="/editor"         element={<EditorPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

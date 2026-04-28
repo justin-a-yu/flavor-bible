@@ -2,7 +2,7 @@ import { useState, useMemo, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useExplorerStore from '../store/useExplorerStore';
 import { STRENGTH_COLOR, STRENGTH_LABEL, TIER_ORDER } from '../utils/boardUtils';
-import './AdminPage.css';
+import './EditorPage.css';
 
 function slugify(label) {
   return label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -71,7 +71,7 @@ function SuggestInput({ value, onChange, suggestions, placeholder, className }) 
   return (
     <div className="suggest-wrap" ref={wrapRef}>
       <input
-        className={`admin-input${className ? ' ' + className : ''}`}
+        className={`editor-input${className ? ' ' + className : ''}`}
         value={value ?? ''}
         placeholder={placeholder}
         onChange={e => { onChange(e.target.value); setOpen(true); }}
@@ -145,7 +145,7 @@ function CuisinesEditor({ cuisines, onChange, allCuisines }) {
       </div>
       <div className="suggest-wrap" ref={wrapRef}>
         <input
-          className="admin-input cuisines-add-input"
+          className="editor-input cuisines-add-input"
           value={inputVal}
           placeholder="Add cuisine…"
           onChange={e => { setInputVal(e.target.value); setOpen(true); }}
@@ -219,9 +219,9 @@ function StrengthPicker({ value, onChange }) {
 
 function PairingRow({ pairing, onChange, onDelete, ingredientLabels }) {
   return (
-    <div className="admin-pairing-row">
+    <div className="editor-pairing-row">
       <SuggestInput
-        className="admin-pairing-label"
+        className="editor-pairing-label"
         value={pairing.label}
         placeholder="ingredient"
         suggestions={ingredientLabels}
@@ -232,19 +232,19 @@ function PairingRow({ pairing, onChange, onDelete, ingredientLabels }) {
         onChange={val => onChange({ ...pairing, strength: val })}
       />
       <input
-        className="admin-input admin-pairing-modifier"
+        className="editor-input editor-pairing-modifier"
         value={pairing.modifier || ''}
         placeholder="modifier (optional)"
         onChange={e => onChange({ ...pairing, modifier: e.target.value })}
       />
-      <button className="admin-btn-icon admin-delete-btn" onClick={onDelete} title="Remove">×</button>
+      <button className="editor-btn-icon editor-delete-btn" onClick={onDelete} title="Remove">×</button>
     </div>
   );
 }
 
-// ── AdminPage ─────────────────────────────────────────────────────────────────
+// ── EditorPage ─────────────────────────────────────────────────────────────────
 
-export default function AdminPage() {
+export default function EditorPage() {
   const flavors   = useExplorerStore(s => s.flavors);
   const labelToId = useExplorerStore(s => s.labelToId);
 
@@ -454,35 +454,35 @@ export default function AdminPage() {
   // ── Render ───────────────────────────────────────────────────────────────────
 
   return (
-    <div className="admin-page">
-      <header className="admin-header">
-        <Link to="/" className="admin-back">← Back to Explorer</Link>
-        <h1 className="admin-title">Admin</h1>
-        <button className="admin-export-btn" onClick={exportJson}>
+    <div className="editor-page">
+      <header className="editor-header">
+        <Link to="/" className="editor-back">← Back to Explorer</Link>
+        <h1 className="editor-title">Editor</h1>
+        <button className="editor-export-btn" onClick={exportJson}>
           ↓ Export flavors_data.json
         </button>
       </header>
 
-      <div className="admin-layout">
+      <div className="editor-layout">
 
         {/* ── Sidebar ── */}
-        <aside className="admin-sidebar">
-          <div className="admin-sidebar-top">
+        <aside className="editor-sidebar">
+          <div className="editor-sidebar-top">
             <input
-              className="admin-search"
+              className="editor-search"
               placeholder="Search ingredients…"
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
-            <button className="admin-new-btn" onClick={startCreating}>+ New</button>
+            <button className="editor-new-btn" onClick={startCreating}>+ New</button>
           </div>
           {isCreating && (
-            <div className="admin-new-row">
-              <div className="admin-new-field">
-                <div className="admin-new-inputs">
+            <div className="editor-new-row">
+              <div className="editor-new-field">
+                <div className="editor-new-inputs">
                   <input
                     ref={newInputRef}
-                    className={`admin-input admin-new-input${newError ? ' admin-new-input--error' : ''}`}
+                    className={`editor-input editor-new-input${newError ? ' editor-new-input--error' : ''}`}
                     value={newLabel}
                     placeholder="Ingredient name…"
                     onChange={e => { setNewLabel(e.target.value); setNewError(''); }}
@@ -491,27 +491,27 @@ export default function AdminPage() {
                       if (e.key === 'Escape') cancelCreating();
                     }}
                   />
-                  <button className="admin-new-confirm" onClick={confirmCreating} title="Create">✓</button>
-                  <button className="admin-btn-icon admin-delete-btn" onClick={cancelCreating} title="Cancel">×</button>
+                  <button className="editor-new-confirm" onClick={confirmCreating} title="Create">✓</button>
+                  <button className="editor-btn-icon editor-delete-btn" onClick={cancelCreating} title="Cancel">×</button>
                 </div>
-                {newError && <div className="admin-new-error">{newError}</div>}
+                {newError && <div className="editor-new-error">{newError}</div>}
               </div>
             </div>
           )}
-          <div className="admin-sidebar-count">
+          <div className="editor-sidebar-count">
             {filteredIds.length} ingredient{filteredIds.length !== 1 ? 's' : ''}
           </div>
-          <ul className="admin-ingredient-list">
+          <ul className="editor-ingredient-list">
             {filteredIds.map(id => (
               <li
                 key={id}
                 ref={selectedId === id ? activeItemRef : null}
-                className={`admin-ingredient-item${selectedId === id ? ' admin-ingredient-item--active' : ''}`}
+                className={`editor-ingredient-item${selectedId === id ? ' editor-ingredient-item--active' : ''}`}
                 onClick={() => selectIngredient(id)}
               >
                 {ingredients[id].label}
                 {modifiedIds.has(id) && (
-                  <span className="admin-dirty-dot" title="Modified since load" />
+                  <span className="editor-dirty-dot" title="Modified since load" />
                 )}
               </li>
             ))}
@@ -519,33 +519,33 @@ export default function AdminPage() {
         </aside>
 
         {/* ── Editor ── */}
-        <main className="admin-editor">
+        <main className="editor-editor">
           {!draft ? (
-            <div className="admin-empty">Select an ingredient or create a new one.</div>
+            <div className="editor-empty">Select an ingredient or create a new one.</div>
           ) : (
             <>
-              <div className="admin-editor-header">
+              <div className="editor-editor-header">
                 <div>
-                  <h2 className="admin-editor-title">{draft.label || '(untitled)'}</h2>
-                  <div className="admin-editor-id">{draft.id}</div>
+                  <h2 className="editor-editor-title">{draft.label || '(untitled)'}</h2>
+                  <div className="editor-editor-id">{draft.id}</div>
                 </div>
               </div>
 
               {/* ── Label ── */}
-              <section className="admin-section">
-                <div className="admin-section-label">Label</div>
+              <section className="editor-section">
+                <div className="editor-section-label">Label</div>
                 <input
-                  className="admin-input"
+                  className="editor-input"
                   value={draft.label}
                   onChange={e => updateDraft({ label: e.target.value })}
                 />
               </section>
 
               {/* ── Pairings ── */}
-              <section className="admin-section">
-                <div className="admin-section-label">
+              <section className="editor-section">
+                <div className="editor-section-label">
                   Pairings
-                  <span className="admin-section-count">{draft.pairings?.length ?? 0}</span>
+                  <span className="editor-section-count">{draft.pairings?.length ?? 0}</span>
                 </div>
                 {draft.pairings?.map((p, i) => (
                   <PairingRow
@@ -556,16 +556,16 @@ export default function AdminPage() {
                     onDelete={() => removePairing('pairings', i)}
                   />
                 ))}
-                <button className="admin-add-btn" onClick={() => addPairing('pairings')}>
+                <button className="editor-add-btn" onClick={() => addPairing('pairings')}>
                   + Add pairing
                 </button>
               </section>
 
               {/* ── Avoids ── */}
-              <section className="admin-section">
-                <div className="admin-section-label">
+              <section className="editor-section">
+                <div className="editor-section-label">
                   Avoid
-                  <span className="admin-section-count">{draft.avoids?.length ?? 0}</span>
+                  <span className="editor-section-count">{draft.avoids?.length ?? 0}</span>
                 </div>
                 {draft.avoids?.map((p, i) => (
                   <PairingRow
@@ -576,37 +576,37 @@ export default function AdminPage() {
                     onDelete={() => removePairing('avoids', i)}
                   />
                 ))}
-                <button className="admin-add-btn" onClick={() => addPairing('avoids')}>
+                <button className="editor-add-btn" onClick={() => addPairing('avoids')}>
                   + Add avoid
                 </button>
               </section>
 
               {/* ── Affinities ── */}
-              <section className="admin-section">
-                <div className="admin-section-label">
+              <section className="editor-section">
+                <div className="editor-section-label">
                   Affinities
-                  <span className="admin-section-count">{draft.affinities?.length ?? 0}</span>
+                  <span className="editor-section-count">{draft.affinities?.length ?? 0}</span>
                 </div>
                 {draft.affinities?.map((aff, i) => (
-                  <div key={i} className="admin-affinity-row">
+                  <div key={i} className="editor-affinity-row">
                     <input
-                      className="admin-input"
+                      className="editor-input"
                       value={aff}
                       placeholder="e.g. ingredient + ingredient + ingredient"
                       onChange={e => updateAffinity(i, e.target.value)}
                     />
-                    <button className="admin-btn-icon admin-delete-btn" onClick={() => removeAffinity(i)}>×</button>
+                    <button className="editor-btn-icon editor-delete-btn" onClick={() => removeAffinity(i)}>×</button>
                   </div>
                 ))}
-                <button className="admin-add-btn" onClick={addAffinity}>+ Add affinity</button>
+                <button className="editor-add-btn" onClick={addAffinity}>+ Add affinity</button>
               </section>
 
               {/* ── Meta ── */}
-              <section className="admin-section">
-                <div className="admin-section-label">Meta</div>
+              <section className="editor-section">
+                <div className="editor-section-label">Meta</div>
                 {['taste', 'weight', 'volume', 'season', 'function', 'techniques', 'botanical relatives'].map(key => (
-                  <div key={key} className="admin-meta-row">
-                    <label className="admin-meta-key">
+                  <div key={key} className="editor-meta-row">
+                    <label className="editor-meta-key">
                       {key.charAt(0).toUpperCase() + key.slice(1)}
                     </label>
                     <SuggestInput
@@ -620,8 +620,8 @@ export default function AdminPage() {
               </section>
 
               {/* ── Cuisines ── */}
-              <section className="admin-section">
-                <div className="admin-section-label">Cuisines</div>
+              <section className="editor-section">
+                <div className="editor-section-label">Cuisines</div>
                 <CuisinesEditor
                   cuisines={draft.cuisines ?? []}
                   allCuisines={allCuisines}
@@ -630,53 +630,53 @@ export default function AdminPage() {
               </section>
 
               {/* ── Quotes ── */}
-              <section className="admin-section">
-                <div className="admin-section-label">
+              <section className="editor-section">
+                <div className="editor-section-label">
                   Quotes
-                  <span className="admin-section-count">{draft.quotes?.length ?? 0}</span>
+                  <span className="editor-section-count">{draft.quotes?.length ?? 0}</span>
                 </div>
                 {draft.quotes?.map((q, i) => (
-                  <div key={i} className="admin-quote-block">
-                    <div className="admin-quote-top">
+                  <div key={i} className="editor-quote-block">
+                    <div className="editor-quote-top">
                       <textarea
-                        className="admin-textarea admin-quote-text"
+                        className="editor-textarea editor-quote-text"
                         value={q.text}
                         placeholder="Quotation…"
                         rows={3}
                         onChange={e => updateQuote(i, { text: e.target.value })}
                       />
-                      <button className="admin-btn-icon admin-delete-btn" onClick={() => removeQuote(i)}>×</button>
+                      <button className="editor-btn-icon editor-delete-btn" onClick={() => removeQuote(i)}>×</button>
                     </div>
                     <input
-                      className="admin-input admin-quote-attribution"
+                      className="editor-input editor-quote-attribution"
                       value={q.attribution ?? ''}
                       placeholder="Attribution (e.g. Chef name, restaurant)"
                       onChange={e => updateQuote(i, { attribution: e.target.value })}
                     />
                   </div>
                 ))}
-                <button className="admin-add-btn" onClick={addQuote}>+ Add quote</button>
+                <button className="editor-add-btn" onClick={addQuote}>+ Add quote</button>
               </section>
 
               {/* ── Notes ── */}
-              <section className="admin-section">
-                <div className="admin-section-label">
+              <section className="editor-section">
+                <div className="editor-section-label">
                   Notes
-                  <span className="admin-section-count">{draft.notes?.length ?? 0}</span>
+                  <span className="editor-section-count">{draft.notes?.length ?? 0}</span>
                 </div>
                 {draft.notes?.map((note, i) => (
-                  <div key={i} className="admin-note-block">
+                  <div key={i} className="editor-note-block">
                     <textarea
-                      className="admin-textarea admin-note-text"
+                      className="editor-textarea editor-note-text"
                       value={note}
                       placeholder="Notes…"
                       rows={5}
                       onChange={e => updateNote(i, e.target.value)}
                     />
-                    <button className="admin-btn-icon admin-delete-btn admin-note-delete" onClick={() => removeNote(i)}>×</button>
+                    <button className="editor-btn-icon editor-delete-btn editor-note-delete" onClick={() => removeNote(i)}>×</button>
                   </div>
                 ))}
-                <button className="admin-add-btn" onClick={addNote}>+ Add note</button>
+                <button className="editor-add-btn" onClick={addNote}>+ Add note</button>
               </section>
 
             </>
