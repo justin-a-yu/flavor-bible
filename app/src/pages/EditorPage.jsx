@@ -320,20 +320,29 @@ export default function EditorPage() {
   // ── Actions ──────────────────────────────────────────────────────────────────
 
   // Resolve IDs and write current draft back to ingredients state.
-  function syncDraft(currentDraft) {
+  // If the id was edited, removes the old key and updates selectedId.
+  function syncDraft(currentDraft, oldId) {
     if (!currentDraft) return;
     const resolved = {
       ...currentDraft,
       pairings: resolvePairingIds(currentDraft.pairings, labelToId),
       avoids:   resolvePairingIds(currentDraft.avoids,   labelToId),
     };
-    setIngredients(prev => ({ ...prev, [resolved.id]: resolved }));
+    setIngredients(prev => {
+      const next = { ...prev, [resolved.id]: resolved };
+      if (oldId && oldId !== resolved.id) delete next[oldId];
+      return next;
+    });
+    if (oldId && oldId !== resolved.id) {
+      setSelectedId(resolved.id);
+      setModifiedIds(prev => { const n = new Set(prev); n.delete(oldId); n.add(resolved.id); return n; });
+    }
     return resolved;
   }
 
   function selectIngredient(id) {
     // Auto-sync current draft before switching away
-    if (draft) syncDraft(draft);
+    if (draft) syncDraft(draft, selectedId);
     setDraft(JSON.parse(JSON.stringify(ingredients[id])));
     setSelectedId(id);
     // Scroll the active sidebar item into view after render
@@ -371,7 +380,7 @@ export default function EditorPage() {
       return;
     }
     // Sync current draft before switching to new ingredient
-    if (draft) syncDraft(draft);
+    if (draft) syncDraft(draft, selectedId);
     const ing = emptyIngredient(label);
     setIngredients(prev => ({ ...prev, [id]: ing }));
     setDraft(JSON.parse(JSON.stringify(ing)));
@@ -386,7 +395,12 @@ export default function EditorPage() {
 
   function exportJson() {
     // Sync current draft so the open ingredient is always included
-    const synced = draft ? { ...ingredients, [draft.id]: { ...draft, pairings: resolvePairingIds(draft.pairings, labelToId), avoids: resolvePairingIds(draft.avoids, labelToId) } } : { ...ingredients };
+    let synced = { ...ingredients };
+    if (draft) {
+      const resolved = { ...draft, pairings: resolvePairingIds(draft.pairings, labelToId), avoids: resolvePairingIds(draft.avoids, labelToId) };
+      synced[resolved.id] = resolved;
+      if (selectedId && selectedId !== resolved.id) delete synced[selectedId];
+    }
     const data = synced;
     const index = Object.values(data)
       .sort((a, b) => a.label.localeCompare(b.label))
@@ -590,6 +604,17 @@ export default function EditorPage() {
                 />
               </section>
 
+              {/* ── ID ── */}
+              <section className="editor-section">
+                <div className="editor-section-label">ID</div>
+                <input
+                  className="editor-input editor-id-input"
+                  value={draft.id}
+                  onChange={e => updateDraft({ id: e.target.value })}
+                  spellCheck={false}
+                />
+              </section>
+
               {/* ── Pairings ── */}
               <section className="editor-section">
                 <div className="editor-section-label">
@@ -630,57 +655,6 @@ export default function EditorPage() {
                 </button>
               </section>
 
-              {/* ── Affinities ── */}
-              <section className="editor-section">
-                <div className="editor-section-label">
-                  Affinities
-                  <span className="editor-section-count">{draft.affinities?.length ?? 0}</span>
-                </div>
-                {draft.affinities?.map((aff, i) => (
-                  <div key={i} className="editor-affinity-row">
-                    <input
-                      className="editor-input"
-                      value={aff}
-                      placeholder="e.g. ingredient + ingredient + ingredient"
-                      onChange={e => updateAffinity(i, e.target.value)}
-                    />
-                    <button className="editor-btn-icon editor-delete-btn" onClick={() => removeAffinity(i)}>×</button>
-                  </div>
-                ))}
-                <button className="editor-add-btn" onClick={addAffinity}>+ Add affinity</button>
-              </section>
-
-              {/* ── Meta ── */}
-              <section className="editor-section">
-                <div className="editor-section-label">Meta</div>
-                {['taste', 'weight', 'volume', 'season', 'function', 'techniques', 'botanical relatives'].map(key => (
-                  <div key={key} className="editor-meta-row">
-                    <label className="editor-meta-key">
-                      {key.charAt(0).toUpperCase() + key.slice(1)}
-                    </label>
-                    <SuggestInput
-                      value={draft.meta?.[key] ?? ''}
-                      placeholder={`${key}…`}
-                      suggestions={metaSuggestions[key] ?? []}
-                      onChange={val => updateDraft({ meta: { ...(draft.meta ?? {}), [key]: val } })}
-                    />
-                  </div>
-                ))}
-              </section>
-
-              {/* ── Cuisines ── */}
-              <section className="editor-section">
-                <div className="editor-section-label">Cuisines</div>
-                <ChipEditor
-                  chips={(draft.cuisines ?? []).map(c => ({ value: c, label: c }))}
-                  suggestions={allCuisines.map(c => ({ value: c, label: c }))}
-                  placeholder="Add cuisine…"
-                  toValue={v => v}
-                  onAdd={({ value }) => updateDraft({ cuisines: [...(draft.cuisines ?? []), value] })}
-                  onRemove={value => updateDraft({ cuisines: (draft.cuisines ?? []).filter(c => c !== value) })}
-                />
-              </section>
-
               {/* ── Quotes ── */}
               <section className="editor-section">
                 <div className="editor-section-label">
@@ -710,27 +684,6 @@ export default function EditorPage() {
                 <button className="editor-add-btn" onClick={addQuote}>+ Add quote</button>
               </section>
 
-              {/* ── Notes ── */}
-              <section className="editor-section">
-                <div className="editor-section-label">
-                  Notes
-                  <span className="editor-section-count">{draft.notes?.length ?? 0}</span>
-                </div>
-                {draft.notes?.map((note, i) => (
-                  <div key={i} className="editor-note-block">
-                    <textarea
-                      className="editor-textarea editor-note-text"
-                      value={note}
-                      placeholder="Notes…"
-                      rows={5}
-                      onChange={e => updateNote(i, e.target.value)}
-                    />
-                    <button className="editor-btn-icon editor-delete-btn editor-note-delete" onClick={() => removeNote(i)}>×</button>
-                  </div>
-                ))}
-                <button className="editor-add-btn" onClick={addNote}>+ Add note</button>
-              </section>
-
               {/* ── Tips ── */}
               <section className="editor-section">
                 <div className="editor-section-label">
@@ -750,6 +703,27 @@ export default function EditorPage() {
                   </div>
                 ))}
                 <button className="editor-add-btn" onClick={addTip}>+ Add tip</button>
+              </section>
+
+              {/* ── Notes ── */}
+              <section className="editor-section">
+                <div className="editor-section-label">
+                  Notes
+                  <span className="editor-section-count">{draft.notes?.length ?? 0}</span>
+                </div>
+                {draft.notes?.map((note, i) => (
+                  <div key={i} className="editor-note-block">
+                    <textarea
+                      className="editor-textarea editor-note-text"
+                      value={note}
+                      placeholder="Notes…"
+                      rows={5}
+                      onChange={e => updateNote(i, e.target.value)}
+                    />
+                    <button className="editor-btn-icon editor-delete-btn editor-note-delete" onClick={() => removeNote(i)}>×</button>
+                  </div>
+                ))}
+                <button className="editor-add-btn" onClick={addNote}>+ Add note</button>
               </section>
 
               {/* ── Dishes ── */}
@@ -779,6 +753,57 @@ export default function EditorPage() {
                   </div>
                 ))}
                 <button className="editor-add-btn" onClick={addDish}>+ Add dish</button>
+              </section>
+
+              {/* ── Affinities ── */}
+              <section className="editor-section">
+                <div className="editor-section-label">
+                  Affinities
+                  <span className="editor-section-count">{draft.affinities?.length ?? 0}</span>
+                </div>
+                {draft.affinities?.map((aff, i) => (
+                  <div key={i} className="editor-affinity-row">
+                    <input
+                      className="editor-input"
+                      value={aff}
+                      placeholder="e.g. ingredient + ingredient + ingredient"
+                      onChange={e => updateAffinity(i, e.target.value)}
+                    />
+                    <button className="editor-btn-icon editor-delete-btn" onClick={() => removeAffinity(i)}>×</button>
+                  </div>
+                ))}
+                <button className="editor-add-btn" onClick={addAffinity}>+ Add affinity</button>
+              </section>
+
+              {/* ── Cuisines ── */}
+              <section className="editor-section">
+                <div className="editor-section-label">Cuisines</div>
+                <ChipEditor
+                  chips={(draft.cuisines ?? []).map(c => ({ value: c, label: c }))}
+                  suggestions={allCuisines.map(c => ({ value: c, label: c }))}
+                  placeholder="Add cuisine…"
+                  toValue={v => v}
+                  onAdd={({ value }) => updateDraft({ cuisines: [...(draft.cuisines ?? []), value] })}
+                  onRemove={value => updateDraft({ cuisines: (draft.cuisines ?? []).filter(c => c !== value) })}
+                />
+              </section>
+
+              {/* ── Meta ── */}
+              <section className="editor-section">
+                <div className="editor-section-label">Meta</div>
+                {['taste', 'weight', 'volume', 'season', 'function', 'techniques', 'botanical relatives'].map(key => (
+                  <div key={key} className="editor-meta-row">
+                    <label className="editor-meta-key">
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                    </label>
+                    <SuggestInput
+                      value={draft.meta?.[key] ?? ''}
+                      placeholder={`${key}…`}
+                      suggestions={metaSuggestions[key] ?? []}
+                      onChange={val => updateDraft({ meta: { ...(draft.meta ?? {}), [key]: val } })}
+                    />
+                  </div>
+                ))}
               </section>
 
               {/* ── See also (relatedIds) ── */}

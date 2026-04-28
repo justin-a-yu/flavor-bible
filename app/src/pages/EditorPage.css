@@ -231,6 +231,12 @@
   font-family: 'Courier New', monospace;
 }
 
+.editor-id-input {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #8a7450;
+}
+
 
 /* ─── Sections ────────────────────────────────────────────────────────────── */
 
