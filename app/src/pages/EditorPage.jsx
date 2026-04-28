@@ -46,7 +46,7 @@ function useFlipUp(wrapRef, open, dropdownHeight = 200) {
 // ── SuggestInput ──────────────────────────────────────────────────────────────
 // Controlled input that shows a filtered dropdown of suggestions.
 
-function SuggestInput({ value, onChange, suggestions, placeholder, className }) {
+function SuggestInput({ value, onChange, onEnter, suggestions, placeholder, className }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
   const flipUp  = useFlipUp(wrapRef, open, 220);
@@ -76,6 +76,10 @@ function SuggestInput({ value, onChange, suggestions, placeholder, className }) 
         placeholder={placeholder}
         onChange={e => { onChange(e.target.value); setOpen(true); }}
         onFocus={() => setOpen(true)}
+        onKeyDown={e => {
+          if (e.key === 'Enter' && onEnter) { e.preventDefault(); onEnter(value ?? ''); setOpen(false); }
+          if (e.key === 'Escape') setOpen(false);
+        }}
       />
       {open && filtered.length > 0 && (
         <ul className={`suggest-dropdown${flipUp ? ' suggest-dropdown--up' : ''}`}>
@@ -94,10 +98,16 @@ function SuggestInput({ value, onChange, suggestions, placeholder, className }) 
   );
 }
 
-// ── CuisinesEditor ────────────────────────────────────────────────────────────
-// Chip-based cuisine selector with autocomplete.
+// ── ChipEditor ────────────────────────────────────────────────────────────────
+// Generic chip editor with autocomplete and free-form entry.
+// chips:       [{ value, label }]  — current chips
+// suggestions: [{ value, label }]  — autocomplete options (already filtered)
+// onAdd:       ({ value, label }) => void
+// onRemove:    (value) => void
+// toValue:     (text) => value  — converts free-form text to a storable value
+// placeholder: string
 
-function CuisinesEditor({ cuisines, onChange, allCuisines }) {
+function ChipEditor({ chips, suggestions, onAdd, onRemove, toValue, placeholder }) {
   const [inputVal, setInputVal] = useState('');
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
@@ -105,10 +115,10 @@ function CuisinesEditor({ cuisines, onChange, allCuisines }) {
   const filtered = useMemo(() => {
     const q = inputVal.toLowerCase().trim();
     if (!q) return [];
-    return allCuisines
-      .filter(c => c.toLowerCase().includes(q) && !cuisines.includes(c))
+    return suggestions
+      .filter(s => s.label.toLowerCase().includes(q) && !chips.find(c => c.value === s.value))
       .slice(0, 10);
-  }, [inputVal, allCuisines, cuisines]);
+  }, [inputVal, suggestions, chips]);
 
   useEffect(() => {
     function handle(e) {
@@ -118,27 +128,30 @@ function CuisinesEditor({ cuisines, onChange, allCuisines }) {
     return () => document.removeEventListener('mousedown', handle);
   }, []);
 
-  function add(val) {
-    const v = val.trim();
-    if (!v || cuisines.includes(v)) return;
-    onChange([...cuisines, v]);
+  function add(chip) {
+    if (!chip.value || chips.find(c => c.value === chip.value)) return;
+    onAdd(chip);
     setInputVal('');
     setOpen(false);
   }
 
-  function remove(c) {
-    onChange(cuisines.filter(x => x !== c));
+  function handleEnter() {
+    const trimmed = inputVal.trim();
+    if (!trimmed) return;
+    const match = suggestions.find(s => s.label.toLowerCase() === trimmed.toLowerCase());
+    if (match) { add(match); return; }
+    if (toValue) add({ value: toValue(trimmed), label: trimmed });
   }
 
   return (
     <div className="cuisines-editor">
       <div className="cuisines-chips">
-        {cuisines.map(c => (
-          <span key={c} className="cuisine-chip">
-            {c}
+        {chips.map(chip => (
+          <span key={chip.value} className="cuisine-chip">
+            {chip.label}
             <button
               className="cuisine-chip-remove"
-              onMouseDown={e => { e.preventDefault(); remove(c); }}
+              onMouseDown={e => { e.preventDefault(); onRemove(chip.value); }}
             >×</button>
           </span>
         ))}
@@ -147,20 +160,23 @@ function CuisinesEditor({ cuisines, onChange, allCuisines }) {
         <input
           className="editor-input cuisines-add-input"
           value={inputVal}
-          placeholder="Add cuisine…"
+          placeholder={placeholder}
           onChange={e => { setInputVal(e.target.value); setOpen(true); }}
           onFocus={() => setOpen(true)}
-          onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); add(inputVal); } }}
+          onKeyDown={e => {
+            if (e.key === 'Enter') { e.preventDefault(); handleEnter(); }
+            if (e.key === 'Escape') setOpen(false);
+          }}
         />
         {open && filtered.length > 0 && (
           <ul className="suggest-dropdown">
-            {filtered.map(c => (
+            {filtered.map(s => (
               <li
-                key={c}
+                key={s.value}
                 className="suggest-item"
-                onMouseDown={e => { e.preventDefault(); add(c); }}
+                onMouseDown={e => { e.preventDefault(); add(s); }}
               >
-                {c}
+                {s.label}
               </li>
             ))}
           </ul>
@@ -253,7 +269,6 @@ export default function EditorPage() {
   const [draft,        setDraft]        = useState(null);
   const [modifiedIds,  setModifiedIds]  = useState(() => new Set());
   const [search,       setSearch]       = useState('');
-  const [relatedInput, setRelatedInput] = useState('');
   const [isCreating,   setIsCreating]   = useState(false);
   const [newLabel,     setNewLabel]     = useState('');
   const [newError,     setNewError]     = useState('');
@@ -321,7 +336,6 @@ export default function EditorPage() {
     if (draft) syncDraft(draft);
     setDraft(JSON.parse(JSON.stringify(ingredients[id])));
     setSelectedId(id);
-    setRelatedInput('');
     // Scroll the active sidebar item into view after render
     setTimeout(() => activeItemRef.current?.scrollIntoView({ block: 'nearest' }), 0);
   }
@@ -485,16 +499,6 @@ export default function EditorPage() {
     updateDraft({ dishes: draft.dishes.filter((_, idx) => idx !== i) });
   }
 
-  // ── Related helpers ──────────────────────────────────────────────────────────
-
-  function addRelated(id) {
-    if (!id || (draft.relatedIds || []).includes(id)) return;
-    updateDraft({ relatedIds: [...(draft.relatedIds || []), id] });
-  }
-
-  function removeRelated(id) {
-    updateDraft({ relatedIds: draft.relatedIds.filter(r => r !== id) });
-  }
 
   // ── Render ───────────────────────────────────────────────────────────────────
 
@@ -667,10 +671,13 @@ export default function EditorPage() {
               {/* ── Cuisines ── */}
               <section className="editor-section">
                 <div className="editor-section-label">Cuisines</div>
-                <CuisinesEditor
-                  cuisines={draft.cuisines ?? []}
-                  allCuisines={allCuisines}
-                  onChange={val => updateDraft({ cuisines: val })}
+                <ChipEditor
+                  chips={(draft.cuisines ?? []).map(c => ({ value: c, label: c }))}
+                  suggestions={allCuisines.map(c => ({ value: c, label: c }))}
+                  placeholder="Add cuisine…"
+                  toValue={v => v}
+                  onAdd={({ value }) => updateDraft({ cuisines: [...(draft.cuisines ?? []), value] })}
+                  onRemove={value => updateDraft({ cuisines: (draft.cuisines ?? []).filter(c => c !== value) })}
                 />
               </section>
 
@@ -780,33 +787,18 @@ export default function EditorPage() {
                   See Also
                   <span className="editor-section-count">{draft.relatedIds?.length ?? 0}</span>
                 </div>
-                <div className="cuisines-chips" style={{ marginBottom: 8 }}>
-                  {(draft.relatedIds || []).map(rid => {
-                    const label = ingredients[rid]?.label ?? rid;
-                    return (
-                      <span key={rid} className="cuisine-chip">
-                        {label}
-                        <button
-                          className="cuisine-chip-remove"
-                          onMouseDown={e => { e.preventDefault(); removeRelated(rid); }}
-                        >×</button>
-                      </span>
-                    );
-                  })}
-                </div>
-                <SuggestInput
-                  value={relatedInput}
+                <ChipEditor
+                  chips={(draft.relatedIds ?? []).map(rid => ({ value: rid, label: ingredients[rid]?.label ?? rid }))}
+                  suggestions={ingredientLabels
+                    .filter(l => {
+                      const rid = labelToId[l.toLowerCase()];
+                      return rid && !(draft.relatedIds ?? []).includes(rid) && rid !== draft.id;
+                    })
+                    .map(l => ({ value: labelToId[l.toLowerCase()], label: l }))}
                   placeholder="Add related ingredient…"
-                  suggestions={ingredientLabels.filter(l => {
-                    const rid = labelToId[l.toLowerCase()];
-                    return rid && !(draft.relatedIds || []).includes(rid) && rid !== draft.id;
-                  })}
-                  onChange={val => {
-                    const rid = labelToId[val.toLowerCase()];
-                    if (rid) { addRelated(rid); setRelatedInput(''); }
-                    else setRelatedInput(val);
-                  }}
-                  className="cuisines-add-input"
+                  toValue={slugify}
+                  onAdd={({ value }) => updateDraft({ relatedIds: [...(draft.relatedIds ?? []), value] })}
+                  onRemove={value => updateDraft({ relatedIds: (draft.relatedIds ?? []).filter(r => r !== value) })}
                 />
               </section>
 
