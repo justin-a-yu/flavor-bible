@@ -457,7 +457,7 @@ export default function EditorPage() {
     <div className="editor-page">
       <header className="editor-header">
         <Link to="/" className="editor-back">← Back to Explorer</Link>
-        <h1 className="editor-title">Editor</h1>
+        <h1 className="editor-title">Flavor <span style={{ color: '#2c2416' }}>Bible</span> Editor</h1>
         <button className="editor-export-btn" onClick={exportJson}>
           ↓ Export flavors_data.json
         </button>
