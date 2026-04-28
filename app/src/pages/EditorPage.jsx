@@ -253,6 +253,7 @@ export default function EditorPage() {
   const [draft,        setDraft]        = useState(null);
   const [modifiedIds,  setModifiedIds]  = useState(() => new Set());
   const [search,       setSearch]       = useState('');
+  const [relatedInput, setRelatedInput] = useState('');
   const [isCreating,   setIsCreating]   = useState(false);
   const [newLabel,     setNewLabel]     = useState('');
   const [newError,     setNewError]     = useState('');
@@ -320,6 +321,7 @@ export default function EditorPage() {
     if (draft) syncDraft(draft);
     setDraft(JSON.parse(JSON.stringify(ingredients[id])));
     setSelectedId(id);
+    setRelatedInput('');
     // Scroll the active sidebar item into view after render
     setTimeout(() => activeItemRef.current?.scrollIntoView({ block: 'nearest' }), 0);
   }
@@ -793,7 +795,7 @@ export default function EditorPage() {
                   })}
                 </div>
                 <SuggestInput
-                  value=""
+                  value={relatedInput}
                   placeholder="Add related ingredient…"
                   suggestions={ingredientLabels.filter(l => {
                     const rid = labelToId[l.toLowerCase()];
@@ -801,7 +803,8 @@ export default function EditorPage() {
                   })}
                   onChange={val => {
                     const rid = labelToId[val.toLowerCase()];
-                    if (rid) addRelated(rid);
+                    if (rid) { addRelated(rid); setRelatedInput(''); }
+                    else setRelatedInput(val);
                   }}
                   className="cuisines-add-input"
                 />
